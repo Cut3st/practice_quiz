@@ -1,0 +1,3907 @@
+{
+  "weeks": {
+    "week1": {
+      "outputPrediction": [
+        {
+          "id": 1001,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nprint('Hello, World!')\n```",
+          "options": [
+            "A) \"Hello, World!\"",
+            "B) 'Hello, World!'",
+            "C) Hello, World!",
+            "D) Error",
+            "E) print('Hello, World!')"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The print() function outputs the string's content without the quotes."
+        },
+        {
+          "id": 1002,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nwelcome_message = \"Welcome to SC1003\"\nprint(welcome_message)\n```",
+          "options": [
+            "A) \"Welcome to SC1003\"",
+            "B) welcome_message",
+            "C) Welcome to SC1003",
+            "D) Error",
+            "E) None"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The print() function outputs the value stored in the variable `welcome_message`."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 2001,
+          "difficulty": "basic",
+          "question": "Which of the following will cause a SyntaxError? (Select all that apply)",
+          "options": [
+            "A) `print('Hello)`",
+            "B) `x = 1`",
+            "C) `print 'Hello'`",
+            "D) `my-var = 5`",
+            "E) `_myvar = 5`"
+          ],
+          "correct": [
+            "A",
+            "C",
+            "D"
+          ],
+          "explanation": "A: Unmatched quotes. C: `print` is a function and requires parentheses in Python 3. D: Hyphens are not allowed in variable names."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 2002,
+          "difficulty": "basic",
+          "question": "To solve a complex problem, you first break it into 'get input', 'validate input', 'process data', 'output result'. This is an example of:",
+          "options": [
+            "A) Decomposition",
+            "B) Abstraction",
+            "C) Pattern Recognition",
+            "D) Algorithm Design"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Decomposition is the process of breaking a complex problem into smaller, more manageable sub-problems."
+        },
+        {
+          "id": 2003,
+          "difficulty": "basic",
+          "question": "You realize that calculating 'student average', 'class average', and 'school average' all use the same logic (sum / count). Re-using this logic is an example of:",
+          "options": [
+            "A) Decomposition",
+            "B) Abstraction",
+            "C) Pattern Recognition",
+            "D) Algorithm Design"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Pattern recognition involves finding similarities or repeated logic that can be generalized."
+        },
+        {
+          "id": 2004,
+          "difficulty": "basic",
+          "question": "You create a `calculate_average(numbers)` function. This hides the 'sum / count' logic from the user. This is an example of:",
+          "options": [
+            "A) Decomposition",
+            "B) Abstraction",
+            "C) Pattern Recognition",
+            "D) Algorithm Design"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Abstraction involves hiding complex implementation details behind a simple interface (the function call)."
+        }
+      ],
+      "theory": [
+        {
+          "id": 51,
+          "difficulty": "intermediate",
+          "question": "Which of the following are NOT considered one of the four core pillars of computational thinking? (Select all that apply)",
+          "options": [
+            "A) Decomposition",
+            "B) Pattern Recognition",
+            "C) Abstraction",
+            "D) Debugging",
+            "E) Algorithm Design",
+            "F) Testing",
+            "G) Compilation"
+          ],
+          "correct": [
+            "D",
+            "F",
+            "G"
+          ],
+          "explanation": "The four core pillars are Decomposition, Pattern Recognition, Abstraction, and Algorithm Design. Debugging, Testing, and Compilation are part of the broader software development process, but not the core four concepts."
+        },
+        {
+          "id": 114,
+          "difficulty": "basic",
+          "question": "Which is TRUE about Abstraction?",
+          "options": [
+            "A) Identifies essentials, ignores detail",
+            "B) Makes programs run faster",
+            "C) Removes all complexity permanently",
+            "D) Eliminates testing needs",
+            "E) Hides everything",
+            "F) Never used",
+            "G) Only for experts"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Abstraction focuses on important aspects, ignoring irrelevant detail."
+        },
+        {
+          "id": 119,
+          "difficulty": "basic",
+          "question": "Which of the following ARE considered core pillars of computational thinking? (Select all that apply)",
+          "options": [
+            "A) Decomposition",
+            "B) Pattern Recognition",
+            "C) Abstraction",
+            "D) Debugging",
+            "E) Algorithm Design",
+            "F) Compilation"
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C",
+            "E"
+          ],
+          "explanation": "The four core pillars are Decomposition, Pattern Recognition, Abstraction, and Algorithm Design."
+        },
+        {
+          "id": 1003,
+          "difficulty": "basic",
+          "question": "What is 'Decomposition' in computational thinking?",
+          "options": [
+            "A) Breaking down a complex problem into smaller, manageable parts.",
+            "B) Finding similarities or patterns among problems.",
+            "C) Focusing on the important information only, ignoring irrelevant detail.",
+            "D) Developing a step-by-step solution to the problem."
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Decomposition is the process of breaking down a complex problem into smaller, more manageable sub-problems."
+        },
+        {
+          "id": 1004,
+          "difficulty": "basic",
+          "question": "What is 'Pattern Recognition' in computational thinking?",
+          "options": [
+            "A) Breaking down a complex problem into smaller, manageable parts.",
+            "B) Finding similarities or trends within problems or data.",
+            "C) Focusing on the important information only, ignoring irrelevant detail.",
+            "D) Developing a step-by-step solution to the problem."
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Pattern recognition involves identifying similarities, trends, or regularities within the problem or data."
+        },
+        {
+          "id": 1005,
+          "difficulty": "basic",
+          "question": "What is an 'Algorithm' in computational thinking?",
+          "options": [
+            "A) Breaking down a complex problem into smaller, manageable parts.",
+            "B) Finding similarities or patterns among problems.",
+            "C) Focusing on the important information only, ignoring irrelevant detail.",
+            "D) Developing a step-by-step, unambiguous set of rules or instructions to solve a problem."
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "An algorithm is a step-by-step procedure or set of rules to be followed to solve a problem."
+        },
+        {
+          "id": 1006,
+          "difficulty": "basic",
+          "question": "Which of the following are characteristics of a 'high-level language' like Python? (Select all that apply)",
+          "options": [
+            "A) It is English-like and easy for humans to read and write.",
+            "B) It is in the form of binary code (0s and 1s).",
+            "C) It must be translated (compiled or interpreted) into machine language for the CPU to run.",
+            "D) It is 'tedious' and 'highly difficult to read and modify'.",
+            "E) It provides 'Abstraction' from the hardware details."
+          ],
+          "correct": [
+            "A",
+            "C",
+            "E"
+          ],
+          "explanation": "High-level languages are human-readable (A), require translation (C), and hide hardware details (E). Binary code (B) and being difficult to read (D) are characteristics of machine language."
+        },
+        {
+          "id": 1007,
+          "difficulty": "basic",
+          "question": "Which of the following are characteristics of 'machine language'? (Select all that apply)",
+          "options": [
+            "A) It is English-like and easy for humans to read.",
+            "B) It is a set of primitive instructions built into the CPU.",
+            "C) It is in the form of binary code (0s and 1s).",
+            "D) It can be run directly by the CPU without translation.",
+            "E) An example is `print(\"Hello\")`."
+          ],
+          "correct": [
+            "B",
+            "C",
+            "D"
+          ],
+          "explanation": "Machine language is the CPU's native binary instruction set and needs no translation. High-level code (A, E) is the opposite."
+        }
+      ]
+    },
+    "week2": {
+      "outputPrediction": [],
+      "syntaxError": [
+        {
+          "id": 2005,
+          "difficulty": "basic",
+          "question": "Which of the following is an invalid Python literal? (Select all that apply)",
+          "options": [
+            "A) `0b1010`",
+            "B) `0xFA`",
+            "C) `0B1012`",
+            "D) `0xFG`",
+            "E) `1_000`"
+          ],
+          "correct": [
+            "C",
+            "D"
+          ],
+          "explanation": "C is invalid because binary (0b) only allows digits 0 and 1. D is invalid because hexadecimal (0x) only allows digits 0-9 and letters A-F."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 2006,
+          "difficulty": "intermediate",
+          "question": "What are the correct steps for the Fetch-Decode-Execute cycle, in order?",
+          "options": [
+            "A) 1. CU fetches instruction, 2. PC increments, 3. ALU decodes, 4. CU executes",
+            "B) 1. PC points to instruction, 2. CU fetches into IR, 3. PC increments, 4. CU decodes, 5. ALU executes",
+            "C) 1. ALU fetches instruction, 2. CU decodes, 3. PC increments, 4. Registers execute",
+            "D) 1. PC points to instruction, 2. ALU fetches into IR, 3. CU decodes, 4. PC increments"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The Program Counter (PC) holds the address. The Control Unit (CU) fetches the instruction at that address into the Instruction Register (IR). The PC then increments. The CU decodes the instruction, and finally, the ALU (or other components) executes it."
+        },
+        {
+          "id": 2007,
+          "difficulty": "intermediate",
+          "question": "A CPU has 32 address lines (32-bit address bus). What is the maximum amount of memory it can directly address?",
+          "options": [
+            "A) 32 MB",
+            "B) 1 GB",
+            "C) 4 GB",
+            "D) 64 GB"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The maximum addressable memory is 2^n, where n is the number of address lines. 2^32 = 4,294,967,296 bytes, which is 4 GB."
+        },
+        {
+          "id": 2008,
+          "difficulty": "intermediate",
+          "question": "Based on the tutorial, what is the *first* step a computer takes to solve $x = 5x^2 + 6x + 1$?",
+          "options": [
+            "A) Calculate the square root.",
+            "B) Input the coefficients a, b, and c.",
+            "C) Check if the discriminant is negative.",
+            "D) Print the final solutions."
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Before any calculation, the computer must first get the values for a (5), b (6), and c (1) from the user or memory."
+        }
+      ],
+      "theory": [
+        {
+          "id": 1008,
+          "difficulty": "basic",
+          "question": "What is the decimal (base-10) value of the binary number `1011`?",
+          "options": [
+            "A) 11",
+            "B) 10",
+            "C) 13",
+            "D) 9",
+            "E) 22"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "(1 * 2^3) + (0 * 2^2) + (1 * 2^1) + (1 * 2^0) = 8 + 0 + 2 + 1 = 11."
+        },
+        {
+          "id": 1009,
+          "difficulty": "basic",
+          "question": "What is the binary (base-2) representation of the hexadecimal (base-16) number `A5`?",
+          "options": [
+            "A) 1010 0101",
+            "B) 1000 0101",
+            "C) 1110 1010",
+            "D) 1010 1010"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Each hex digit converts to 4 bits. A = 1010. 5 = 0101. Together they are 1010 0101."
+        },
+        {
+          "id": 52,
+          "difficulty": "basic",
+          "question": "Why choose a high-level programming language instead of machine language?",
+          "options": [
+            "A) Easier to code and less error-prone",
+            "B) Runs faster than machine code",
+            "C) Requires no compiler",
+            "D) Cannot make mistakes",
+            "E) More memory efficient",
+            "F) Direct hardware control",
+            "G) No bugs possible"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "High-level languages are easier to code and less error-prone than machine code."
+        },
+        {
+          "id": 53,
+          "difficulty": "basic",
+          "question": "Advantage of interpreted language over compiled language?",
+          "options": [
+            "A) Always faster execution",
+            "B) More portable across platforms",
+            "C) Requires no interpreter",
+            "D) Uses less memory",
+            "E) Better performance",
+            "F) Static typing",
+            "G) Machine code output"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Interpreted languages can run on multiple platforms without recompilation."
+        },
+        {
+          "id": 54,
+          "difficulty": "basic",
+          "question": "Which language is commonly used for web-based applications?",
+          "options": [
+            "A) C",
+            "B) Java",
+            "C) PHP",
+            "D) Fortran",
+            "E) Assembly",
+            "F) COBOL",
+            "G) Pascal"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "PHP is widely used for server-side web applications."
+        },
+        {
+          "id": 55,
+          "difficulty": "basic",
+          "question": "Which statement is correct?",
+          "options": [
+            "A) C++ and R are compiled languages.",
+            "B) Python and JavaScript are interpreted languages.",
+            "C) C and Java are interpreted languages.",
+            "D) None of the options",
+            "E) All are compiled",
+            "F) All are interpreted",
+            "G) None exist"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Python and JavaScript are interpreted; C++ and R are compiled; Java is compiled then run on JVM."
+        },
+        {
+          "id": 56,
+          "difficulty": "basic",
+          "question": "Which of the following is FALSE?",
+          "options": [
+            "A) C++ and Java support Object-Oriented Programming.",
+            "B) Python and Java are portable.",
+            "C) C and Python are interpreted languages.",
+            "D) None of the options",
+            "E) All are true",
+            "F) OOP is obsolete",
+            "G) Portability doesn't matter"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "C is compiled, not interpreted. Python is interpreted."
+        },
+        {
+          "id": 120,
+          "difficulty": "intermediate",
+          "question": "Which of these statements are TRUE about the CPU Instruction (Fetch-Decode-Execute) Cycle? (Select all that apply)",
+          "options": [
+            "A) In the 'Fetch' step, the instruction is loaded from memory into the Instruction Register (IR).",
+            "B) The Program Counter (PC) is incremented to point to the next instruction.",
+            "C) The 'Decode' step is performed by the Arithmetic Logic Unit (ALU).",
+            "D) The 'Execute' step always involves writing data back to the main memory.",
+            "E) The 'Decode' step involves the Control Unit (CU) interpreting the instruction's opcode."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "E"
+          ],
+          "explanation": "Fetch: Instruction from memory (at PC's address) -> IR (A is true). PC increments (B is true). Decode: CU interprets the instruction (E is true, C is false). Execute: ALU performs calculation. Result is stored in a register or memory (D is false, it's not *always* memory)."
+        },
+        {
+          "id": 1010,
+          "difficulty": "intermediate",
+          "question": "What is the primary function of the Arithmetic Logic Unit (ALU) in a CPU? (Select all that apply)",
+          "options": [
+            "A) Perform arithmetic operations like addition and subtraction.",
+            "B) Perform logical operations like AND, OR, and NOT.",
+            "C) Fetch instructions from memory.",
+            "D) Decode instructions.",
+            "E) Store instructions temporarily."
+          ],
+          "correct": [
+            "A",
+            "B"
+          ],
+          "explanation": "The ALU is responsible for all arithmetic (e.g., add, sub) and logical (e.g., AND, OR) operations. Fetching is done by the CU, decoding by the CU, and temporary storage by registers (like the IR)."
+        },
+        {
+          "id": 1011,
+          "difficulty": "intermediate",
+          "question": "How many bits are required to uniquely address 1000 different houses?",
+          "options": [
+            "A) 8 bits",
+            "B) 9 bits",
+            "C) 10 bits",
+            "D) 12 bits",
+            "E) 1000 bits"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "We need to find the smallest 'n' where 2^n >= 1000. 2^9 = 512 (too small). 2^10 = 1024 (sufficient). Therefore, 10 bits are required."
+        },
+        {
+          "id": 2048,
+          "difficulty": "intermediate",
+          "question": "A CPU is executing the Python line `if x > 10:`. Which of the following CPU components are *directly* involved in the *execution* (not fetch or decode) of this comparison? (Select all that apply)",
+          "options": [
+            "A) The Control Unit (CU) orchestrating the process.",
+            "B) The Arithmetic Logic Unit (ALU) to perform a subtraction (x - 10).",
+            "C) The ALU checking its 'status flags' (e.g., negative, zero, positive) after the subtraction.",
+            "D) The Program Counter (PC) to store the boolean result (True/False).",
+            "E) The Instruction Register (IR) to perform the subtraction."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C"
+          ],
+          "explanation": "The CU (A) directs the ALU. The ALU (B) performs the comparison, typically via subtraction. The ALU's status flags (C) are then checked by the CU to determine if the condition is True or False. The PC (D) stores memory addresses for instructions, not results. The IR (E) stores the instruction itself; it doesn't perform calculations."
+        }
+      ]
+    },
+    "week3": {
+      "outputPrediction": [
+        {
+          "id": 2009,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nname = input(\"Enter name: \")\nprint(\"Hello\", name)\n```\n*Assume the user types 'Alice' and presses Enter.*",
+          "options": [
+            "A) 'Hello' 'Alice'",
+            "B) Hello Alice",
+            "C) Hello name",
+            "D) Error"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The `input()` function reads 'Alice' into the `name` variable. `print()` then outputs the string 'Hello' followed by the value of `name`."
+        },
+        {
+          "id": 2010,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nnum_str = input(\"Enter num: \")\nprint(type(num_str))\n```\n*Assume the user types '123' and presses Enter.*",
+          "options": [
+            "A) <class 'int'>",
+            "B) <class 'str'>",
+            "C) <class 'float'>",
+            "D) Error"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The `input()` function *always* returns a string, even if the user types numbers."
+        },
+        {
+          "id": 2011,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nage = 25\nprint(f\"You are {age} years old.\")\n```",
+          "options": [
+            "A) You are {age} years old.",
+            "B) You are 25 years old.",
+            "C) f\"You are {age} years old.\"",
+            "D) Error"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "This is an f-string. The `{age}` is replaced by the value of the `age` variable, which is 25."
+        },
+        {
+          "id": 2012,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nprint(\"Hello\", \"World\", sep=\"-\")\n```",
+          "options": [
+            "A) Hello World",
+            "B) \"Hello\"-\"World\"",
+            "C) Hello-World",
+            "D) Hello\\nWorld"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The `sep=\"-\"` argument tells `print()` to use a hyphen as the separator between arguments instead of the default space."
+        },
+        {
+          "id": 2013,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nprint(\"Line 1\", end=\"*\")\nprint(\"Line 2\")\n```",
+          "options": [
+            "A) Line 1\\n*Line 2",
+            "B) Line 1*Line 2",
+            "C) Line 1\\nLine 2",
+            "D) Error"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The `end=\"*\"` argument tells the first `print()` to end with an asterisk instead of a newline. The second `print()` then continues on the same line."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 65,
+          "difficulty": "basic",
+          "question": "Which of these is NOT a valid variable name in Python?",
+          "options": [
+            "A) ic_number_8",
+            "B) _8icnumber",
+            "C) 8_IC_Number",
+            "D) icnumber8",
+            "E) ic8number",
+            "F) _icnumber",
+            "G) ic_number"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Names cannot start with a digit."
+        },
+        {
+          "id": 74,
+          "difficulty": "basic",
+          "question": "In Python, which symbol marks the start of a block?",
+          "options": [
+            "A) ;",
+            "B) {",
+            "C) :",
+            "D) ()",
+            "E) []",
+            "F) ->",
+            "G) =>"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "A colon ':' starts an indented block in Python."
+        },
+        {
+          "id": 112,
+          "difficulty": "basic",
+          "question": "Which of these Python statements is INVALID?",
+          "options": [
+            "A) a = 3+1",
+            "B) 7 = a",
+            "C) b = a*2",
+            "D) c = 10",
+            "E) x = y = 5",
+            "F) a, b = 1, 2",
+            "G) z = None"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Cannot assign to literal 7."
+        },
+        {
+          "id": 113,
+          "difficulty": "basic",
+          "question": "Which variable name is INVALID?",
+          "options": [
+            "A) sevenUp = 10",
+            "B) int = 500",
+            "C) import = 1003",
+            "D) pi = 3.14",
+            "E) _private = 1",
+            "F) snake_case = 2",
+            "G) camelCase = 3"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "import is a reserved keyword in Python."
+        },
+        {
+          "id": 121,
+          "difficulty": "intermediate",
+          "question": "Which of the following ARE valid Python variable names? (Select all that apply)",
+          "options": [
+            "A) _my_var",
+            "B) myVar2",
+            "C) 2myVar",
+            "D) my_var",
+            "E) my-var",
+            "F) class",
+            "G) __init__"
+          ],
+          "correct": [
+            "A",
+            "B",
+            "D",
+            "G"
+          ],
+          "explanation": "Valid names can start with letters or underscores, and contain letters, underscores, or numbers. `2myVar` is invalid (starts with number). `my-var` is invalid (contains hyphen). `class` is invalid (keyword)."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 111,
+          "difficulty": "basic",
+          "question": "In FizzBuzz (1–20), what prints at 15?",
+          "options": [
+            "A) Fizz",
+            "B) Buzz",
+            "C) FizzBuzz",
+            "D) 15",
+            "E) Nothing",
+            "F) Error",
+            "G) Both A and B"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Multiples of both 3 and 5 print 'FizzBuzz'."
+        },
+        {
+          "id": 2014,
+          "difficulty": "basic",
+          "question": "In the FizzBuzz pseudocode from the tutorial, why is the 'IF num MOD 15 == 0' check placed *before* the 'IF num MOD 3 == 0' check?",
+          "options": [
+            "A) It doesn't matter, the order can be swapped.",
+            "B) Because 15 is larger than 3.",
+            "C) If 'MOD 3' came first, the code would print 'Fizz' for 15 and would never check 'MOD 15'.",
+            "D) It's a syntax requirement for `elif`."
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "This is a key logic point. If the `MOD 3` check were first, 15 would be caught by it, 'Fizz' would be printed, and the `elif` for `MOD 15` would be skipped. The most specific check (MOD 15) must come first."
+        },
+        {
+          "id": 2015,
+          "difficulty": "intermediate",
+          "question": "Which of these are errors in the *original* pseudocode from the Week 3 tutorial (Problem 1)? (Select all that apply)\n\n```\nInitialize student_counter to zero\nWhile student_counter is less than or equal to ten\n    Input the next score\n    Add the score into the total\nEndWhile\nSet the class average to the total divided by ten\n```",
+          "options": [
+            "A) The loop runs 11 times, not 10.",
+            "B) The `total` variable was not initialized to zero.",
+            "C) The loop control variable `student_counter` is never updated.",
+            "D) 'EndWhile' is invalid syntax."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C"
+          ],
+          "explanation": "The tutorial solution shows three errors: `total` is not initialized (B), the counter starts at 0 and includes 10, running 11 times (A), and the counter is not incremented inside the loop, causing an infinite loop (C)."
+        }
+      ],
+      "theory": [
+        {
+          "id": 57,
+          "difficulty": "basic",
+          "question": "Which of the following is NOT true about an algorithm?",
+          "options": [
+            "A) It must be ambiguous.",
+            "B) Every step must be clear and precise.",
+            "C) It must terminate.",
+            "D) It must consider decision points.",
+            "E) It's a procedure",
+            "F) Can be implemented",
+            "G) Solves problems"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Algorithms must be unambiguous, precise, finite, and handle decision points."
+        },
+        {
+          "id": 58,
+          "difficulty": "basic",
+          "question": "Problem solving using computational methods is based on ______ and the ______ that implement them.",
+          "options": [
+            "A) Variables, Constants",
+            "B) Algorithms, Programs",
+            "C) Data, Functions",
+            "D) Loops, Conditions",
+            "E) Classes, Objects",
+            "F) Files, Databases",
+            "G) Input, Output"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Computational methods are based on algorithms and the programs that implement them."
+        },
+        {
+          "id": 59,
+          "difficulty": "basic",
+          "question": "What is the difference between a flowchart and pseudocode?",
+          "options": [
+            "A) Flowchart is diagrammatic, pseudocode is text-based English",
+            "B) Both are diagrams",
+            "C) Both are code",
+            "D) Pseudocode uses strict Python syntax",
+            "E) No difference",
+            "F) Flowchart is code",
+            "G) Pseudocode is visual"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Flowcharts are diagrams; pseudocode uses structured English text."
+        },
+        {
+          "id": 60,
+          "difficulty": "basic",
+          "question": "A flowchart checks temperature ≥ 37.5 to decide 'Fever' or 'Normal'. Which construct is this?",
+          "options": [
+            "A) Looping",
+            "B) Branching",
+            "C) Assignment",
+            "D) Abstraction",
+            "E) Sequence",
+            "F) Function",
+            "G) Recursion"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "This uses branching (if-else decision)."
+        },
+        {
+          "id": 61,
+          "difficulty": "basic",
+          "question": "In Python, what does '=' mean?",
+          "options": [
+            "A) Equality check",
+            "B) Assignment operator",
+            "C) Comment",
+            "D) Comparison operator",
+            "E) Less than",
+            "F) Greater than",
+            "G) Not equal"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "'=' assigns a value to a variable."
+        },
+        {
+          "id": 62,
+          "difficulty": "basic",
+          "question": "Which data type is best for the price of milk tea in dollars?",
+          "options": [
+            "A) int",
+            "B) float",
+            "C) str",
+            "D) bool",
+            "E) list",
+            "F) dict",
+            "G) tuple"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Prices in dollars may include decimals, so float is appropriate."
+        },
+        {
+          "id": 63,
+          "difficulty": "basic",
+          "question": "What is like a labeled box that stores data temporarily?",
+          "options": [
+            "A) Function",
+            "B) Variable",
+            "C) Constant",
+            "D) Operator",
+            "E) Loop",
+            "F) Class",
+            "G) Module"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Variables act as labeled containers for data."
+        },
+        {
+          "id": 64,
+          "difficulty": "basic",
+          "question": "Which of the following about variables in Python is NOT true?",
+          "options": [
+            "A) Variables cannot start with a number.",
+            "B) Variables can be of any length.",
+            "C) Variables are case-sensitive.",
+            "D) 'MyNameIs' and 'My_Name_Is' are the same.",
+            "E) Can use underscores",
+            "F) Must be declared",
+            "G) Can change type"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Underscores and camel case make different variable names."
+        },
+        {
+          "id": 70,
+          "difficulty": "basic",
+          "question": "Which built-in function displays messages/data to the shell?",
+          "options": [
+            "A) input()",
+            "B) print()",
+            "C) len()",
+            "D) type()",
+            "E) str()",
+            "F) range()",
+            "G) sum()"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "print() outputs text or values."
+        }
+      ]
+    },
+    "week4": {
+      "outputPrediction": [
+        {
+          "id": 2,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nx = 5\ny = 2\nprint(x % y)\n```",
+          "options": [
+            "A) 2",
+            "B) 1",
+            "C) 0",
+            "D) Error",
+            "E) 2.5",
+            "F) 5",
+            "G) 3"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "5 % 2 = 1 (remainder)."
+        },
+        {
+          "id": 5,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\na = 3\nif a > 0:\n    print('positive')\n```",
+          "options": [
+            "A) positive",
+            "B) nothing",
+            "C) error",
+            "D) True",
+            "E) 3",
+            "F) False",
+            "G) negative"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Condition is True so 'positive' is printed."
+        },
+        {
+          "id": 7,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nprint(2**3)\n```",
+          "options": [
+            "A) 6",
+            "B) 8",
+            "C) 9",
+            "D) Error",
+            "E) 5",
+            "F) 23",
+            "G) 2.3"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Exponentiation: 2^3 = 8."
+        },
+        {
+          "id": 15,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nx = 5\nif x>10:\n    print('big')\nelse:\n    print('small')\n```",
+          "options": [
+            "A) big",
+            "B) small",
+            "C) nothing",
+            "D) Error",
+            "E) 5",
+            "F) True",
+            "G) False"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "x=5 so else branch executes."
+        },
+        {
+          "id": 25,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\na = 7\nif a%2==0:\n    print('even')\nelse:\n    print('odd')\n```",
+          "options": [
+            "A) even",
+            "B) odd",
+            "C) 7",
+            "D) Error",
+            "E) True",
+            "F) False",
+            "G) 1"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "7 % 2 = 1 → odd."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 2016,
+          "difficulty": "basic",
+          "question": "Which of the following will cause a SyntaxError? (Select all that apply)",
+          "options": [
+            "A) `if x > 5`",
+            "B) `if x > 5: print(x)`",
+            "C) `if x > 5: \nprint(x)`",
+            "D) `if x > 5:\n    print(x)\n  else: print('no')`",
+            "E) `a, b = 1,`"
+          ],
+          "correct": [
+            "A",
+            "C",
+            "D",
+            "E"
+          ],
+          "explanation": "A: Missing colon ':'. C: Missing indentation after the colon. D: The `else` is not at the same indentation level as its `if`. E: Trailing comma in multiple assignment."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 2017,
+          "difficulty": "intermediate",
+          "question": "What is the logic of 'short-circuit evaluation' for the `or` operator in `A or B`?",
+          "options": [
+            "A) If A is True, B is not evaluated.",
+            "B) If A is False, B is not evaluated.",
+            "C) Both A and B are always evaluated.",
+            "D) It only works if A and B are numbers."
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "For an `or` expression, if the first part (A) is True, the entire expression is guaranteed to be True, so Python saves time by not evaluating the second part (B)."
+        },
+        {
+          "id": 2018,
+          "difficulty": "intermediate",
+          "question": "What is the logic of 'short-circuit evaluation' for the `and` operator in `A and B`?",
+          "options": [
+            "A) If A is True, B is not evaluated.",
+            "B) If A is False, B is not evaluated.",
+            "C) Both A and B are always evaluated.",
+            "D) It only works if A and B are numbers."
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "For an `and` expression, if the first part (A) is False, the entire expression is guaranteed to be False, so Python saves time by not evaluating the second part (B)."
+        },
+        {
+          "id": 2019,
+          "difficulty": "intermediate",
+          "question": "Which of these code snippets will run WITHOUT an error due to short-circuiting? (Select all that apply)",
+          "options": [
+            "A) `x = 0\nprint(10 > 5 or (5 / x) > 1)`",
+            "B) `x = 0\nprint(10 < 5 and (5 / x) > 1)`",
+            "C) `x = 0\nprint((5 / x) > 1 and 10 < 5)`",
+            "D) `x = 0\nprint((5 / x) > 1 or 10 > 5)`"
+          ],
+          "correct": [
+            "A",
+            "B"
+          ],
+          "explanation": "A: `10 > 5` is True. The `or` short-circuits and never reaches the `(5 / x)` division. B: `10 < 5` is False. The `and` short-circuits and never reaches the `(5 / x)` division. C and D both evaluate the `(5 / x)` part first, causing a ZeroDivisionError."
+        },
+        {
+          "id": 2020,
+          "difficulty": "intermediate",
+          "question": "What are the final values of a, b, and c?\n\n```python\na, b, c = 10, 20, 30\na, b, c = c, 1, a\n```",
+          "options": [
+            "A) a=10, b=20, c=30",
+            "B) a=30, b=1, c=10",
+            "C) a=30, b=1, c=30",
+            "D) a=10, b=1, c=30"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "This is multiple assignment. The right side is evaluated first: (c, 1, a) becomes (30, 1, 10). Then these values are assigned to a, b, c. So a=30, b=1, c=10."
+        },
+        {
+          "id": 2021,
+          "difficulty": "intermediate",
+          "question": "What are the final values of a, b, and c?\n\n```python\na = b = c = 10\na = a - 5\nc = a\nb = c\n```",
+          "options": [
+            "A) a=5, b=5, c=5",
+            "B) a=5, b=10, c=10",
+            "C) a=5, b=5, c=10",
+            "D) a=5, b=10, c=5"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "1. a, b, c are all 10. 2. `a` becomes 10 - 5 = 5. 3. `c` becomes 5 (the new value of a). 4. `b` becomes 5 (the new value of c). All are 5."
+        },
+        {
+          "id": 2049,
+          "difficulty": "advanced",
+          "question": "Which of the following functions will correctly categorize a grade `g`? (Distinction: > 80, Pass: 50-80 inclusive, Fail: < 50). (Select all that apply)",
+          "options": [
+            "A) def check_grade_A(g):\n    if g > 80: return 'Distinction'\n    if g >= 50: return 'Pass'\n    else: return 'Fail'",
+            "B) def check_grade_B(g):\n    if g > 80: return 'Distinction'\n    elif g >= 50: return 'Pass'\n    else: return 'Fail'",
+            "C) def check_grade_C(g):\n    if g < 50: return 'Fail'\n    if g >= 50: return 'Pass'\n    if g > 80: return 'Distinction'",
+            "D) def check_grade_D(g):\n    if g < 50: return 'Fail'\n    elif g > 80: return 'Distinction'\n    else: return 'Pass'"
+          ],
+          "correct": [
+            "A",
+            "B",
+            "D"
+          ],
+          "explanation": "A, B, and D all correctly handle the logic. B and D use `elif` which is standard, but A's sequential `if/else` also works. C has a fatal logic error: a grade of 90 will return 'Pass' because `g >= 50` is checked before `g > 80`."
+        }
+      ],
+      "theory": [
+        {
+          "id": 67,
+          "difficulty": "basic",
+          "question": "Branching occurs when an algorithm makes a choice between two or more actions. True or False?",
+          "options": [
+            "A) True",
+            "B) False",
+            "C) Sometimes",
+            "D) None",
+            "E) Depends",
+            "F) Never",
+            "G) Always False"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Branching directs execution based on conditions."
+        },
+        {
+          "id": 68,
+          "difficulty": "basic",
+          "question": "What is the result of 37.5 != 375?",
+          "options": [
+            "A) True",
+            "B) False",
+            "C) Error",
+            "D) None",
+            "E) 37.5",
+            "F) 375",
+            "G) 0"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "37.5 and 375 are not equal, so result is True."
+        },
+        {
+          "id": 69,
+          "difficulty": "intermediate",
+          "question": "What are '==', '<=', '!=' in Python? (Select all that apply)",
+          "options": [
+            "A) Assignment operators",
+            "B) Relational operators",
+            "C) Logical operators",
+            "D) Comparison operators",
+            "E) Bitwise operators",
+            "F) Identity operators",
+            "G) Membership operators"
+          ],
+          "correct": [
+            "B",
+            "D"
+          ],
+          "explanation": "They compare values. 'Relational operator' and 'Comparison operator' are valid terms for them."
+        },
+        {
+          "id": 75,
+          "difficulty": "intermediate",
+          "question": "What values of A and B make 'A and B' True? (Select all that apply)",
+          "options": [
+            "A) A=True, B=True",
+            "B) A=True, B=False",
+            "C) A=False, B=True",
+            "D) A=False, B=False",
+            "E) Any values",
+            "F) A=1, B=1",
+            "G) A=1, B=0"
+          ],
+          "correct": [
+            "A",
+            "F"
+          ],
+          "explanation": "'and' requires both operands to be 'truthy'. Both `True` and `1` are truthy. `0` is 'falsy'."
+        },
+        {
+          "id": 77,
+          "difficulty": "basic",
+          "question": "Which statement about modulus operator is correct?",
+          "options": [
+            "A) 14 % 5 = 4",
+            "B) 18 % 5 = 0",
+            "C) 9 % 4 = 3",
+            "D) 3 % 1 = 2",
+            "E) 10 % 3 = 0",
+            "F) 7 % 2 = 2",
+            "G) 6 % 4 = 3"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "14 divided by 5 leaves remainder 4."
+        },
+        {
+          "id": 80,
+          "difficulty": "basic",
+          "question": "Given x=9 and y=3, what is x ** y?",
+          "options": [
+            "A) 27",
+            "B) 729",
+            "C) 3",
+            "D) 6561",
+            "E) 12",
+            "F) 81",
+            "G) 243"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "9 raised to power 3 = 729."
+        },
+        {
+          "id": 122,
+          "difficulty": "basic",
+          "question": "Which algorithm construct is used when deciding fever based on temp ≥ 37.5?",
+          "options": [
+            "A) Looping",
+            "B) Branching",
+            "C) Assignment",
+            "D) Input",
+            "E) Output",
+            "F) Sequence",
+            "G) Recursion"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Decision based on condition is branching."
+        }
+      ]
+    },
+    "week5": {
+      "outputPrediction": [
+        {
+          "id": 1,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nfor i in range(3):\n    print(i)\n```",
+          "options": [
+            "A) 1 2 3",
+            "B) 0 1 2",
+            "C) 0 1 2 3",
+            "D) None",
+            "E) 3 2 1",
+            "F) Error",
+            "G) 1 2"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "range(3) generates 0,1,2."
+        },
+        {
+          "id": 6,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nfor ch in 'hi':\n    print(ch)\n```",
+          "options": [
+            "A) hi",
+            "B) h\\ni",
+            "C) ['h','i']",
+            "D) Error",
+            "E) h i",
+            "F) ih",
+            "G) hh ii"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Each character printed on a new line."
+        },
+        {
+          "id": 8,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nx = 0\nwhile x < 3:\n    print(x)\n    x += 1\n```",
+          "options": [
+            "A) 1 2 3",
+            "B) 0 1 2",
+            "C) 0 1 2 3",
+            "D) Infinite loop",
+            "E) 0 0 0",
+            "F) 1 2",
+            "G) Error"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Loop runs while x=0,1,2."
+        },
+        {
+          "id": 11,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nfor i in range(2):\n    for j in range(2):\n        print(i,j)\n```",
+          "options": [
+            "A) 0 0 0 1 1 0 1 1",
+            "B) 0 0\\n0 1\\n1 0\\n1 1",
+            "C) 00 01 10 11",
+            "D) Error",
+            "E) 0 1 2 3",
+            "F) 1 1 2 2",
+            "G) 0 0 1 1"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Nested loop prints pairs (i,j)."
+        },
+        {
+          "id": 14,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nfor i in range(1,4):\n    print(i*'a')\n```",
+          "options": [
+            "A) aaa",
+            "B) a aa aaa",
+            "C) Error",
+            "D) a,aa,aaa",
+            "E) 1a 2a 3a",
+            "F) a\\naa\\naaa",
+            "G) aaa aaa aaa"
+          ],
+          "correct": [
+            "F"
+          ],
+          "explanation": "String repeated by loop index, printed on separate lines."
+        },
+        {
+          "id": 17,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nfor i in range(3):\n    if i==1:\n        continue\n    print(i,end=' ')\n```",
+          "options": [
+            "A) 0 1 2",
+            "B) 0 2",
+            "C) 1 2",
+            "D) Error",
+            "E) 0 2 3",
+            "F) 1",
+            "G) 0 1"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "continue skips when i=1."
+        },
+        {
+          "id": 19,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nfor i in range(5,1,-2):\n    print(i,end=',')\n```",
+          "options": [
+            "A) 5,3,",
+            "B) 5,4,3,",
+            "C) 5,3,1,",
+            "D) Error",
+            "E) 5,",
+            "F) 3,1,",
+            "G) 5,4,3,2,"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "range(5,1,-2) → 5,3."
+        },
+        {
+          "id": 20,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ns = 'hello'\nfor ch in s:\n    if ch=='l':\n        break\n    print(ch)\n```",
+          "options": [
+            "A) h",
+            "B) he",
+            "C) hel",
+            "D) Error",
+            "E) hello",
+            "F) h\\ne",
+            "G) helo"
+          ],
+          "correct": [
+            "F"
+          ],
+          "explanation": "Loop breaks at first 'l', prints h and e on separate lines."
+        },
+        {
+          "id": 22,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nfor i in range(2):\n    for j in range(3):\n        print(i+j,end=' ')\n```",
+          "options": [
+            "A) 0 1 2 1 2 3",
+            "B) 0 1 2",
+            "C) 1 2 3",
+            "D) Error",
+            "E) 0 0 0",
+            "F) 1 1 1",
+            "G) 2 2 2"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "When i=0 → 0 1 2, when i=1 → 1 2 3."
+        },
+        {
+          "id": 23,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nnums = [1,2,3]\nfor n in nums:\n    if n%2==0:\n        print('even')\n    else:\n        print('odd')\n```",
+          "options": [
+            "A) odd odd odd",
+            "B) odd even odd",
+            "C) even odd even",
+            "D) Error",
+            "E) odd\\neven\\nodd",
+            "F) even even even",
+            "G) odd odd"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "1 odd, 2 even, 3 odd, printed on separate lines."
+        },
+        {
+          "id": 26,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nlst = [1,2,3]\nfor i in lst:\n    for j in range(i):\n        print('*',end='')\n    print()\n```",
+          "options": [
+            "A) * ** ***",
+            "B) * * *",
+            "C) ***",
+            "D) Error",
+            "E) *\\n**\\n***",
+            "F) ***\\n**\\n*",
+            "G) * * * * * *"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Prints staircase of stars on separate lines."
+        },
+        {
+          "id": 27,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nfor i in range(3):\n    for j in range(i):\n        print(j,end='')\n```",
+          "options": [
+            "A) 0112",
+            "B) 011",
+            "C) 012",
+            "D) Error",
+            "E) 01",
+            "F) 0",
+            "G) 0 1 1 2"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "i=0 none, i=1 →0, i=2 →01."
+        },
+        {
+          "id": 30,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nx = 0\nwhile x < 5:\n    x += 2\nprint(x)\n```",
+          "options": [
+            "A) 4",
+            "B) 5",
+            "C) 6",
+            "D) Error",
+            "E) 0",
+            "F) 2",
+            "G) 8"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Loop increments 0→2→4→6 then stops."
+        },
+        {
+          "id": 31,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nnums = [1,2,3,4]\ntotal = 0\nfor n in nums:\n    for i in range(n):\n        total += i\nprint(total)\n```",
+          "options": [
+            "A) 6",
+            "B) 10",
+            "C) 20",
+            "D) Error",
+            "E) 0",
+            "F) 15",
+            "G) 24"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "n=1→0, n=2→1, n=3→3, n=4→6. Total=10."
+        },
+        {
+          "id": 32,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\ns = 'loop'\nfor i in range(len(s)):\n    part = ''\n    for j in range(i+1):\n        part += s[j]\n    print(part)\n```",
+          "options": [
+            "A) l\\nlo\\nloo\\nloop",
+            "B) loop loop loop loop",
+            "C) p\\noo\\nloo\\nloop",
+            "D) Error",
+            "E) llll",
+            "F) loop",
+            "G) l lo loo loop"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Builds prefixes of the string."
+        },
+        {
+          "id": 36,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\ns = 'abcd'\nfor i in range(len(s)):\n    for j in range(i+1):\n        for k in range(j+1):\n            print(s[k],end='')\n```",
+          "options": [
+            "A) aaaaabbabc",
+            "B) aababc",
+            "C) Complex prefixes",
+            "D) Error",
+            "E) abcd",
+            "F) aaaa",
+            "G) abcdabcd"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Triple nested loops → aaaaabbabc."
+        },
+        {
+          "id": 37,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\ns = 'xyz'\nfor i in range(len(s)):\n    for j in range(len(s)-i):\n        print(s[j],end='')\n```",
+          "options": [
+            "A) xyzxyx",
+            "B) xyzxy",
+            "C) xyzxy",
+            "D) Error",
+            "E) xyz",
+            "F) xyxxyx",
+            "G) xyzxyz"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "When i=0→xyz, i=1→xy, i=2→x. Together: xyzxyx."
+        },
+        {
+          "id": 39,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nnums = [1,2,3]\nfor i in nums:\n    for j in nums:\n        if i<j:\n            print(i,j)\n```",
+          "options": [
+            "A) 1 2 1 3 2 3",
+            "B) 1 2 3",
+            "C) 2 3",
+            "D) Error",
+            "E) 1 2\\n1 3\\n2 3",
+            "F) 12 13 23",
+            "G) 123"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Pairs where i<j, printed on separate lines."
+        },
+        {
+          "id": 40,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nlst = [1,2,3,4]\nfor i in range(len(lst)):\n    for j in range(i):\n        print(lst[j],end='')\n```",
+          "options": [
+            "A) 112123",
+            "B) 1123",
+            "C) 1234",
+            "D) Error",
+            "E) 123",
+            "F) 12",
+            "G) 1"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "When i=1→1, i=2→12, i=3→123. Together: 112123."
+        },
+        {
+          "id": 42,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nnums = [1,2,3,4]\ntotal = 0\nfor n in nums:\n    for i in range(n):\n        for j in range(i):\n            total += j\nprint(total)\n```",
+          "options": [
+            "A) 5",
+            "B) 10",
+            "C) 20",
+            "D) 0",
+            "E) 15",
+            "F) 3",
+            "G) 1"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "n=3 adds 1, n=4 adds 1+3=4. Total=5."
+        },
+        {
+          "id": 43,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nwords = ['hi','ok']\nfor w in words:\n    for i in range(len(w)):\n        for j in range(i+1):\n            print(w[j],end='')\n```",
+          "options": [
+            "A) hhiook",
+            "B) hiok",
+            "C) hiook",
+            "D) Error",
+            "E) hihiokko",
+            "F) hhook",
+            "G) hhio"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "First word→hhi, second→ook. Together hhiook."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 86,
+          "difficulty": "basic",
+          "question": "Correct Python while-loop syntax?",
+          "options": [
+            "A) while <boolean expression>: Suite",
+            "B) while {condition} {Suite}",
+            "C) while <condition> do Suite",
+            "D) while <expression>; Suite",
+            "E) while (condition) Suite",
+            "F) WHILE condition: Suite",
+            "G) while condition Suite"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Python requires a colon ':' and indented suite."
+        },
+        {
+          "id": 91,
+          "difficulty": "basic",
+          "question": "Correct Python for-loop syntax?",
+          "options": [
+            "A) for var in sequence: Suite",
+            "B) for (var in sequence) {Suite}",
+            "C) for var = sequence do Suite",
+            "D) foreach var in sequence Suite",
+            "E) FOR var IN sequence: Suite",
+            "F) for var of sequence: Suite",
+            "G) for var: sequence Suite"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Python uses 'for var in sequence:'."
+        },
+        {
+          "id": 2022,
+          "difficulty": "basic",
+          "question": "Which of the following will cause a SyntaxError? (Select all that apply)",
+          "options": [
+            "A) `for i in range(10)`",
+            "B) `while x < 10:`",
+            "C) `for i in 'hello': print(i)`",
+            "D) `while x < 10 print(x)`",
+            "E) `for i in [1,2,3]:\nprint(i)`"
+          ],
+          "correct": [
+            "A",
+            "D",
+            "E"
+          ],
+          "explanation": "A: Missing colon ':'. D: Missing colon ':'. E: Missing indentation on the `print` statement."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 92,
+          "difficulty": "basic",
+          "question": "What is list(range(15, 3, -4))?",
+          "options": [
+            "A) [15, 11, 7]",
+            "B) [15, 12, 9]",
+            "C) [15, 14, 13]",
+            "D) Error",
+            "E) [15, 11, 7, 3]",
+            "F) [15, 11]",
+            "G) [11, 7, 3]"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Start=15, stop=3, step=-4 → 15,11,7."
+        },
+        {
+          "id": 2023,
+          "difficulty": "intermediate",
+          "question": "What is the key difference between a `for` loop and a `while` loop?",
+          "options": [
+            "A) A `for` loop is used for a definite, known number of iterations (e.g., iterating a list).",
+            "B) A `while` loop is used for an indefinite number of iterations (e.g., loops until a condition is met).",
+            "C) Only `while` loops can be infinite.",
+            "D) Only `for` loops can use `break`.",
+            "E) A `for` loop is always faster."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C"
+          ],
+          "explanation": "`for` loops are for definite iteration. `while` loops are for indefinite (conditional) iteration. Because `while` loops are conditional, their condition might never become false, allowing for infinite loops (C)."
+        },
+        {
+          "id": 2024,
+          "difficulty": "intermediate",
+          "question": "What is the logic of the `else` block in a `for` or `while` loop?",
+          "options": [
+            "A) It executes if the loop condition is initially False.",
+            "B) It executes every time the loop finishes an iteration.",
+            "C) It executes only if the loop finishes normally (i.e., was NOT exited by a `break` statement).",
+            "D) It executes only if the loop was exited by a `break` statement."
+          ],
+          "correct": [
+            "A",
+            "C"
+          ],
+          "explanation": "The `else` block executes when the loop condition becomes false. This happens immediately if it's false to begin with (A), or after the loop completes all its iterations without a `break` (C)."
+        },
+        {
+          "id": 2025,
+          "difficulty": "basic",
+          "question": "What does `range(2, 9, 3)` produce?",
+          "options": [
+            "A) [2, 5, 8]",
+            "B) [2, 9, 3]",
+            "C) [2, 5, 8, 11]",
+            "D) [2, 3, 4, 5, 6, 7, 8, 9]"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "It starts at 2, stops *before* 9, and steps by 3. This gives 2, (2+3)=5, (5+3)=8. The next step (8+3)=11 is past the stop value."
+        },
+        {
+          "id": 2050,
+          "difficulty": "advanced",
+          "question": "Which of these functions correctly calculates the sum of all *even* numbers from 1 up to (and including) `n`? (Select all that apply)",
+          "options": [
+            "A) def sum_even_A(n):\n    total = 0\n    for i in range(1, n + 1):\n        if i % 2 == 0:\n            total += i\n    return total",
+            "B) def sum_even_B(n):\n    total = 0\n    for i in range(2, n + 1, 2):\n        total += i\n    return total",
+            "C) def sum_even_C(n):\n    total = 0\n    i = 1\n    while i < n:\n        if i % 2 == 0:\n            total += i\n        i += 1\n    return total",
+            "D) def sum_even_D(n):\n    total = 0\n    i = 1\n    while i <= n:\n        if i % 2 != 0:\n            i += 1\n            continue\n        total += i\n        i += 1\n    return total"
+          ],
+          "correct": [
+            "A",
+            "B",
+            "D"
+          ],
+          "explanation": "A is correct (checks all numbers). B is more efficient (only iterates evens). D is a correct `while` loop implementation. C is incorrect: it stops *before* `n` (e.g., `sum_even_C(10)` would miss 10)."
+        }
+      ],
+      "theory": [
+        {
+          "id": 82,
+          "difficulty": "basic",
+          "question": "In a sentinel-controlled loop, the sentinel value is:",
+          "options": [
+            "A) The loop counter",
+            "B) The end value that stops the loop",
+            "C) Always zero",
+            "D) A random number",
+            "E) The first value",
+            "F) The maximum value",
+            "G) Always negative"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Sentinel is a special value used to stop the loop."
+        },
+        {
+          "id": 83,
+          "difficulty": "basic",
+          "question": "What is a sequence of instructions that repeats until a condition is reached?",
+          "options": [
+            "A) Branch",
+            "B) Loop",
+            "C) Function",
+            "D) Block",
+            "E) Module",
+            "F) Class",
+            "G) Method"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "A loop repeats execution until a condition stops it."
+        },
+        {
+          "id": 84,
+          "difficulty": "basic",
+          "question": "Arrange loop steps in order: Initialize, Test, Body, Update.",
+          "options": [
+            "A) Initialize → Test → Body → Update",
+            "B) Body → Test → Update → Initialize",
+            "C) Test → Initialize → Update → Body",
+            "D) Initialize → Update → Test → Body",
+            "E) Test → Body → Update → Initialize",
+            "F) Update → Test → Body → Initialize",
+            "G) Body → Initialize → Test → Update"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Initialize variable → Test → Execute body → Update variable."
+        },
+        {
+          "id": 85,
+          "difficulty": "basic",
+          "question": "True or False: Counter-controlled loops have an unknown number of repetitions.",
+          "options": [
+            "A) True",
+            "B) False",
+            "C) Sometimes",
+            "D) None",
+            "E) Depends",
+            "F) Usually",
+            "G) Never sure"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Counter-controlled loops have a fixed, known number of repetitions."
+        },
+        {
+          "id": 90,
+          "difficulty": "basic",
+          "question": "Which statement exits a loop immediately?",
+          "options": [
+            "A) exit",
+            "B) continue",
+            "C) break",
+            "D) stop",
+            "E) end",
+            "F) return",
+            "G) pass"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The break statement immediately exits a loop."
+        },
+        {
+          "id": 123,
+          "difficulty": "intermediate",
+          "question": "Which of these statements are TRUE about `break` and `continue`? (Select all that apply)",
+          "options": [
+            "A) `break` exits the innermost loop it is in.",
+            "B) `continue` exits all loops it is in.",
+            "C) `break` skips the rest of the loop and starts the next iteration.",
+            "D) `continue` skips the rest of the loop and starts the next iteration.",
+            "E) Both can be used in `for` and `while` loops."
+          ],
+          "correct": [
+            "A",
+            "D",
+            "E"
+          ],
+          "explanation": "`break` exits the loop completely (A). `continue` skips to the next iteration (D). `break` does not skip to the next iteration (C is false). `continue` only affects the innermost loop (B is false). Both work in `for` and `while` loops (E)."
+        }
+      ]
+    },
+    "week6": {
+      "outputPrediction": [
+        {
+          "id": 3,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\ns = 'hello'\nprint(s[0])\n```",
+          "options": [
+            "A) h",
+            "B) e",
+            "C) o",
+            "D) Error",
+            "E) hello",
+            "F) 0",
+            "G) l"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Index 0 is the first character 'h'."
+        },
+        {
+          "id": 4,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nlst = [1,2,3]\nprint(len(lst))\n```",
+          "options": [
+            "A) 2",
+            "B) 3",
+            "C) 4",
+            "D) Error",
+            "E) 1",
+            "F) 0",
+            "G) 6"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "List length is 3."
+        },
+        {
+          "id": 9,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nprint(type((1,2)))\n```",
+          "options": [
+            "A) list",
+            "B) tuple",
+            "C) dict",
+            "D) Error",
+            "E) set",
+            "F) array",
+            "G) int"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Parentheses with commas define a tuple."
+        },
+        {
+          "id": 10,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nd = {'a':1,'b':2}\nprint(d['b'])\n```",
+          "options": [
+            "A) a",
+            "B) b",
+            "C) 2",
+            "D) Error",
+            "E) 1",
+            "F) {'b':2}",
+            "G) None"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Dictionary lookup for key 'b' returns 2."
+        },
+        {
+          "id": 12,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ns = 'abcd'\nprint(s[1:3])\n```",
+          "options": [
+            "A) ab",
+            "B) bc",
+            "C) cd",
+            "D) Error",
+            "E) abc",
+            "F) bcd",
+            "G) abcd"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Slice includes index 1 and 2 → 'bc'."
+        },
+        {
+          "id": 13,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nnums = [1,2,3]\nprint(nums[::-1])\n```",
+          "options": [
+            "A) [3,2,1]",
+            "B) [1,2,3]",
+            "C) Error",
+            "D) None",
+            "E) [1,3,2]",
+            "F) [2,1,3]",
+            "G) 321"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Negative step reverses the list."
+        },
+        {
+          "id": 16,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nd = {'x':10,'y':20}\nfor k,v in d.items():\n    print(k,v)\n```",
+          "options": [
+            "A) x 10 y 20",
+            "B) y 20 x 10",
+            "C) Random order",
+            "D) Error",
+            "E) x y 10 20",
+            "F) 10 20",
+            "G) x 10\\ny 20"
+          ],
+          "correct": [
+            "G"
+          ],
+          "explanation": "Python 3.7+ preserves insertion order. Prints on separate lines."
+        },
+        {
+          "id": 21,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nlst = [1,2,3,4]\nprint(lst[::2])\n```",
+          "options": [
+            "A) [1,2,3,4]",
+            "B) [1,3]",
+            "C) [2,4]",
+            "D) Error",
+            "E) [1]",
+            "F) [4]",
+            "G) [1,2]"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Step=2 picks every second element."
+        },
+        {
+          "id": 24,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ns = 'abc'\nprint(s*2)\n```",
+          "options": [
+            "A) abcabc",
+            "B) abc",
+            "C) error",
+            "D) ['a','b','c','a','b','c']",
+            "E) 2abc",
+            "F) abc2",
+            "G) aabbcc"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "String repetition."
+        },
+        {
+          "id": 28,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ns = 'hello'\nprint(s.upper())\n```",
+          "options": [
+            "A) hello",
+            "B) HELLO",
+            "C) Error",
+            "D) None",
+            "E) Hello",
+            "F) HeLLo",
+            "G) hELLO"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "upper() makes string uppercase."
+        },
+        {
+          "id": 29,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nnums = [1,2,3]\nprint([n*2 for n in nums])\n```",
+          "options": [
+            "A) [2,4,6]",
+            "B) [1,2,3]",
+            "C) [1,4,9]",
+            "D) Error",
+            "E) [0,2,4]",
+            "F) [3,6,9]",
+            "G) 2 4 6"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "List comprehension doubles elements."
+        },
+        {
+          "id": 33,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nmatrix = [[i*j for j in range(3)] for i in range(3)]\nfor row in matrix:\n    for val in row:\n        if val%2==0:\n            print(val,end=' ')\n```",
+          "options": [
+            "A) 0 2 2",
+            "B) 0 2 4",
+            "C) 0 0 0 0 2 0 2 4",
+            "D) Error",
+            "E) 0 2 4 6 8",
+            "F) 2 4",
+            "G) 0 0 0"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Matrix = [[0,0,0],[0,1,2],[0,2,4]]. Evens → 0 0 0 0 2 0 2 4."
+        },
+        {
+          "id": 34,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nlst = []\nfor i in range(3):\n    row = []\n    for j in range(3):\n        row.append(i*j)\n    lst.append(row)\nfor r in lst:\n    print(r)\n```",
+          "options": [
+            "A) [0,0,0]\\n[0,1,2]\\n[0,2,4]",
+            "B) [1,2,3]\\n[2,4,6]\\n[3,6,9]",
+            "C) 0 1 2 3",
+            "D) Error",
+            "E) [[0,0,0],[0,1,2],[0,2,4]]",
+            "F) 000 012 024",
+            "G) [0,1,2,3,4]"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Multiplication table rows."
+        },
+        {
+          "id": 35,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nd = {'a':[1,2],'b':[3,4]}\nfor k,v in d.items():\n    for i in v:\n        for j in range(i):\n            print(k,end='')\n```",
+          "options": [
+            "A) aaabbbbbb",
+            "B) abb\\nbbbb",
+            "C) aabb\\nbb",
+            "D) Error",
+            "E) ab",
+            "F) aabbbb",
+            "G) aaabbbbb"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "For 'a':[1,2] → 'a' + 'aa'. For 'b':[3,4] → 'bbb' + 'bbbb'. Together: aaabbbbbb."
+        },
+        {
+          "id": 38,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nlst = [1,2,3]\nres = []\nfor i in lst:\n    row = []\n    for j in range(i):\n        row.append('*')\n    res.append(row)\nprint(res)\n```",
+          "options": [
+            "A) [['*'],['*','*'],['*','*','*']]",
+            "B) ['*','**','***']",
+            "C) Error",
+            "D) None",
+            "E) [[],[*],[*,*]]",
+            "F) ***",
+            "G) [1,2,3]"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Builds list of lists with stars."
+        },
+        {
+          "id": 41,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nmatrix = [[i+j for j in range(3)] for i in range(3)]\nfor r in matrix:\n    for c in r:\n        if c%2==0:\n            print(c,end=' ')\n```",
+          "options": [
+            "A) 0 2 2 2 4",
+            "B) 0 2 2 4",
+            "C) 0 2 4",
+            "D) Error",
+            "E) 0 0 0",
+            "F) 2 4 6",
+            "G) 1 3 5"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Matrix = [[0,1,2],[1,2,3],[2,3,4]]. Evens → 0,2,2,2,4."
+        },
+        {
+          "id": 93,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```python\nmystr = 'Hello World'\nprint(mystr[6])\n```",
+          "options": [
+            "A) H",
+            "B) W",
+            "C) o",
+            "D) Error",
+            "E) space",
+            "F) l",
+            "G) d"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Index 6 (0-based) is 'W'."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 2026,
+          "difficulty": "intermediate",
+          "question": "Which of the following will cause an Error? (Select all that apply)",
+          "options": [
+            "A) `my_tuple = (1, 2)\nmy_tuple[0] = 3`",
+            "B) `my_list = [1, 2]\nmy_list[0] = 3`",
+            "C) `my_str = 'abc'\nmy_str[0] = 'd'`",
+            "D) `my_dict = {[1, 2]: 'a'}`",
+            "E) `my_dict = {(1, 2): 'a'}`"
+          ],
+          "correct": [
+            "A",
+            "C",
+            "D"
+          ],
+          "explanation": "A and C will cause a TypeError because tuples and strings are immutable. D will cause a TypeError because lists are mutable and cannot be used as dictionary keys. B and E are valid."
+        },
+        {
+          "id": 2051,
+          "difficulty": "intermediate",
+          "question": "You have a dictionary `grades = {'Alice': 85, 'Bob': 90, 'Carol': 78}`. Which function correctly returns a *list* of names of students who scored 80 or higher? (Select all that apply)",
+          "options": [
+            "A) def get_honors_A(g):\n    names = []\n    for name, score in g.items():\n        if score >= 80:\n            names.append(name)\n    return names",
+            "B) def get_honors_B(g):\n    return [name for name, score in g.items() if score >= 80]",
+            "C) def get_honors_C(g):\n    names = []\n    for name in g.keys():\n        if g[name] >= 80:\n            names.append(name)\n    return names",
+            "D) def get_honors_D(g):\n    for name, score in g.items():\n        if score >= 80:\n            return name"
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C"
+          ],
+          "explanation": "A (standard loop), B (list comprehension), and C (looping keys and checking) are all logically correct. D is incorrect: it returns only the *first* name it finds (a string, not a list) and then stops."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 104,
+          "difficulty": "intermediate",
+          "question": "Which is TRUE about `something = [x for x in range(1,10) if x%2==0]`? (Select all that apply)",
+          "options": [
+            "A) `something` is [2, 4, 6, 8]",
+            "B) `something[1]` is 4",
+            "C) `len(something)` is 4",
+            "D) `something` is a mutable list",
+            "E) `something` has 10 elements",
+            "F) `8 in something` is True"
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "F"
+          ],
+          "explanation": "The list comprehension generates [2, 4, 6, 8]. This is a mutable list (D) of length 4 (C). The element at index 1 is 4 (B). 8 is in the list (F). E is false."
+        },
+        {
+          "id": 117,
+          "difficulty": "intermediate",
+          "question": "Given `scores1 = [10, 20]` and `scores2 = [5, 30]`, how can you find the highest score? (Select all that apply)",
+          "options": [
+            "A) `max(scores1 + scores2)`",
+            "B) `max(max(scores1), max(scores2))`",
+            "C) `min(scores1, scores2)`",
+            "D) `sum(scores1, scores2)`",
+            "E) `len(scores1 + scores2)`",
+            "F) `scores1[0] + scores2[0]`",
+            "G) `max(scores1[1], scores2[1])`"
+          ],
+          "correct": [
+            "A",
+            "B",
+            "G"
+          ],
+          "explanation": "A combines the lists to [10, 20, 5, 30] and finds the max (30). B finds the max of each list (20, 30) and then the max of those (30). G finds the max of 20 and 30 (30). C, D, E, F are incorrect."
+        },
+        {
+          "id": 118,
+          "difficulty": "basic",
+          "question": "Which list comprehension generates squares divisible by 3, for 1≤x≤100?",
+          "options": [
+            "A) [x**2 for x in range(1,101) if x**2%3==0]",
+            "B) [x*2 for x in range(1,101) if x%3==0]",
+            "C) [x for x in range(3,100,3)]",
+            "D) [x for x in range(1,101) if x%2==0]",
+            "E) [x**2 for x in range(1,101)]",
+            "F) [x for x in range(1,101) if x%3==0]",
+            "G) [x**3 for x in range(1,101)]"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Square numbers divisible by 3 come from x**2 filter."
+        },
+        {
+          "id": 2027,
+          "difficulty": "intermediate",
+          "question": "What is the value of `my_list`? \n\n```python\nmy_list = [[0] * 3 for _ in range(3)]\nmy_list[1][1] = 5\n```",
+          "options": [
+            "A) [[0, 0, 0], [0, 5, 0], [0, 0, 0]]",
+            "B) [[0, 5, 0], [0, 5, 0], [0, 5, 0]]",
+            "C) Error",
+            "D) [[0, 0, 0], [0, 5, 0], [0, 5, 0]]"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "This list comprehension creates 3 *distinct* inner lists. Modifying `my_list[1][1]` only affects the list at index 1."
+        },
+        {
+          "id": 2028,
+          "difficulty": "advanced",
+          "question": "What is the value of `my_list`? \n\n```python\nmy_list = [[0] * 3] * 3\nmy_list[1][1] = 5\n```",
+          "options": [
+            "A) [[0, 0, 0], [0, 5, 0], [0, 0, 0]]",
+            "B) [[0, 5, 0], [0, 5, 0], [0, 5, 0]]",
+            "C) Error",
+            "D) [[0, 0, 0], [0, 0, 0], [0, 5, 0]]"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Using `* 3` to create the outer list makes 3 references to the *same* inner list. When `my_list[1][1]` is changed, it changes that one inner list, which is then visible at indices 0, 1, and 2."
+        }
+      ],
+      "theory": [
+        {
+          "id": 46,
+          "difficulty": "basic",
+          "question": "What does 'mutable' mean in Python?",
+          "options": [
+            "A) Values cannot be changed",
+            "B) Values can be changed in place",
+            "C) Variable cannot be reassigned",
+            "D) Object disappears after use",
+            "E) Always constant",
+            "F) Read-only",
+            "G) Temporary"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Mutable objects (like lists, dicts) can be modified without creating a new one."
+        },
+        {
+          "id": 47,
+          "difficulty": "basic",
+          "question": "Which of the following is NOT a composite data type in Python?",
+          "options": [
+            "A) list",
+            "B) tuple",
+            "C) dict",
+            "D) int",
+            "E) set",
+            "F) array",
+            "G) class"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "int is a primitive type, not composite."
+        },
+        {
+          "id": 48,
+          "difficulty": "intermediate",
+          "question": "What is the main difference between tuple and list?",
+          "options": [
+            "A) Lists are immutable",
+            "B) Tuples are immutable",
+            "C) Tuples are mutable",
+            "D) Both are mutable",
+            "E) Lists are faster",
+            "F) Tuples are faster",
+            "G) No difference"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Tuples cannot be changed after creation, lists can."
+        },
+        {
+          "id": 49,
+          "difficulty": "intermediate",
+          "question": "What does the function len() do?",
+          "options": [
+            "A) Returns the number of characters/elements",
+            "B) Returns the last element",
+            "C) Returns the type",
+            "D) Error",
+            "E) Returns first element",
+            "F) Counts words",
+            "G) Measures memory"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "len() gives the length of strings, lists, dicts, etc."
+        },
+        {
+          "id": 99,
+          "difficulty": "basic",
+          "question": "Which statement about composite data types is FALSE?",
+          "options": [
+            "A) Data structures are associated with operations.",
+            "B) One data structure can be used to solve all problems.",
+            "C) A composite type can be built from primitives.",
+            "D) Data structures store data in organized ways.",
+            "E) Lists are composite",
+            "F) Tuples are composite",
+            "G) Dicts are composite"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "No single data structure solves all problems."
+        },
+        {
+          "id": 102,
+          "difficulty": "basic",
+          "question": "Which is FALSE about tuple `something = (1, 3.14, 'Python', True)`?",
+          "options": [
+            "A) something is a tuple",
+            "B) something has 4 elements",
+            "C) 2 in something is False",
+            "D) something is mutable",
+            "E) Can index it",
+            "F) Can iterate it",
+            "G) Can slice it"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Tuples are immutable."
+        },
+        {
+          "id": 103,
+          "difficulty": "basic",
+          "question": "Which is FALSE about dictionary `Contacts = {'Bill':28,'Rich':30,'John':15,'Jane':27}`?",
+          "options": [
+            "A) 'Bill' is a key and immutable",
+            "B) Contacts has eight elements",
+            "C) Contacts['Rich'] is 30",
+            "D) Contacts is a dictionary",
+            "E) Has 4 pairs",
+            "F) Keys are strings",
+            "G) Values are ints"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "There are only 4 key-value pairs, not 8."
+        },
+        {
+          "id": 115,
+          "difficulty": "basic",
+          "question": "Password strength check usually requires:",
+          "options": [
+            "A) At least one uppercase, one lowercase, one digit, length > 8",
+            "B) Only digits",
+            "C) Only lowercase",
+            "D) Length ≤ 4",
+            "E) All uppercase",
+            "F) No special chars",
+            "G) Spaces only"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Strong passwords mix cases, digits, and sufficient length."
+        },
+        {
+          "id": 116,
+          "difficulty": "basic",
+          "question": "For grades dictionary with keys (group,ID), why are tuples used as keys?",
+          "options": [
+            "A) Tuples are mutable",
+            "B) Tuples are unique and immutable",
+            "C) Tuples are faster than dicts",
+            "D) Tuples store multiple values by reference",
+            "E) Lists can't be keys",
+            "F) Tuples are smaller",
+            "G) No reason"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Dictionary keys must be immutable → tuples are valid."
+        }
+      ]
+    },
+    "week7": {
+      "outputPrediction": [
+        {
+          "id": 201,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ndef test(a):\n    if (a > 3):\n        return 3\n    elif (a > 2):\n        return 'fail'\n    else:\n        return (0, 255, 123)\n\ntt = test(-81)\nprint(tt[2])\n```",
+          "options": [
+            "A) 3",
+            "B) 'fail'",
+            "C) 0",
+            "D) 123",
+            "E) Error",
+            "F) (0, 255, 123)"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "test(-81) returns the tuple (0, 255, 123). tt[2] is the element at index 2, which is 123."
+        },
+        {
+          "id": 202,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ndef show(a=1, b=2, c=3):\n    return a + b + c\n\nprint(show(5, c=10))\n```",
+          "options": [
+            "A) 6",
+            "B) 15",
+            "C) 17",
+            "D) 18",
+            "E) Error",
+            "F) 8"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "a is overridden by 5 (positional). b uses the default value 2. c is overridden by 10 (keyword). Result is 5 + 2 + 10 = 17."
+        },
+        {
+          "id": 203,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ncharList = ['a', 'e', 'i', 'o', 'u']\nmyStr = 'This is a string!'\n\ndef funcA(content, target):\n    num = 0\n    for char in content:\n        if char in target:\n            num += 1\n    return num\n\nresult = funcA(myStr, charList)\nprint(result)\n```",
+          "options": [
+            "A) 0",
+            "B) 1",
+            "C) 2",
+            "D) 3",
+            "E) 4",
+            "F) 5"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "The function counts vowels. 'This is a string!' has 4 vowels: 'i', 'i', 'a', 'i'."
+        },
+        {
+          "id": 204,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nmyStr = 'Hello'\nresult = 0\n\ndef funcA(content):\n    num = 0\n    for char in content:\n        num += 1\n    return num\n\nfuncA(myStr)\nprint(result)\n```",
+          "options": [
+            "A) 0",
+            "B) 5",
+            "C) 'Hello'",
+            "D) Error",
+            "E) None"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "The function funcA returns 5, but this value is not assigned back to the global 'result' variable. The global 'result' remains 0."
+        },
+        {
+          "id": 1012,
+          "difficulty": "intermediate",
+          "question": "What is printed by the 1A2B game logic?\n\n```python\nanswerList = [2, 4, 6, 8]\nguessList = [1, 2, 3, 4]\nbulls = 0\ncows = 0\nfor j in range(len(answerList)):\n    for i in range(len(guessList)):\n        if guessList[i] == answerList[j]:\n            if i == j:\n                bulls += 1\n            else:\n                cows += 1\nprint(f\"{bulls}A {cows}B\")\n```",
+          "options": [
+            "A) 0A 2B",
+            "B) 2A 0B",
+            "C) 0A 0B",
+            "D) 2A 2B",
+            "E) 1A 1B"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "The code checks `guessList` [1,2,3,4] against `answerList` [2,4,6,8].\n- '2' is in both, but at different positions (i=1, j=0) -> 1 Cow.\n- '4' is in both, but at different positions (i=3, j=1) -> 1 Cow.\n- Total is 0 Bulls (A) and 2 Cows (B)."
+        },
+        {
+          "id": 1013,
+          "difficulty": "intermediate",
+          "question": "What is printed by the 1A2B game logic?\n\n```python\nanswerList = [2, 4, 6, 8]\nguessList = [2, 4, 7, 8]\nbulls = 0\ncows = 0\nfor j in range(len(answerList)):\n    for i in range(len(guessList)):\n        if guessList[i] == answerList[j]:\n            if i == j:\n                bulls += 1\n            else:\n                cows += 1\nprint(f\"{bulls}A {cows}B\")\n```",
+          "options": [
+            "A) 2A 0B",
+            "B) 0A 2B",
+            "C) 3A 0B",
+            "D) 0A 3B",
+            "E) 4A 0B"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The code checks `guessList` [2,4,7,8] against `answerList` [2,4,6,8].\n- '2' is in both at the same position (i=0, j=0) -> 1 Bull.\n- '4' is in both at the same position (i=1, j=1) -> 1 Bull.\n- '8' is in both at the same position (i=3, j=3) -> 1 Bull.\n- Total is 3 Bulls (A) and 0 Cows (B)."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 2029,
+          "difficulty": "basic",
+          "question": "Which of the following function definitions has a SyntaxError? (Select all that apply)",
+          "options": [
+            "A) `def my_func(a, b): return a + b`",
+            "B) `def my_func(a, b=5): return a + b`",
+            "C) `def my_func(a=5, b): return a + b`",
+            "D) `my_func(a, b): return a + b`",
+            "E) `def my_func(a, b=5, c): return a + b + c`"
+          ],
+          "correct": [
+            "C",
+            "D",
+            "E"
+          ],
+          "explanation": "C and E are invalid because non-default parameters (like `b` and `c`) cannot follow default parameters. D is invalid because it's missing the `def` keyword."
+        },
+        {
+          "id": 2030,
+          "difficulty": "basic",
+          "question": "Why will this code cause an error?\n\n```python\nprint(x)\ndef my_func():\n    x = 5\nmy_func()\n```",
+          "options": [
+            "A) `x` is printed before it is assigned a value.",
+            "B) `x` is a local variable and cannot be printed globally.",
+            "C) The function has no `return` statement.",
+            "D) `my_func()` is called incorrectly."
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "The code runs sequentially. The `print(x)` on line 1 is executed before the function `my_func` is called, so the global variable `x` has not been defined, leading to a NameError."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 2031,
+          "difficulty": "intermediate",
+          "question": "Based on the Battleship lab, what is the purpose of 'procedural abstraction'?",
+          "options": [
+            "A) To make the code run faster.",
+            "B) To put all the game code into a single, long file.",
+            "C) To break down the game's logic into smaller, manageable functions (e.g., `init_board()`, `check_attack()`).",
+            "D) To use a dictionary to store the game board."
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Procedural Abstraction (using functions) is about managing complexity by breaking down a large task (running the game) into smaller, well-defined sub-tasks (functions)."
+        }
+      ],
+      "theory": [
+        {
+          "id": 105,
+          "difficulty": "basic",
+          "question": "Which is FALSE about function definition:\n\n```python\ndef sum(x,y):\n    return x+y\n```",
+          "options": [
+            "A) Function returns sum of parameters",
+            "B) Function has 2 parameters",
+            "C) Function name is sum",
+            "D) Function has errors",
+            "E) Can be called",
+            "F) Returns a value",
+            "G) Is reusable"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "No error, function is valid."
+        },
+        {
+          "id": 106,
+          "difficulty": "basic",
+          "question": "Which is FALSE about Python functions?",
+          "options": [
+            "A) Function should be short and focused",
+            "B) Functions can be reused",
+            "C) A function can have at most one return statement",
+            "D) Functions can be called by other functions",
+            "E) Can have parameters",
+            "F) Can return values",
+            "G) Can be nested"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Functions may have multiple return statements, but only one will be executed."
+        },
+        {
+          "id": 205,
+          "difficulty": "intermediate",
+          "question": "Which of the following statements about functions are TRUE? (Select all that apply)",
+          "options": [
+            "A) A function can be defined inside another function.",
+            "B) A function must always have at least one parameter.",
+            "C) A function must always return a value.",
+            "D) A function that does not have a `return` statement implicitly returns `None`.",
+            "E) Variables defined inside a function are local to that function by default."
+          ],
+          "correct": [
+            "A",
+            "D",
+            "E"
+          ],
+          "explanation": "Functions can be nested (A). They do not require parameters (B is false). They return `None` if `return` is omitted (C is false, D is true). Variables are local by default (E)."
+        },
+        {
+          "id": 206,
+          "difficulty": "intermediate",
+          "question": "What is the difference between an argument and a parameter? (Select all that apply)",
+          "options": [
+            "A) 'Parameter' is the variable in the function definition.",
+            "B) 'Argument' is the actual value passed to the function when it is called.",
+            "C) There is no difference, the terms are interchangeable.",
+            "D) 'Argument' is the variable in the function definition.",
+            "E) 'Parameter' is the actual value passed to the function when it is called."
+          ],
+          "correct": [
+            "A",
+            "B"
+          ],
+          "explanation": "A parameter is the variable placeholder in the `def` statement, while an argument is the concrete value or variable passed during the function call."
+        }
+      ]
+    },
+    "week8": {
+      "outputPrediction": [
+        {
+          "id": 18,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nlst = [1,2]\nlst2 = lst\nlst2.append(3)\nprint(lst)\n```",
+          "options": [
+            "A) [1,2]",
+            "B) [1,2,3]",
+            "C) Error",
+            "D) None",
+            "E) [3]",
+            "F) [1,2,2,3]",
+            "G) []"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Both variables point to same list."
+        },
+        {
+          "id": 44,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nlst = [1,2]\nlst2 = lst\nlst2.append(3)\nprint(lst)\n```",
+          "options": [
+            "A) [1,2]",
+            "B) [1,2,3]",
+            "C) Error",
+            "D) None",
+            "E) [3]",
+            "F) [2,3]",
+            "G) []"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Both names point to the same mutable list."
+        },
+        {
+          "id": 45,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nlst = [1,2]\nlst2 = lst.copy()\nlst2.append(3)\nprint(lst)\n```",
+          "options": [
+            "A) [1,2]",
+            "B) [1,2,3]",
+            "C) Error",
+            "D) None",
+            "E) [3]",
+            "F) [2,3]",
+            "G) []"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "copy() makes a new list, original unchanged."
+        },
+        {
+          "id": 207,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ndef myFun(param):\n    param.append(4)\n    return param\n\nmyList = [1, 2, 3]\nnewList = myFun(myList)\nprint(myList, newList)\n```",
+          "options": [
+            "A) [1, 2, 3] [1, 2, 3, 4]",
+            "B) [1, 2, 3, 4] [1, 2, 3, 4]",
+            "C) [1, 2, 3] [1, 2, 3]",
+            "D) Error"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Lists are mutable. The function modifies the list `myList` in-place. Both `myList` and `newList` point to the same modified list object."
+        },
+        {
+          "id": 208,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ndef myFun(param):\n    param = [1, 2, 3]\n    param.append(4)\n    return param\n\nmyList = [1, 2, 3]\nnewList = myFun(myList)\nprint(myList, newList)\n```",
+          "options": [
+            "A) [1, 2, 3] [1, 2, 3, 4]",
+            "B) [1, 2, 3, 4] [1, 2, 3, 4]",
+            "C) [1, 2, 3] [1, 2, 3]",
+            "D) Error"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Inside the function, `param = [1, 2, 3]` reassigns the *local* variable `param` to a *new* list. The original `myList` is unaffected. The function returns the new list `[1, 2, 3, 4]`."
+        },
+        {
+          "id": 210,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\ndef add_item(item, item_list=[]):\n    item_list.append(item)\n    return item_list\n\nlist1 = add_item('apple')\nlist2 = add_item('banana')\nprint(list1, list2)\n```",
+          "options": [
+            "A) ['apple'] ['banana']",
+            "B) ['apple'] ['apple', 'banana']",
+            "C) ['apple', 'banana'] ['apple', 'banana']",
+            "D) Error",
+            "E) None None"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The default list `[]` is a mutable object created *once* when the function is defined. All calls without a second argument share and modify this *same* list."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 209,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\nmyVar = 127\ndef myFun():\n    myVar = myVar + 1\n    print('myVar:', myVar)\n\nmyFun()\nprint('myVar:', myVar)\n```",
+          "options": [
+            "A) myVar: 128\\nmyVar: 128",
+            "B) myVar: 128\\nmyVar: 127",
+            "C) Error: local variable 'myVar' referenced before assignment",
+            "D) myVar: 127\\nmyVar: 127"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Python sees an assignment to `myVar` inside `myFun`, making it a local variable. It then tries to read `myVar` (local) before it has been assigned, causing an UnboundLocalError. This is a common error related to scope rules."
+        },
+        {
+          "id": 2033,
+          "difficulty": "advanced",
+          "question": "What is wrong with this code?\n\n```python\ndef my_func():\n    x = 5\n\ndef other_func():\n    global x\n    x = x + 1\n    print(x)\n\nother_func()\n```",
+          "options": [
+            "A) `other_func` is called before `my_func`, so `x` doesn't exist.",
+            "B) `global x` refers to a global `x`, but `x` is local to `my_func`.",
+            "C) You cannot use `global` inside a function.",
+            "D) The `print(x)` function will fail."
+          ],
+          "correct": [
+            "A",
+            "B"
+          ],
+          "explanation": "The `global x` in `other_func` tells it to look for `x` in the global scope, not inside `my_func`. Since no global `x` exists, it will raise a NameError. Even if `my_func` were called, its `x` is local and invisible to `other_func`."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 2034,
+          "difficulty": "intermediate",
+          "question": "What is the correct search order for a variable according to the LEGB rule?",
+          "options": [
+            "A) Global -> Enclosing -> Local -> Built-in",
+            "B) Built-in -> Global -> Enclosing -> Local",
+            "C) Local -> Enclosing -> Global -> Built-in",
+            "D) Local -> Global -> Enclosing -> Built-in"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Python always searches from the narrowest scope to the broadest: Local (inside function), then Enclosing (in a nested function), then Global (module-level), then Built-in (like `print` or `len`)."
+        },
+        {
+          "id": 2035,
+          "difficulty": "advanced",
+          "question": "Why is it generally bad practice to use mutable default arguments (e.g., `def my_func(my_list=[])`)? (Select all that apply)",
+          "options": [
+            "A) The default list is created *once* and shared by all calls to the function.",
+            "B) It causes a SyntaxError.",
+            "C) Modifying the list in one call will affect the default value for the next call.",
+            "D) It is slower than using an immutable default like `None`."
+          ],
+          "correct": [
+            "A",
+            "C"
+          ],
+          "explanation": "The default mutable object is created only one time, when the function is defined. This means all calls that use the default are modifying the *exact same list*, leading to unexpected and buggy behavior."
+        },
+        {
+          "id": 2052,
+          "difficulty": "advanced",
+          "question": "Which function will successfully modify the *global* variable `my_list`? (Select all that apply)\n\n```python\nmy_list = [10]\n```",
+          "options": [
+            "A) def mod_A():\n    my_list.append(20)",
+            "B) def mod_B():\n    global my_list\n    my_list = my_list + [20]",
+            "C) def mod_C(a_list):\n    a_list.append(20)",
+            "D) def mod_D():\n    my_list = [10, 20]"
+          ],
+          "correct": [
+            "A",
+            "B"
+          ],
+          "explanation": "A works because it's not *reassigning* the global `my_list`, it's *mutating* it (which is allowed). B works because it explicitly uses `global` to reassign the global variable. C only modifies its *local* parameter `a_list` (even if you pass `my_list` to it, the question asks which function *will* modify it, not *can*). D only reassigns a *local* variable `my_list`, shadowing the global one."
+        }
+      ],
+      "theory": [
+        {
+          "id": 50,
+          "difficulty": "advanced",
+          "question": "In Python, what is the difference between '==' and 'is'?",
+          "options": [
+            "A) Both check equality",
+            "B) '==' checks value equality, 'is' checks object identity",
+            "C) 'is' is same as ==",
+            "D) Both assign values",
+            "E) No difference",
+            "F) is is faster",
+            "G) == is safer"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "'==' compares values; 'is' checks if both names refer to the exact same object in memory."
+        },
+        {
+          "id": 211,
+          "difficulty": "intermediate",
+          "question": "What is the LEGB rule in Python Scope? (Select all that apply)",
+          "options": [
+            "A) L stands for 'Local'",
+            "B) G stands for 'Global'",
+            "C) E stands for 'Enclosing'",
+            "D) B stands for 'Built-in'",
+            "E) B stands for 'Block'",
+            "F) The search order is L -> G -> E -> B"
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "explanation": "LEGB stands for Local, Enclosing, Global, Built-in. This is the order Python searches for a variable. 'Block' scope (E) is not part of LEGB, and the order in (F) is wrong."
+        },
+        {
+          "id": 212,
+          "difficulty": "intermediate",
+          "question": "Which statements are TRUE regarding mutable default arguments (e.g., `def fn(a, b=[])`)? (Select all that apply)",
+          "options": [
+            "A) It is a common and safe practice.",
+            "B) The default mutable object is created *once* when the function is defined.",
+            "C) Each call to the function creates a new default object.",
+            "D) This can lead to unexpected behavior as all calls share the same default object.",
+            "E) This will cause a SyntaxError."
+          ],
+          "correct": [
+            "B",
+            "D"
+          ],
+          "explanation": "The default mutable object is created once and shared across all calls that use the default, leading to unexpected side effects. It is not safe (A is false) and does not create a new object each time (C is false)."
+        },
+        {
+          "id": 2036,
+          "difficulty": "intermediate",
+          "question": "What is a 'namespace' in Python?",
+          "options": [
+            "A) A system that ensures all variable names are unique across an entire program.",
+            "B) A mapping from names (variables) to objects (values).",
+            "C) A file that contains `import` statements.",
+            "D) The official list of Python keywords (like `def`, `for`, `if`)."
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "A namespace is a dictionary-like structure that holds all currently defined names (like variables and functions) and maps them to their corresponding objects (values, function definitions, etc.)."
+        }
+      ]
+    },
+    "week9": {
+      "outputPrediction": [],
+      "syntaxError": [
+        {
+          "id": 2037,
+          "difficulty": "basic",
+          "question": "Which of the following are invalid Markdown syntax for a Jupyter cell? (Select all that apply)",
+          "options": [
+            "A) `## My Title` (for a header)",
+            "B) `*My Text*` (for italics)",
+            "C) `(http://my-link.com)[My Link]` (for a link)",
+            "D) `**My Text**` (for bold)",
+            "E) `![My Image](image.png)` (for an image)"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The syntax for a link is `[My Link](http://my-link.com)`. The text goes in the square brackets and the URL in the parentheses."
+        },
+        {
+          "id": 2038,
+          "difficulty": "basic",
+          "question": "Which `pip` command is syntactically incorrect? (Select all that apply)",
+          "options": [
+            "A) `pip install notebook`",
+            "B) `pip freeze > requirements.txt`",
+            "C) `pip install -r requirements.txt`",
+            "D) `pip install notebook==1.0`",
+            "E) `pip install notebook@1.0`",
+            "F) `pip list`"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "To specify a version, `pip` uses the `==` operator, not `@`."
+        }
+      ],
+      "codeLogic": [],
+      "theory": [
+        {
+          "id": 1014,
+          "difficulty": "basic",
+          "question": "In a Jupyter Notebook Markdown cell, what is the output of `**Hello**`?",
+          "options": [
+            "A) **Hello**",
+            "B) *Hello*",
+            "C) Hello (in bold)",
+            "D) Error",
+            "E) ##Hello"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Double asterisks `**text**` are used to render text in bold in Markdown."
+        },
+        {
+          "id": 1015,
+          "difficulty": "basic",
+          "question": "In a Jupyter Notebook Markdown cell, what is the output of `*Hello*`?",
+          "options": [
+            "A) *Hello*",
+            "B) Hello (in bold)",
+            "C) Hello (in italics)",
+            "D) Error",
+            "E) - Hello"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Single asterisks `*text*` are used to render text in italics in Markdown."
+        },
+        {
+          "id": 1016,
+          "difficulty": "basic",
+          "question": "In a Jupyter Notebook Markdown cell, what is the output of `~~Hello~~`?",
+          "options": [
+            "A) ~~Hello~~",
+            "B) Hello (strikethrough)",
+            "C) Hello (in bold)",
+            "D) Error",
+            "E) Hello (underlined)"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Double tildes `~~text~~` are used to render text with a strikethrough."
+        },
+        {
+          "id": 1017,
+          "difficulty": "basic",
+          "question": "In a Jupyter Notebook Markdown cell, what is the output of `` `print()` ``?",
+          "options": [
+            "A) `print()` (as inline code)",
+            "B) print() (executed as code)",
+            "C) Error",
+            "D) \"print()\""
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Backticks `` `code` `` are used to render text as inline code, typically with a monospaced font and gray background."
+        },
+        {
+          "id": 213,
+          "difficulty": "basic",
+          "question": "What are the benefits of using a Python virtual environment (`venv`)? (Select all that apply)",
+          "options": [
+            "A) It makes your Python code run faster.",
+            "B) It isolates project-specific dependencies.",
+            "C) It prevents package version conflicts between different projects.",
+            "D) It automatically writes `requirements.txt`.",
+            "E) It allows you to use different versions of Python for different projects (if `py` launcher or similar is used)."
+          ],
+          "correct": [
+            "B",
+            "C",
+            "E"
+          ],
+          "explanation": "Virtual environments are for managing and isolating dependencies (B, C) and can be used to manage different Python interpreter versions for different projects (E)."
+        },
+        {
+          "id": 214,
+          "difficulty": "basic",
+          "question": "Which command is used to activate a virtual environment named `.venv` on Windows?",
+          "options": [
+            "A) `source .venv/bin/activate`",
+            "B) `.venv\\Scripts\\activate`",
+            "C) `python -m venv .venv`",
+            "D) `deactivate`",
+            "E) `run .venv`"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "On Windows, the activation script is in the `Scripts` folder. On macOS/Linux, it's `source .venv/bin/activate`."
+        },
+        {
+          "id": 215,
+          "difficulty": "basic",
+          "question": "What is the command to save all your currently installed packages in a virtual environment to a file for sharing?",
+          "options": [
+            "A) `pip save > requirements.txt`",
+            "B) `pip freeze > requirements.txt`",
+            "C) `pip list --save requirements.txt`",
+            "D) `pip requirements > requirements.txt`"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "`pip freeze` outputs the list of installed packages in a format that can be read by `pip install -r`."
+        },
+        {
+          "id": 216,
+          "difficulty": "basic",
+          "question": "In a Jupyter Notebook, how do you add a non-executable title or explanatory text? (Select all that apply)",
+          "options": [
+            "A) Change the cell type to 'Markdown' and use `#` for a title.",
+            "B) Write a Python comment `# My Title` in a code cell.",
+            "C) Change the cell type to 'Raw'.",
+            "D) Use `print('# My Title')` in a code cell.",
+            "E) Change the cell type to 'Markdown' and write plain text."
+          ],
+          "correct": [
+            "A",
+            "E"
+          ],
+          "explanation": "Markdown cells are used for rich text, including headers (using #) and plain explanatory text."
+        },
+        {
+          "id": 1018,
+          "difficulty": "basic",
+          "question": "What is the primary advantage of using `with open(...)` to read a file? (Select all that apply)",
+          "options": [
+            "A) It automatically closes the file, even if an error occurs.",
+            "B) It reads the entire file into memory at once.",
+            "C) It prevents `try...except` blocks from working.",
+            "D) It ensures proper resource management.",
+            "E) It makes the file read-only."
+          ],
+          "correct": [
+            "A",
+            "D"
+          ],
+          "explanation": "The `with` statement is a context manager that ensures the file is automatically closed (A), which is a key part of proper resource management (D)."
+        },
+        {
+          "id": 1019,
+          "difficulty": "basic",
+          "question": "What is the command to install version 3.0.0 of a package named `flask`?",
+          "options": [
+            "A) `pip install flask:3.0.0`",
+            "B) `pip install flask==3.0.0`",
+            "C) `pip install flask@3.0.0`",
+            "D) `pip install flask 3.0.0`"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The `==` syntax is used with `pip install` to specify an exact package version."
+        }
+      ]
+    },
+    "week10": {
+      "outputPrediction": [
+        {
+          "id": 217,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ndef funcA(aList):\n    if len(aList) == 1:\n        return aList[0]\n    else:\n        return aList[0] + funcA(aList[1:])\n\nprint(funcA([2, 7, 5]))\n```",
+          "options": [
+            "A) 2",
+            "B) 7",
+            "C) 5",
+            "D) 14",
+            "E) Error",
+            "F) [2, 7, 5]"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "The function recursively sums the elements: 2 + funcA([7, 5]) -> 2 + (7 + funcA([5])) -> 2 + (7 + 5) = 14."
+        },
+        {
+          "id": 218,
+          "difficulty": "advanced",
+          "question": "What is printed?\n\n```python\ndef funcA(param1, param2):\n    if len(param1) == 1:\n        print(param2 * param1[0])\n    else:\n        funcA(param1[1:], param2)\n        print(param2 * param1[0])\n\nfuncA([1, 2, 3], '*')\n```",
+          "options": [
+            "A) *\\n**\\n***",
+            "B) ***\\n**\\n*",
+            "C) *\\n***\\n******",
+            "D) ******\\n***\\n*",
+            "E) ***"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "This is a recursive trace. 1. call funcA([1,2,3]). 2. call funcA([2,3]). 3. call funcA([3]). 4. Base case hits: prints '***'. 5. Returns to call 2: prints '**'. 6. Returns to call 1: prints '*'."
+        },
+        {
+          "id": 219,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\nnum = 0\ndef maxNum(aList):\n    global num\n    num += 1\n    if len(aList) == 1:\n        return aList[0]\n    else:\n        rightMax = maxNum(aList[1:])\n        return max(aList[0], rightMax)\n\nmaxNum([2, 7, 5])\nprint(num)\n```",
+          "options": [
+            "A) 0",
+            "B) 1",
+            "C) 2",
+            "D) 3",
+            "E) 7"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "The global `num` counts how many times `maxNum` is called. It's called for [2, 7, 5], then for [7, 5], then for [5] (base case). Total calls = 3."
+        },
+        {
+          "id": 1020,
+          "difficulty": "advanced",
+          "question": "Based on the Week 10 tutorial, what is the output?\n\n```python\ndef sumNodes(t):\n    if len(t) == 1:\n        return t[0]\n    elif len(t) == 0:\n        return 0\n    else:\n        leftSum = sumNodes(t[0])\n        rightSum = sumNodes(t[2])\n        return leftSum + t[1] + rightSum\n\ntree = [[[7], 1, []], 3, [[8], 2, [4]]]\nprint(sumNodes(tree))\n```",
+          "options": [
+            "A) 6",
+            "B) 7",
+            "C) 25",
+            "D) 14",
+            "E) 10"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The function recursively sums all nodes.\n- sumNodes([[[7], 1, []], 3, [[8], 2, [4]]])\n- leftSum = sumNodes([[7], 1, []]) -> 7 + 1 + 0 = 8\n- rightSum = sumNodes([[8], 2, [4]]) -> 8 + 2 + 4 = 14\n- Returns: 8 + 3 + 14 = 25"
+        },
+        {
+          "id": 1021,
+          "difficulty": "advanced",
+          "question": "Based on the Week 10 tutorial, what is the output?\n\n```python\nNEG_INFINITY = float('-inf')\ndef maxNode(t):\n    if len(t) == 1:\n        return t[0]\n    elif len(t) == 0:\n        return NEG_INFINITY\n    else:\n        leftMax = maxNode(t[0])\n        rightMax = maxNode(t[2])\n        return max(t[1], leftMax, rightMax)\n\ntree = [[[7], 1, []], 3, [[8], 2, [4]]]\nprint(maxNode(tree))\n```",
+          "options": [
+            "A) 3",
+            "B) 7",
+            "C) 8",
+            "D) 4",
+            "E) -inf"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The function recursively finds the max node.\n- maxNode(tree)\n- leftMax = maxNode([[7], 1, []]) -> max(1, 7, -inf) = 7\n- rightMax = maxNode([[8], 2, [4]]) -> max(2, 8, 4) = 8\n- Returns: max(3, 7, 8) = 8"
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 2039,
+          "difficulty": "intermediate",
+          "question": "Which of these recursive functions will result in a `RecursionError` (stack overflow)? (Select all that apply)",
+          "options": [
+            "A) `def countdown(n):\n    if n == 0: return\n    countdown(n - 1)`",
+            "B) `def countdown(n):\n    if n == 0: return\n    countdown(n + 1)`",
+            "C) `def countdown(n):\n    countdown(n - 1)`",
+            "D) `def countdown(n):\n    if n < 0: return\n    countdown(n - 1)`"
+          ],
+          "correct": [
+            "B",
+            "C",
+            "D"
+          ],
+          "explanation": "B: The recursive step `n + 1` moves *away* from the base case `n == 0`. C: This function has no base case at all. D: If called with `n=5`, it will call `n=4`, `n=3`, etc., and never stop, as `n == 0` is not the base case."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 1022,
+          "difficulty": "advanced",
+          "question": "In the Week 10 Binary Tree tutorial, what is the purpose of the `elif len(t) == 0: return 0` in the `sumNodes` function?",
+          "options": [
+            "A) It is the main base case for a leaf node.",
+            "B) It handles the case of an empty tree (e.g., a missing child), returning 0 for the sum.",
+            "C) It stops an infinite loop.",
+            "D) It is redundant and can be removed."
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "This line handles the case where a node is missing a child (represented as `[]`). An empty subtree has a sum of 0."
+        },
+        {
+          "id": 2040,
+          "difficulty": "advanced",
+          "question": "In the Week 10 tutorial, the Binary Tree `[[[7], 1, []], 3, [[8], 2, [4]]]` is 'mirrored'. What is the correct mirrored representation?",
+          "options": [
+            "A) `[[[7], 1, []], 3, [[8], 2, [4]]]` (unchanged)",
+            "B) `[[[4], 2, [8]], 3, [[], 1, [7]]]`",
+            "C) `[[[8], 2, [4]], 3, [[7], 1, []]]`",
+            "D) `[[[], 1, [7]], 3, [[4], 2, [8]]]`"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The `mirror(t)` function swaps the left (t[0]) and right (t[2]) children and recursively mirrors them. The original left child `[[7], 1, []]` becomes `[[], 1, [7]]`. The original right child `[[8], 2, [4]]` becomes `[[4], 2, [8]]`. The function then *swaps* them, returning `[mirrorR, parent, mirrorL]`."
+        },
+        {
+          "id": 2053,
+          "difficulty": "advanced",
+          "question": "Which of the following functions correctly checks if a number `n` is prime? (Select all that apply)",
+          "options": [
+            "A) def is_prime_A(n):\n    if n < 2: return False\n    if n == 2: return True\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True",
+            "B) def is_prime_B(n):\n    if n < 2: return False\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True",
+            "C) def is_prime_C(n):\n    if n == 2: return True\n    if n < 2 or n % 2 == 0: return False\n    i = 3\n    while i * i <= n:\n        if n % i == 0:\n            return False\n        i += 2\n    return True",
+            "D) def is_prime_D(n):\n    if n < 2: return False\n    if n == 2: return True\n    for i in range(2, n // 2 + 1):\n        if n % i == 0:\n            return False\n    return True"
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "explanation": "This is a tricky question. All four functions are logically correct.\n- A is the standard *efficient* implementation (checks up to sqrt(n)).\n- B is the standard *inefficient* implementation (checks up to n), but it is logically correct.\n- C is an *even more efficient* implementation (skips all evens). It is also correct.\n- D checks up to `n // 2`, which is *inefficient* but also logically correct (a number's largest factor besides itself is at most n/2)."
+        }
+      ],
+      "theory": [
+        {
+          "id": 107,
+          "difficulty": "basic",
+          "question": "Which is FALSE about recursive functions?",
+          "options": [
+            "A) Recursive functions are concise",
+            "B) A recursive function calls itself",
+            "C) Recursive is always more efficient than loops",
+            "D) They support divide-and-conquer",
+            "E) Need base case",
+            "F) Can cause stack overflow",
+            "G) Alternative to iteration"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Recursive is elegant but not always efficient."
+        },
+        {
+          "id": 220,
+          "difficulty": "intermediate",
+          "question": "What are the essential components of a valid recursive function? (Select all that apply)",
+          "options": [
+            "A) A base case that stops the recursion.",
+            "B) A `for` loop.",
+            "C) A recursive step that calls the function with a modified argument (moving it closer to the base case).",
+            "D) A `global` variable.",
+            "E) A `while` loop."
+          ],
+          "correct": [
+            "A",
+            "C"
+          ],
+          "explanation": "A recursive function must have a base case (to stop) and a recursive step (to continue) that changes the problem to eventually reach the base case."
+        },
+        {
+          "id": 221,
+          "difficulty": "advanced",
+          "question": "What is a 'stack overflow' in the context of recursion?",
+          "options": [
+            "A) When a function returns too many values.",
+            "B) A recursive function that never reaches its base case, exhausting the computer's call stack memory.",
+            "C) A function that is too complex to be compiled.",
+            "D) When a `list` or 'stack' data structure becomes too full.",
+            "E) A recursive function that calls itself too many times, even if it has a base case, and exhausts the call stack memory."
+          ],
+          "correct": [
+            "B",
+            "E"
+          ],
+          "explanation": "A stack overflow occurs when the call stack memory is filled, which happens if a recursive function either has no base case, or the base case isn't reached before the stack limit (deep recursion)."
+        },
+        {
+          "id": 222,
+          "difficulty": "intermediate",
+          "question": "Which of these problems are naturally suited for a recursive solution? (Select all that apply)",
+          "options": [
+            "A) Calculating the sum of a list of numbers (iteratively).",
+            "B) Traversing a tree data structure (like in the tutorial).",
+            "C) Calculating factorial (e.g., 5! = 5 * 4!).",
+            "D) Calculating the Fibonacci sequence (e.g., F(n) = F(n-1) + F(n-2)).",
+            "E) A simple `for` loop to print numbers 1 to 10."
+          ],
+          "correct": [
+            "B",
+            "C",
+            "D"
+          ],
+          "explanation": "Tree traversal, factorial, and Fibonacci are classic examples of problems defined in terms of themselves (subproblems), making them ideal for recursion."
+        },
+        {
+          "id": 2041,
+          "difficulty": "intermediate",
+          "question": "In the context of the 1A2B game lab, why is 'procedural abstraction' (using functions) a good idea? (Select all that apply)",
+          "options": [
+            "A) It breaks the game into logical parts: `genNumbers()`, `userGuess()`, `checkGuess()`.",
+            "B) It makes the main program loop easier to read.",
+            "C) It allows code to be reused (e.g., `userGuess()` is called in a loop).",
+            "D) It's the only way to use the `random` library.",
+            "E) It makes the code run significantly faster."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C"
+          ],
+          "explanation": "Using functions breaks the problem down (A), which makes the main code block (the `while True` loop) simpler (B) and allows parts like `userGuess` to be called repeatedly (C)."
+        }
+      ]
+    },
+    "week11": {
+      "outputPrediction": [
+        {
+          "id": 225,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ndef foo(num, acc=0):\n    if num == 0:\n        return acc\n    else:\n        return foo(num // 10, acc + (num % 10))\n\nprint(foo(123))\n```",
+          "options": [
+            "A) 123",
+            "B) 321",
+            "C) 6",
+            "D) 0",
+            "E) Error"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "This is an accumulator function that sums the digits of a number. 123 -> foo(12, 3) -> foo(1, 3+2) -> foo(0, 3+2+1) -> returns 6."
+        },
+        {
+          "id": 2042,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ndef list_length_recursive(L):\n    if not L: \n        return 0\n    return 1 + list_length_recursive(L[1:])\n\nprint(list_length_recursive([5, 10, 15]))\n```",
+          "options": [
+            "A) 0",
+            "B) 1",
+            "C) 3",
+            "D) Error",
+            "E) 6"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "This is the standard recursive length function. 1 + len([10, 15]) -> 1 + (1 + len([15])) -> 1 + (1 + (1 + len([]))) -> 1 + (1 + (1 + 0)) = 3."
+        },
+        {
+          "id": 2043,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```python\ndef count_vowels_iterative(S):\n    vowels = 'aeiouAEIOU'\n    n = 0\n    for c in S:\n        if c in vowels:\n            n += 1\n    return n\n\nprint(count_vowels_iterative('Hello World'))\n```",
+          "options": [
+            "A) 0",
+            "B) 2",
+            "C) 3",
+            "D) 10",
+            "E) 11"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "This is the iterative accumulator pattern. The vowels are 'e', 'o', 'o'. The count is 3."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 2044,
+          "difficulty": "basic",
+          "question": "Which of the following is NOT a valid Big O expression? (Select all that apply)",
+          "options": [
+            "A) O(n)",
+            "B) O(log n)",
+            "C) O(n^2)",
+            "D) O(2n)",
+            "E) O(n + 2)",
+            "F) O(1)"
+          ],
+          "correct": [
+            "D",
+            "E"
+          ],
+          "explanation": "In Big O notation, we drop constant multipliers and lower-order terms. O(2n) simplifies to O(n). O(n + 2) also simplifies to O(n). While not 'invalid', they aren't in the correct, simplified form."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 223,
+          "difficulty": "intermediate",
+          "question": "What is the Big O complexity of this function?\n\n```python\ndef find_max(my_list):\n    max_val = my_list[0]\n    for val in my_list:\n        if val > max_val:\n            max_val = val\n    return max_val\n```",
+          "options": [
+            "A) O(1)",
+            "B) O(log n)",
+            "C) O(n)",
+            "D) O(n^2)",
+            "E) O(n log n)"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "The function iterates through the list of size 'n' one time. Therefore, the complexity is linear, O(n)."
+        },
+        {
+          "id": 224,
+          "difficulty": "advanced",
+          "question": "What is the Big O complexity of this function?\n\n```python\ndef check_duplicates(my_list):\n    for i in range(len(my_list)):\n        for j in range(len(my_list)):\n            if i != j and my_list[i] == my_list[j]:\n                return True\n    return False\n```",
+          "options": [
+            "A) O(1)",
+            "B) O(log n)",
+            "C) O(n)",
+            "D) O(n^2)",
+            "E) O(n log n)"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "There is a `for` loop nested inside another `for` loop, both iterating 'n' times. This results in n*n operations, so the complexity is quadratic, O(n^2)."
+        },
+        {
+          "id": 228,
+          "difficulty": "advanced",
+          "question": "Which of these functions is 'tail recursive'?",
+          "options": [
+            "A) def fact(n):\n    if n < 2: return 1\n    return n * fact(n-1)",
+            "B) def fact_acc(n, acc=1):\n    if n == 0: return acc\n    return fact_acc(n-1, acc * n)",
+            "C) Both A and B",
+            "D) Neither A nor B"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "A is not tail-recursive because a multiplication (`n * ...`) must be performed *after* the recursive call returns. B is tail-recursive because the recursive call `fact_acc(...)` is the *very last* operation."
+        },
+        {
+          "id": 2054,
+          "difficulty": "advanced",
+          "question": "Which function correctly finds the *product* of all numbers in a list? (Select all that apply)",
+          "options": [
+            "A) def prod_A(L):\n    acc = 1\n    for x in L:\n        acc = acc * x\n    return acc",
+            "B) def prod_B(L):\n    acc = 0\n    for x in L:\n        acc = acc * x\n    return acc",
+            "C) def prod_C(L, acc=1):\n    if not L: return acc\n    return prod_C(L[1:], acc * L[0])",
+            "D) def prod_D(L):\n    if not L: return 1\n    return L[0] * prod_D(L[1:])"
+          ],
+          "correct": [
+            "A",
+            "C",
+            "D"
+          ],
+          "explanation": "A is the correct iterative accumulator pattern. B is a logic error: initializing with 0 will always result in 0. C is the correct *tail-recursive* accumulator pattern. D is the correct *standard* recursive implementation."
+        }
+      ],
+      "theory": [
+        {
+          "id": 108,
+          "difficulty": "basic",
+          "question": "Which is NOT an element of iterative accumulation?",
+          "options": [
+            "A) Variable to store result",
+            "B) Target value each iteration",
+            "C) Loop to accumulate",
+            "D) Print statement for result",
+            "E) Initial value",
+            "F) Update operation",
+            "G) Termination condition"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Printing is not part of accumulation itself."
+        },
+        {
+          "id": 226,
+          "difficulty": "intermediate",
+          "question": "Which of these expressions for worst-case operations has an asymptotic complexity of O(n^2)? (Select all that apply)",
+          "options": [
+            "A) 5n^2 + 10n + 300",
+            "B) n^3 / 1000",
+            "C) 2^n",
+            "D) 300 * n^2",
+            "E) n log n + n^2",
+            "F) n"
+          ],
+          "correct": [
+            "A",
+            "D",
+            "E"
+          ],
+          "explanation": "In Big O notation, we only keep the fastest-growing term and drop constants. A, D, and E all have n^2 as their dominant term."
+        },
+        {
+          "id": 227,
+          "difficulty": "intermediate",
+          "question": "What is the 'accumulator pattern'? (Select all that apply)",
+          "options": [
+            "A) A variable is initialized before a loop.",
+            "B) A variable is updated inside a loop.",
+            "C) A pattern that can only be used with recursion.",
+            "D) A pattern that can be used with both iteration and recursion.",
+            "E) A pattern to find the Big O complexity."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "D"
+          ],
+          "explanation": "The accumulator pattern involves initializing a variable (A) and updating it inside a loop (B) to build up a final value. It can be used in standard loops or as a parameter in recursion (D)."
+        },
+        {
+          "id": 1023,
+          "difficulty": "basic",
+          "question": "What is the Big O complexity of accessing an item in a list by its index (e.g., `my_list[5]`)?",
+          "options": [
+            "A) O(1)",
+            "B) O(log n)",
+            "C) O(n)",
+            "D) O(n^2)"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Accessing a list element by its index is a constant time operation, O(1), as Python can calculate the memory address directly."
+        },
+        {
+          "id": 1024,
+          "difficulty": "intermediate",
+          "question": "What is the Big O complexity of checking for an item's presence in a list (e.g., `if x in my_list:`) in the worst case?",
+          "options": [
+            "A) O(1)",
+            "B) O(log n)",
+            "C) O(n)",
+            "D) O(n^2)"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "In the worst case (the item is not in the list), Python must perform a linear search, checking all 'n' elements. This is O(n)."
+        },
+        {
+          "id": 1025,
+          "difficulty": "intermediate",
+          "question": "Which of the following complexity classes are correctly ordered from fastest to slowest? (Select all that apply)",
+          "options": [
+            "A) O(1), O(log n), O(n), O(n log n), O(n^2)",
+            "B) O(n^2), O(n log n), O(n), O(log n), O(1)",
+            "C) O(1), O(n), O(log n), O(n^2)",
+            "D) O(log n), O(n log n), O(n^2), O(2^n)",
+            "E) O(n), O(n^2), O(log n)"
+          ],
+          "correct": [
+            "A",
+            "D"
+          ],
+          "explanation": "A is correctly ordered. D is also correctly ordered, as O(2^n) (exponential) is slower than O(n^2) (quadratic). B is slowest to fastest. C and E are out of order."
+        }
+      ]
+    },
+    "week12": {
+      "outputPrediction": [
+        {
+          "id": 229,
+          "difficulty": "intermediate",
+          "question": "A list `[5, 1, 4, 2, 8]` is being sorted. After the *first pass* of a standard Bubble Sort, what will the list look like?",
+          "options": [
+            "A) [1, 5, 4, 2, 8]",
+            "B) [1, 4, 2, 5, 8]",
+            "C) [1, 2, 4, 5, 8]",
+            "D) [5, 1, 4, 2, 8]",
+            "E) [1, 5, 2, 4, 8]"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Pass 1: (5,1)->[1,5,4,2,8], (5,4)->[1,4,5,2,8], (5,2)->[1,4,2,5,8], (5,8)->[1,4,2,5,8]."
+        },
+        {
+          "id": 230,
+          "difficulty": "intermediate",
+          "question": "A list `[5, 1, 4, 2, 8]` is being sorted. After the *first pass* of the *optimized* Bubble Sort (as shown in Week 12 lectures), what will the list look like?",
+          "options": [
+            "A) [1, 5, 4, 2, 8]",
+            "B) [1, 4, 2, 5, 8]",
+            "C) [1, 2, 4, 5, 8]",
+            "D) [5, 1, 4, 2, 8]",
+            "E) [1, 5, 2, 4, 8]"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The standard Bubble Sort first pass results in [1, 4, 2, 5, 8]. The optimization doesn't change the first pass, it only shortens subsequent passes."
+        },
+        {
+          "id": 1026,
+          "difficulty": "intermediate",
+          "question": "A list `[5, 9, 4, 6, 2, 7]` is being sorted with Cocktail Shaker Sort. What does the list look like after the *first pass* (left-to-right)?",
+          "options": [
+            "A) [5, 4, 6, 2, 7, 9]",
+            "B) [2, 5, 9, 4, 6, 7]",
+            "C) [5, 9, 4, 6, 2, 7]",
+            "D) [2, 4, 5, 6, 7, 9]"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "The first pass is a standard left-to-right bubble sort pass, which moves the largest element (9) to the end: [5, 9, 4, 6, 2, 7] -> [5, 4, 9, 6, 2, 7] -> [5, 4, 6, 9, 2, 7] -> [5, 4, 6, 2, 9, 7] -> [5, 4, 6, 2, 7, 9]."
+        },
+        {
+          "id": 1027,
+          "difficulty": "intermediate",
+          "question": "Given the list `[5, 4, 6, 2, 7, 9]` (result of 1st pass), what does it look like after the *second pass* (right-to-left) of Cocktail Shaker Sort?",
+          "options": [
+            "A) [5, 4, 6, 2, 7, 9]",
+            "B) [2, 5, 4, 6, 7, 9]",
+            "C) [5, 4, 2, 6, 7, 9]",
+            "D) [2, 5, 4, 6, 9, 7]"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Pass 2 (right-to-left): [5, 4, 6, 2, 7, 9]. (7,9) no swap. (2,7) swap -> [5, 4, 6, 7, 2, 9]. (2,6) swap -> [5, 4, 7, 6, 2, 9]. (2,4) swap -> [5, 7, 6, 4, 2, 9]. (2,5) swap -> [7, 6, 5, 4, 2, 9]. Wait, this trace is different from the tutorial. The *tutorial* trace is: [5, 4, 6, 2, 7, 9] -> (7,9) no swap -> (2,7) no swap -> (6,2) swap -> [5, 4, 2, 6, 7, 9] -> (4,2) swap -> [5, 2, 4, 6, 7, 9] -> (5,2) swap -> [2, 5, 4, 6, 7, 9]."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 2045,
+          "difficulty": "intermediate",
+          "question": "A developer tries to implement Merge Sort for the lab. What is wrong with this `merge` function? (Select all that apply)\n\n```python\ndef merge(left, right, key):\n    result_list = []\n    if left[0][key] < right[0][key]:\n        result_list.append(left[0])\n    else:\n        result_list.append(right[0])\n    return result_list\n```",
+          "options": [
+            "A) It only merges one element, not the whole lists.",
+            "B) It doesn't use a `while` loop to iterate through the lists.",
+            "C) It will crash if the `left` or `right` list is empty.",
+            "D) It doesn't handle the 'leftover' elements after one list is exhausted."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "explanation": "This is an incorrect implementation. It only compares the very first element (A) and will crash if a list is empty (C). A correct `merge` requires `while` loops to drain both lists (B) and a way to add the remaining elements from the non-empty list (D)."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 231,
+          "difficulty": "intermediate",
+          "question": "A list `[21, 1, 26, 45]` is being sorted with Merge Sort. What is the *first* call to the `merge` function?",
+          "options": [
+            "A) merge([21], [1])",
+            "B) merge([21, 1], [26, 45])",
+            "C) merge([1, 21], [26, 45])",
+            "D) merge([26], [45])"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Merge sort splits recursively: [21, 1, 26, 45] -> [21, 1] and [26, 45]. Then [21, 1] -> [21] and [1]. It merges [21] and [1] first."
+        },
+        {
+          "id": 232,
+          "difficulty": "basic",
+          "question": "You are performing a Binary Search for the number 3 on the list `[1, 3, 4, 6, 7, 8, 10, 13, 14]`. What is the first 'middle' item it checks?",
+          "options": [
+            "A) 1",
+            "B) 7",
+            "C) 6",
+            "D) 8",
+            "E) 3"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The list has 9 elements. The middle index is (0+8)//2 = 4. The element at index 4 is 7."
+        },
+        {
+          "id": 2046,
+          "difficulty": "advanced",
+          "question": "In the Cocktail Shaker Sort tutorial, what is the 'loop invariant' for the right-to-left pass (pass `s`)? (Select all that apply)",
+          "options": [
+            "A) After pass `s`, the `s` largest items are in their final positions.",
+            "B) After pass `s`, the `s` smallest items are in their final positions.",
+            "C) It is identical to the Bubble Sort invariant.",
+            "D) The list is fully sorted."
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The right-to-left pass bubbles the *smallest* items to the front. Therefore, after the *s*-th right-to-left pass, the *s* smallest items are in their final, sorted positions at the beginning of the list."
+        },
+        {
+          "id": 2047,
+          "difficulty": "advanced",
+          "question": "Why is Bubble Sort O(n^2) in the worst case, but optimized Bubble Sort is O(n) in the best case?",
+          "options": [
+            "A) The worst case is a reverse-sorted list, requiring n passes, each doing ~n swaps.",
+            "B) The best case is an already-sorted list.",
+            "C) In the best case, the optimized version's 'swapped' flag remains False on the first pass, and the loop `break`s.",
+            "D) A normal Bubble Sort is O(n^2) in all cases."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C"
+          ],
+          "explanation": "The worst case is a reverse-sorted list, which requires O(n^2) comparisons and swaps (A). The best case is an already-sorted list (B). The optimized version detects this in one O(n) pass because the `swapped` flag is never set to True, allowing an early `break` (C)."
+        },
+        {
+          "id": 2055,
+          "difficulty": "advanced",
+          "question": "Which function correctly implements Binary Search on a *sorted* list `L`? (Select all that apply)",
+          "options": [
+            "A) def bin_A(L, target):\n    low, high = 0, len(L) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if L[mid] == target: return True\n        elif L[mid] < target: low = mid + 1\n        else: high = mid - 1\n    return False",
+            "B) def bin_B(L, target):\n    if not L: return False\n    mid = len(L) // 2\n    if L[mid] == target: return True\n    elif L[mid] < target: return bin_B(L[mid+1:], target)\n    else: return bin_B(L[:mid], target)",
+            "C) def bin_C(L, target):\n    for i in range(len(L)):\n        if L[i] == target: return True\n    return False",
+            "D) def bin_D(L, target):\n    low, high = 0, len(L) - 1\n    while low < high:\n        mid = (low + high) // 2\n        if L[mid] == target: return True\n        elif L[mid] < target: low = mid\n        else: high = mid\n    return False"
+          ],
+          "correct": [
+            "A",
+            "B"
+          ],
+          "explanation": "A is the correct *iterative* implementation. B is the correct *recursive* implementation. C is Linear Search, not Binary Search. D has fatal logic errors (infinite loop) by not setting `low = mid + 1` or `high = mid - 1`."
+        }
+      ],
+      "theory": [
+        {
+          "id": 233,
+          "difficulty": "intermediate",
+          "question": "Which of the following statements are TRUE about Binary Search? (Select all that apply)",
+          "options": [
+            "A) It has a worst-case time complexity of O(n).",
+            "B) It has a worst-case time complexity of O(log n).",
+            "C) The list must be sorted before performing a binary search.",
+            "D) It works by checking the middle element, then eliminating half of the list.",
+            "E) It is less efficient than Linear Search for large, sorted lists."
+          ],
+          "correct": [
+            "B",
+            "C",
+            "D"
+          ],
+          "explanation": "Binary search is O(log n) (B), requires a sorted list (C), and works by dividing the search space in half (D). It is *more* efficient than Linear Search's O(n) (A and E are false)."
+        },
+        {
+          "id": 234,
+          "difficulty": "intermediate",
+          "question": "Which of the following statements are TRUE about Bubble Sort? (Select all that apply)",
+          "options": [
+            "A) It has a worst-case time complexity of O(n^2).",
+            "B) It has a best-case time complexity of O(n) (if optimized with a 'swapped' flag).",
+            "C) It is a 'divide and conquer' algorithm.",
+            "D) It works by repeatedly swapping adjacent elements if they are in the wrong order.",
+            "E) It is generally faster than Merge Sort."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "D"
+          ],
+          "explanation": "Bubble Sort is O(n^2) worst-case (A), O(n) best-case with optimization (B), and works by swapping adjacent elements (D). It is *not* divide and conquer (C) and is *slower* than Merge Sort (E)."
+        },
+        {
+          "id": 235,
+          "difficulty": "intermediate",
+          "question": "Which of the following statements are TRUE about Merge Sort? (Select all that apply)",
+          "options": [
+            "A) It has a worst-case time complexity of O(n^2).",
+            "B) It has a worst-case time complexity of O(n log n).",
+            "C) It is a 'divide and conquer' algorithm.",
+            "D) It sorts the list 'in-place', using O(1) space.",
+            "E) It works by recursively splitting the list in half and then merging the sorted halves."
+          ],
+          "correct": [
+            "B",
+            "C",
+            "E"
+          ],
+          "explanation": "Merge Sort is a classic O(n log n) (B) 'divide and conquer' (C) algorithm that splits and merges (E). Its standard implementation is *not* in-place and requires O(n) extra space (D is false)."
+        },
+        {
+          "id": 236,
+          "difficulty": "basic",
+          "question": "For which of these tasks would a Linear Search be the *only* correct choice? (Select all that apply)",
+          "options": [
+            "A) Finding a name in a sorted list of 1 million names.",
+            "B) Finding a name in an unsorted list of 1 million names.",
+            "C) Finding the number 50 in the list `[1, 5, 2, 9, 3]`.",
+            "D) Finding a name in a phone book (which is sorted)."
+          ],
+          "correct": [
+            "B",
+            "C"
+          ],
+          "explanation": "Linear search works on any list, but it is the *only* option (or most practical) if the list is unsorted (B, C). For sorted lists (A, D), Binary Search is much more efficient."
+        },
+        {
+          "id": 1028,
+          "difficulty": "intermediate",
+          "question": "What is a 'loop invariant' in the context of sorting algorithms? (Select all that apply)",
+          "options": [
+            "A) A condition that is true before the loop starts.",
+            "B) A condition that is true at the start of each iteration.",
+            "C) A condition that is true at the end of each iteration.",
+            "D) A condition that, when the loop terminates, helps prove the algorithm is correct.",
+            "E) A variable that never changes inside the loop."
+          ],
+          "correct": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "explanation": "A loop invariant is a property that holds true before the loop (A) and before/after each iteration (B, C). This property is used to reason about the algorithm's correctness (D). For example, in Bubble Sort, the invariant is 'after pass `i`, the largest `i` elements are in their final sorted positions'."
+        }
+      ]
+    }
+  }
+}

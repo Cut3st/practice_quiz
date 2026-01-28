@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danny's SC1003 Programming Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .contact-banner {
+    background: var(--color-bg-2);        /* bright orange tint in light / dark */
+    border-left: 4px solid var(--color-warning);
+    padding: 0.6rem 1rem;
+    margin: 0 auto 1.5rem;
+    max-width: 600px;
+    border-radius: var(--radius-base);
+    font-weight: 500;
+    text-align: center;
+    color: var(--color-text);
+    }
+    .contact-banner a {
+    color: var(--color-primary);
+    text-decoration: none;
+    }
+    .contact-banner a:hover {
+    text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+    <!-- Mode Selection Screen -->
+    <div id="mode-selection-screen" class="screen">
+        <div class="container">
+            <div class="welcome-content">
+                <h1>Danny's SC1003 Programming Quiz</h1>
+                <!-- CONTACT BANNER -->
+                <div class="contact-banner">
+                📢 Need help? DM <a href="https://t.me/huuep" target="_blank" rel="noopener">@huuep</a> on Telegram!
+                </div>
+                <div class="mode-cards">
+                    <div class="mode-card" id="student-mode-card">
+                        <div class="mode-icon">🎓</div>
+                        <h3>Student Quiz</h3>
+                        <p>Take a timed 30-question quiz randomly selected from 40+ questions</p>
+                        <div class="mode-stats">
+                            <span class="stat">⏱️ 60 minutes</span>
+                            <span class="stat">📝 30 questions</span>
+                            <span class="stat">🎯 All categories</span>
+                        </div>
+                        <button class="btn btn--primary" id="start-student-quiz">Start Student Quiz</button>
+                    </div>
+                    
+                    <div class="mode-card" id="practice-mode-card">
+                        <div class="mode-icon">📚</div>
+                        <h3>Practice Mode</h3>
+                        <p>Study specific categories and difficulty levels at your own pace</p>
+                        <div class="mode-stats">
+                            <span class="stat">⏰ No time limit</span>
+                            <span class="stat">🔖 Filter by category/week</span>
+                            <span class="stat">📊 Difficulty levels</span>
+                        </div>
+                        <button class="btn btn--secondary" id="start-practice-mode">Practice Mode</button>
+                    </div>
+                    
+                    <div class="mode-card" id="admin-mode-card">
+                        <div class="mode-icon">⚙️</div>
+                        <h3>Admin Mode</h3>
+                        <p>Manage questions and view analytics</p>
+                        <div class="mode-stats">
+                            <span class="stat">➕ Add questions</span>
+                            <span class="stat">✏️ Edit existing</span>
+                            <span class="stat">📈 View analytics</span>
+                        </div>
+                        <button class="btn btn--outline" id="start-admin-mode">Admin Mode</button>
+                    </div>
+                </div>
+                
+                <div class="stats-summary card">
+                    <div class="card__body">
+                        <h3>Question Bank Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number" id="total-questions">40</div>
+                                <div class="stat-label">Total Questions</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="total-weeks">11</div>
+                                <div class="stat-label">Weeks Covered</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">4</div>
+                                <div class="stat-label">Categories</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="completion-rate">0%</div>
+                                <div class="stat-label">Best Score</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practice Mode Setup -->
+    <div id="practice-setup-screen" class="screen hidden">
+        <div class="container">
+            <div class="setup-content">
+                <h2>Practice Mode Setup</h2>
+                <div class="card">
+                    <div class="card__body">
+                        <div class="filter-section">
+                            <h3>Select Weeks (1-11)</h3>
+                            <div class="week-filters" id="week-filters"></div>
+                        </div>
+                        
+                        <div class="filter-section">
+                            <h3>Select Categories</h3>
+                            <div class="category-filters" id="category-filters"></div>
+                        </div>
+                        
+                        <div class="filter-section">
+                            <h3>Select Difficulty Levels</h3>
+                            <div class="difficulty-filters" id="difficulty-filters"></div>
+                        </div>
+                        
+                        <div class="filter-section">
+                            <h3>Number of Questions</h3>
+                            <select class="form-control" id="practice-question-count">
+                                <option value="10">10 Questions</option>
+                                <option value="20">20 Questions</option>
+                                <option value="30">30 Questions</option>
+                                <option value="all">All Available Questions</option>
+                            </select>
+                        </div>
+                        
+                        <div class="practice-preview" id="practice-preview">
+                            <strong>Preview:</strong> <span id="preview-text">Select filters to see available questions</span>
+                        </div>
+                        
+                        <div class="setup-actions">
+                            <button class="btn btn--outline" id="back-to-mode-selection">Back</button>
+                            <button class="btn btn--primary" id="start-practice-quiz">Start Practice</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Mode -->
+    <div id="admin-screen" class="screen hidden">
+        <div class="container">
+            <div class="admin-content">
+                <div class="admin-header">
+                    <h2>Admin Dashboard</h2>
+                    <button class="btn btn--outline" id="back-to-home">Back to Home</button>
+                </div>
+                
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="questions">Questions</button>
+                    <button class="tab-btn" data-tab="analytics">Analytics</button>
+                    <button class="tab-btn" data-tab="settings">Settings</button>
+                </div>
+                
+                <!-- Questions Tab -->
+                <div class="tab-content active" id="questions-tab">
+                    <div class="admin-actions">
+                        <button class="btn btn--primary" id="add-mcq-btn">Add Question</button>
+                        <div class="search-container">
+                            <input type="text" class="form-control" id="question-search" placeholder="Search questions...">
+                        </div>
+                    </div>
+                    <div class="questions-list" id="questions-list"></div>
+                </div>
+                
+                <!-- Analytics Tab -->
+                <div class="tab-content hidden" id="analytics-tab">
+                    <div class="analytics-grid">
+                        <div class="analytics-card card">
+                            <div class="card__body">
+                                <h3>Performance by Week</h3>
+                                <div class="week-performance" id="week-performance"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-card card">
+                            <div class="card__body">
+                                <h3>Performance by Category</h3>
+                                <div class="category-performance" id="category-performance"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-card card">
+                            <div class="card__body">
+                                <h3>Most Missed Questions</h3>
+                                <div class="missed-questions" id="missed-questions"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-card card">
+                            <div class="card__body">
+                                <h3>Quiz Attempts</h3>
+                                <div class="quiz-attempts" id="quiz-attempts"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Settings Tab -->
+                <div class="tab-content hidden" id="settings-tab">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Quiz Settings</h3>
+                            <div class="form-group">
+                                <label class="form-label">Default Quiz Duration (minutes)</label>
+                                <input type="number" class="form-control" id="quiz-duration" value="60">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Questions per Quiz</label>
+                                <input type="number" class="form-control" id="questions-per-quiz" value="30">
+                            </div>
+                            <div class="settings-actions">
+                                <button class="btn btn--primary" id="save-settings">Save Settings</button>
+                                <button class="btn btn--outline" id="export-questions">Export Questions</button>
+                                <button class="btn btn--outline" id="clear-analytics">Clear Analytics Data</button>
+                                <input type="file" id="import-json" accept=".json" style="display: none;">
+                                <button class="btn btn--outline" onclick="document.getElementById('import-json').click()">Import JSON</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="screen hidden">
+        <div class="container">
+            <div class="quiz-header">
+                <div class="quiz-info">
+                    <div class="quiz-mode-badge" id="quiz-mode-badge">Student Quiz</div>
+                    <div class="timer-container">
+                        <div class="timer-label">Time:</div>
+                        <div class="timer-display" id="timer">60:00</div>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-text" id="progress">Question 1 of 30</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <!-- Dynamic content injected here -->
+            </div>
+
+            <div class="navigation-container">
+                <button class="btn btn--outline" id="prev-btn" disabled>Previous</button>
+                <div class="nav-middle">
+                    <button class="btn btn--secondary" id="pause-btn">Pause</button>
+                    <button class="btn btn--primary" id="submit-quiz-btn">Submit Quiz</button>
+                </div>
+                <button class="btn btn--outline" id="next-btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen hidden">
+        <div class="container">
+            <div class="results-content">
+                <h1>Quiz Results</h1>
+                <div class="results-summary card">
+                    <div class="card__body">
+                        <div class="score-display">
+                            <div class="score-percentage" id="score-percentage">0%</div>
+                            <div class="score-details">
+                                <div class="score-fraction" id="score-fraction">0 / 30</div>
+                                <div class="time-taken">Time: <span id="time-taken">0:00</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="week-breakdown" id="week-breakdown">
+                            <h3>Performance by Week</h3>
+                            <div class="week-scores" id="week-scores"></div>
+                        </div>
+                        
+                        <div class="category-breakdown" id="category-breakdown">
+                            <h3>Performance by Category</h3>
+                            <div class="category-scores" id="category-scores"></div>
+                        </div>
+                        
+                        <div class="difficulty-breakdown" id="difficulty-breakdown">
+                            <h3>Performance by Difficulty</h3>
+                            <div class="difficulty-scores" id="difficulty-scores"></div>
+                        </div>
+                        
+                        <div class="recommendations" id="recommendations">
+                            <h3>Study Recommendations</h3>
+                            <div class="recommendation-list" id="recommendation-list"></div>
+                        </div>
+                        
+                        <div class="results-actions">
+                            <button class="btn btn--primary" id="review-answers-btn">Review Answers</button>
+                            <button class="btn btn--secondary" id="practice-weak-areas">Practice Weak Areas</button>
+                            <button class="btn btn--outline" id="restart-quiz-btn">Take Another Quiz</button>
+                            <button class="btn btn--outline" id="back-to-home-results">Back to Home</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Answer Review -->
+                <div id="answer-review" class="hidden">
+                    <h2>Detailed Answer Review</h2>
+                    <div class="review-filters">
+                        <button class="filter-btn active" data-filter="all">All Questions</button>
+                        <button class="filter-btn" data-filter="incorrect">Incorrect Only</button>
+                        <button class="filter-btn" data-filter="correct">Correct Only</button>
+                    </div>
+                    <div id="review-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pause Modal -->
+    <div id="pause-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Quiz Paused</h3>
+            <p>Your progress is saved. Click resume to continue.</p>
+            <div class="modal-actions">
+                <button class="btn btn--primary" id="resume-btn">Resume Quiz</button>
+                <button class="btn btn--outline" id="end-quiz-btn">End Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Question Modal -->
+    <div id="question-modal" class="modal hidden">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Question</h3>
+                <button class="modal-close" id="close-question-modal">×</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-control" id="question-category">
+                        <option value="outputPrediction">Output Prediction</option>
+                        <option value="syntaxError">Syntax Error</option>
+                        <option value="theory">Theory & Concepts</option>
+                        <option value="codeLogic">Code Logic & Analysis</option>
+                        <option value="week1">Week 1</option>
+                        <option value="week2">Week 2</option>
+                        <option value="week3">Week 3</option>
+                        <option value="week4">Week 4</option>
+                        <option value="week5">Week 5</option>
+                        <option value="week6">Week 6</option>
+                        <option value="week7">Week 7</option>
+                        <option value="week8">Week 8</option>
+                        <option value="week9">Week 9</option>
+                        <option value="week10">Week 10</option>
+                        <option value="week11">Week 11</option>
+                        <option value="week12">Week 12</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Difficulty Level</label>
+                    <select class="form-control" id="question-difficulty">
+                        <option value="basic">Basic</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Question Text</label>
+                    <textarea class="form-control" id="question-text-input" rows="6" placeholder="Enter question text. Use ```python code ``` for code blocks."></textarea>
+                </div>
+                
+                <div class="form-group" id="options-field">
+                    <label class="form-label">Options (one per line, supports A-G)</label>
+                    <textarea class="form-control" id="question-options" rows="6" placeholder="A) First option&#10;B) Second option&#10;C) Third option&#10;D) Fourth option&#10;E) Fifth option&#10;F) Sixth option&#10;G) Seventh option"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Correct Answers (comma-separated, e.g., "A" or "A,C")</label>
+                    <input type="text" class="form-control" id="question-correct" placeholder="A">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Explanation</label>
+                    <textarea class="form-control" id="question-explanation" rows="3" placeholder="Explain why this is the correct answer..."></textarea>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn btn--outline" id="cancel-question">Cancel</button>
+                <button class="btn btn--primary" id="save-question">Save</button>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+    <p>Need help? Contact <a href="https://t.me/huuep" target="_blank" rel="noopener">@huuep</a> on Telegram!</p>
+    </footer>
+
+    <style>
+    .site-footer {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;          /* keeps it at the bottom */
+    }
+    .site-footer a {
+    color: var(--color-primary);
+    text-decoration: none;
+    }
+    .site-footer a:hover {
+    text-decoration: underline;
+    }
+    </style>
+    <script src="app.js"></script>
+</body>
+</html>

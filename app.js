@@ -119,7 +119,7 @@ function switchLanguage() {
     toggle.setAttribute('aria-checked', 'true');
     labelPython.style.opacity = '0.4';
     labelJava.style.opacity   = '1';
-    if (title) title.textContent = "Danny's SC2002 Java Quiz";
+    if (title) title.textContent = "Danny's CS1010J Java Quiz";
   } else {
     toggle.classList.remove('is-java');
     toggle.setAttribute('aria-checked', 'false');
@@ -392,7 +392,11 @@ function displayMCQ(question) {
 // Removed: displayCodingProblem() function completely
 
 function formatQuestionText(text) {
-  return text.replace(/```python\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>');
+  return text
+    .replace(/```java\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
+    .replace(/```python\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
+    .replace(/```\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
+    .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
 }
 
 function displayOptions(question) {

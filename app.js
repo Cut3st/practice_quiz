@@ -2,6 +2,8 @@
 // APPLICATION STATE & DATA LOADING - MCQ ONLY VERSION
 // ============================================================================
 let questionBank = {};
+let javaQuestionBank = {};      // Java question bank (loaded separately)
+let currentLanguage = 'python'; // 'python' | 'java'
 let currentMode = 'selection';
 let currentQuestions = [];
 let currentQuestionIndex = 0;
@@ -29,10 +31,22 @@ async function loadExternalData() {
   try {
     showLoadingState(true);
     
-    // Load MCQ question bank only
+    // Load Python MCQ question bank
     const questionResponse = await fetch('questions.json');
     if (!questionResponse.ok) throw new Error('Could not load questions.json');
     questionBank = await questionResponse.json();
+
+    // Load Java MCQ question bank (graceful fallback if file missing)
+    try {
+      const javaResponse = await fetch('java_questions.json');
+      if (javaResponse.ok) {
+        javaQuestionBank = await javaResponse.json();
+      } else {
+        javaQuestionBank = { weeks: {} };
+      }
+    } catch (_) {
+      javaQuestionBank = { weeks: {} };
+    }
     
     showLoadingState(false);
     initializeApp();
@@ -41,6 +55,7 @@ async function loadExternalData() {
     showErrorMessage('Failed to load quiz data. Please ensure questions.json exists.');
     // Fallback to empty structure
     questionBank = { weeks: {} };
+    javaQuestionBank = { weeks: {} };
   }
 }
 
@@ -88,6 +103,39 @@ function initializeApp() {
   updateAnalytics();
 }
 
+// ============================================================================
+// LANGUAGE TOGGLE
+// ============================================================================
+function switchLanguage() {
+  currentLanguage = currentLanguage === 'python' ? 'java' : 'python';
+
+  const toggle      = document.getElementById('lang-toggle');
+  const labelPython = document.getElementById('lang-label-python');
+  const labelJava   = document.getElementById('lang-label-java');
+  const title       = document.querySelector('#mode-selection-screen h1');
+
+  if (currentLanguage === 'java') {
+    toggle.classList.add('is-java');
+    toggle.setAttribute('aria-checked', 'true');
+    labelPython.style.opacity = '0.4';
+    labelJava.style.opacity   = '1';
+    if (title) title.textContent = "Danny's CS1010J Java Quiz";
+  } else {
+    toggle.classList.remove('is-java');
+    toggle.setAttribute('aria-checked', 'false');
+    labelPython.style.opacity = '1';
+    labelJava.style.opacity   = '0.4';
+    if (title) title.textContent = "Danny's SC1003 Programming Quiz";
+  }
+
+  // Refresh filters and stats for the new language
+  renderWeekFilters();
+  renderCategoryFilters();
+  renderDifficultyFilters();
+  renderAdminQuestions();
+  updateQuestionBankStats();
+}
+
 function loadQuizSettings() {
   const stored = localStorage.getItem('quizSettings');
   if (stored) {
@@ -100,12 +148,26 @@ function loadQuizSettings() {
 // EVENT LISTENERS SETUP - MCQ ONLY
 // ============================================================================
 function setupEventListeners() {
+  // Language toggle (Python / Java)
+  const langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', switchLanguage);
+    langToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchLanguage(); }
+    });
+  }
+
   // Mode selection
-  document.getElementById('start-student-quiz').addEventListener('click', () => startStudentQuiz());
+  document.getElementById('start-student-quiz').addEventListener('click', () => openStudentConfigModal());
   document.getElementById('start-practice-mode').addEventListener('click', () => showPracticeSetup());
   // Removed: Quiz 2 button listener
   document.getElementById('start-admin-mode').addEventListener('click', () => showAdminMode());
   
+  // Student config modal
+  document.getElementById('close-student-config').addEventListener('click', closeStudentConfigModal);
+  document.getElementById('cancel-student-config').addEventListener('click', closeStudentConfigModal);
+  document.getElementById('confirm-student-config').addEventListener('click', confirmStudentConfig);
+
   // Practice setup
   document.getElementById('back-to-mode-selection').addEventListener('click', () => showScreen('modeSelection'));
   document.getElementById('start-practice-quiz').addEventListener('click', () => startPracticeQuiz());
@@ -158,12 +220,41 @@ function setupEventListeners() {
 // ============================================================================
 // QUIZ MODE & LOGIC - MCQ ONLY
 // ============================================================================
-function startStudentQuiz() {
+// ============================================================================
+// STUDENT QUIZ CONFIG MODAL
+// ============================================================================
+function openStudentConfigModal() {
+  // Set smart defaults based on active language
+  const isJava = currentLanguage === 'java';
+  document.getElementById('config-duration').value  = isJava ? 45 : quizSettings.duration;
+  document.getElementById('config-questions').value = isJava ? 22 : quizSettings.questionsPerQuiz;
+  document.getElementById('student-config-title').textContent =
+    isJava ? '☕ Java Student Quiz Setup' : '🎓 Python Student Quiz Setup';
+  document.getElementById('config-hint').textContent =
+    isJava ? 'Java exam: 45 min / 22 questions' : 'SC1003 exam: 60 min / 30 questions';
+  document.getElementById('student-config-modal').classList.remove('hidden');
+}
+
+function closeStudentConfigModal() {
+  document.getElementById('student-config-modal').classList.add('hidden');
+}
+
+function confirmStudentConfig() {
+  const mins = parseInt(document.getElementById('config-duration').value)  || 60;
+  const qs   = parseInt(document.getElementById('config-questions').value) || 30;
+  closeStudentConfigModal();
+  startStudentQuiz(mins, qs);
+}
+
+function startStudentQuiz(durationMins, questionCount) {
+  durationMins  = durationMins  || quizSettings.duration;
+  questionCount = questionCount || quizSettings.questionsPerQuiz;
+
   currentQuestions = selectQuizQuestions({ 
-    count: quizSettings.questionsPerQuiz,
-    weeks: Object.keys(questionBank.weeks)
+    count: questionCount,
+    weeks: Object.keys(getActiveBank().weeks)
   });
-  timeRemaining = quizSettings.duration * 60;
+  timeRemaining = durationMins * 60;
   document.getElementById('quiz-mode-badge').textContent = 'Student Quiz';
   document.getElementById('quiz-mode-badge').className = 'quiz-mode-badge';
   document.getElementById('timer').style.display = 'block';
@@ -834,7 +925,7 @@ function renderWeekFilters() {
   container.innerHTML = '';
   
   // Get all week keys from questionBank and sort them
-  const weekIds = Object.keys(questionBank.weeks).sort();
+  const weekIds = Object.keys(getActiveBank().weeks).sort();
   
   weekIds.forEach(weekId => {
     // Extract week number from "week12" format
@@ -936,14 +1027,14 @@ function updatePracticePreview() {
   }
   
   selectedWeeks.forEach(weekId => {
-    if (questionBank.weeks[weekId]) {
+    if (getActiveBank().weeks[weekId]) {
       // If no categories selected, check all categories except 'coding'
       const categoriesToCheck = selectedCategories.length > 0 ? selectedCategories : 
-        Object.keys(questionBank.weeks[weekId]).filter(cat => ['outputPrediction', 'theory'].includes(cat));
+        Object.keys(getActiveBank().weeks[weekId]).filter(cat => ['outputPrediction', 'theory'].includes(cat));
       
       categoriesToCheck.forEach(category => {
-        if (questionBank.weeks[weekId][category]) {
-          questionBank.weeks[weekId][category].forEach(question => {
+        if (getActiveBank().weeks[weekId][category]) {
+          getActiveBank().weeks[weekId][category].forEach(question => {
             if (selectedDifficulties.length === 0 || selectedDifficulties.includes(question.difficulty)) {
               availableQuestions++;
             }
@@ -990,10 +1081,10 @@ function renderAdminQuestions() {
   container.innerHTML = '';
   
   const allQuestions = [];
-  Object.keys(questionBank.weeks).forEach(weekId => {
-    Object.keys(questionBank.weeks[weekId]).forEach(category => {
+  Object.keys(getActiveBank().weeks).forEach(weekId => {
+    Object.keys(getActiveBank().weeks[weekId]).forEach(category => {
       if (category === 'coding') return; // Skip coding category
-      questionBank.weeks[weekId][category].forEach(question => {
+      getActiveBank().weeks[weekId][category].forEach(question => {
         allQuestions.push({ ...question, category, week: weekId });
       });
     });
@@ -1052,8 +1143,8 @@ function showQuestionModal(questionId = null) {
 }
 
 function editQuestion(questionId, week, category) {
-  if (questionBank.weeks[week] && questionBank.weeks[week][category]) {
-    const question = questionBank.weeks[week][category].find(q => q.id == questionId);
+  if (getActiveBank().weeks[week] && getActiveBank().weeks[week][category]) {
+    const question = getActiveBank().weeks[week][category].find(q => q.id == questionId);
     if (question) {
       document.getElementById('question-category').value = week;
       document.getElementById('question-difficulty').value = question.difficulty;
@@ -1069,8 +1160,8 @@ function editQuestion(questionId, week, category) {
 
 function deleteQuestion(questionId, week, category) {
   if (confirm('Are you sure you want to delete this question?')) {
-    if (questionBank.weeks[week] && questionBank.weeks[week][category]) {
-      questionBank.weeks[week][category] = questionBank.weeks[week][category].filter(q => q.id != questionId);
+    if (getActiveBank().weeks[week] && getActiveBank().weeks[week][category]) {
+      getActiveBank().weeks[week][category] = getActiveBank().weeks[week][category].filter(q => q.id != questionId);
       saveQuestionBank();
       renderAdminQuestions();
       updateQuestionBankStats();
@@ -1130,7 +1221,7 @@ function saveQuestion() {
   
   // Find max id in that week
   let maxId = 0;
-  Object.values(questionBank.weeks).forEach(week => {
+  Object.values(getActiveBank().weeks).forEach(week => {
     Object.values(week).forEach(cat => {
       if (Array.isArray(cat)) {
         cat.forEach(q => {
@@ -1149,8 +1240,8 @@ function saveQuestion() {
     explanation
   };
   
-  if (!questionBank.weeks[category]) {
-    questionBank.weeks[category] = { outputPrediction: [], syntaxError: [], theory: [], codeLogic: [] };
+  if (!getActiveBank().weeks[category]) {
+    getActiveBank().weeks[category] = { outputPrediction: [], syntaxError: [], theory: [], codeLogic: [] };
   }
   
   // Add to appropriate category
@@ -1162,7 +1253,7 @@ function saveQuestion() {
   };
   
   const targetCategory = categoryMap[category] || 'outputPrediction';
-  questionBank.weeks[category][targetCategory].push(newQuestion);
+  getActiveBank().weeks[category][targetCategory].push(newQuestion);
   saveQuestionBank();
   renderAdminQuestions();
   
@@ -1186,11 +1277,11 @@ function renderWeekPerformance() {
   const container = document.getElementById('week-performance');
   container.innerHTML = '';
   
-  Object.keys(questionBank.weeks).forEach(weekId => {
+  Object.keys(getActiveBank().weeks).forEach(weekId => {
     let totalAttempts = 0;
     let correctAttempts = 0;
     
-    Object.values(questionBank.weeks[weekId]).forEach(category => {
+    Object.values(getActiveBank().weeks[weekId]).forEach(category => {
       if (Array.isArray(category)) {
         category.forEach(question => {
           const stats = analyticsData.questionStats[question.id];
@@ -1226,7 +1317,7 @@ function renderCategoryPerformance() {
     let totalAttempts = 0;
     let correctAttempts = 0;
     
-    Object.values(questionBank.weeks).forEach(week => {
+    Object.values(getActiveBank().weeks).forEach(week => {
       if (week[categoryId]) {
         week[categoryId].forEach(question => {
           const stats = analyticsData.questionStats[question.id];
@@ -1265,7 +1356,7 @@ function renderMissedQuestions() {
       if (missRate > 50) {
         // Find question
         let questionText = 'Unknown Question';
-        Object.values(questionBank.weeks).forEach(week => {
+        Object.values(getActiveBank().weeks).forEach(week => {
           Object.values(week).forEach(cat => {
             if (Array.isArray(cat)) {
               const q = cat.find(q => q.id == questionId);
@@ -1338,7 +1429,7 @@ function saveSettings() {
 }
 
 function exportQuestions() {
-  const dataStr = JSON.stringify({ weeks: questionBank.weeks }, null, 2);
+  const dataStr = JSON.stringify({ weeks: getActiveBank().weeks }, null, 2);
   const dataBlob = new Blob([dataStr], { type: 'application/json' });
   const url = URL.createObjectURL(dataBlob);
   
@@ -1376,7 +1467,7 @@ function importQuestions(e) {
       const imported = JSON.parse(event.target.result);
       
       if (imported.weeks) {
-        Object.assign(questionBank.weeks, imported.weeks);
+        Object.assign(getActiveBank().weeks, imported.weeks);
         saveQuestionBank();
       }
       
@@ -1407,19 +1498,24 @@ function shuffleArray(array) {
   return shuffled;
 }
 
+function getActiveBank() {
+  return currentLanguage === 'java' ? javaQuestionBank : questionBank;
+}
+
 function selectQuizQuestions(filters = {}) {
   const allQuestions = [];
-  const weeks = filters.weeks || Object.keys(questionBank.weeks);
+  const bank = getActiveBank();
+  const weeks = filters.weeks || Object.keys(bank.weeks);
   
   weeks.forEach(weekId => {
-    if (!questionBank.weeks[weekId]) return;
+    if (!bank.weeks[weekId]) return;
     
     const categories = filters.categories || 
-      Object.keys(questionBank.weeks[weekId]).filter(cat => cat !== 'coding');
+      Object.keys(bank.weeks[weekId]).filter(cat => cat !== 'coding');
     
     categories.forEach(category => {
-      if (questionBank.weeks[weekId][category]) {
-        questionBank.weeks[weekId][category].forEach(question => {
+      if (bank.weeks[weekId][category]) {
+        bank.weeks[weekId][category].forEach(question => {
           if (!filters.difficulties || filters.difficulties.includes(question.difficulty)) {
             allQuestions.push({ ...question, category, week: weekId });
           }
@@ -1436,10 +1532,11 @@ function selectQuizQuestions(filters = {}) {
 function updateQuestionBankStats() {
   let totalQuestions = 0;
   let totalWeeks = 0;
+  const bank = getActiveBank();
   
-  Object.keys(questionBank.weeks).forEach(week => {
+  Object.keys(bank.weeks).forEach(week => {
     let hasQuestions = false;
-    Object.values(questionBank.weeks[week]).forEach(category => {
+    Object.values(bank.weeks[week]).forEach(category => {
       if (Array.isArray(category) && category.length > 0) {
         totalQuestions += category.length;
         hasQuestions = true;

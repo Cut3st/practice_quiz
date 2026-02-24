@@ -1,3 +1,754 @@
 {
-  "weeks": {}
+  "weeks": {
+    "week1": {
+      "theory": [
+        {
+          "id": 1001,
+          "difficulty": "basic",
+          "question": "Which pillar of OOP focuses on 'what' an object does rather than 'how' it does it?",
+          "options": ["A) Abstraction", "B) Encapsulation", "C) Inheritance", "D) Polymorphism"],
+          "correct": ["A"],
+          "explanation": "Abstraction simplifies complex reality by modeling classes based on essential relevant properties while ignoring implementation details."
+        },
+        {
+          "id": 1002,
+          "difficulty": "basic",
+          "question": "What is the relationship described by Inheritance?",
+          "options": ["A) Has-a", "B) Is-a", "C) Uses-a", "D) Part-of"],
+          "correct": ["B"],
+          "explanation": "Inheritance defines an 'is-a' relationship, where a subclass is a specialized version of its superclass."
+        },
+        {
+          "id": 1003,
+          "difficulty": "intermediate",
+          "question": "In OO modeling, what is the primary purpose of Encapsulation?",
+          "options": ["A) Code reuse", "B) Information hiding and data protection", "C) Multiple inheritance", "D) Improving execution speed"],
+          "correct": ["B"],
+          "explanation": "Encapsulation bundles data and methods together and restricts direct access to data to prevent unauthorized modification."
+        },
+        {
+          "id": 1004,
+          "difficulty": "basic",
+          "question": "What does a Class act as in OOP?",
+          "options": ["A) A memory address", "B) A blueprint or template", "C) An instance of an object", "D) A global variable"],
+          "correct": ["B"],
+          "explanation": "A class is the template that defines the variables and methods that an object of that type will have."
+        },
+        {
+          "id": 1005,
+          "difficulty": "intermediate",
+          "question": "Which term describes objects communicating by calling each other's methods?",
+          "options": ["A) Data transfer", "B) Message passing", "C) Inheritance", "D) Static binding"],
+          "correct": ["B"],
+          "explanation": "In OO systems, objects interact by sending 'messages' to one another, which is implemented as method calls."
+        },
+        {
+          "id": 1006,
+          "difficulty": "intermediate",
+          "question": "Which visibility modifier in a UML diagram is represented by the '#' symbol?",
+          "options": ["A) Public", "B) Private", "C) Protected", "D) Package-private"],
+          "correct": ["C"],
+          "explanation": "In UML notation, '#' indicates protected visibility, meaning access is granted to the class and its subclasses."
+        },
+        {
+          "id": 1007,
+          "difficulty": "hard",
+          "question": "Which of these is a disadvantage of Procedural Programming compared to OOP?",
+          "options": ["A) No support for functions", "B) Data is often global and disconnected from functions", "C) It is too fast for simple machines", "D) It does not support integer types"],
+          "correct": ["B"],
+          "explanation": "Procedural programming separates data from logic, making large-scale maintenance difficult as any function can modify global data."
+        },
+        {
+          "id": 1008,
+          "difficulty": "basic",
+          "question": "What is an 'Object' in Java?",
+          "options": ["A) A data type like 'int'", "B) A runtime instance of a class", "C) A file name", "D) A keyword for loops"],
+          "correct": ["B"],
+          "explanation": "An object is a specific realization of a class that takes up memory space during program execution."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 1009,
+          "difficulty": "intermediate",
+          "question": "A 'Car' object has an 'Engine' object. If the Car is destroyed, the Engine is also destroyed. What is this relationship?",
+          "options": ["A) Aggregation", "B) Composition", "C) Generalization", "D) Realization"],
+          "correct": ["B"],
+          "explanation": "Composition is a strong 'has-a' relationship where the parts cannot exist without the whole."
+        },
+        {
+          "id": 1010,
+          "difficulty": "intermediate",
+          "question": "A 'Teacher' has a 'Student'. If the Teacher leaves, the Student still exists in the system. What is this relationship?",
+          "options": ["A) Composition", "B) Aggregation", "C) Inheritance", "D) Abstraction"],
+          "correct": ["B"],
+          "explanation": "Aggregation is a weak 'has-a' relationship where the associated objects can exist independently."
+        },
+        {
+          "id": 1011,
+          "difficulty": "hard",
+          "question": "To implement true Encapsulation for a 'balance' variable, how should you declare it?",
+          "options": ["A) public double balance;", "B) private double balance; + public getter/setter", "C) static double balance;", "D) final double balance;"],
+          "correct": ["B"],
+          "explanation": "Declaring data as private and providing controlled access via methods is the standard implementation of encapsulation."
+        },
+        {
+          "id": 1012,
+          "difficulty": "intermediate",
+          "question": "If 'Manager extends Employee', which assignment is valid due to Polymorphism?",
+          "options": ["A) Manager m = new Employee();", "B) Employee e = new Manager();", "C) Manager m = new Manager();", "D) Both B and C"],
+          "correct": ["D"],
+          "explanation": "A superclass reference (Employee) can hold a subclass object (Manager), and a class can hold its own type."
+        },
+        {
+          "id": 1013,
+          "difficulty": "hard",
+          "question": "If you want to ensure all 'Shape' subclasses have a 'getArea()' method, but 'Shape' itself cannot calculate an area, what should you use?",
+          "options": ["A) A private method", "B) An abstract method", "C) A static method", "D) A constructor"],
+          "correct": ["B"],
+          "explanation": "Abstract methods define a contract that all concrete subclasses must fulfill."
+        },
+        {
+          "id": 1014,
+          "difficulty": "intermediate",
+          "question": "In OO, 'Generalization' is another term for which concept?",
+          "options": ["A) Inheritance", "B) Encapsulation", "C) Polymorphism", "D) Abstraction"],
+          "correct": ["A"],
+          "explanation": "Generalization is the process of extracting common features from subclasses to form a superclass."
+        },
+        {
+          "id": 1015,
+          "difficulty": "hard",
+          "question": "Which concept allows a single 'draw()' method call to result in a Circle, Square, or Triangle being drawn at runtime?",
+          "options": ["A) Information Hiding", "B) Abstraction", "C) Polymorphism", "D) Composition"],
+          "correct": ["C"],
+          "explanation": "Polymorphism allows the program to decide which specific method implementation to execute based on the object type at runtime."
+        }
+      ],
+      "outputPrediction": [
+        {
+          "id": 1016,
+          "difficulty": "basic",
+          "question": "What is printed?\n\n```java\nint x = 10;\nint y = x;\nx = 20;\nSystem.out.println(y);\n```",
+          "options": ["A) 10", "B) 20", "C) 0", "D) Compilation Error"],
+          "correct": ["A"],
+          "explanation": "Primitives are passed by value; y receives a copy of x's value at that moment."
+        },
+        {
+          "id": 1017,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```java\nclass Box { int val = 5; }\n// in main:\nBox b1 = new Box();\nBox b2 = b1;\nb2.val = 10;\nSystem.out.println(b1.val);\n```",
+          "options": ["A) 5", "B) 10", "C) 0", "D) NullPointerException"],
+          "correct": ["B"],
+          "explanation": "Object variables are references. b1 and b2 point to the same object in memory."
+        },
+        {
+          "id": 1018,
+          "difficulty": "intermediate",
+          "question": "What is the result?\n\n```java\nString s = \"A\";\nString t = s;\ns = s + \"B\";\nSystem.out.println(t);\n```",
+          "options": ["A) A", "B) AB", "C) B", "D) Error"],
+          "correct": ["A"],
+          "explanation": "Strings are immutable. 's + \"B\"' creates a new String, but t still points to the original \"A\"."
+        },
+        {
+          "id": 1019,
+          "difficulty": "hard",
+          "question": "What is the output?\n\n```java\nSystem.out.println(10 + 20 + \"Java\");\n```",
+          "options": ["A) 1020Java", "B) 30Java", "C) Java30", "D) Error"],
+          "correct": ["B"],
+          "explanation": "Java evaluates from left to right. 10 + 20 is done as math, then the result is concatenated with the string."
+        },
+        {
+          "id": 1020,
+          "difficulty": "hard",
+          "question": "What is the output?\n\n```java\nSystem.out.println(\"Java\" + 10 + 20);\n```",
+          "options": ["A) Java30", "B) Java1020", "C) 30Java", "D) Error"],
+          "correct": ["B"],
+          "explanation": "Once a String is encountered in the sequence, '+' is treated as concatenation for all following items."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 1021,
+          "difficulty": "basic",
+          "question": "Which line contains an error?\n\n```java\n1. int x = 10;\n2. double y = 5.5;\n3. char c = \"A\";\n```",
+          "options": ["A) Line 1", "B) Line 2", "C) Line 3: char must use single quotes", "D) No error"],
+          "correct": ["C"],
+          "explanation": "In Java, double quotes are for Strings, single quotes are for char literals."
+        },
+        {
+          "id": 1022,
+          "difficulty": "intermediate",
+          "question": "Identify the syntax error:\n\n```java\nclass Test {\n    private int x;\n    public static void setX(int val) {\n        x = val;\n    }\n}\n```",
+          "options": ["A) x should be public", "B) static methods cannot access instance variable x", "C) val must be final", "D) setX should return int"],
+          "correct": ["B"],
+          "explanation": "A static method belongs to the class and cannot access instance variables without an object reference."
+        },
+        {
+          "id": 1023,
+          "difficulty": "intermediate",
+          "question": "What is wrong with this code?\n\n```java\nabstract class Animal {\n    public abstract void sleep() {\n        System.out.println(\"Zzz\");\n    }\n}\n```",
+          "options": ["A) Abstract methods cannot have a body", "B) Animal cannot be public", "C) sleep() must be static", "D) No error"],
+          "correct": ["A"],
+          "explanation": "Abstract methods must end with a semicolon and have no implementation (no curly braces)."
+        },
+        {
+          "id": 1024,
+          "difficulty": "hard",
+          "question": "Which of the following is an invalid identifier in Java?",
+          "options": ["A) _myVar", "B) $money", "C) 2beOrNot2be", "D) My_Variable"],
+          "correct": ["C"],
+          "explanation": "Variable names in Java cannot start with a number."
+        },
+        {
+          "id": 1025,
+          "difficulty": "basic",
+          "question": "Which is the correct way to declare a main method?",
+          "options": ["A) public static void main()", "B) public void static main(String[] args)", "C) public static void main(String[] args)", "D) static public main(string args[])"],
+          "correct": ["C"],
+          "explanation": "The standard signature for the main method is public static void main(String[] args)."
+        },
+        {
+          "id": 1026,
+          "difficulty": "intermediate",
+          "question": "What happens if you try: `int x = null;`?",
+          "options": ["A) x becomes 0", "B) Compilation Error", "C) Runtime Exception", "D) x becomes undefined"],
+          "correct": ["B"],
+          "explanation": "Null can only be assigned to object references, not to primitive types like int."
+        },
+        {
+          "id": 1027,
+          "difficulty": "hard",
+          "question": "Which visibility modifier is missing a keyword in Java?",
+          "options": ["A) Public", "B) Private", "C) Protected", "D) Package-Private"],
+          "correct": ["D"],
+          "explanation": "Package-private (default visibility) is achieved by leaving the access modifier blank."
+        },
+        {
+          "id": 1028,
+          "difficulty": "intermediate",
+          "question": "Identify the error: `final abstract class Shape { }`",
+          "options": ["A) Abstract classes cannot be final", "B) Shape should be lowercase", "C) Missing semicolon", "D) No error"],
+          "correct": ["A"],
+          "explanation": "Abstract classes are meant to be inherited, while final classes cannot be inherited. These are contradictory."
+        },
+        {
+          "id": 1029,
+          "difficulty": "hard",
+          "question": "Error check: `float f = 1.2;` Why does this fail to compile?",
+          "options": ["A) float is not a Java keyword", "B) 1.2 is treated as a double by default", "C) f must be capitalized", "D) Missing quotes"],
+          "correct": ["B"],
+          "explanation": "Floating point literals are doubles by default. To assign it to a float, you must use `1.2f` or cast it."
+        },
+        {
+          "id": 1030,
+          "difficulty": "basic",
+          "question": "Which of these is a reserved keyword in Java and cannot be a variable name?",
+          "options": ["A) integer", "B) main", "C) class", "D) string"],
+          "correct": ["C"],
+          "explanation": "'class' is a reserved keyword in Java used to define class structures."
+        }
+      ]
+    },
+    "week2": {
+      "theory": [
+        {
+          "id": 2001,
+          "difficulty": "basic",
+          "question": "What is the purpose of a constructor in a Java class?",
+          "options": ["A) To destroy an object", "B) To initialize a newly created object", "C) To define static methods", "D) To prevent inheritance"],
+          "correct": ["B"],
+          "explanation": "Constructors are special methods called when an object is instantiated to set initial values for its attributes."
+        },
+        {
+          "id": 2002,
+          "difficulty": "intermediate",
+          "question": "What happens if you define a constructor with parameters but do not define a no-argument constructor?",
+          "options": ["A) Java still provides a default no-arg constructor", "B) The class will not compile", "C) Java will not provide a default no-arg constructor", "D) All objects will be null by default"],
+          "correct": ["C"],
+          "explanation": "Java only provides a default no-arg constructor if NO other constructors are explicitly defined."
+        },
+        {
+          "id": 2003,
+          "difficulty": "basic",
+          "question": "Which keyword is used to create an instance of a class?",
+          "options": ["A) create", "B) make", "C) new", "D) instance"],
+          "correct": ["C"],
+          "explanation": "The 'new' keyword allocates memory for a new object and invokes the constructor."
+        },
+        {
+          "id": 2004,
+          "difficulty": "intermediate",
+          "question": "Where are objects stored in Java memory?",
+          "options": ["A) Stack", "B) Heap", "C) Register", "D) CPU Cache"],
+          "correct": ["B"],
+          "explanation": "In Java, all objects are dynamically allocated on the Heap memory."
+        },
+        {
+          "id": 2005,
+          "difficulty": "intermediate",
+          "question": "Which keyword refers to the current instance of the class?",
+          "options": ["A) super", "B) object", "C) this", "D) current"],
+          "correct": ["C"],
+          "explanation": "'this' is a reference variable that refers to the current object."
+        },
+        {
+          "id": 2006,
+          "difficulty": "hard",
+          "question": "What is the life cycle of a 'static' variable?",
+          "options": ["A) It is created when an object is made and destroyed with the object", "B) It is created when the class is loaded and destroyed when the program ends", "C) It only exists inside the method it is declared in", "D) It is recreated every time a method is called"],
+          "correct": ["B"],
+          "explanation": "Static variables are associated with the class, not instances, so they persist for the duration of the program."
+        },
+        {
+          "id": 2007,
+          "difficulty": "intermediate",
+          "question": "Can an instance method call a static method in the same class?",
+          "options": ["A) Yes, directly", "B) No, never", "C) Only if the static method is public", "D) Only using the 'this' keyword"],
+          "correct": ["A"],
+          "explanation": "Instance methods can access static members because static members exist independently of any instance."
+        },
+        {
+          "id": 2008,
+          "difficulty": "basic",
+          "question": "What is the default value of an uninitialized object reference variable in a class?",
+          "options": ["A) 0", "B) false", "C) null", "D) empty"],
+          "correct": ["C"],
+          "explanation": "All non-primitive reference variables default to null if not explicitly initialized."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 2009,
+          "difficulty": "intermediate",
+          "question": "How do you call one constructor from another constructor within the same class?",
+          "options": ["A) Using super()", "B) Calling the class name as a method", "C) Using this()", "D) It is not possible"],
+          "correct": ["C"],
+          "explanation": "this() is used for constructor chaining within the same class and must be the first statement."
+        },
+        {
+          "id": 2010,
+          "difficulty": "hard",
+          "question": "Why can't the 'this' keyword be used inside a static method?",
+          "options": ["A) Static methods are private", "B) 'this' refers to an instance, but static methods belong to the class", "C) Static methods are executed before 'this' is defined", "D) Because 'this' is a reserved word for instance variables only"],
+          "correct": ["B"],
+          "explanation": "Static methods do not have an associated object instance, so there is no 'this' context available."
+        },
+        {
+          "id": 2011,
+          "difficulty": "intermediate",
+          "question": "If you have 10 objects of a class 'Student', how many copies of a 'static' variable 'schoolName' exist in memory?",
+          "options": ["A) 1", "B) 10", "C) 0", "D) 11"],
+          "correct": ["A"],
+          "explanation": "Static variables are shared by all instances of the class; only one copy exists regardless of the number of objects."
+        },
+        {
+          "id": 2012,
+          "difficulty": "intermediate",
+          "question": "A method header is 'public void calculate(int x)'. If you call 'calculate(5)', is 5 passed by value or reference?",
+          "options": ["A) Reference", "B) Value", "C) Both", "D) Neither"],
+          "correct": ["B"],
+          "explanation": "In Java, all primitives (like int) are passed by value (a copy is made)."
+        },
+        {
+          "id": 2013,
+          "difficulty": "hard",
+          "question": "Which of these allows 'shadowing' an instance variable with a local variable name?",
+          "options": ["A) this.variableName = variableName;", "B) super.variableName = variableName;", "C) variableName = variableName;", "D) static.variableName = variableName;"],
+          "correct": ["A"],
+          "explanation": "Using 'this' distinguishes the class attribute from the method parameter when they share the same name."
+        },
+        {
+          "id": 2014,
+          "difficulty": "intermediate",
+          "question": "What is the return type of a class constructor?",
+          "options": ["A) void", "B) The class type itself", "C) int", "D) No return type, not even void"],
+          "correct": ["D"],
+          "explanation": "Constructors do not have a return type; if a return type is added, it becomes a regular method."
+        },
+        {
+          "id": 2015,
+          "difficulty": "hard",
+          "question": "What is the correct way to call a static method 'printTotal()' from outside its class 'Report'?",
+          "options": ["A) Report.printTotal();", "B) new Report().printTotal();", "C) printTotal();", "D) Both A and B"],
+          "correct": ["D"],
+          "explanation": "While 'ClassName.method()' is preferred, static methods can technically also be accessed via an instance."
+        }
+      ],
+      "outputPrediction": [
+        {
+          "id": 2016,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```java\nclass Test {\n    int x = 5;\n    Test(int x) { x = x; }\n}\n// in main:\nTest t = new Test(10);\nSystem.out.println(t.x);\n```",
+          "options": ["A) 10", "B) 5", "C) 0", "D) Error"],
+          "correct": ["B"],
+          "explanation": "Without 'this.x', the constructor just assigns the parameter 'x' to itself, leaving the instance variable 'x' as 5."
+        },
+        {
+          "id": 2017,
+          "difficulty": "hard",
+          "question": "What is printed?\n\n```java\nclass MyClass {\n    static int a = 10;\n    MyClass() { a++; }\n}\n// in main:\nnew MyClass();\nnew MyClass();\nSystem.out.println(MyClass.a);\n```",
+          "options": ["A) 10", "B) 11", "C) 12", "D) Error"],
+          "correct": ["C"],
+          "explanation": "The static variable is shared. Each new object increments 'a' from its previous value."
+        },
+        {
+          "id": 2018,
+          "difficulty": "intermediate",
+          "question": "What is printed?\n\n```java\nString a = \"Hello\";\nString b = \"Hello\";\nSystem.out.println(a == b);\n```",
+          "options": ["A) true", "B) false", "C) Error", "D) null"],
+          "correct": ["A"],
+          "explanation": "Java uses a String Pool; literal strings with the same content often point to the same memory address."
+        },
+        {
+          "id": 2019,
+          "difficulty": "hard",
+          "question": "What is printed?\n\n```java\nString a = new String(\"Hi\");\nString b = new String(\"Hi\");\nSystem.out.println(a == b);\n```",
+          "options": ["A) true", "B) false", "C) Error", "D) null"],
+          "correct": ["B"],
+          "explanation": "Using 'new' forces the creation of two separate objects in the heap with different addresses, so '==' is false."
+        },
+        {
+          "id": 2020,
+          "difficulty": "hard",
+          "question": "What is the output?\n\n```java\nclass Val { int x; }\n// main:\nVal v1 = new Val();\nVal v2 = new Val();\nv1.x = 10;\nv2 = v1;\nv2.x = 20;\nSystem.out.println(v1.x);\n```",
+          "options": ["A) 10", "B) 20", "C) 0", "D) Error"],
+          "correct": ["B"],
+          "explanation": "After 'v2 = v1', both variables point to the same object. Changing v2.x also changes v1.x."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 2021,
+          "difficulty": "basic",
+          "question": "Which constructor declaration is invalid for class 'Student'?",
+          "options": ["A) public Student() { }", "B) void Student() { }", "C) Student(int id) { }", "D) private Student() { }"],
+          "correct": ["B"],
+          "explanation": "Constructors cannot have a return type like 'void'. This makes it a regular method, not a constructor."
+        },
+        {
+          "id": 2022,
+          "difficulty": "intermediate",
+          "question": "Identify the error:\n\n```java\nclass Demo {\n    void show() { System.out.println(\"Hi\"); }\n    static void call() { show(); }\n}\n```",
+          "options": ["A) show() must be private", "B) Static methods cannot call non-static methods directly", "C) call() needs a return type", "D) System.out.println is wrong"],
+          "correct": ["B"],
+          "explanation": "A static method cannot call an instance method without first creating an object of the class."
+        },
+        {
+          "id": 2023,
+          "difficulty": "hard",
+          "question": "What is wrong with this constructor chaining?\n\n```java\nclass Car {\n    Car() {\n        System.out.println(\"Built\");\n        this(\"Red\");\n    }\n    Car(String color) { }\n}\n```",
+          "options": ["A) 'this()' call must be the first statement", "B) You cannot call two constructors", "C) String must be in single quotes", "D) Red should be lowercase"],
+          "correct": ["A"],
+          "explanation": "In Java, a call to another constructor using this() must be the very first line of the constructor."
+        },
+        {
+          "id": 2024,
+          "difficulty": "intermediate",
+          "question": "Identify the error:\n\n```java\npublic class Test {\n    public static void main(String[] args) {\n        Test t;\n        t.print();\n    }\n    void print() { }\n}\n```",
+          "options": ["A) print() must be static", "B) variable 't' might not have been initialized", "C) main cannot be public", "D) args should be an int array"],
+          "correct": ["B"],
+          "explanation": "The variable 't' is declared but never assigned an object (new Test()), so calling a method on it causes an error."
+        },
+        {
+          "id": 2025,
+          "difficulty": "basic",
+          "question": "Which of these is NOT a valid access modifier in Java?",
+          "options": ["A) public", "B) private", "C) protected", "D) internal"],
+          "correct": ["D"],
+          "explanation": "'internal' is used in languages like C#, but it is not a Java keyword."
+        },
+        {
+          "id": 2026,
+          "difficulty": "intermediate",
+          "question": "Error check: `class Student { final Student() { } }`",
+          "options": ["A) Constructors cannot be final", "B) Student should be lowercase", "C) Missing return type", "D) Final must be public"],
+          "correct": ["A"],
+          "explanation": "Constructors are not inherited and cannot be overridden, so the 'final' modifier is not applicable to them."
+        },
+        {
+          "id": 2027,
+          "difficulty": "hard",
+          "question": "Identify the error:\n\n```java\nclass Sample {\n    static int x = 10;\n    void change() {\n        static int y = 20;\n    }\n}\n```",
+          "options": ["A) x cannot be static", "B) Local variables (inside methods) cannot be static", "C) change() must be static", "D) y must be final"],
+          "correct": ["B"],
+          "explanation": "The 'static' keyword can only be used for class-level variables, not for local variables inside methods."
+        },
+        {
+          "id": 2028,
+          "difficulty": "intermediate",
+          "question": "Which line causes a syntax error?\n\n```java\n1. int[] arr = new int[5];\n2. arr[5] = 10;\n```",
+          "options": ["A) Line 1", "B) Line 2: logical error, but no syntax error", "C) Line 2: syntax error", "D) No error"],
+          "correct": ["B"],
+          "explanation": "Assigning to an index out of bounds is a runtime error (ArrayIndexOutOfBoundsException), not a syntax (compile-time) error."
+        },
+        {
+          "id": 2029,
+          "difficulty": "hard",
+          "question": "Can a class be declared as 'private'?",
+          "options": ["A) Yes, always", "B) No, never", "C) Only if it is an inner class", "D) Only if it has no methods"],
+          "correct": ["C"],
+          "explanation": "Top-level classes can only be public or package-private. Only nested/inner classes can be private."
+        },
+        {
+          "id": 2030,
+          "difficulty": "basic",
+          "question": "What is wrong here: `int x = \"5\";`?",
+          "options": ["A) x is not a String", "B) Incompatible types: String cannot be converted to int", "C) Semicolon is missing", "D) 5 should be in single quotes"],
+          "correct": ["B"],
+          "explanation": "Java is strongly typed; you cannot assign a String literal to an integer variable."
+        }
+      ]
+    },
+    "week3": {
+      "theory": [
+        {
+          "id": 3001,
+          "difficulty": "basic",
+          "question": "Which keyword is used by a subclass to call a method or constructor from its parent class?",
+          "options": ["A) this", "B) parent", "C) super", "D) extends"],
+          "correct": ["C"],
+          "explanation": "The 'super' keyword is used to access members or constructors of the immediate superclass."
+        },
+        {
+          "id": 3002,
+          "difficulty": "intermediate",
+          "question": "What is 'Method Overriding'?",
+          "options": ["A) Defining multiple methods with the same name but different parameters", "B) A subclass providing a specific implementation for a method already defined in its superclass", "C) Changing the return type of a method in the same class", "D) Using the same method name in two unrelated classes"],
+          "correct": ["B"],
+          "explanation": "Overriding allows a subclass to change the behavior of an inherited method while keeping the same signature."
+        },
+        {
+          "id": 3003,
+          "difficulty": "basic",
+          "question": "In Java, can a class extend more than one parent class?",
+          "options": ["A) Yes, using commas", "B) No, Java only supports single inheritance for classes", "C) Yes, if both parents are abstract", "D) Only if the parent classes have no constructors"],
+          "correct": ["B"],
+          "explanation": "Java strictly supports single inheritance for classes to avoid the 'Diamond Problem' of ambiguity."
+        },
+        {
+          "id": 3004,
+          "difficulty": "intermediate",
+          "question": "Which modifier prevents a method from being overridden in any subclass?",
+          "options": ["A) static", "B) final", "C) abstract", "D) private"],
+          "correct": ["B"],
+          "explanation": "A 'final' method is the complete and final version; it cannot be changed by any child class."
+        },
+        {
+          "id": 3005,
+          "difficulty": "intermediate",
+          "question": "What is the result of applying the 'abstract' keyword to a class?",
+          "options": ["A) The class cannot be inherited", "B) All methods in the class must be empty", "C) The class cannot be instantiated using 'new'", "D) The class automatically becomes static"],
+          "correct": ["C"],
+          "explanation": "Abstract classes are conceptual templates and cannot be turned into objects directly."
+        },
+        {
+          "id": 3006,
+          "difficulty": "hard",
+          "question": "What is 'Dynamic Binding'?",
+          "options": ["A) Linking a variable to a type at compile time", "B) Determining which overridden method to call at runtime based on the object type", "C) Automatically resizing an array", "D) Converting a primitive to an object"],
+          "correct": ["B"],
+          "explanation": "Dynamic binding is the mechanism where the JVM decides at runtime which version of a method to execute."
+        },
+        {
+          "id": 3007,
+          "difficulty": "intermediate",
+          "question": "Which of the following is true about 'Interface' in Java?",
+          "options": ["A) It can have instance variables", "B) A class can implement multiple interfaces", "C) Interfaces can be instantiated", "D) All methods in an interface must be static"],
+          "correct": ["B"],
+          "explanation": "Interfaces allow Java to support a form of multiple inheritance where a class can fulfill multiple 'contracts'."
+        },
+        {
+          "id": 3008,
+          "difficulty": "basic",
+          "question": "Which annotation is used to inform the compiler that a method is intended to override a parent method?",
+          "options": ["A) @Inherit", "B) @Overwrite", "C) @Override", "D) @Super"],
+          "correct": ["C"],
+          "explanation": "The @Override annotation helps prevent errors by checking if the method signature actually matches a parent method."
+        }
+      ],
+      "codeLogic": [
+        {
+          "id": 3009,
+          "difficulty": "intermediate",
+          "question": "If 'Class B extends A', and both have a method 'run()', what does 'super.run()' inside Class B do?",
+          "options": ["A) Restarts the program", "B) Calls the 'run' method defined in Class A", "C) Calls the 'run' method defined in Class B", "D) Creates a new instance of A"],
+          "correct": ["B"],
+          "explanation": "Using 'super' allows a subclass to bypass its own overridden version and use the parent's logic."
+        },
+        {
+          "id": 3010,
+          "difficulty": "hard",
+          "question": "If a subclass constructor does not explicitly call 'super()' or 'this()', what happens?",
+          "options": ["A) No constructor is called", "B) Compilation error", "C) The compiler automatically inserts 'super()' as the first line", "D) The program crashes at runtime"],
+          "correct": ["C"],
+          "explanation": "Java ensures the parent class is initialized first by implicitly calling the no-arg constructor of the superclass."
+        },
+        {
+          "id": 3011,
+          "difficulty": "intermediate",
+          "question": "When can a subclass NOT call 'super()'?",
+          "options": ["A) If the parent class is abstract", "B) If the parent class has no no-argument constructor and no other constructor is called", "C) If the parent class is public", "D) If the parent class is in the same package"],
+          "correct": ["B"],
+          "explanation": "If a parent class only has a parameterized constructor, the child MUST explicitly call it using super(args)."
+        },
+        {
+          "id": 3012,
+          "difficulty": "hard",
+          "question": "Can an abstract class have a constructor?",
+          "options": ["A) No, because it can't be instantiated", "B) Yes, to initialize fields that subclasses will inherit", "C) Only if all methods are abstract", "D) Only if the constructor is private"],
+          "correct": ["B"],
+          "explanation": "Abstract classes have constructors that are invoked through constructor chaining when a concrete subclass is created."
+        },
+        {
+          "id": 3013,
+          "difficulty": "intermediate",
+          "question": "In a UML diagram, which line represents Interface Implementation (Realization)?",
+          "options": ["A) Solid line with hollow triangle", "B) Dashed line with hollow triangle", "C) Solid line with arrow", "D) Dashed line with diamond"],
+          "correct": ["B"],
+          "explanation": "Realization (Interface) uses a dashed line, while Generalization (Inheritance) uses a solid line."
+        },
+        {
+          "id": 3014,
+          "difficulty": "hard",
+          "question": "What is 'Upcasting' in Java?",
+          "options": ["A) Casting a parent reference to a child type", "B) Casting a child reference to a parent type", "C) Converting an int to a double", "D) Changing a private method to public"],
+          "correct": ["B"],
+          "explanation": "Upcasting is always safe and happens automatically (e.g., Animal a = new Dog())."
+        },
+        {
+          "id": 3015,
+          "difficulty": "hard",
+          "question": "Why would you use an Abstract Class instead of an Interface?",
+          "options": ["A) When you want to provide common code implementation for some methods", "B) When you need multiple inheritance", "C) When you want to make all methods public", "D) When you want to save memory"],
+          "correct": ["A"],
+          "explanation": "Abstract classes allow you to mix implemented logic with abstract declarations, whereas interfaces are strictly for contracts (pre-Java 8)."
+        }
+      ],
+      "outputPrediction": [
+        {
+          "id": 3016,
+          "difficulty": "intermediate",
+          "question": "What is the output?\n\n```java\nclass P { void f() { System.out.print(\"P\"); } }\nclass C extends P { void f() { System.out.print(\"C\"); } }\n// main:\nP obj = new C();\nobj.f();\n```",
+          "options": ["A) P", "B) C", "C) PC", "D) Error"],
+          "correct": ["B"],
+          "explanation": "Methods are polymorphic. The actual object is 'C', so C's version of 'f()' is called."
+        },
+        {
+          "id": 3017,
+          "difficulty": "hard",
+          "question": "What is the output?\n\n```java\nclass P { int x = 10; }\nclass C extends P { int x = 20; }\n// main:\nP obj = new C();\nSystem.out.println(obj.x);\n```",
+          "options": ["A) 10", "B) 20", "C) 0", "D) Error"],
+          "correct": ["A"],
+          "explanation": "Fields are NOT polymorphic. The reference type 'P' determines that P's version of 'x' is accessed."
+        },
+        {
+          "id": 3018,
+          "difficulty": "hard",
+          "question": "What is the output?\n\n```java\nclass A { A() { System.out.print(\"A\"); } }\nclass B extends A { B() { System.out.print(\"B\"); } }\n// main:\nnew B();\n```",
+          "options": ["A) B", "B) AB", "C) BA", "D) A"],
+          "correct": ["B"],
+          "explanation": "Constructor chaining ensures the parent constructor (A) runs before the child constructor (B)."
+        },
+        {
+          "id": 3019,
+          "difficulty": "hard",
+          "question": "What is the output?\n\n```java\nclass A { void m(Object o) { System.out.print(\"Obj\"); } }\nclass B extends A { void m(String s) { System.out.print(\"Str\"); } }\n// main:\nB b = new B();\nb.m(\"Hi\");\n```",
+          "options": ["A) Obj", "B) Str", "C) ObjStr", "D) Error"],
+          "correct": ["B"],
+          "explanation": "Class B overloaded the method 'm'. Since 'Hi' is a String, the most specific match (the String version) is chosen."
+        },
+        {
+          "id": 3020,
+          "difficulty": "hard",
+          "question": "What is the output?\n\n```java\nclass A { static void s() { System.out.print(\"A\"); } }\nclass B extends A { static void s() { System.out.print(\"B\"); } }\n// main:\nA obj = new B();\nobj.s();\n```",
+          "options": ["A) A", "B) B", "C) AB", "D) Error"],
+          "correct": ["A"],
+          "explanation": "Static methods are hidden, not overridden. They are resolved based on the reference type (A)."
+        }
+      ],
+      "syntaxError": [
+        {
+          "id": 3021,
+          "difficulty": "intermediate",
+          "question": "Identify the error:\n\n```java\nfinal class Parent { }\nclass Child extends Parent { }\n```",
+          "options": ["A) Child must be final", "B) Cannot extend a final class", "C) Missing constructor", "D) Parent must be public"],
+          "correct": ["B"],
+          "explanation": "The 'final' keyword on a class explicitly prevents it from being a superclass."
+        },
+        {
+          "id": 3022,
+          "difficulty": "hard",
+          "question": "Identify the error:\n\n```java\nclass A { A(int x) { } }\nclass B extends A { B() { } }\n```",
+          "options": ["A) B needs a parameter", "B) A has no no-arg constructor; B must call super(int)", "C) A cannot have a constructor", "D) Class B must be abstract"],
+          "correct": ["B"],
+          "explanation": "Since A has a defined constructor, the default no-arg constructor is gone. B must manually call the existing parent constructor."
+        },
+        {
+          "id": 3023,
+          "difficulty": "intermediate",
+          "question": "What is wrong with this overriding?\n\n```java\nclass A { protected void msg() { } }\nclass B extends A { private void msg() { } }\n```",
+          "options": ["A) Return type must change", "B) Cannot reduce visibility from protected to private", "C) msg() must be static", "D) No error"],
+          "correct": ["B"],
+          "explanation": "When overriding, you can increase visibility (e.g., to public) but never decrease it."
+        },
+        {
+          "id": 3024,
+          "difficulty": "hard",
+          "question": "Identify the syntax error:\n\n```java\nabstract class Test {\n    abstract static void run();\n}\n```",
+          "options": ["A) Test cannot be abstract", "B) Methods cannot be both abstract and static", "C) run() needs a body", "D) Missing return type"],
+          "correct": ["B"],
+          "explanation": "Static methods belong to the class and cannot be overridden, while abstract methods MUST be overridden. This is a contradiction."
+        },
+        {
+          "id": 3025,
+          "difficulty": "intermediate",
+          "question": "Error check: `Animal a = new Animal();` if Animal is an abstract class.",
+          "options": ["A) No error", "B) Cannot instantiate abstract class", "C) a must be final", "D) Animal needs a constructor"],
+          "correct": ["B"],
+          "explanation": "Abstract classes can only be used as references for concrete subclass objects; they cannot be created themselves."
+        },
+        {
+          "id": 3026,
+          "difficulty": "hard",
+          "question": "Identify the error:\n\n```java\ninterface I { int x = 10; }\n// main:\nI.x = 20;\n```",
+          "options": ["A) x is not static", "B) Variables in interfaces are implicitly final and cannot be changed", "C) I must be a class", "D) x must be private"],
+          "correct": ["B"],
+          "explanation": "All variables in an interface are implicitly 'public static final'."
+        },
+        {
+          "id": 3027,
+          "difficulty": "hard",
+          "question": "What is wrong with this code?\n\n```java\nclass A { final void play() { } }\nclass B extends A { void play() { } }\n```",
+          "options": ["A) B cannot have a play method", "B) Cannot override a final method", "C) A must be abstract", "D) B must be final"],
+          "correct": ["B"],
+          "explanation": "A method marked 'final' in the superclass cannot be redefined (overridden) in a subclass."
+        },
+        {
+          "id": 3028,
+          "difficulty": "intermediate",
+          "question": "Syntax check: `class B extends A implements I1, I2 { }`",
+          "options": ["A) Cannot implement two interfaces", "B) Extends must come after implements", "C) No error", "D) B must be abstract"],
+          "correct": ["C"],
+          "explanation": "Java allows a class to extend one parent and implement as many interfaces as needed."
+        },
+        {
+          "id": 3029,
+          "difficulty": "hard",
+          "question": "Identify the error:\n\n```java\nclass A { void m() { } }\nclass B extends A { int m() { return 1; } }\n```",
+          "options": ["A) Return type is incompatible with parent method", "B) B must be static", "C) m() cannot return an int", "D) No error"],
+          "correct": ["A"],
+          "explanation": "Overriding requires the same return type (or a covariant one). You cannot change 'void' to 'int'."
+        },
+        {
+          "id": 3030,
+          "difficulty": "basic",
+          "question": "Can a constructor be private?",
+          "options": ["A) Yes, to prevent instantiation from outside the class", "B) No, it must be public", "C) Only in abstract classes", "D) Only if the class is final"],
+          "correct": ["A"],
+          "explanation": "Private constructors are often used in the Singleton pattern or for utility classes with only static methods."
+        }
+      ]
+    }
+  }
 }

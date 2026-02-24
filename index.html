@@ -6,6 +6,116 @@
     <title>Danny's SC1003 Programming Quiz</title>
     <link rel="stylesheet" href="style.css">
     <style>
+    /* ── Lockscreen ───────────────────────────────────────── */
+    .lockscreen {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--color-background, #fcfcf9);
+      z-index: 9999;
+      transition: opacity 0.4s ease;
+    }
+    .lockscreen.unlocking {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .lockscreen.hidden { display: none; }
+
+    .lockscreen__card {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 1rem;
+      padding: 2.5rem 2rem;
+      background: var(--color-surface, #fff);
+      border: 1px solid var(--color-border, rgba(94,82,64,.2));
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+      width: min(360px, 92vw);
+    }
+    .lockscreen__icon { font-size: 2.5rem; line-height: 1; }
+    .lockscreen__title {
+      margin: 0; font-size: 1.4rem; font-weight: 650;
+      color: var(--color-text);
+    }
+    .lockscreen__subtitle {
+      margin: -0.5rem 0 0; font-size: 0.875rem;
+      color: var(--color-text-secondary);
+    }
+    .lockscreen__dm {
+      margin: -0.25rem 0 0; font-size: 0.8rem;
+      color: var(--color-text-secondary);
+    }
+    .lockscreen__dm a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .lockscreen__dm a:hover { text-decoration: underline; }
+
+    /* Dot indicators */
+    .lockscreen__dots {
+      display: flex; gap: 0.75rem; margin: 0.25rem 0;
+    }
+    .lock-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--color-primary, #21808d);
+      background: transparent;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .lock-dot.filled {
+      background: var(--color-primary, #21808d);
+      transform: scale(1.15);
+    }
+    .lock-dot.shake { animation: dot-shake 0.35s ease; }
+
+    @keyframes dot-shake {
+      0%,100% { transform: translateX(0); }
+      20%      { transform: translateX(-5px); }
+      40%      { transform: translateX(5px); }
+      60%      { transform: translateX(-4px); }
+      80%      { transform: translateX(4px); }
+    }
+
+    /* Error text */
+    .lockscreen__error {
+      margin: -0.25rem 0 0;
+      font-size: 0.8rem; color: var(--color-error, #c0152f);
+      font-weight: 500;
+    }
+
+    /* Number pad */
+    .lockscreen__pad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 260px;
+    }
+    .pad-btn {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid var(--color-border, rgba(94,82,64,.2));
+      background: var(--color-surface, #fff);
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: background 0.12s, transform 0.1s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pad-btn:hover:not(:disabled) {
+      background: var(--color-secondary, rgba(94,82,64,.12));
+    }
+    .pad-btn:active:not(:disabled) {
+      transform: scale(0.9);
+      background: var(--color-primary, #21808d);
+      color: #fff;
+    }
+    .pad-btn--ghost {
+      background: transparent; border-color: transparent;
+      font-size: 1rem;
+    }
+    .pad-btn--ghost:hover { background: var(--color-secondary, rgba(94,82,64,.08)); }
+    .pad-btn:disabled { visibility: hidden; }
+
     .contact-banner {
     background: var(--color-bg-2);        /* bright orange tint in light / dark */
     border-left: 4px solid var(--color-warning);
@@ -27,11 +137,52 @@
     </style>
 </head>
 <body>
+
+    <!-- ══════════════════════════════════════════════════
+         LOCKSCREEN  — shown until correct code entered
+    ══════════════════════════════════════════════════ -->
+    <div id="lockscreen" class="lockscreen">
+        <div class="lockscreen__card">
+            <div class="lockscreen__icon">🔒</div>
+            <h2 class="lockscreen__title">Danny's Quiz</h2>
+            <p class="lockscreen__subtitle">Enter access code to continue</p>
+            <p class="lockscreen__dm">Need the code? DM <a href="https://t.me/huuep" target="_blank" rel="noopener">@huuep</a> on Telegram</p>
+
+            <!-- Dot indicators -->
+            <div class="lockscreen__dots" id="lock-dots">
+                <span class="lock-dot" id="dot-0"></span>
+                <span class="lock-dot" id="dot-1"></span>
+                <span class="lock-dot" id="dot-2"></span>
+                <span class="lock-dot" id="dot-3"></span>
+                <span class="lock-dot" id="dot-4"></span>
+                <span class="lock-dot" id="dot-5"></span>
+            </div>
+
+            <p class="lockscreen__error hidden" id="lock-error">Incorrect code. Try again.</p>
+
+            <!-- Number pad -->
+            <div class="lockscreen__pad">
+                <button class="pad-btn" data-digit="1">1</button>
+                <button class="pad-btn" data-digit="2">2</button>
+                <button class="pad-btn" data-digit="3">3</button>
+                <button class="pad-btn" data-digit="4">4</button>
+                <button class="pad-btn" data-digit="5">5</button>
+                <button class="pad-btn" data-digit="6">6</button>
+                <button class="pad-btn" data-digit="7">7</button>
+                <button class="pad-btn" data-digit="8">8</button>
+                <button class="pad-btn" data-digit="9">9</button>
+                <button class="pad-btn pad-btn--ghost" id="pad-clear">⌫</button>
+                <button class="pad-btn" data-digit="0">0</button>
+                <button class="pad-btn pad-btn--ghost" disabled></button>
+            </div>
+        </div>
+    </div>
+
     <!-- Mode Selection Screen -->
-    <div id="mode-selection-screen" class="screen">
+    <div id="mode-selection-screen" class="screen hidden">
         <div class="container">
             <div class="welcome-content">
-                <h1>Danny's SC1003 Python Quiz</h1>
+                <h1>Danny's SC1003 Programming Quiz</h1>
 
                 <!-- LANGUAGE TOGGLE -->
                 <div class="lang-toggle-wrapper">
@@ -516,6 +667,17 @@
     .lang-label--python.inactive { opacity: 0.45; }
     .lang-label--java.active    { opacity: 1; }
 
+    /* ── Main layout centering fix ───────────────────────── */
+    #mode-selection-screen .container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .welcome-content {
+      margin: 0 auto;
+      width: 100%;
+    }
+
     /* ── Student Config Modal hint ───────────────────────── */
     .config-hint {
       font-size: 0.8rem;
@@ -525,6 +687,91 @@
       font-style: italic;
     }
     </style>
+    <script>
+    // ── Lockscreen ─────────────────────────────────────────
+    // Change this to your preferred 6-digit code
+    const ACCESS_CODE = '130205';
+
+    const SESSION_KEY = 'quiz_unlocked';
+    let lockEntry = '';
+
+    function lockInit() {
+      // If already unlocked this session, skip straight through
+      if (sessionStorage.getItem(SESSION_KEY) === '1') {
+        document.getElementById('lockscreen').classList.add('hidden');
+        document.getElementById('mode-selection-screen').classList.remove('hidden');
+        return;
+      }
+
+      // Wire up pad buttons
+      document.querySelectorAll('.pad-btn[data-digit]').forEach(btn => {
+        btn.addEventListener('click', () => lockPressDigit(btn.dataset.digit));
+      });
+      document.getElementById('pad-clear').addEventListener('click', lockBackspace);
+
+      // Keyboard support
+      document.addEventListener('keydown', (e) => {
+        if (document.getElementById('lockscreen').classList.contains('hidden')) return;
+        if (e.key >= '0' && e.key <= '9') lockPressDigit(e.key);
+        else if (e.key === 'Backspace') lockBackspace();
+      });
+    }
+
+    function lockPressDigit(d) {
+      if (lockEntry.length >= 6) return;
+      lockEntry += d;
+      lockUpdateDots();
+      if (lockEntry.length === 6) {
+        setTimeout(lockCheck, 120); // tiny delay so last dot animates
+      }
+    }
+
+    function lockBackspace() {
+      lockEntry = lockEntry.slice(0, -1);
+      lockUpdateDots();
+      lockHideError();
+    }
+
+    function lockUpdateDots() {
+      for (let i = 0; i < 6; i++) {
+        const dot = document.getElementById('dot-' + i);
+        dot.classList.toggle('filled', i < lockEntry.length);
+      }
+    }
+
+    function lockCheck() {
+      if (lockEntry === ACCESS_CODE) {
+        sessionStorage.setItem(SESSION_KEY, '1');
+        const ls = document.getElementById('lockscreen');
+        ls.classList.add('unlocking');
+        setTimeout(() => {
+          ls.classList.add('hidden');
+          ls.classList.remove('unlocking');
+          document.getElementById('mode-selection-screen').classList.remove('hidden');
+        }, 400);
+      } else {
+        lockShowError();
+        // Shake all dots
+        for (let i = 0; i < 6; i++) {
+          document.getElementById('dot-' + i).classList.add('shake');
+        }
+        setTimeout(() => {
+          lockEntry = '';
+          lockUpdateDots();
+          document.querySelectorAll('.lock-dot').forEach(d => d.classList.remove('shake'));
+        }, 500);
+      }
+    }
+
+    function lockShowError() {
+      document.getElementById('lock-error').classList.remove('hidden');
+    }
+    function lockHideError() {
+      document.getElementById('lock-error').classList.add('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', lockInit);
+    </script>
     <script src="app.js"></script>
 </body>
 </html>

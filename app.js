@@ -119,7 +119,7 @@ function switchLanguage() {
     toggle.setAttribute('aria-checked', 'true');
     labelPython.style.opacity = '0.4';
     labelJava.style.opacity   = '1';
-    if (title) title.textContent = "Danny's CS1010J Java Quiz";
+    if (title) title.textContent = "Danny's SC2002 Java Quiz";
   } else {
     toggle.classList.remove('is-java');
     toggle.setAttribute('aria-checked', 'false');

@@ -1000,9 +1000,9 @@ function renderDifficultyFilters() {
   container.innerHTML = '';
   
   const difficulties = [
-    { id: "basic", name: "Basic" },
+    { id: "basic",        name: "Basic" },
     { id: "intermediate", name: "Intermediate" },
-    { id: "advanced", name: "Advanced" }
+    { id: "advanced",     name: "Advanced" }
   ];
   
   difficulties.forEach(difficulty => {

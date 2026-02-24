@@ -52,7 +52,7 @@
         },
         {
           "id": 1007,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Which of these is a disadvantage of Procedural Programming compared to OOP?",
           "options": ["A) No support for functions", "B) Data is often global and disconnected from functions", "C) It is too fast for simple machines", "D) It does not support integer types"],
           "correct": ["B"],
@@ -86,7 +86,7 @@
         },
         {
           "id": 1011,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "To implement true Encapsulation for a 'balance' variable, how should you declare it?",
           "options": ["A) public double balance;", "B) private double balance; + public getter/setter", "C) static double balance;", "D) final double balance;"],
           "correct": ["B"],
@@ -102,7 +102,7 @@
         },
         {
           "id": 1013,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "If you want to ensure all 'Shape' subclasses have a 'getArea()' method, but 'Shape' itself cannot calculate an area, what should you use?",
           "options": ["A) A private method", "B) An abstract method", "C) A static method", "D) A constructor"],
           "correct": ["B"],
@@ -118,7 +118,7 @@
         },
         {
           "id": 1015,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Which concept allows a single 'draw()' method call to result in a Circle, Square, or Triangle being drawn at runtime?",
           "options": ["A) Information Hiding", "B) Abstraction", "C) Polymorphism", "D) Composition"],
           "correct": ["C"],
@@ -152,7 +152,7 @@
         },
         {
           "id": 1019,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is the output?\n\n```java\nSystem.out.println(10 + 20 + \"Java\");\n```",
           "options": ["A) 1020Java", "B) 30Java", "C) Java30", "D) Error"],
           "correct": ["B"],
@@ -160,7 +160,7 @@
         },
         {
           "id": 1020,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is the output?\n\n```java\nSystem.out.println(\"Java\" + 10 + 20);\n```",
           "options": ["A) Java30", "B) Java1020", "C) 30Java", "D) Error"],
           "correct": ["B"],
@@ -194,7 +194,7 @@
         },
         {
           "id": 1024,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Which of the following is an invalid identifier in Java?",
           "options": ["A) _myVar", "B) $money", "C) 2beOrNot2be", "D) My_Variable"],
           "correct": ["C"],
@@ -218,7 +218,7 @@
         },
         {
           "id": 1027,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Which visibility modifier is missing a keyword in Java?",
           "options": ["A) Public", "B) Private", "C) Protected", "D) Package-Private"],
           "correct": ["D"],
@@ -234,7 +234,7 @@
         },
         {
           "id": 1029,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Error check: `float f = 1.2;` Why does this fail to compile?",
           "options": ["A) float is not a Java keyword", "B) 1.2 is treated as a double by default", "C) f must be capitalized", "D) Missing quotes"],
           "correct": ["B"],
@@ -294,7 +294,7 @@
         },
         {
           "id": 2006,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is the life cycle of a 'static' variable?",
           "options": ["A) It is created when an object is made and destroyed with the object", "B) It is created when the class is loaded and destroyed when the program ends", "C) It only exists inside the method it is declared in", "D) It is recreated every time a method is called"],
           "correct": ["B"],
@@ -328,7 +328,7 @@
         },
         {
           "id": 2010,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Why can't the 'this' keyword be used inside a static method?",
           "options": ["A) Static methods are private", "B) 'this' refers to an instance, but static methods belong to the class", "C) Static methods are executed before 'this' is defined", "D) Because 'this' is a reserved word for instance variables only"],
           "correct": ["B"],
@@ -352,7 +352,7 @@
         },
         {
           "id": 2013,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Which of these allows 'shadowing' an instance variable with a local variable name?",
           "options": ["A) this.variableName = variableName;", "B) super.variableName = variableName;", "C) variableName = variableName;", "D) static.variableName = variableName;"],
           "correct": ["A"],
@@ -368,7 +368,7 @@
         },
         {
           "id": 2015,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is the correct way to call a static method 'printTotal()' from outside its class 'Report'?",
           "options": ["A) Report.printTotal();", "B) new Report().printTotal();", "C) printTotal();", "D) Both A and B"],
           "correct": ["D"],
@@ -386,7 +386,7 @@
         },
         {
           "id": 2017,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is printed?\n\n```java\nclass MyClass {\n    static int a = 10;\n    MyClass() { a++; }\n}\n// in main:\nnew MyClass();\nnew MyClass();\nSystem.out.println(MyClass.a);\n```",
           "options": ["A) 10", "B) 11", "C) 12", "D) Error"],
           "correct": ["C"],
@@ -402,7 +402,7 @@
         },
         {
           "id": 2019,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is printed?\n\n```java\nString a = new String(\"Hi\");\nString b = new String(\"Hi\");\nSystem.out.println(a == b);\n```",
           "options": ["A) true", "B) false", "C) Error", "D) null"],
           "correct": ["B"],
@@ -410,7 +410,7 @@
         },
         {
           "id": 2020,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is the output?\n\n```java\nclass Val { int x; }\n// main:\nVal v1 = new Val();\nVal v2 = new Val();\nv1.x = 10;\nv2 = v1;\nv2.x = 20;\nSystem.out.println(v1.x);\n```",
           "options": ["A) 10", "B) 20", "C) 0", "D) Error"],
           "correct": ["B"],
@@ -436,7 +436,7 @@
         },
         {
           "id": 2023,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is wrong with this constructor chaining?\n\n```java\nclass Car {\n    Car() {\n        System.out.println(\"Built\");\n        this(\"Red\");\n    }\n    Car(String color) { }\n}\n```",
           "options": ["A) 'this()' call must be the first statement", "B) You cannot call two constructors", "C) String must be in single quotes", "D) Red should be lowercase"],
           "correct": ["A"],
@@ -468,7 +468,7 @@
         },
         {
           "id": 2027,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Identify the error:\n\n```java\nclass Sample {\n    static int x = 10;\n    void change() {\n        static int y = 20;\n    }\n}\n```",
           "options": ["A) x cannot be static", "B) Local variables (inside methods) cannot be static", "C) change() must be static", "D) y must be final"],
           "correct": ["B"],
@@ -484,7 +484,7 @@
         },
         {
           "id": 2029,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Can a class be declared as 'private'?",
           "options": ["A) Yes, always", "B) No, never", "C) Only if it is an inner class", "D) Only if it has no methods"],
           "correct": ["C"],
@@ -544,7 +544,7 @@
         },
         {
           "id": 3006,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is 'Dynamic Binding'?",
           "options": ["A) Linking a variable to a type at compile time", "B) Determining which overridden method to call at runtime based on the object type", "C) Automatically resizing an array", "D) Converting a primitive to an object"],
           "correct": ["B"],
@@ -578,7 +578,7 @@
         },
         {
           "id": 3010,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "If a subclass constructor does not explicitly call 'super()' or 'this()', what happens?",
           "options": ["A) No constructor is called", "B) Compilation error", "C) The compiler automatically inserts 'super()' as the first line", "D) The program crashes at runtime"],
           "correct": ["C"],
@@ -594,7 +594,7 @@
         },
         {
           "id": 3012,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Can an abstract class have a constructor?",
           "options": ["A) No, because it can't be instantiated", "B) Yes, to initialize fields that subclasses will inherit", "C) Only if all methods are abstract", "D) Only if the constructor is private"],
           "correct": ["B"],
@@ -610,7 +610,7 @@
         },
         {
           "id": 3014,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is 'Upcasting' in Java?",
           "options": ["A) Casting a parent reference to a child type", "B) Casting a child reference to a parent type", "C) Converting an int to a double", "D) Changing a private method to public"],
           "correct": ["B"],
@@ -618,7 +618,7 @@
         },
         {
           "id": 3015,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Why would you use an Abstract Class instead of an Interface?",
           "options": ["A) When you want to provide common code implementation for some methods", "B) When you need multiple inheritance", "C) When you want to make all methods public", "D) When you want to save memory"],
           "correct": ["A"],
@@ -636,7 +636,7 @@
         },
         {
           "id": 3017,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is the output?\n\n```java\nclass P { int x = 10; }\nclass C extends P { int x = 20; }\n// main:\nP obj = new C();\nSystem.out.println(obj.x);\n```",
           "options": ["A) 10", "B) 20", "C) 0", "D) Error"],
           "correct": ["A"],
@@ -644,7 +644,7 @@
         },
         {
           "id": 3018,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is the output?\n\n```java\nclass A { A() { System.out.print(\"A\"); } }\nclass B extends A { B() { System.out.print(\"B\"); } }\n// main:\nnew B();\n```",
           "options": ["A) B", "B) AB", "C) BA", "D) A"],
           "correct": ["B"],
@@ -652,7 +652,7 @@
         },
         {
           "id": 3019,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is the output?\n\n```java\nclass A { void m(Object o) { System.out.print(\"Obj\"); } }\nclass B extends A { void m(String s) { System.out.print(\"Str\"); } }\n// main:\nB b = new B();\nb.m(\"Hi\");\n```",
           "options": ["A) Obj", "B) Str", "C) ObjStr", "D) Error"],
           "correct": ["B"],
@@ -660,7 +660,7 @@
         },
         {
           "id": 3020,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is the output?\n\n```java\nclass A { static void s() { System.out.print(\"A\"); } }\nclass B extends A { static void s() { System.out.print(\"B\"); } }\n// main:\nA obj = new B();\nobj.s();\n```",
           "options": ["A) A", "B) B", "C) AB", "D) Error"],
           "correct": ["A"],
@@ -678,7 +678,7 @@
         },
         {
           "id": 3022,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Identify the error:\n\n```java\nclass A { A(int x) { } }\nclass B extends A { B() { } }\n```",
           "options": ["A) B needs a parameter", "B) A has no no-arg constructor; B must call super(int)", "C) A cannot have a constructor", "D) Class B must be abstract"],
           "correct": ["B"],
@@ -694,7 +694,7 @@
         },
         {
           "id": 3024,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Identify the syntax error:\n\n```java\nabstract class Test {\n    abstract static void run();\n}\n```",
           "options": ["A) Test cannot be abstract", "B) Methods cannot be both abstract and static", "C) run() needs a body", "D) Missing return type"],
           "correct": ["B"],
@@ -710,7 +710,7 @@
         },
         {
           "id": 3026,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Identify the error:\n\n```java\ninterface I { int x = 10; }\n// main:\nI.x = 20;\n```",
           "options": ["A) x is not static", "B) Variables in interfaces are implicitly final and cannot be changed", "C) I must be a class", "D) x must be private"],
           "correct": ["B"],
@@ -718,7 +718,7 @@
         },
         {
           "id": 3027,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "What is wrong with this code?\n\n```java\nclass A { final void play() { } }\nclass B extends A { void play() { } }\n```",
           "options": ["A) B cannot have a play method", "B) Cannot override a final method", "C) A must be abstract", "D) B must be final"],
           "correct": ["B"],
@@ -734,7 +734,7 @@
         },
         {
           "id": 3029,
-          "difficulty": "hard",
+          "difficulty": "advanced",
           "question": "Identify the error:\n\n```java\nclass A { void m() { } }\nclass B extends A { int m() { return 1; } }\n```",
           "options": ["A) Return type is incompatible with parent method", "B) B must be static", "C) m() cannot return an int", "D) No error"],
           "correct": ["A"],

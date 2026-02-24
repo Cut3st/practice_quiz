@@ -928,8 +928,16 @@ function renderWeekFilters() {
   
   container.innerHTML = '';
   
-  // Get all week keys from questionBank and sort them
   const weekIds = Object.keys(getActiveBank().weeks).sort();
+
+  // Update label to reflect actual week range
+  const label = document.getElementById('weeks-filter-label');
+  if (label && weekIds.length > 0) {
+    const nums = weekIds.map(w => parseInt(w.replace('week', ''))).sort((a,b) => a-b);
+    label.textContent = nums.length > 1
+      ? `Select Weeks (${nums[0]}–${nums[nums.length-1]})`
+      : `Select Week`;
+  }
   
   weekIds.forEach(weekId => {
     // Extract week number from "week12" format
@@ -1034,7 +1042,7 @@ function updatePracticePreview() {
     if (getActiveBank().weeks[weekId]) {
       // If no categories selected, check all categories except 'coding'
       const categoriesToCheck = selectedCategories.length > 0 ? selectedCategories : 
-        Object.keys(getActiveBank().weeks[weekId]).filter(cat => ['outputPrediction', 'theory'].includes(cat));
+        Object.keys(getActiveBank().weeks[weekId]).filter(cat => cat !== 'coding');
       
       categoriesToCheck.forEach(category => {
         if (getActiveBank().weeks[weekId][category]) {

@@ -162,6 +162,8 @@ function setupEventListeners() {
   document.getElementById('start-practice-mode').addEventListener('click', () => showPracticeSetup());
   // Removed: Quiz 2 button listener
   document.getElementById('start-admin-mode').addEventListener('click', () => showAdminMode());
+  document.getElementById('start-history-mode').addEventListener('click', () => showHistoryScreen());
+  document.getElementById('back-from-history').addEventListener('click', () => showScreen('modeSelection'));
   
   // Student config modal
   document.getElementById('close-student-config').addEventListener('click', closeStudentConfigModal);
@@ -761,11 +763,13 @@ function saveQuizAttempt() {
       correctAnswers++;
     }
   });
-  
+
+  const id = Date.now();
   const attempt = {
-    id: Date.now(),
+    id,
     date: new Date().toISOString(),
     mode: currentMode,
+    language: currentLanguage,
     questions: currentQuestions.length,
     correct: correctAnswers,
     percentage: Math.round((correctAnswers / currentQuestions.length) * 100),
@@ -775,6 +779,168 @@ function saveQuizAttempt() {
   analyticsData.attempts.push(attempt);
   localStorage.setItem('quizAnalytics', JSON.stringify(analyticsData));
   updateAnalytics();
+
+  // Save full snapshot for the History feature
+  const historyEntry = {
+    ...attempt,
+    questions: currentQuestions.map(q => ({ ...q })),   // deep clone
+    userAnswers: { ...userAnswers }
+  };
+  // Rename the numeric count so it doesn't clash with the questions array
+  historyEntry.questionCount = currentQuestions.length;
+
+  const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+  history.unshift(historyEntry);          // newest first
+  // Keep at most 50 attempts to avoid bloating localStorage
+  if (history.length > 50) history.length = 50;
+  localStorage.setItem('quizHistory', JSON.stringify(history));
+}
+
+// ============================================================================
+// HISTORY FEATURE
+// ============================================================================
+function showHistoryScreen() {
+  showScreen('history');
+  renderHistoryList();
+}
+
+function renderHistoryList() {
+  const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+  const container = document.getElementById('history-list');
+  container.innerHTML = '';
+
+  if (history.length === 0) {
+    container.innerHTML = '<div class="empty-state">No quiz attempts yet — complete a quiz to see your history here!</div>';
+    return;
+  }
+
+  history.forEach(attempt => {
+    const date = new Date(attempt.date);
+    const dateStr = date.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+    const timeStr = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+    const pct = attempt.percentage;
+    const scoreClass = pct >= 80 ? 'good' : pct >= 60 ? 'needs-work' : 'poor';
+    const langEmoji = (attempt.language === 'java') ? '☕' : '🐍';
+    const modeLabel = attempt.mode === 'quiz' ? 'Student Quiz' : 'Practice';
+    let timeTxt = '';
+    if (attempt.timeElapsed) {
+      const m = Math.floor(attempt.timeElapsed / 60);
+      const s = attempt.timeElapsed % 60;
+      timeTxt = `⏱ ${m}:${s.toString().padStart(2,'0')}`;
+    }
+
+    const card = document.createElement('div');
+    card.className = 'history-card card';
+    card.innerHTML = `
+      <div class="history-card__body">
+        <div class="history-card__left">
+          <div class="history-card__title">${langEmoji} ${modeLabel}</div>
+          <div class="history-card__meta">${dateStr} · ${timeStr} ${timeTxt ? '· ' + timeTxt : ''}</div>
+        </div>
+        <div class="history-card__right">
+          <div class="history-score ${scoreClass}">${pct}%</div>
+          <div class="history-fraction">${attempt.correct}/${attempt.questionCount ?? (Array.isArray(attempt.questions) ? attempt.questions.length : attempt.questions)}</div>
+        </div>
+      </div>
+      <div class="history-card__actions">
+        <button class="btn btn--primary btn--sm" onclick="reviewHistoryAttempt(${attempt.id})">Review Answers</button>
+        <button class="btn btn--outline btn--sm history-delete-btn" onclick="deleteHistoryAttempt(${attempt.id})">Delete</button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function reviewHistoryAttempt(id) {
+  const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+  const attempt = history.find(a => a.id === id);
+  if (!attempt) return;
+
+  // Render a read-only review modal overlay
+  const overlay = document.getElementById('history-review-overlay');
+  const titleEl = document.getElementById('history-review-title');
+  const container = document.getElementById('history-review-container');
+
+  const date = new Date(attempt.date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+  const langEmoji = attempt.language === 'java' ? '☕' : '🐍';
+  titleEl.textContent = `${langEmoji} Attempt — ${date} · ${attempt.percentage}% (${attempt.correct}/${attempt.questionCount ?? attempt.questions.length})`;
+
+  container.innerHTML = '';
+  attempt.questions.forEach((question, index) => {
+    const userAnswer = attempt.userAnswers[question.id] || [];
+    const isCorrect = arraysEqual([...userAnswer].sort(), [...question.correct].sort());
+
+    const reviewDiv = document.createElement('div');
+    reviewDiv.className = `review-question ${isCorrect ? 'correct' : 'incorrect'}`;
+    reviewDiv.dataset.status = isCorrect ? 'correct' : 'incorrect';
+    reviewDiv.innerHTML = `
+      <div class="review-header">
+        <div>
+          <h4>Question ${index + 1}</h4>
+          <div class="question-badges">
+            <span class="category-badge">${question.category}</span>
+            <span class="difficulty-badge ${question.difficulty}">${question.difficulty}</span>
+            <span class="week-badge">Week ${question.week.replace('week', '')}</span>
+          </div>
+        </div>
+        <span class="review-status ${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>
+      </div>
+      <div class="question-text">${formatQuestionText(question.question)}</div>
+      <div class="review-answers">
+        ${question.options.map((option, optIdx) => {
+          const letter = String.fromCharCode(65 + optIdx);
+          const isUserSelected = userAnswer.includes(letter);
+          const isCorrectAnswer = question.correct.includes(letter);
+          let indicator = '';
+          if (isCorrectAnswer && isUserSelected) indicator = '✓ ';
+          else if (isCorrectAnswer) indicator = '✓ ';
+          else if (isUserSelected) indicator = '✗ ';
+          const classes = [];
+          if (isUserSelected) classes.push('user-selected');
+          if (isCorrectAnswer) classes.push('correct-answer');
+          return `<div class="review-answer ${classes.join(' ')}">
+            <span class="answer-indicator">${indicator}</span>
+            <span>${option}</span>
+          </div>`;
+        }).join('')}
+      </div>
+      <div class="explanation"><strong>Explanation:</strong> ${question.explanation}</div>
+    `;
+    container.appendChild(reviewDiv);
+  });
+
+  overlay.classList.remove('hidden');
+  overlay.scrollTop = 0;
+}
+
+function closeHistoryReview() {
+  document.getElementById('history-review-overlay').classList.add('hidden');
+}
+
+function deleteHistoryAttempt(id) {
+  if (!confirm('Delete this attempt from your history?')) return;
+  let history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+  history = history.filter(a => a.id !== id);
+  localStorage.setItem('quizHistory', JSON.stringify(history));
+  renderHistoryList();
+}
+
+function filterHistoryReview(filter, btn) {
+  document.querySelectorAll('#history-review-panel .filter-btn, .history-review-panel .filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('#history-review-container .review-question').forEach(q => {
+    if (filter === 'all' || q.dataset.status === filter) {
+      q.style.display = 'block';
+    } else {
+      q.style.display = 'none';
+    }
+  });
+}
+
+function clearAllHistory() {
+  if (!confirm('Clear ALL quiz history? This cannot be undone.')) return;
+  localStorage.removeItem('quizHistory');
+  renderHistoryList();
 }
 function practiceWeakAreas() {
   const weakWeeks = [];
@@ -1595,7 +1761,8 @@ function showScreen(screenName) {
     practiceSetup: document.getElementById('practice-setup-screen'),
     admin: document.getElementById('admin-screen'),
     quiz: document.getElementById('quiz-screen'),
-    results: document.getElementById('results-screen')
+    results: document.getElementById('results-screen'),
+    history: document.getElementById('history-screen')
   };
   
   Object.values(screens).forEach(screen => screen.classList.add('hidden'));

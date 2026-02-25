@@ -233,6 +233,18 @@
                         </div>
                         <button class="btn btn--outline" id="start-admin-mode">Admin Mode</button>
                     </div>
+
+                    <div class="mode-card" id="history-mode-card">
+                        <div class="mode-icon">📋</div>
+                        <h3>My History</h3>
+                        <p>Review past attempts and see your detailed answers from previous quizzes</p>
+                        <div class="mode-stats">
+                            <span class="stat">📅 All attempts</span>
+                            <span class="stat">🔍 Review answers</span>
+                            <span class="stat">💾 Saved locally</span>
+                        </div>
+                        <button class="btn btn--outline" id="start-history-mode">View History</button>
+                    </div>
                 </div>
                 
                 <div class="stats-summary card">
@@ -591,6 +603,41 @@
         </div>
     </div>
 
+    <!-- History Screen -->
+    <div id="history-screen" class="screen hidden">
+        <div class="container">
+            <div class="history-content">
+                <div class="history-header">
+                    <div>
+                        <h2>📋 My Quiz History</h2>
+                        <p class="history-subtitle">Saved locally in your browser — up to 50 attempts</p>
+                    </div>
+                    <div class="history-header-actions">
+                        <button class="btn btn--outline btn--sm" onclick="clearAllHistory()">Clear All</button>
+                        <button class="btn btn--outline" id="back-from-history">Back to Home</button>
+                    </div>
+                </div>
+                <div id="history-list" class="history-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Review Overlay (full-screen modal) -->
+    <div id="history-review-overlay" class="history-review-overlay hidden">
+        <div class="history-review-panel">
+            <div class="history-review-header">
+                <h3 id="history-review-title">Attempt Review</h3>
+                <button class="btn btn--outline" onclick="closeHistoryReview()">✕ Close</button>
+            </div>
+            <div class="review-filters">
+                <button class="filter-btn active" onclick="filterHistoryReview('all', this)">All Questions</button>
+                <button class="filter-btn" onclick="filterHistoryReview('incorrect', this)">Incorrect Only</button>
+                <button class="filter-btn" onclick="filterHistoryReview('correct', this)">Correct Only</button>
+            </div>
+            <div id="history-review-container"></div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="site-footer">
     <p>Need help? Contact <a href="https://t.me/huuep" target="_blank" rel="noopener">@huuep</a> on Telegram!</p>
@@ -696,6 +743,121 @@
       margin-top: 0.25rem;
       text-align: center;
       font-style: italic;
+    }
+    /* ── History Screen ──────────────────────────────────── */
+    .history-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.5rem 0;
+    }
+    .history-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .history-header h2 { margin: 0; }
+    .history-subtitle {
+      margin: 0.25rem 0 0;
+      font-size: 0.825rem;
+      color: var(--color-text-secondary);
+    }
+    .history-header-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .history-card {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base, 12px);
+      background: var(--color-surface);
+      overflow: hidden;
+    }
+    .history-card__body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem 0.6rem;
+      gap: 1rem;
+    }
+    .history-card__left { flex: 1; min-width: 0; }
+    .history-card__title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .history-card__meta {
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      margin-top: 0.2rem;
+    }
+    .history-card__right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .history-score {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .history-score.good    { color: var(--color-success, #21808d); }
+    .history-score.needs-work { color: var(--color-warning, #a84b2f); }
+    .history-score.poor    { color: var(--color-error, #c0152f); }
+    .history-fraction {
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      margin-top: 0.15rem;
+    }
+    .history-card__actions {
+      padding: 0.5rem 1.25rem 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      border-top: 1px solid var(--color-border);
+    }
+    .btn--sm {
+      padding: 0.3rem 0.75rem;
+      font-size: 0.8rem;
+    }
+    .history-delete-btn { color: var(--color-error); border-color: var(--color-error); }
+    .history-delete-btn:hover { background: rgba(var(--color-error-rgb, 192,21,47), 0.08); }
+
+    /* ── History Review Overlay ──────────────────────────── */
+    .history-review-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: var(--color-background);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .history-review-overlay.hidden { display: none; }
+    .history-review-panel {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+    .history-review-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .history-review-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      flex: 1;
     }
     </style>
     <script>

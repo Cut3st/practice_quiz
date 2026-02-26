@@ -217,6 +217,32 @@ function setupEventListeners() {
   
   // Practice preview update
   document.getElementById('week-filters').addEventListener('change', updatePracticePreview);
+
+  // Select All buttons
+  document.getElementById('select-all-weeks').addEventListener('click', () => {
+    document.querySelectorAll('#week-filters .week-filter').forEach(div => {
+      const cb = div.querySelector('input');
+      cb.checked = true;
+      div.classList.add('selected');
+    });
+    updatePracticePreview();
+  });
+  document.getElementById('select-all-categories').addEventListener('click', () => {
+    document.querySelectorAll('#category-filters .filter-checkbox').forEach(div => {
+      const cb = div.querySelector('input');
+      cb.checked = true;
+      div.classList.add('selected');
+    });
+    updatePracticePreview();
+  });
+  document.getElementById('select-all-difficulties').addEventListener('click', () => {
+    document.querySelectorAll('#difficulty-filters .filter-checkbox').forEach(div => {
+      const cb = div.querySelector('input');
+      cb.checked = true;
+      div.classList.add('selected');
+    });
+    updatePracticePreview();
+  });
 }
 
 // ============================================================================

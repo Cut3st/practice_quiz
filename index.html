@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danny's SC1003 Programming Quiz</title>
+    <title>Danny's Cheatsheet</title>
     <link rel="stylesheet" href="style.css">
     <style>
     /* ── Lockscreen ───────────────────────────────────────── */
@@ -282,17 +282,26 @@
                 <div class="card">
                     <div class="card__body">
                         <div class="filter-section">
-                            <h3 id="weeks-filter-label">Select Weeks</h3>
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
+                                <h3 id="weeks-filter-label" style="margin:0">Select Weeks</h3>
+                                <button class="btn btn--outline btn--sm" id="select-all-weeks">Select All</button>
+                            </div>
                             <div class="week-filters" id="week-filters"></div>
                         </div>
                         
                         <div class="filter-section">
-                            <h3>Select Categories</h3>
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
+                                <h3 style="margin:0">Select Categories</h3>
+                                <button class="btn btn--outline btn--sm" id="select-all-categories">Select All</button>
+                            </div>
                             <div class="category-filters" id="category-filters"></div>
                         </div>
                         
                         <div class="filter-section">
-                            <h3>Select Difficulty Levels</h3>
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
+                                <h3 style="margin:0">Select Difficulty Levels</h3>
+                                <button class="btn btn--outline btn--sm" id="select-all-difficulties">Select All</button>
+                            </div>
                             <div class="difficulty-filters" id="difficulty-filters"></div>
                         </div>
                         

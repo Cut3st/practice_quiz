@@ -801,8 +801,12 @@ select.form-control {
   color: var(--color-btn-primary-text);
 }
 
-.week-filter input[type="checkbox"] {
+.week-filter input[type="checkbox"],
+.week-filter label {
   margin: 0;
+  pointer-events: none;
+}
+.week-filter input[type="checkbox"] {
   width: 16px;
   height: 16px;
 }
@@ -838,8 +842,12 @@ select.form-control {
   color: var(--color-btn-primary-text);
 }
 
-.filter-checkbox input[type="checkbox"] {
+.filter-checkbox input[type="checkbox"],
+.filter-checkbox label {
   margin: 0;
+  pointer-events: none;
+}
+.filter-checkbox input[type="checkbox"] {
   width: 16px;
   height: 16px;
 }

@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danny's Cheatsheet</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAD50lEQVR4nJ1W23LbRgwFsOBFjGhJnaSOrTRybNcz6Uz6J/2Afl9f+yt9r/PQjJvKl0h2LEuiRO4C6ANp19MkbUg8kDvDmXNwcLAgcPLqAB6HmYbQnBHMjBwjEXQN/ueIaCJxPujvjdUHF0cahJiX07NqtUTnwKw7ASICABCFzXr94RLMABHMiLkR1Am9IUBEMzMzRCREWS2gRkMQMyQXJ4k1ASKhyeYrCVS13+8fHx+DQRCZza4Wizvn3L0GQ0QRyZ492cnzy4sLkZYKENF7f3Z2xswhBDMVEVVFRFV1zoUQmLlYr1WkQ5nYzJj5+Pj49PT05OTkfHq+v7df+SAS8jyfz2bjFy/evfvjYPLq4vJisynaEuB3k0maJqPRaLlc5nm+WCyyLBMRAGDmqqrSNC2KIsuysiyLovDet/KAAAwR0zR1zsVx3Ov1kiSJ4ziKoiRJmk9EaZoy8//jfY4AiGg0GjnnhsMhM+f9fpZlaZrmeR4xj0Yjx244HMZx3IEAXx5MmCMAc85575lZVQGgNpmZvfdRFNVPVW1bIlbVNE2ODg+BiJDevj2tqoqIAME5JyJxHIvIzs5gOBxMp9O2CpiIyrKczefb7ZaIEHE4HKqa9xUAZFlWFAURiYSrDx/aokMzKsye7z6/ubl2jlX12dNnSPTx5lpUX4zHl1dXaZquVqubm5sOBPjyYBJFUZ7n3ns1Y+e2262IOOcAQESICAAQkYhCCK09qF8n35/Mrmemxo6vr+er9ZqIzCyKonpaWNdhV3cRhxDqTM0sjuNPc6wJunSRmSVJ8vr1ayLylReR9+//lPtObdBV0162M8gvLy7bKmBE9CHM53NfecfO1AyQiOoerXNHQu/93d2yLTrUN1lCODo6YnaDwWBvvLe/t5fn+Zs3P47H416aqioAioRys+lA0HhQW2pm5Bw7Vxtbp/9gLxIF77t4EMfR4eFhVfpeL729vT0/P3fO6UPbPKCJdfhxMgAo0F0wL1aWoeIke7qLiAD/xkKk4vYavIdWChDAiKwq8zia/vXeB8/MnyZqpkkvcxx1UWAS1lVVlGWc5/8BQEQdfGZDIANdq/eCeF+XR94+DmlZHwBgMGPmg8MfVGyz3QKYI7e4W97eLR25+yt8v8b4FUDVjqDeKt7+/puIIjb/GQAAFTUAAIqasiEiWPgy1JcUAKoEwjUCgIGqZr3MACY//dzfHS+nZ6e//tLsjfSZ1voagnoWOzNDADXgKDbA3jffZrv7YVMAEiIZ1qNJ2xLgy4OJc46ZH1ytS8RRhORUgmkDWq94IbRcHeshUVXVw2yoD+VmA2AA+LC7N8try1X+b80jR+Lx7ovbAAAAAElFTkSuQmCC">
     <link rel="stylesheet" href="style.css">
+    <!-- Apply saved theme before first paint to prevent flash -->
+    <script>
+      (function(){
+        var t = localStorage.getItem('quizTheme') || 'dark';
+        document.documentElement.setAttribute('data-color-scheme', t);
+      })();
+    </script>
     <style>
     /* ── Lockscreen ───────────────────────────────────────── */
     .lockscreen {
@@ -178,20 +186,51 @@
         </div>
     </div>
 
+    <!-- ══════════════════════════════════════════════════
+         ANIMATED SIDEBAR — shown after unlock
+    ══════════════════════════════════════════════════ -->
+    <nav id="app-sidebar" class="sidebar hidden" aria-label="Course navigation">
+      <div class="sidebar__brand">
+        <span class="sidebar__brand-icon">📖</span>
+        <span class="sidebar__brand-text">Danny's</span>
+      </div>
+
+      <ul class="sidebar__nav" role="list">
+        <li class="sidebar__item sidebar__item--active" data-lang="python" role="button" tabindex="0" title="SC1003 Python">
+          <span class="sidebar__icon">🐍</span>
+          <span class="sidebar__label">SC1003 Python</span>
+        </li>
+        <li class="sidebar__item" data-lang="java" role="button" tabindex="0" title="SC2002 Java">
+          <span class="sidebar__icon">☕</span>
+          <span class="sidebar__label">SC2002 Java</span>
+        </li>
+      </ul>
+
+      <!-- Settings / Admin at the bottom -->
+      <ul class="sidebar__nav sidebar__nav--bottom" role="list">
+        <li class="sidebar__item" id="sidebar-admin-btn" role="button" tabindex="0" title="Admin / Settings">
+          <span class="sidebar__icon">⚙️</span>
+          <span class="sidebar__label">Admin Settings</span>
+        </li>
+        <!-- Dark / Light mode toggle -->
+        <li class="sidebar__item sidebar__item--theme" id="sidebar-theme-btn" role="button" tabindex="0" title="Toggle light/dark mode">
+          <span class="sidebar__icon" id="theme-icon">🌙</span>
+          <span class="sidebar__label" id="theme-label">Dark Mode</span>
+          <span class="sidebar__theme-pill">
+            <span class="sidebar__theme-thumb"></span>
+          </span>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main content wrapper — shifts right when sidebar is open -->
+    <div id="main-content">
+
     <!-- Mode Selection Screen -->
     <div id="mode-selection-screen" class="screen hidden">
         <div class="container">
             <div class="welcome-content">
-                <h1>Danny's SC1003 Programming Quiz</h1>
-
-                <!-- LANGUAGE TOGGLE -->
-                <div class="lang-toggle-wrapper">
-                  <span class="lang-label lang-label--python" id="lang-label-python">🐍 Python</span>
-                  <div class="lang-toggle" id="lang-toggle" role="switch" aria-checked="false" tabindex="0" title="Switch language">
-                    <div class="lang-toggle__thumb"></div>
-                  </div>
-                  <span class="lang-label lang-label--java" id="lang-label-java">☕ Java</span>
-                </div>
+                <h1 id="main-page-title">Danny's SC1003 Programming Quiz</h1>
 
                 <!-- CONTACT BANNER -->
                 <div class="contact-banner">
@@ -222,18 +261,6 @@
                         <button class="btn btn--secondary" id="start-practice-mode">Practice Mode</button>
                     </div>
                     
-                    <div class="mode-card" id="admin-mode-card">
-                        <div class="mode-icon">⚙️</div>
-                        <h3>Admin Mode</h3>
-                        <p>Manage questions and view analytics</p>
-                        <div class="mode-stats">
-                            <span class="stat">➕ Add questions</span>
-                            <span class="stat">✏️ Edit existing</span>
-                            <span class="stat">📈 View analytics</span>
-                        </div>
-                        <button class="btn btn--outline" id="start-admin-mode">Admin Mode</button>
-                    </div>
-
                     <div class="mode-card" id="history-mode-card">
                         <div class="mode-icon">📋</div>
                         <h3>My History</h3>
@@ -307,12 +334,16 @@
                         
                         <div class="filter-section">
                             <h3>Number of Questions</h3>
-                            <select class="form-control" id="practice-question-count">
-                                <option value="10">10 Questions</option>
-                                <option value="20">20 Questions</option>
-                                <option value="30">30 Questions</option>
-                                <option value="all">All Available Questions</option>
-                            </select>
+                            <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+                                <select class="form-control" id="practice-question-count" style="flex:1; min-width:160px;">
+                                    <option value="10">10 Questions</option>
+                                    <option value="20">20 Questions</option>
+                                    <option value="30">30 Questions</option>
+                                    <option value="all">All Available Questions</option>
+                                    <option value="custom">Custom...</option>
+                                </select>
+                                <input type="number" class="form-control hidden" id="practice-question-custom" min="1" max="500" placeholder="Enter number" style="flex:1; min-width:120px;">
+                            </div>
                         </div>
                         
                         <div class="practice-preview" id="practice-preview">
@@ -340,7 +371,6 @@
                 
                 <div class="admin-tabs">
                     <button class="tab-btn active" data-tab="questions">Questions</button>
-                    <button class="tab-btn" data-tab="analytics">Analytics</button>
                     <button class="tab-btn" data-tab="settings">Settings</button>
                 </div>
                 
@@ -353,39 +383,6 @@
                         </div>
                     </div>
                     <div class="questions-list" id="questions-list"></div>
-                </div>
-                
-                <!-- Analytics Tab -->
-                <div class="tab-content hidden" id="analytics-tab">
-                    <div class="analytics-grid">
-                        <div class="analytics-card card">
-                            <div class="card__body">
-                                <h3>Performance by Week</h3>
-                                <div class="week-performance" id="week-performance"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="analytics-card card">
-                            <div class="card__body">
-                                <h3>Performance by Category</h3>
-                                <div class="category-performance" id="category-performance"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="analytics-card card">
-                            <div class="card__body">
-                                <h3>Most Missed Questions</h3>
-                                <div class="missed-questions" id="missed-questions"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="analytics-card card">
-                            <div class="card__body">
-                                <h3>Quiz Attempts</h3>
-                                <div class="quiz-attempts" id="quiz-attempts"></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Settings Tab -->
@@ -404,7 +401,6 @@
                             <div class="settings-actions">
                                 <button class="btn btn--primary" id="save-settings">Save Settings</button>
                                 <button class="btn btn--outline" id="export-questions">Export Questions</button>
-                                <button class="btn btn--outline" id="clear-analytics">Clear Analytics Data</button>
                                 <input type="file" id="import-json" accept=".json" style="display: none;">
                                 <button class="btn btn--outline" onclick="document.getElementById('import-json').click()">Import JSON</button>
                             </div>
@@ -622,11 +618,54 @@
                         <p class="history-subtitle">Saved locally in your browser — up to 50 attempts</p>
                     </div>
                     <div class="history-header-actions">
-                        <button class="btn btn--outline btn--sm" onclick="clearAllHistory()">Clear All</button>
+                        <button class="btn btn--outline btn--sm" onclick="clearAllHistory()">Clear History</button>
                         <button class="btn btn--outline" id="back-from-history">Back to Home</button>
                     </div>
                 </div>
-                <div id="history-list" class="history-list"></div>
+
+                <!-- History tabs -->
+                <div class="admin-tabs" style="margin-bottom:1.5rem;">
+                    <button class="tab-btn active" data-htab="attempts">Attempts</button>
+                    <button class="tab-btn" data-htab="analytics">Analytics</button>
+                </div>
+
+                <!-- Attempts tab -->
+                <div id="history-attempts-tab">
+                    <div id="history-list" class="history-list"></div>
+                </div>
+
+                <!-- Analytics tab -->
+                <div id="history-analytics-tab" class="hidden">
+                    <div class="analytics-grid">
+                        <div class="analytics-card card">
+                            <div class="card__body">
+                                <h3>Performance by Week</h3>
+                                <div class="week-performance" id="week-performance"></div>
+                            </div>
+                        </div>
+                        <div class="analytics-card card">
+                            <div class="card__body">
+                                <h3>Performance by Category</h3>
+                                <div class="category-performance" id="category-performance"></div>
+                            </div>
+                        </div>
+                        <div class="analytics-card card">
+                            <div class="card__body">
+                                <h3>Most Missed Questions</h3>
+                                <div class="missed-questions" id="missed-questions"></div>
+                            </div>
+                        </div>
+                        <div class="analytics-card card">
+                            <div class="card__body">
+                                <h3>Quiz Attempts</h3>
+                                <div class="quiz-attempts" id="quiz-attempts"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:1rem; text-align:right;">
+                        <button class="btn btn--outline btn--sm" id="clear-analytics">Clear Analytics Data</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -645,7 +684,9 @@
             </div>
             <div id="history-review-container"></div>
         </div>
-    </div>
+    </div><!-- /#history-review-overlay -->
+
+    </div><!-- /#main-content -->
 
     <!-- Footer -->
     <footer class="site-footer">
@@ -669,59 +710,158 @@
     text-decoration: underline;
     }
 
-    /* ── Language Toggle ─────────────────────────────────── */
-    .lang-toggle-wrapper {
+    /* ── Sidebar ─────────────────────────────────────────── */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 64px;
+      background: var(--color-surface);
+      border-right: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0;
+      z-index: 500;
+      transition: width 0.25s cubic-bezier(0.4,0,0.2,1);
+      overflow: hidden;
+      box-shadow: 2px 0 12px rgba(0,0,0,0.07);
+    }
+    .sidebar.hidden { display: none; }
+
+    /* Hover expands the sidebar */
+    .sidebar:hover { width: 210px; }
+
+    /* Brand at top */
+    .sidebar__brand {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 1.25rem;
-    }
-    .lang-label {
-      font-size: 1rem;
-      font-weight: 600;
-      transition: opacity 0.2s, transform 0.2s;
-      cursor: default;
-      user-select: none;
-    }
-    .lang-label--python { color: #3776ab; }
-    .lang-label--java   { color: #e76f00; opacity: 0.45; }
-
-    .lang-toggle {
-      position: relative;
-      width: 56px;
-      height: 28px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #3776ab 0%, #3776ab 100%);
-      cursor: pointer;
-      transition: background 0.35s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      gap: 0.6rem;
+      padding: 1.1rem 0;
+      padding-left: 18px;
+      border-bottom: 1px solid var(--color-border);
+      overflow: hidden;
+      white-space: nowrap;
       flex-shrink: 0;
     }
-    .lang-toggle__thumb {
+    .sidebar__brand-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .sidebar__brand-text {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-primary);
+      opacity: 0;
+      transition: opacity 0.15s ease 0s;
+      white-space: nowrap;
+    }
+    .sidebar:hover .sidebar__brand-text { opacity: 1; transition-delay: 0.08s; }
+
+    /* Nav lists */
+    .sidebar__nav {
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .sidebar__nav--bottom {
+      margin-top: auto;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .sidebar__item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 0;
+      padding-left: 20px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      color: var(--color-text-secondary);
+      user-select: none;
+    }
+    .sidebar__item:hover {
+      background: var(--color-bg-1);
+      color: var(--color-text);
+    }
+    .sidebar__item--active {
+      color: var(--color-primary);
+      background: rgba(33,128,141,0.09);
+      font-weight: 600;
+    }
+    .sidebar__item--active::before {
+      content: '';
       position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 22px;
-      height: 22px;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--color-primary);
+      border-radius: 0 2px 2px 0;
+    }
+    .sidebar__icon { font-size: 1.25rem; flex-shrink: 0; }
+    .sidebar__label {
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.15s ease 0s;
+      white-space: nowrap;
+    }
+    .sidebar:hover .sidebar__label { opacity: 1; transition-delay: 0.1s; }
+
+    /* Main content shifts right with sidebar collapsed width */
+    #main-content {
+      transition: margin-left 0.25s cubic-bezier(0.4,0,0.2,1);
+      margin-left: 0;
+    }
+    body.sidebar-visible #main-content { margin-left: 64px; }
+
+    /* Dark/Light toggle pill inside sidebar */
+    .sidebar__item--theme {
+      justify-content: flex-start;
+      gap: 0.75rem;
+    }
+    .sidebar__theme-pill {
+      position: relative;
+      width: 34px;
+      height: 18px;
+      border-radius: 9px;
+      background: var(--color-border);
+      flex-shrink: 0;
+      margin-left: auto;
+      margin-right: 10px;
+      opacity: 0;
+      transition: opacity 0.15s ease 0s, background 0.25s;
+      pointer-events: none;
+    }
+    .sidebar:hover .sidebar__theme-pill { opacity: 1; transition-delay: 0.1s; pointer-events: auto; }
+    .sidebar__theme-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
+      background: var(--color-text-secondary);
+      transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), background 0.25s;
+    }
+    /* Light mode = toggled on (thumb slides right, pill goes primary colour) */
+    body.theme-light .sidebar__theme-pill {
+      background: var(--color-primary);
+    }
+    body.theme-light .sidebar__theme-thumb {
+      transform: translateX(16px);
       background: #fff;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-      transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
     }
-    /* Java active state */
-    .lang-toggle.is-java {
-      background: linear-gradient(135deg, #e76f00 0%, #f59e42 100%);
+
+    /* Mobile: sidebar overlays, no push */
+    @media (max-width: 640px) {
+      body.sidebar-visible #main-content { margin-left: 0; }
+      .sidebar { z-index: 600; }
     }
-    .lang-toggle.is-java .lang-toggle__thumb {
-      transform: translateX(28px);
-    }
-    /* label opacity when active/inactive */
-    [data-lang="java"]  .lang-label--python,
-    .lang-toggle.is-java ~ .lang-label--java { opacity: 1; }
-    .lang-toggle.is-java ~ .lang-label--python { opacity: 0.45; }
-    .lang-label--python.inactive { opacity: 0.45; }
-    .lang-label--java.active    { opacity: 1; }
 
     /* ── Inline code ─────────────────────────────────────── */
     code.inline-code {
@@ -882,6 +1022,8 @@
       if (sessionStorage.getItem(SESSION_KEY) === '1') {
         document.getElementById('lockscreen').classList.add('hidden');
         document.getElementById('mode-selection-screen').classList.remove('hidden');
+        document.getElementById('app-sidebar').classList.remove('hidden');
+        document.body.classList.add('sidebar-visible');
         return;
       }
 
@@ -930,6 +1072,9 @@
           ls.classList.add('hidden');
           ls.classList.remove('unlocking');
           document.getElementById('mode-selection-screen').classList.remove('hidden');
+          // Show sidebar
+          document.getElementById('app-sidebar').classList.remove('hidden');
+          document.body.classList.add('sidebar-visible');
         }, 400);
       } else {
         lockShowError();
@@ -951,6 +1096,36 @@
     function lockHideError() {
       document.getElementById('lock-error').classList.add('hidden');
     }
+
+    // ── Theme (dark / light) ───────────────────────────────
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-color-scheme', theme);
+      document.body.classList.toggle('theme-light', theme === 'light');
+      document.body.classList.toggle('theme-dark',  theme === 'dark');
+      const icon  = document.getElementById('theme-icon');
+      const label = document.getElementById('theme-label');
+      if (icon)  icon.textContent  = theme === 'light' ? '☀️' : '🌙';
+      if (label) label.textContent = theme === 'light' ? 'Light Mode' : 'Dark Mode';
+    }
+
+    function themeInit() {
+      // Default to dark; respect any saved preference
+      const saved = localStorage.getItem('quizTheme') || 'dark';
+      applyTheme(saved);
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-color-scheme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('quizTheme', next);
+      applyTheme(next);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      themeInit();
+      const themeBtn = document.getElementById('sidebar-theme-btn');
+      if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+    });
 
     document.addEventListener('DOMContentLoaded', lockInit);
     </script>

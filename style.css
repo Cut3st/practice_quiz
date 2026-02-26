@@ -753,6 +753,7 @@ select.form-control {
 .setup-content {
   max-width: 600px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .setup-content h2 {
@@ -809,6 +810,7 @@ select.form-control {
 .week-filter input[type="checkbox"] {
   width: 16px;
   height: 16px;
+  display: none;
 }
 
 /* Category and Difficulty Filters */
@@ -850,6 +852,7 @@ select.form-control {
 .filter-checkbox input[type="checkbox"] {
   width: 16px;
   height: 16px;
+  display: none;
 }
 
 .practice-preview {
@@ -1331,6 +1334,7 @@ select.form-control {
 .results-content {
   max-width: 900px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .results-content h1 {

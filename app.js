@@ -104,29 +104,24 @@ function initializeApp() {
 }
 
 // ============================================================================
-// LANGUAGE TOGGLE
+// LANGUAGE SWITCH (via sidebar)
 // ============================================================================
-function switchLanguage() {
-  currentLanguage = currentLanguage === 'python' ? 'java' : 'python';
+function switchLanguage(lang) {
+  if (lang === currentLanguage) return;
+  currentLanguage = lang;
 
-  const toggle      = document.getElementById('lang-toggle');
-  const labelPython = document.getElementById('lang-label-python');
-  const labelJava   = document.getElementById('lang-label-java');
-  const title       = document.querySelector('#mode-selection-screen h1');
+  const title = document.getElementById('main-page-title');
 
   if (currentLanguage === 'java') {
-    toggle.classList.add('is-java');
-    toggle.setAttribute('aria-checked', 'true');
-    labelPython.style.opacity = '0.4';
-    labelJava.style.opacity   = '1';
     if (title) title.textContent = "Danny's SC2002 Java Quiz";
   } else {
-    toggle.classList.remove('is-java');
-    toggle.setAttribute('aria-checked', 'false');
-    labelPython.style.opacity = '1';
-    labelJava.style.opacity   = '0.4';
     if (title) title.textContent = "Danny's SC1003 Programming Quiz";
   }
+
+  // Update sidebar active state
+  document.querySelectorAll('.sidebar__item[data-lang]').forEach(item => {
+    item.classList.toggle('sidebar__item--active', item.dataset.lang === currentLanguage);
+  });
 
   // Refresh filters and stats for the new language
   renderWeekFilters();
@@ -134,6 +129,29 @@ function switchLanguage() {
   renderDifficultyFilters();
   renderAdminQuestions();
   updateQuestionBankStats();
+}
+
+// ── Sidebar init ─────────────────────────────────────────
+function initSidebar() {
+  const sidebar = document.getElementById('app-sidebar');
+  if (!sidebar) return;
+
+  // Language nav items
+  sidebar.querySelectorAll('.sidebar__item[data-lang]').forEach(item => {
+    item.addEventListener('click', () => switchLanguage(item.dataset.lang));
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchLanguage(item.dataset.lang); }
+    });
+  });
+
+  // Admin / Settings gear at bottom
+  const adminBtn = document.getElementById('sidebar-admin-btn');
+  if (adminBtn) {
+    adminBtn.addEventListener('click', () => showAdminMode());
+    adminBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showAdminMode(); }
+    });
+  }
 }
 
 function loadQuizSettings() {
@@ -148,20 +166,13 @@ function loadQuizSettings() {
 // EVENT LISTENERS SETUP - MCQ ONLY
 // ============================================================================
 function setupEventListeners() {
-  // Language toggle (Python / Java)
-  const langToggle = document.getElementById('lang-toggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', switchLanguage);
-    langToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchLanguage(); }
-    });
-  }
+  // Sidebar (replaces lang toggle)
+  initSidebar();
 
   // Mode selection
   document.getElementById('start-student-quiz').addEventListener('click', () => openStudentConfigModal());
   document.getElementById('start-practice-mode').addEventListener('click', () => showPracticeSetup());
   // Removed: Quiz 2 button listener
-  document.getElementById('start-admin-mode').addEventListener('click', () => showAdminMode());
   document.getElementById('start-history-mode').addEventListener('click', () => showHistoryScreen());
   document.getElementById('back-from-history').addEventListener('click', () => showScreen('modeSelection'));
   
@@ -173,15 +184,25 @@ function setupEventListeners() {
   // Practice setup
   document.getElementById('back-to-mode-selection').addEventListener('click', () => showScreen('modeSelection'));
   document.getElementById('start-practice-quiz').addEventListener('click', () => startPracticeQuiz());
-  document.getElementById('practice-question-count').addEventListener('change', updatePracticePreview);
+  document.getElementById('practice-question-count').addEventListener('change', (e) => {
+    const customInput = document.getElementById('practice-question-custom');
+    if (e.target.value === 'custom') {
+      customInput.classList.remove('hidden');
+      customInput.focus();
+    } else {
+      customInput.classList.add('hidden');
+    }
+    updatePracticePreview();
+  });
+  document.getElementById('practice-question-custom').addEventListener('input', updatePracticePreview);
   // Admin mode
   document.getElementById('back-to-home').addEventListener('click', () => showScreen('modeSelection'));
   document.getElementById('add-mcq-btn').addEventListener('click', () => showQuestionModal(null));
   // Removed: Add coding challenge button
   document.getElementById('question-search').addEventListener('input', (e) => filterQuestions(e.target.value));
   
-  // Admin tabs
-  document.querySelectorAll('.tab-btn').forEach(btn => {
+  // Admin tabs (scoped to admin screen only)
+  document.querySelectorAll('#admin-screen .tab-btn').forEach(btn => {
     btn.addEventListener('click', (e) => switchTab(e.target.dataset.tab));
   });
   
@@ -292,7 +313,10 @@ function startPracticeQuiz() {
   const selectedWeeks = getSelectedFilters('week-filters');
   const selectedCategories = getSelectedFilters('category-filters');
   const selectedDifficulties = getSelectedFilters('difficulty-filters');
-  const questionCount = document.getElementById('practice-question-count').value;
+  const countSelect = document.getElementById('practice-question-count').value;
+  const questionCount = countSelect === 'custom'
+    ? (parseInt(document.getElementById('practice-question-custom').value) || 10)
+    : countSelect;
   
   if (selectedWeeks.length === 0) {
     alert('Please select at least one week');
@@ -828,6 +852,21 @@ function saveQuizAttempt() {
 function showHistoryScreen() {
   showScreen('history');
   renderHistoryList();
+  renderAnalytics();
+  // Wire history tabs (only once)
+  if (!document.getElementById('history-screen').dataset.tabsWired) {
+    document.getElementById('history-screen').dataset.tabsWired = '1';
+    document.querySelectorAll('[data-htab]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-htab]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.htab;
+        document.getElementById('history-attempts-tab').classList.toggle('hidden', tab !== 'attempts');
+        document.getElementById('history-analytics-tab').classList.toggle('hidden', tab !== 'analytics');
+        if (tab === 'analytics') renderAnalytics();
+      });
+    });
+  }
 }
 
 function renderHistoryList() {
@@ -1269,15 +1308,14 @@ function getSelectedFilters(containerId) {
 // ADMIN MODE - MCQ ONLY
 // ============================================================================
 function switchTab(tabName) {
-  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+  if (!tabName) return;
+  document.querySelectorAll('#admin-screen .tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('#admin-screen .tab-content').forEach(content => content.classList.remove('active'));
   
-  document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-  document.getElementById(`${tabName}-tab`).classList.add('active');
-  
-  if (tabName === 'analytics') {
-    renderAnalytics();
-  }
+  const btn = document.querySelector(`#admin-screen [data-tab="${tabName}"]`);
+  const tab = document.getElementById(`${tabName}-tab`);
+  if (btn) btn.classList.add('active');
+  if (tab) tab.classList.add('active');
 }
 
 function renderAdminQuestions() {
@@ -1794,4 +1832,11 @@ function showScreen(screenName) {
   Object.values(screens).forEach(screen => screen.classList.add('hidden'));
   screens[screenName].classList.remove('hidden');
   currentMode = screenName;
+
+  // Sidebar only visible on "home" screens
+  const sidebar = document.getElementById('app-sidebar');
+  if (sidebar) {
+    const homeScreens = ['modeSelection', 'admin', 'history'];
+    sidebar.classList.toggle('hidden', !homeScreens.includes(screenName));
+  }
 }

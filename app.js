@@ -3,7 +3,8 @@
 // ============================================================================
 let questionBank = {};
 let javaQuestionBank = {};      // Java question bank (loaded separately)
-let currentLanguage = 'python'; // 'python' | 'java'
+let cQuestionBank = {};         // C language question bank (SC1008)
+let currentLanguage = 'python'; // 'python' | 'java' | 'c'
 let currentMode = 'selection';
 let currentQuestions = [];
 let currentQuestionIndex = 0;
@@ -47,6 +48,18 @@ async function loadExternalData() {
     } catch (_) {
       javaQuestionBank = { weeks: {} };
     }
+
+    // Load C MCQ question bank (graceful fallback if file missing)
+    try {
+      const cResponse = await fetch('c_questions.json');
+      if (cResponse.ok) {
+        cQuestionBank = await cResponse.json();
+      } else {
+        cQuestionBank = { weeks: {} };
+      }
+    } catch (_) {
+      cQuestionBank = { weeks: {} };
+    }
     
     showLoadingState(false);
     initializeApp();
@@ -56,6 +69,7 @@ async function loadExternalData() {
     // Fallback to empty structure
     questionBank = { weeks: {} };
     javaQuestionBank = { weeks: {} };
+    cQuestionBank = { weeks: {} };
   }
 }
 
@@ -114,6 +128,8 @@ function switchLanguage(lang) {
 
   if (currentLanguage === 'java') {
     if (title) title.textContent = "Danny's SC2002 Java Quiz";
+  } else if (currentLanguage === 'c') {
+    if (title) title.textContent = "Danny's SC1008 C Language Quiz";
   } else {
     if (title) title.textContent = "Danny's SC1003 Programming Quiz";
   }
@@ -447,6 +463,7 @@ function formatQuestionText(text) {
   return text
     .replace(/```java\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
     .replace(/```python\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
+    .replace(/```c\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')   // ← ADD THIS LINE
     .replace(/```\n([\s\S]*?)\n```/g, '<pre><code>$1</code></pre>')
     .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
 }
@@ -1741,7 +1758,9 @@ function shuffleArray(array) {
 }
 
 function getActiveBank() {
-  return currentLanguage === 'java' ? javaQuestionBank : questionBank;
+  if (currentLanguage === 'java') return javaQuestionBank;
+  if (currentLanguage === 'c') return cQuestionBank;
+  return questionBank;
 }
 
 function selectQuizQuestions(filters = {}) {

@@ -1,0 +1,1390 @@
+{
+  "weeks": {
+    "week1": {
+      "outputPrediction": [
+        {
+          "id": 3001,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    printf(\"%f\\n\",2.5+1*7%2/4);\n    return 0;\n}\n```",
+          "options": [
+            "A) 2.500000",
+            "B) 2.750000",
+            "C) 3.375000",
+            "D) 3.000000"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Operator precedence: 1*7=7, then 7%2=1 (integer remainder), then 1/4=0 (integer division). So 2.5+0=2.5, printed as 2.500000 with default 6 decimal places."
+        },
+        {
+          "id": 3002,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    char c1,c2;\n    c1='A'+'8'-'4';\n    c2='A'+'8'-'5';\n    printf(\"%c,%d\\n\",c1,c2);\n    return 0;\n}\n```",
+          "options": [
+            "A) E,68",
+            "B) D,69",
+            "C) E,D",
+            "D) Undefined"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "c1='A'+4='E' (ASCII 69), printed as %c. c2='A'+3='D' (ASCII 68), printed as %d. Output: E,68."
+        },
+        {
+          "id": 3003,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    double d; float f; long l; int i;\n    i=f=l=d=20/3;\n    printf(\"%d,%ld,%f,%f\\n\",i,l,f,d);\n    return 0;\n}\n```",
+          "options": [
+            "A) 6,6,6.000000,6.000000",
+            "B) 6,6,6.666667,6.666667",
+            "C) 6,6,6.000000,6.666667",
+            "D) 6,6,6.7,6.000000"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "20/3 is integer division = 6. The integer 6 is assigned to all variables. When printed: int/long show 6, float/double show 6.000000."
+        },
+        {
+          "id": 3004,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a;\n    a=1+2*5-3;    printf(\"%d,\",a);\n    a=3+4%5-6;    printf(\"%d,\",a);\n    a=3*4%-6/5;   printf(\"%d,\",a);\n    a=(5+3)%4/2;  printf(\"%d\\n\",a);\n    return 0;\n}\n```",
+          "options": [
+            "A) 8,1,1,1",
+            "B) 8,1,0,0",
+            "C) 8,0,1,1",
+            "D) 8,0,1,0"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "a=1+10-3=8; a=3+4-6=1; a=(12%(-6))/5=0/5=0; a=(8%4)/2=0/2=0. Output: 8,1,0,0."
+        },
+        {
+          "id": 3005,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int m=12,n=34;\n    printf(\"%d%d\",m++,++n);\n    printf(\"%d%d\\n\",n++,++m);\n    return 0;\n}\n```",
+          "options": [
+            "A) 12353514",
+            "B) 12353513",
+            "C) 12343514",
+            "D) 12343513"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "First printf: m++=12 (m becomes 13), ++n=35. Prints '1235'. Now m=13,n=35. Second printf: n++=35 (n becomes 36), ++m=14. Prints '3514'. Combined: 12353514."
+        },
+        {
+          "id": 3006,
+          "difficulty": "intermediate",
+          "question": "Given ASCII '0'=48, what will be the output?\n\n```c\n#include <stdio.h>\nint main()\n{\n    char a='1',b='2';\n    printf(\"%c,\",b++);\n    printf(\"%d\\n\",b-a);\n    return 0;\n}\n```",
+          "options": [
+            "A) 3,2",
+            "B) 50,2",
+            "C) 2,2",
+            "D) 2,50"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "b++ is postfix: prints current '2' as %c, then b becomes '3' (ASCII 51). b-a = 51-49 = 2. Output: 2,2."
+        },
+        {
+          "id": 3007,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    double a=1,b;\n    b=a+5/2;\n    printf(\"%f\\n\",b);\n    return 0;\n}\n```",
+          "options": [
+            "A) 1",
+            "B) 3",
+            "C) 3.000000",
+            "D) 3.500000"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "5/2 is integer division = 2. b = 1.0 + 2 = 3.0. printf \"%f\" prints 3.000000."
+        },
+        {
+          "id": 3008,
+          "difficulty": "intermediate",
+          "question": "What will be the output after input '9876543210<CR>'?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a; float b,c;\n    scanf(\"%2d%3f%4f\",&a,&b,&c);\n    printf(\"%d,%f,%f\\n\",a,b,c);\n    return 0;\n}\n```",
+          "options": [
+            "A) 98,765,4321",
+            "B) 10,432,8765",
+            "C) 98,765.000000,4321.000000",
+            "D) 98,765.0,4321.0"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Width specifiers: reads 2 chars to a=98, 3 chars to b=765, 4 chars to c=4321. Printed with %f: 765.000000 and 4321.000000."
+        },
+        {
+          "id": 3009,
+          "difficulty": "basic",
+          "question": "What will be the output after input '10 20 30<CR>'?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int i=0,j=0,k=0;\n    scanf(\"%d%d%d\",&i,&j,&k);\n    printf(\"%d%d%d\\n\",i,j,k);\n    return 0;\n}\n```",
+          "options": [
+            "A) 201030",
+            "B) 102030",
+            "C) 123",
+            "D) 302010"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "scanf reads i=10, j=20, k=30. printf with no separators between %d prints 102030."
+        },
+        {
+          "id": 3010,
+          "difficulty": "advanced",
+          "question": "What will be the output after inputs '123<CR>' then '45678<CR>'?\n\n```c\n#include <stdio.h>\nint main()\n{\n    char c1,c2,c3,c4,c5,c6;\n    scanf(\"%c%c%c%c\",&c1,&c2,&c3,&c4);\n    c5=getchar();\n    c6=getchar();\n    putchar(c1); putchar(c2);\n    printf(\"%c%c\\n\",c5,c6);\n    return 0;\n}\n```",
+          "options": [
+            "A) 1267",
+            "B) 1256",
+            "C) 1278",
+            "D) 1245"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "scanf reads c1='1', c2='2', c3='3', c4='\\n'. getchar() reads c5='4', c6='5'. Prints c1='1', c2='2', c5='4', c6='5'. Output: 1245."
+        }
+      ]
+    },
+    "week2": {
+      "outputPrediction": [
+        {
+          "id": 3011,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int k,a=1,b=2;\n    k=(a++==b)?2:3;\n    printf(\"%d\\n\",k);\n    return 0;\n}\n```",
+          "options": [
+            "A) 0",
+            "B) 1",
+            "C) 2",
+            "D) 3"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "a++ is postfix: evaluates (1==2) which is false before incrementing. So k=3. After the expression, a becomes 2."
+        },
+        {
+          "id": 3012,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int x=10,y=20;\n    if(!(!x) && x)\n        printf(\"%d\",x);\n    else\n        printf(\"%d\",y);\n    return 0;\n}\n```",
+          "options": [
+            "A) 20",
+            "B) 0",
+            "C) 10",
+            "D) 1"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "x=10 (true). !x=false. !(!x)=true. Condition: true && x(true) = true. Prints x=10."
+        },
+        {
+          "id": 3013,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int m=5;\n    if (m++>5) printf(\"%d\\n\",m);\n    else printf(\"%d\\n\",m--);\n    return 0;\n}\n```",
+          "options": [
+            "A) 4",
+            "B) 5",
+            "C) 6",
+            "D) 7"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "m++ postfix: evaluates (5>5)=false first, then m becomes 6. Else branch: m-- prints current m=6 as postfix, then m becomes 5. Output: 6."
+        },
+        {
+          "id": 3014,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int x=1,a=0,b=0;\n    switch (x)\n    {\n    case 0: b++;\n    case 1: a++;\n    case 2: a++; b++;\n    }\n    printf(\"%d,%d\\n\",a,b);\n    return 0;\n}\n```",
+          "options": [
+            "A) 2,1",
+            "B) 1,1",
+            "C) 1,0",
+            "D) 2,2"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "x=1 matches case 1: a++→a=1. No break, falls through to case 2: a++→a=2, b++→b=1. Output: 2,1."
+        },
+        {
+          "id": 3015,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int s=1,k=0;\n    switch(s)\n    {\n    case 1: k+=1; break;\n    case 2: k+=2; break;\n    default: k+=3;\n    }\n    printf(\"%d\\n\",k);\n    return 0;\n}\n```",
+          "options": [
+            "A) 0",
+            "B) 1",
+            "C) 2",
+            "D) 3"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "s=1 matches case 1: k+=1→k=1. break exits the switch. Output: 1."
+        },
+        {
+          "id": 3016,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int s,i;\n    for (s=0,i=0; i<3; i++,s+=i);\n    printf(\"%d\\n\",s);\n    return 0;\n}\n```",
+          "options": [
+            "A) 3",
+            "B) 4",
+            "C) 5",
+            "D) 6"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "The update i++,s+=i runs AFTER each iteration (i increments first, then s+=new_i). i=0→body(empty)→i=1,s+=1=1; i=1→body→i=2,s+=2=3; i=2→body→i=3,s+=3=6; i=3 fails. s=6."
+        },
+        {
+          "id": 3017,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int i=10,j=0;\n    do { j=j+1; i--; } while (i>2);\n    printf(\"%d\",j);\n    return 0;\n}\n```",
+          "options": [
+            "A) 10",
+            "B) 9",
+            "C) 8",
+            "D) 7"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Loop executes while i>2. Starts i=10. After 8 iterations i=2, condition 2>2 is false. j was incremented 8 times. Output: 8."
+        },
+        {
+          "id": 3018,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a,b;\n    for (a=1,b=1; a<=100; a++)\n    {\n        if (b>=20) break;\n        if (b%3==1) { b+=3; continue; }\n        b-=5;\n    }\n    printf(\"%d\",a);\n    return 0;\n}\n```",
+          "options": [
+            "A) 7",
+            "B) 6",
+            "C) 8",
+            "D) 9"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "b starts at 1. Since b%3==1 always holds (1,4,7,10,13,16,19,22...), b keeps adding 3. At a=8, b=22>=20 → break. Prints a=8."
+        },
+        {
+          "id": 3019,
+          "difficulty": "advanced",
+          "question": "What will be the output after input '01<CR>'?\n\n```c\n#include <stdio.h>\nint main()\n{\n    char k; int i;\n    for (i=1; i<3; i++)\n    {\n        scanf(\"%c\",&k);\n        switch (k)\n        {\n        case '0': printf(\"another\\n\");\n        case '1': printf(\"number\\n\");\n        }\n    }\n    return 0;\n}\n```",
+          "options": [
+            "A) another\\nnumber\\nanother",
+            "B) another\\nnumber\\nnumber",
+            "C) another\\nnumber",
+            "D) number\\nnumber"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "i=1: reads '0'. case '0': prints 'another', no break → falls through to case '1': prints 'number'. i=2: reads '1'. case '1': prints 'number'. Output: another / number / number."
+        },
+        {
+          "id": 3020,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int i,n=0;\n    for (i=2; i<5; i++)\n    {\n        do {\n            if (i%4+1) continue;\n            n++;\n        } while (!i);\n        n++;\n    }\n    printf(\"%d\",n);\n    return 0;\n}\n```",
+          "options": [
+            "A) 5",
+            "B) 2",
+            "C) 3",
+            "D) 4"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "For each i (2,3,4): i%4+1 is always non-zero (true), so continue fires and inner n++ is never reached. while(!i) is false (i!=0), do-while exits. Outer n++ runs 3 times. n=3."
+        }
+      ]
+    },
+    "week3": {
+      "outputPrediction": [
+        {
+          "id": 3021,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun(int p);\nint main()\n{\n    int a=1;\n    fun(a);\n    printf(\"%d\\n\",a);\n    return 0;\n}\nvoid fun(int p)\n{\n    int d=2;\n    p=d++;\n    printf(\"%d\",p);\n}\n```",
+          "options": [
+            "A) 32",
+            "B) 12",
+            "C) 21",
+            "D) 22"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "In fun(), d=2, p=d++ assigns p=2 (postfix: d becomes 3 after). Prints p=2. Returns to main(): a=1 is unchanged (passed by value). Prints 1. Output: 21."
+        },
+        {
+          "id": 3022,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\ndouble fun(int,int,int);\nint main()\n{\n    int a=4,b=6,c=7;\n    double d;\n    d=fun(a,b,c);\n    printf(\"%lf\\n\",d);\n    return 0;\n}\ndouble fun(int a,int b,int c)\n{\n    double s;\n    s=a%b*c;\n    return s;\n}\n```",
+          "options": [
+            "A) 27",
+            "B) 27.000000",
+            "C) 28",
+            "D) 28.000000"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "s = a%b*c = 4%6*7 = 4*7 = 28. Assigned to double s = 28.0. Returned and printed as 28.000000."
+        },
+        {
+          "id": 3023,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint abc(int u,int v);\nint main()\n{\n    int a=24,b=16,c;\n    c=abc(a,b);\n    printf(\"%d\\n\",c);\n    return 0;\n}\nint abc(int u,int v)\n{\n    int w;\n    while (v)\n    { w=u%v; u=v; v=w; }\n    return u;\n}\n```",
+          "options": [
+            "A) 4",
+            "B) 6",
+            "C) 5",
+            "D) 8"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Euclidean GCD algorithm. GCD(24,16): w=24%16=8, u=16,v=8; w=16%8=0, u=8,v=0 → exit. Returns 8."
+        },
+        {
+          "id": 3024,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun(int x,int y);\nint main()\n{\n    int a,b;\n    a=5; b=10;\n    fun(a,b);\n    printf(\"%d %d\\n\",a,b);\n    return 0;\n}\nvoid fun(int x,int y)\n{\n    int temp;\n    temp=x; x=y; y=temp;\n}\n```",
+          "options": [
+            "A) 5 10",
+            "B) 10 5",
+            "C) 5 5",
+            "D) 10 10"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "C passes arguments by value. fun() swaps only its local copies x and y. a and b in main() are unaffected. Output: 5 10."
+        },
+        {
+          "id": 3025,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid increment();\nint main()\n{\n    increment(); increment(); increment();\n    return 0;\n}\nvoid increment()\n{\n    int x=0;\n    x+=1;\n    printf(\"%d \",x);\n}\n```",
+          "options": [
+            "A) 1 1 1",
+            "B) 1 2 3",
+            "C) 2 3 1",
+            "D) 3 2 1"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "x is a local variable re-initialised to 0 on every call. Each call: x=0+1=1, prints 1. Output: 1 1 1."
+        },
+        {
+          "id": 3026,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint fun(int x,int y);\nint main()\n{\n    int a=4,b=5,c=6;\n    printf(\"%d\\n\",fun(2*a,fun(b,c)));\n    return 0;\n}\nint fun(int x,int y)\n{\n    if (x==y) return (x);\n    else return ((x+y)/2);\n}\n```",
+          "options": [
+            "A) 3",
+            "B) 6",
+            "C) 8",
+            "D) 12"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Inner fun(5,6): 5!=6, returns (5+6)/2=5 (integer division). Outer fun(8,5): 8!=5, returns (8+5)/2=6. Output: 6."
+        },
+        {
+          "id": 3027,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint fun1(); int fun2(); void fun3(int,int);\nint main() { fun3(fun1(),fun2()); return 0; }\nint fun1() { int k=20; return k; }\nint fun2() { int a=15; return a; }\nvoid fun3(int a,int b)\n{\n    int k;\n    k=(a-b)*(a+b);\n    printf(\"%d\\n\",k);\n}\n```",
+          "options": [
+            "A) 0",
+            "B) 184",
+            "C) 175",
+            "D) compile error"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "fun1() returns 20, fun2() returns 15. fun3(20,15): k=(20-15)*(20+15)=5*35=175. Output: 175."
+        },
+        {
+          "id": 3028,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid add();\nint main()\n{\n    int i;\n    for (i=0; i<3; i++) add();\n    return 0;\n}\nvoid add()\n{\n    static int x=0;\n    x++;\n    printf(\"%d\",x);\n}\n```",
+          "options": [
+            "A) 112",
+            "B) 122",
+            "C) 123",
+            "D) 234"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "x is static — it retains its value between calls. Call 1: x→1, prints 1. Call 2: x→2, prints 2. Call 3: x→3, prints 3. Output: 123."
+        },
+        {
+          "id": 3029,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint f(int a);\nint main()\n{\n    int a=2,i;\n    for (i=0;i<3;i++) printf(\"%d \",f(a));\n    return 0;\n}\nint f(int a)\n{\n    int b=0;\n    static int c=3;\n    b++; c++;\n    return (a+b+c);\n}\n```",
+          "options": [
+            "A) 7 7 7",
+            "B) 7 10 13",
+            "C) 7 9 11",
+            "D) 7 8 9"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "b is local (always resets to 0→1). c is static (persists). Call 1: c=4, returns 2+1+4=7. Call 2: c=5, returns 2+1+5=8. Call 3: c=6, returns 2+1+6=9. Output: 7 8 9."
+        },
+        {
+          "id": 3030,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint test1(); int test2();\nint main()\n{\n    int i,m,n;\n    for (i=0;i<3;i++) { m=test1(); n=test2(); }\n    printf(\"%d,%d\\n\",m,n);\n    return 0;\n}\nint test1() { int x=0; x++; return x; }\nint test2() { static int x=0; x++; return x; }\n```",
+          "options": [
+            "A) 1,1",
+            "B) 1,3",
+            "C) 3,1",
+            "D) 3,3"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "test1() local x: always returns 1. test2() static x: returns 1, 2, 3 on successive calls. After loop: m=1, n=3. Output: 1,3."
+        }
+      ]
+    },
+    "week4": {
+      "outputPrediction": [
+        {
+          "id": 3031,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a=5,b=10,c=15,s;\n    int *px,*py,*pz,*ps;\n    px=&a; py=&b; pz=&c;\n    ps=&s;\n    *ps=*px;\n    if (*ps<*py) *ps=*py;\n    if (*ps<*pz) *ps=*pz;\n    printf(\"%d\\n\",s);\n    return 0;\n}\n```",
+          "options": [
+            "A) 5",
+            "B) 10",
+            "C) 15",
+            "D) error"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "ps points to s. *ps=*px sets s=5. s<10 → s=10. s<15 → s=15. This finds the maximum of a,b,c = 15."
+        },
+        {
+          "id": 3032,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int *p1,*p2,*p,a=5,b=9;\n    p1=&a; p2=&b;\n    if (a<b)\n    { p=p1; p1=p2; p2=p; }\n    printf(\"%d,%d\\n\",*p1,*p2);\n    return 0;\n}\n```",
+          "options": [
+            "A) 9,9",
+            "B) 9,5",
+            "C) 5,5",
+            "D) 5,9"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "a<b is true, so the pointers are swapped: p1 now points to b(9), p2 now points to a(5). Values are unchanged. *p1=9, *p2=5."
+        },
+        {
+          "id": 3033,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int i=90,j=3;\n    int *p;\n    p=&i;\n    *p=2;\n    (*p)++;\n    printf(\"%d \",*p);\n    (*p)--;\n    printf(\"%d\\n\",*p);\n    return 0;\n}\n```",
+          "options": [
+            "A) 2 2",
+            "B) 2 3",
+            "C) 3 2",
+            "D) 3 3"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "p points to i. *p=2 sets i=2. (*p)++ increments i to 3 → prints 3. (*p)-- decrements i to 2 → prints 2. Output: 3 2."
+        },
+        {
+          "id": 3034,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a,b,k=4,m=6,*p1=&k,*p2=&m;\n    a=*p1;\n    b=(*p1)/(*p2)+7;\n    printf(\"%d,\",a);\n    printf(\"%d\\n\",b);\n    return 0;\n}\n```",
+          "options": [
+            "A) -1,5",
+            "B) 1,6",
+            "C) 4,7",
+            "D) 4,10"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "a=*p1=k=4. b=(*p1)/(*p2)+7=4/6+7=0+7=7 (integer division 4/6=0). Output: 4,7."
+        },
+        {
+          "id": 3035,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint b=2;\nint fun(int *a);\nint main()\n{\n    int a=2,res=2;\n    res+=fun(&a);\n    printf(\"%d\\n\",res);\n    return 0;\n}\nint fun(int *a)\n{\n    b+=*a;\n    return b;\n}\n```",
+          "options": [
+            "A) 4",
+            "B) 6",
+            "C) 8",
+            "D) 10"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "fun(&a): global b += *a = 2 → b=4, returns 4. Back in main: res = 2 + 4 = 6. Output: 6."
+        },
+        {
+          "id": 3036,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun(int *px,int *py);\nint main()\n{\n    int a,b;\n    a=5; b=10;\n    fun(&a,&b);\n    printf(\"%d %d\\n\",a,b);\n    return 0;\n}\nvoid fun(int *px,int *py)\n{\n    int temp;\n    temp=*px; *px=*py; *py=temp;\n}\n```",
+          "options": [
+            "A) 5 10",
+            "B) 10 5",
+            "C) 5 15",
+            "D) 15 5"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "fun() swaps values via pointers: *px(a) gets *py(b)=10, *py(b) gets old *px(a)=5. a=10, b=5. Output: 10 5."
+        },
+        {
+          "id": 3037,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid sub(int x,int y,int *z);\nint main()\n{\n    int a,b,c;\n    sub(10,5,&a);\n    sub(7,a,&b);\n    sub(a,b,&c);\n    printf(\"%d,%d,%d\\n\",a,b,c);\n    return 0;\n}\nvoid sub(int x,int y,int *z) { *z=y-x; }\n```",
+          "options": [
+            "A) -5,-7,-12",
+            "B) -7,-12,-7",
+            "C) -5,-12,-7",
+            "D) -12,-5,-7"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "sub(10,5,&a): a=5-10=-5. sub(7,-5,&b): b=-5-7=-12. sub(-5,-12,&c): c=-12-(-5)=-7. Output: -5,-12,-7."
+        },
+        {
+          "id": 3038,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun(int *n);\nint main()\n{\n    int a=100;\n    fun(&a);\n    printf(\"\\n\");\n    return 0;\n}\nvoid fun(int *n)\n{\n    while ( (*n)-- );\n    printf(\"%d\",++(*n));\n}\n```",
+          "options": [
+            "A) 100",
+            "B) 99",
+            "C) 1",
+            "D) 0"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "(*n)-- postfix: evaluates 100(true)→*n=99... evaluates 1(true)→*n=0... evaluates 0(false)→*n=-1, loop exits. ++(*n) increments *n to 0, prints 0."
+        },
+        {
+          "id": 3039,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun(char *a,char *b);\nint main()\n{\n    char c1='A',c2='a',*p1,*p2;\n    p1=&c1; p2=&c2;\n    fun(p1,p2);\n    printf(\"%c%c\\n\",c1,c2);\n    return 0;\n}\nvoid fun(char *a,char *b)\n{\n    a=b;\n    (*a)++;\n}\n```",
+          "options": [
+            "A) Ab",
+            "B) aa",
+            "C) Aa",
+            "D) Bb"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "fun() receives copies of p1,p2. a=b makes local a point to c2 (p1 in main unchanged). (*a)++ increments c2: 'a'→'b'. c1='A' is untouched. Output: Ab."
+        },
+        {
+          "id": 3040,
+          "difficulty": "intermediate",
+          "question": "Assuming inputs 1, 3, 5 are entered, what will be the output?\n\n```c\n#include <stdio.h>\nint s(int *p);\nint main()\n{\n    int a=0,i,*p,sum;\n    p=&a;\n    for (i=0; i<3; i++)\n    {\n        scanf(\"%d\",p);\n        sum=s(p);\n        printf(\"%d \",sum);\n    }\n    return 0;\n}\nint s(int *p) { int sum=10; sum=sum+*p; return (sum); }\n```",
+          "options": [
+            "A) 10 12 14",
+            "B) 11 13 15",
+            "C) 12 14 16",
+            "D) 13 15 17"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Each iteration reads input into a (via p), calls s() which returns 10+*p. Inputs 1,3,5 → 10+1=11, 10+3=13, 10+5=15. Output: 11 13 15."
+        }
+      ]
+    },
+    "week5": {
+      "outputPrediction": [
+        {
+          "id": 3041,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int i,a[10];\n    for (i=9;i>=0;i--) a[i]=10-i;\n    printf(\"%d %d %d\",a[3],a[6],a[9]);\n    return 0;\n}\n```",
+          "options": [
+            "A) 2 5 8",
+            "B) 7 4 1",
+            "C) 8 5 2",
+            "D) 3 6 9"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "a[i]=10-i: a[3]=7, a[6]=4, a[9]=1. Output: 7 4 1."
+        },
+        {
+          "id": 3042,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int i,n[4]={1};\n    for (i=1;i<=3;i++)\n    {\n        n[i]=n[i-1]*2+1;\n        printf(\"%d \",n[i]);\n    }\n    return 0;\n}\n```",
+          "options": [
+            "A) 3 7 10",
+            "B) 3 6 12",
+            "C) 2 7 14",
+            "D) 3 7 15"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "n[0]=1. n[1]=1*2+1=3; n[2]=3*2+1=7; n[3]=7*2+1=15. Output: 3 7 15."
+        },
+        {
+          "id": 3043,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a[]={2,3,5,4},i;\n    for (i=0;i<4;i++)\n        switch (i%2)\n        {\n        case 0: switch(a[i]%2)\n                { case 0:a[i]++; break; case 1:a[i]--; } break;\n        case 1: a[i]=0;\n        }\n    for (i=0;i<4;i++) printf(\"%d \",a[i]);\n    return 0;\n}\n```",
+          "options": [
+            "A) 3 3 4 4",
+            "B) 2 0 5 0",
+            "C) 3 0 4 0",
+            "D) 0 3 0 4"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "i=0: i%2=0, a[0]=2%2=0 → a[0]++→3. i=1: i%2=1 → a[1]=0. i=2: i%2=0, a[2]=5%2=1 → a[2]--→4. i=3: i%2=1 → a[3]=0. Output: 3 0 4 0."
+        },
+        {
+          "id": 3044,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int x[]={1,2,3};\n    int s,i,*p;\n    s=1; p=x;\n    for (i=0; i<3; i++) s*=*(p+i);\n    printf(\"%d\\n\",s);\n    return 0;\n}\n```",
+          "options": [
+            "A) 4",
+            "B) 5",
+            "C) 6",
+            "D) 7"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "p=x points to x[0]. s = 1*1*2*3 = 6."
+        },
+        {
+          "id": 3045,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a[10]={1,2,3,4,5,6,7,8,9,10},*p=&a[3],*q=p+2;\n    printf(\"%d\\n\",*p+*q);\n    return 0;\n}\n```",
+          "options": [
+            "A) 16",
+            "B) 10",
+            "C) 8",
+            "D) 6"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "p=&a[3] so *p=a[3]=4. q=p+2=&a[5] so *q=a[5]=6. *p+*q = 4+6 = 10."
+        },
+        {
+          "id": 3046,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a[]={1,2,3,4,5,6};\n    int *p;\n    p=a;\n    printf(\"%d \",*p);\n    printf(\"%d \",*(++p));\n    printf(\"%d \",*++p);\n    printf(\"%d \",*(p--));\n    p+=3;\n    printf(\"%d %d\\n\",*p,*(a+3));\n    return 0;\n}\n```",
+          "options": [
+            "A) 1 2 2 3 5 4",
+            "B) 1 2 3 3 5 4",
+            "C) 1 2 3 4 5 4",
+            "D) 1 2 3 4 6 4"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "p=a[0]: *p=1. ++p→a[1]: 2. ++p→a[2]: 3. *(p--)=a[2]=3, p→a[1]. p+=3→a[4]: *p=5. *(a+3)=a[3]=4. Output: 1 2 3 3 5 4."
+        },
+        {
+          "id": 3047,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint b=2;\nint fun(int *k);\nint main()\n{\n    int a[10]={1,2,3,4,5,6,7,8},i;\n    for (i=2;i<4;i++)\n    {\n        b=fun(&a[i])+b;\n        printf(\"%d \",b);\n    }\n    return 0;\n}\nint fun(int *k) { b=*k+b; return(b); }\n```",
+          "options": [
+            "A) 10 12",
+            "B) 8 10",
+            "C) 10 28",
+            "D) 10 16"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "i=2: fun(&a[2])→b=3+2=5, returns 5; b=5+5=10. Prints 10. i=3: fun(&a[3])→b=4+10=14, returns 14; b=14+14=28. Prints 28. Output: 10 28."
+        },
+        {
+          "id": 3048,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun(int b[]);\nint main()\n{\n    int a[4],i;\n    fun(a);\n    for (i=0;i<4;i++) printf(\"%d \",a[i]);\n    return 0;\n}\nvoid fun(int b[]) { int j; for (j=0;j<4;j++) b[j]=j; }\n```",
+          "options": [
+            "A) 0 1 2 3",
+            "B) 1 2 3 4",
+            "C) 2 3 4 5",
+            "D) 3 4 5 6"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Arrays are passed by reference. fun() sets b[j]=j → modifies main()'s array a directly. Output: 0 1 2 3."
+        },
+        {
+          "id": 3049,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid change(int *b,int n);\nint main()\n{\n    int i,a[]={2,4,6,8,10};\n    change(a,5);\n    for(i=0;i<=4;i++) printf(\"%d \",a[i]);\n    return 0;\n}\nvoid change(int *b,int n)\n{\n    int i;\n    for(i=0;i<n;i++) *(b+1)=*(b+i)+5;\n}\n```",
+          "options": [
+            "A) 7 9 11 13 15",
+            "B) 2 15 6 8 10",
+            "C) 2 4 6 8 10",
+            "D) 3 1 -1 -3 -5"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The loop ALWAYS writes to *(b+1)=b[1]. Final iteration (i=4): b[1]=b[4]+5=10+5=15. Other elements unchanged. a={2,15,6,8,10}."
+        },
+        {
+          "id": 3050,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\n#define MAX 10\nint a[MAX],i;\nvoid sub1(); void sub2(); void sub3(int a[]);\nint main() { printf(\"\\n\"); sub1(); sub2(); sub3(a); return 0; }\nvoid sub1() { for (i=0;i<MAX;i++) a[i]=i+1; }\nvoid sub2() { int a[MAX],i,max=5; for (i=0;i<max;i++) a[i]=i; }\nvoid sub3(int a[]) { int i; for (i=0;i<MAX;i++) printf(\"%d \",a[i]); }\n```",
+          "options": [
+            "A) 0 2 4 6 8 10 12 14 16 18",
+            "B) 1 3 5 7 9 11 13 15 17 19",
+            "C) 0 1 2 3 4 5 6 7 8 9",
+            "D) 1 2 3 4 5 6 7 8 9 10"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "sub1() fills global a[]={1..10}. sub2() uses a LOCAL a[] (shadows global) — global is unchanged. sub3() prints global a[]. Output: 1 2 3 4 5 6 7 8 9 10."
+        }
+      ]
+    },
+    "week6": {
+      "outputPrediction": [
+        {
+          "id": 3051,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int i,j,a[2][3]={ {2,4,6},{8,10,12} };\n    for (i=0;i<3;i++)\n    {\n        for (j=0;j<2;j++) printf(\"%d \",a[j][i]);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n```",
+          "options": [
+            "A) 2 8 / 4 10 / 6 12",
+            "B) 4 10 / 6 8 / 2 12",
+            "C) 6 10 / 4 12 / 2 8",
+            "D) 4 10 / 2 8 / 6 12"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Outer i loops over columns, inner j loops over rows: row 0 gives 2,8; row 1 gives 4,10; row 2 gives 6,12."
+        },
+        {
+          "id": 3052,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a[3][3]={1,3,6,7,9,11,14,15,17};\n    int s=0,i,j;\n    for (i=0;i<3;i++)\n        for (j=0;j<3;j++)\n            if (i==j) s=s+a[i][j];\n    printf(\"%d\\n\",s);\n    return 0;\n}\n```",
+          "options": [
+            "A) 25",
+            "B) 26",
+            "C) 27",
+            "D) 28"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Sums diagonal elements: a[0][0]=1, a[1][1]=9, a[2][2]=17. s=1+9+17=27."
+        },
+        {
+          "id": 3053,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a[2][3]={ {1,2,3},{4,5,6} };\n    int b[3][2],i,j;\n    for (i=0;i<=1;i++)\n        for (j=0;j<=2;j++) b[j][i]=a[i][j];\n    for (i=0;i<=2;i++)\n    {\n        for (j=0;j<=1;j++) printf(\"%d \",b[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n```",
+          "options": [
+            "A) 1 4 / 2 5 / 3 6",
+            "B) 1 6 / 2 5 / 3 4",
+            "C) 3 4 / 2 5 / 1 6",
+            "D) 3 6 / 2 5 / 1 4"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "b[j][i]=a[i][j] is a matrix transpose. Output: 1 4 / 2 5 / 3 6."
+        },
+        {
+          "id": 3054,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a[3][3],*p,i;\n    p=&a[0][0];\n    for (i=0;i<9;i++) p[i]=i+1;\n    printf(\"%d\\n\",a[1][2]);\n    return 0;\n}\n```",
+          "options": [
+            "A) 3",
+            "B) 6",
+            "C) 9",
+            "D) 2"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Fills array linearly 1-9. a[1][2] is at position 1*3+2=5 → p[5]=6."
+        },
+        {
+          "id": 3055,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a[3][4]={1,2,3,4,5,6,7,8,9,10,11,12};\n    printf(\"%d,%d\",*(a[0]+1),*(*(a+0)+1));\n    return 0;\n}\n```",
+          "options": [
+            "A) 4,4",
+            "B) 4,2",
+            "C) 2,2",
+            "D) Error"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "*(a[0]+1)=a[0][1]=2. *(*(a+0)+1)=*(a[0]+1)=2. Both identical. Output: 2,2."
+        },
+        {
+          "id": 3056,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a[3][4]={1,3,5,7,9,11,13,15,17,19,21,23};\n    int *p,i;\n    for (p=a[0],i=0; i<12; p++,i++)\n    {\n        if (i%4==0) printf(\"\\n\");\n        printf(\"%d \",*p);\n    }\n    return 0;\n}\n```",
+          "options": [
+            "A) (newline)1 3 5 7 / 9 11 13 15 / 17 19 21 23",
+            "B) (newline)3 5 7 9 / 9 11 13 15 / 17 19 21 23",
+            "C) (newline)1 3 5 7 / 11 13 15 17 / 17 19 21 23",
+            "D) (newline)1 3 5 7 / 9 11 13 15 / 15 17 19 21"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "p traverses the array linearly. A newline is printed every 4 elements. Rows: 1 3 5 7 / 9 11 13 15 / 17 19 21 23."
+        },
+        {
+          "id": 3057,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    int a[2][3]={ {1,2,3},{4,5,6} };\n    int m,*ptr;\n    ptr=&a[0][0];\n    m=(*ptr)*(*(ptr+2))*(*(ptr+4));\n    printf(\"%d\\n\",m);\n    return 0;\n}\n```",
+          "options": [
+            "A) 14",
+            "B) 15",
+            "C) 16",
+            "D) 17"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "*ptr=1, *(ptr+2)=a[0][2]=3, *(ptr+4)=a[1][1]=5. m=1*3*5=15."
+        },
+        {
+          "id": 3058,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\n#define N 4\nvoid fun(int a[][N],int b[]);\nint main()\n{\n    int x[][N]={ {1,2,3},{4},{5,6,7,8},{9,10} },y[N],i;\n    fun(x,y);\n    for (i=0;i<N;i++) printf(\"%d \",y[i]);\n    return 0;\n}\nvoid fun(int a[][N],int b[])\n{\n    int i;\n    for (i=0;i<N;i++) b[i]=a[i][i];\n}\n```",
+          "options": [
+            "A) 1 2 3 4",
+            "B) 1 0 7 0",
+            "C) 1 4 5 9",
+            "D) 3 4 8 10"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Partial init: x[0]={1,2,3,0}, x[1]={4,0,0,0}, x[2]={5,6,7,8}, x[3]={9,10,0,0}. Diagonals: 1,0,7,0. Output: 1 0 7 0."
+        },
+        {
+          "id": 3059,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun(int *p);\nint main()\n{\n    int a[3][4]={1,2,3,4,4,3,2,8,7,8,9,0};\n    int *ptr;\n    ptr=&a[0][0];\n    fun(ptr);\n    return 0;\n}\nvoid fun(int *p)\n{\n    printf(\"%d %d %d\",*p,*(p+4),*(p+8));\n}\n```",
+          "options": [
+            "A) 1 4 7",
+            "B) 2 3 8",
+            "C) 3 2 9",
+            "D) 4 8 0"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "*(p)=a[0][0]=1, *(p+4)=a[1][0]=4, *(p+8)=a[2][0]=7. Output: 1 4 7."
+        },
+        {
+          "id": 3060,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint fun(int s[][4],int n,int k);\nint main()\n{\n    int a[4][4]={ {1,2,3,4},{11,12,13,14},{21,22,23,24},{31,32,33,34} };\n    printf(\"%d\\n\",fun(a,4,0));\n    return 0;\n}\nint fun(int s[][4],int n,int k)\n{\n    int m,i;\n    m=s[0][k];\n    for (i=0;i<n;i++) if (s[i][k]>m) m=s[i][k];\n    return m;\n}\n```",
+          "options": [
+            "A) 4",
+            "B) 34",
+            "C) 31",
+            "D) 32"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "fun() finds the maximum of column k=0: {1, 11, 21, 31}. Returns 31."
+        }
+      ]
+    },
+    "week7": {
+      "outputPrediction": [
+        {
+          "id": 3061,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    char *format=\"%s,a=%d,b=%d\\n\";\n    int a=1,b=10;\n    a+=b;\n    printf(format,\"a+=b\",a,b);\n    return 0;\n}\n```",
+          "options": [
+            "A) for,\"a+=b\",ab",
+            "B) format,\"a+=b\"",
+            "C) a+=b,a=11,b=10",
+            "D) none of the above"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "a+=b makes a=11. printf(format,...) uses the format string pointer: %s=\"a+=b\", %d=11, %d=10. Output: a+=b,a=11,b=10."
+        },
+        {
+          "id": 3062,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    char a[]=\"123456789\",*p;\n    int i=0;\n    p=a;\n    while (*p)\n    {\n        if (i%2==0) *p='*';\n        p++; i++;\n    }\n    printf(\"%s\\n\",a);\n    return 0;\n}\n```",
+          "options": [
+            "A) *1*3*5*9*",
+            "B) *2*4*6*8*",
+            "C) *1*2*3*4*",
+            "D) *6*7*8*9*"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "When i is even (0,2,4,6,8), *p becomes '*'. Even-index chars ('1','3','5','7','9') are replaced, odd-index chars ('2','4','6','8') stay. Output: *2*4*6*8*."
+        },
+        {
+          "id": 3063,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    char a[]=\"language\",b[]=\"program\";\n    char *ptr1=a,*ptr2=b;\n    int k;\n    for (k=0;k<7;k++)\n        if (*(ptr1+k)==*(ptr2+k))\n            printf(\"%c\",*(ptr1+k));\n    return 0;\n}\n```",
+          "options": [
+            "A) gae",
+            "B) ga",
+            "C) language",
+            "D) syntax error"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "k=3: 'g'='g' → print 'g'. k=5: 'a'='a' → print 'a'. No other matches. Output: ga."
+        },
+        {
+          "id": 3064,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint fun(char a[],char b[]);\nint main()\n{\n    char str1[80]=\"qwerty\";\n    char str2[80]=\"abcd\";\n    printf(\"%d\\n\",fun(str1,str2));\n    return 0;\n}\nint fun(char a[],char b[])\n{\n    int num=0,n=0;\n    while (a[num]!='\\0') num++;\n    while (b[n]) { a[num]=b[n]; num++; n++; }\n    a[num]='\\0';\n    return num;\n}\n```",
+          "options": [
+            "A) 10",
+            "B) 11",
+            "C) 12",
+            "D) 13"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "fun() manually concatenates b onto a and returns total length. strlen(\"qwerty\")=6, strlen(\"abcd\")=4. Returns 10."
+        },
+        {
+          "id": 3065,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint fun(char *s,char *t);\nint main()\n{\n    char a[80]=\"acdef\";\n    char b[80]=\"abcd\";\n    char *p,*q;\n    p=a; q=b;\n    printf(\"%d\\n\",fun(p,q));\n    return 0;\n}\nint fun(char *s,char *t)\n{\n    for (; *s==*t; t++,s++)\n        if (*s=='\\0') return 0;\n    return (*s-*t);\n}\n```",
+          "options": [
+            "A) 0",
+            "B) 1",
+            "C) 2",
+            "D) 3"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "'a'='a' matches. Next: 'c' vs 'b' differ. Returns 'c'-'b' = 99-98 = 1."
+        },
+        {
+          "id": 3066,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nchar *f(char *p1,char *p2);\nint main()\n{\n    char a[20]=\"abcde\";\n    char b[20]=\"12345\";\n    f(a,b);\n    printf(\"%s\\n\",a);\n    return 0;\n}\nchar *f(char *p1,char *p2)\n{\n    char *p=p1;\n    while (*p1) p1++;\n    while (*p2) { *p1=*p2; p1++; p2++; }\n    *p1='\\0';\n    return (p);\n}\n```",
+          "options": [
+            "A) ab12",
+            "B) abc123",
+            "C) abcd1234",
+            "D) abcde12345"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "First while moves p1 to end of \"abcde\". Second while appends b's chars. a becomes \"abcde12345\"."
+        },
+        {
+          "id": 3067,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\n#include <string.h>\nint main()\n{\n    int i=0,n=0;\n    char s[80],*p;\n    p=s;\n    strcpy(p,\"It is a book.\");\n    for (; *p!='\\0'; p++)\n        if (*p==' ') i=0;\n        else if (i==0) { n++; i=1; }\n    printf(\"%d\\n\",n);\n    return 0;\n}\n```",
+          "options": [
+            "A) 1",
+            "B) 2",
+            "C) 3",
+            "D) 4"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Counts words by detecting first non-space character after each space. 4 words: It, is, a, book. Output: 4."
+        },
+        {
+          "id": 3068,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\n#include <string.h>\nint main()\n{\n    char *s1=\"AbDeG\";\n    char *s2=\"AbdEg\";\n    s1+=2; s2+=2;\n    printf(\"%d\\n\",strcmp(s1,s2));\n    return 0;\n}\n```",
+          "options": [
+            "A) 1",
+            "B) -1",
+            "C) 0",
+            "D) Unpredictable value"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "After advances: s1=\"DeG\", s2=\"dEg\". 'D'(68) < 'd'(100) → strcmp returns negative. Most compilers return -1."
+        },
+        {
+          "id": 3069,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    char *str[]={\"Pascal\",\"C language\",\"Python\",\"Cobol\"};\n    char **p;\n    int k;\n    p=str;\n    for (k=0;k<4;k++) printf(\"%s \",*(p++));\n    return 0;\n}\n```",
+          "options": [
+            "A) Pascal",
+            "B) Pascal C language",
+            "C) Pascal C language Python",
+            "D) Pascal C language Python Cobol"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "p is a pointer to char*. Each *(p++) dereferences to get the string then advances p. All 4 strings printed."
+        },
+        {
+          "id": 3070,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\n#include <string.h>\n#define N 6\nint main()\n{\n    char str[N][80]={\"Basic\",\"Fortran\",\"Prolog\",\"Java\",\"C++\",\"Python\"};\n    char *sp;\n    int i;\n    sp=str;\n    for (i=0;i<N;i++)\n        if (strlen(sp)<strlen(str[i])) sp=str[i];\n    printf(\"%d %s\\n\",strlen(sp),sp);\n    return 0;\n}\n```",
+          "options": [
+            "A) 5 Basic",
+            "B) 7 Fortran",
+            "C) 6 Prolog",
+            "D) 4 Java"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Finds longest string. Lengths: Basic(5), Fortran(7), Prolog(6), Java(4), C++(3), Python(6). Fortran wins. Output: 7 Fortran."
+        }
+      ]
+    },
+    "week8": {
+      "outputPrediction": [
+        {
+          "id": 3071,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nstruct strin {\n    char c[5];\n    char *s;\n};\nint main()\n{\n    struct strin s={\"ABCD\",\"EFGH\"};\n    printf(\"%s%c\\n\",s.c,*s.s);\n    return 0;\n}\n```",
+          "options": [
+            "A) ABCDE",
+            "B) DEFGH",
+            "C) ABCDF",
+            "D) EFGHA"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "s.c is the char array \"ABCD\", printed with %s. *s.s dereferences the pointer to the first character of \"EFGH\", which is 'E', printed with %c. Output: ABCDE."
+        },
+        {
+          "id": 3072,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nstruct s {\n    int a;\n    int b;\n    char *c;\n};\nint main()\n{\n    struct s x={19,83,\"Zhang\"};\n    struct s *px=&x;\n    printf(\"%d,%d,%s,\",px->a,(*px).b,px->c);\n    printf(\"%c,%s\\n\",*px->c-1,&px->c[1]);\n    return 0;\n}\n```",
+          "options": [
+            "A) 18,83,Zhang,Z,hang",
+            "B) 19,83,Zhang,Z,hang",
+            "C) 18,83,Zhang,Y,hang",
+            "D) 19,83,Zhang,Y,hang"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "px->a=19, (*px).b=83, px->c=\"Zhang\". *px->c='Z', so *px->c-1='Y'. &px->c[1] is the substring \"hang\". Output: 19,83,Zhang,Y,hang."
+        },
+        {
+          "id": 3073,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\ntypedef struct { int b,p; } A;\nvoid f(A c);\nint main()\n{\n    int i;\n    A a={1,2};\n    f(a);\n    printf(\"%d,%d\\n\",a.b,a.p);\n    return 0;\n}\nvoid f(A c)\n{\n    int j;\n    c.b+=1; c.p+=2;\n}\n```",
+          "options": [
+            "A) 2,3",
+            "B) 2,4",
+            "C) 1,4",
+            "D) 1,2"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "f(a) is called by value — changes to c do not affect a in main(). a.b=1, a.p=2 unchanged. Output: 1,2."
+        },
+        {
+          "id": 3074,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nstruct stu {\n    int x;\n    char c;\n};\nvoid func(struct stu *b);\nint main()\n{\n    struct stu a={12,'y'}, *p=&a;\n    func(p);\n    printf(\"%d,%c\\n\",a.x,a.c);\n    return 0;\n}\nvoid func(struct stu *b)\n{\n    b->x=b->x+9;\n    b->c='n';\n}\n```",
+          "options": [
+            "A) 12,y",
+            "B) 12,n",
+            "C) 21,y",
+            "D) 21,n"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "func() receives a pointer to a, modifying a directly. b->x=12+9=21, b->c='n'. Output: 21,n."
+        },
+        {
+          "id": 3075,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nstruct S {int n; int a[20]; };\nvoid f(int *a, int n);\nint main()\n{\n    int i; struct S s={10,{2,3,1,6,8,7,5,4,10,9}};\n    f(s.a, s.n);\n    for (i=0;i<s.n;i++) printf(\"%d \",s.a[i]);\n    return 0;\n}\nvoid f(int *a, int n)\n{\n    int i;\n    for (i=0;i<n-1;i++) a[i]+=i;\n}\n```",
+          "options": [
+            "A) 2 4 3 9 12 12 11 11 18 9",
+            "B) 3 4 2 7 9 8 6 5 11 10",
+            "C) 2 3 1 6 8 7 5 4 10 9",
+            "D) 1 2 3 6 8 7 5 4 10 9"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "f() adds index i to each of the first n-1 elements: a[0]+=0=2, a[1]+=1=4, a[2]+=2=3, a[3]+=3=9, a[4]+=4=12, a[5]+=5=12, a[6]+=6=11, a[7]+=7=11, a[8]+=8=18, a[9] unchanged=9. Output: 2 4 3 9 12 12 11 11 18 9."
+        },
+        {
+          "id": 3076,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    struct emplx { int x; int y; } num[2] = { 1,3,2,7 };\n    printf(\"%d\\n\", num[0].y/num[0].x*num[1].x);\n    return 0;\n}\n```",
+          "options": [
+            "A) 0",
+            "B) 1",
+            "C) 3",
+            "D) 6"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "num[0]={x=1,y=3}, num[1]={x=2,y=7}. 3/1*2 = 3*2 = 6 (left-to-right). Output: 6."
+        },
+        {
+          "id": 3077,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nstruct st\n{\n    int x,y;\n} data[2]={1,10,2,20};\nint main()\n{\n    struct st *p=data;\n    printf(\"%d,\",p->y);\n    printf(\"%d\\n\",(++p)->x);\n    return 0;\n}\n```",
+          "options": [
+            "A) 10,1",
+            "B) 20,1",
+            "C) 10,2",
+            "D) 20,2"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "p=data[0]: p->y=10. ++p advances to data[1]: (++p)->x=2. Output: 10,2."
+        },
+        {
+          "id": 3078,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nstruct stu\n{ char num[10]; int score[3]; };\nint main()\n{\n    struct stu s[3] = { {\"20021\",90,95,85},\n                        {\"20022\",95,80,75},\n                        {\"20023\",100,95,90} };\n    struct stu *p=s;\n    int i; int sum=0;\n    for (i=0; i<3; i++)\n        sum = sum+p->score[i];\n    printf(\"%d\\n\",sum);\n    return 0;\n}\n```",
+          "options": [
+            "A) 260",
+            "B) 270",
+            "C) 280",
+            "D) 285"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "p points to s[0] and is never incremented. sum = s[0].score[0]+s[0].score[1]+s[0].score[2] = 90+95+85 = 270. Output: 270."
+        },
+        {
+          "id": 3079,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nstruct str1\n{ char c[5]; char *s; };\nint main()\n{\n    struct str1 s1[2] = {\n        { \"ABCD\", \"EFGH\" },\n        { \"IJK\", \"LMN\" }\n    };\n    struct str2 {\n        struct str1 sr;\n        int d;\n    } s2 = {\"OPQ\", \"RST\", 32767};\n    struct str1 *p[2];\n    p[0]=&s1[0];\n    p[1]=&s1[1];\n    printf(\"%s \", ++p[1]->s);\n    printf(\"%c\", s2.sr.c[2]);\n    return 0;\n}\n```",
+          "options": [
+            "A) LMN O",
+            "B) MN Q",
+            "C) N P",
+            "D) IJK R"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "'->' has higher precedence than '++'. ++p[1]->s increments the s pointer of s1[1] past 'L' to point to \"MN\", which is printed. s2.sr.c[2] is the 3rd char of \"OPQ\" = 'Q'. Output: MN Q."
+        },
+        {
+          "id": 3080,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint main()\n{\n    struct student {\n        int age;\n        char *name;\n    };\n    struct student b[3] = {\n        18, \"Peter\", 19, \"Mary\", 20, \"John\"\n    };\n    struct student *p = b;\n    printf(\"%d \", ++p->age);\n    printf(\"%s \", (*p).name);\n    printf(\"%c \", *p->name-1);\n    printf(\"%s \", &p->name[1]);\n    printf(\"%c \", *++p->name);\n    printf(\"%c \", *p++->name);\n    printf(\"%c \", *(++p)->name);\n    return 0;\n}\n```",
+          "options": [
+            "A) 18 Peter O ary e e o",
+            "B) 19 Mary O ary e e h",
+            "C) 18 Mary O eter e e J",
+            "D) 19 Peter O eter e e J"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "++p->age increments b[0].age to 19. (*p).name=\"Peter\". *p->name-1='P'-1='O'. &p->name[1]=\"eter\". *++p->name advances name past 'P' to 'e'. *p++->name: name points to 'e', prints 'e', then p advances to b[1]. *(++p)->name: p advances to b[2] (John), name[0]='J'. Output: 19 Peter O eter e e J."
+        }
+      ]
+    },
+    "week9": {
+      "outputPrediction": [
+        {
+          "id": 3081,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid b(int x);\nint main()\n{\n    b(12);\n    return 0;\n}\nvoid b(int x)\n{\n    if ( x/2>0 ) b(x/2);\n    printf(\"%d\", x%2);\n}\n```",
+          "options": [
+            "A) 1000",
+            "B) 1050",
+            "C) 1100",
+            "D) 1200"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "b(12)→b(6)→b(3)→b(1). Each call prints x%2 on return: b(1)→1, b(3)→1, b(6)→0, b(12)→0. Output: 1100 (binary representation of 12)."
+        },
+        {
+          "id": 3082,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint fun(int a, int b);\nint main()\n{\n    printf(\"%d\\n\",fun(4,2));\n    return 0;\n}\nint fun(int a, int b)\n{\n    if (b==0)\n        return a;\n    else\n        return(fun(--a,--b));\n}\n```",
+          "options": [
+            "A) 1",
+            "B) 2",
+            "C) 3",
+            "D) 4"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Prefix --: fun(4,2)→fun(3,1)→fun(2,0). When b==0, returns a=2. Output: 2."
+        },
+        {
+          "id": 3083,
+          "difficulty": "basic",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint fun(int n);\nint main()\n{\n    int n=5;\n    printf(\"%d\\n\", fun(n));\n    return 0;\n}\nint fun(int n)\n{\n    if ( n<=0 ) printf(\"Error\");\n    if ( n==1 ) return (1);\n    else return (fun(n-1)+n);\n}\n```",
+          "options": [
+            "A) 15",
+            "B) 16",
+            "C) 17",
+            "D) 18"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "fun(5)=fun(4)+5, fun(4)=fun(3)+4, ..., fun(1)=1. Sum: 1+2+3+4+5=15. Output: 15."
+        },
+        {
+          "id": 3084,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun(int n);\nint main()\n{\n    int m;\n    m=123; fun(m); printf(\"\\n\");\n    return 0;\n}\nvoid fun(int n)\n{\n    int i;\n    if (n<0)\n    { putchar('-'); n=0-n; }\n    if ( (i=n/10) != 0 )\n        fun(i);\n    putchar( n%10+'0' );\n}\n```",
+          "options": [
+            "A) 123",
+            "B) 321",
+            "C) 231",
+            "D) 132"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "fun(123)→fun(12)→fun(1): prints '1'. Back: prints '2'. Back: prints '3'. Digits printed in original order. Output: 123."
+        },
+        {
+          "id": 3085,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint fun(int n);\nint main()\n{\n    printf(\"%d\\n\",fun(3));\n    return 0;\n}\nint fun(int n)\n{\n    int s;\n    if (n==1 || n==2)\n        s=2;\n    else\n        s=n*fun(n-1);\n    return s;\n}\n```",
+          "options": [
+            "A) 3",
+            "B) 4",
+            "C) 5",
+            "D) 6"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "fun(3)=3*fun(2)=3*2=6. Base case: fun(1)=fun(2)=2. Output: 6."
+        },
+        {
+          "id": 3086,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun1(int n);\nint main()\n{\n    fun1(3);\n    return 0;\n}\nvoid fun1(int n)\n{\n    int i = 0;\n    if (n > 1)\n        fun1(n-1);\n    for (i = 0; i < n; i++)\n        printf(\"*\");\n}\n```",
+          "options": [
+            "A) ****",
+            "B) *****",
+            "C) ******",
+            "D) *******"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "fun1(3)→fun1(2)→fun1(1). On return: fun1(1) prints 1 star, fun1(2) prints 2 stars, fun1(3) prints 3 stars. Total: 1+2+3=6 stars. Output: ******."
+        },
+        {
+          "id": 3087,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nlong fib(int n);\nint main()\n{\n    printf(\"%ld\\n\",fib(6));\n    return 0;\n}\nlong fib(int n)\n{\n    if (n>2)\n        return (fib(n-1)+fib(n-2));\n    else\n        return (2);\n}\n```",
+          "options": [
+            "A) 8",
+            "B) 16",
+            "C) 30",
+            "D) none of the above"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Base case returns 2 (not 1). fib(3)=2+2=4, fib(4)=4+2=6, fib(5)=6+4=10, fib(6)=10+6=16. Output: 16."
+        },
+        {
+          "id": 3088,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fib(int n, int *s);\nint main()\n{\n    int x;\n    fib(7, &x);\n    printf(\"%d\\n\",x);\n    return 0;\n}\nvoid fib(int n, int *s)\n{\n    int f1,f2;\n    if (n==1 || n==2) *s=1;\n    else {\n        fib(n-1,&f1);\n        fib(n-2,&f2);\n        *s=f1+f2;\n    }\n}\n```",
+          "options": [
+            "A) 11",
+            "B) 12",
+            "C) 13",
+            "D) 14"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Standard Fibonacci via output pointer. fib(7): sequence is 1,1,2,3,5,8,13. x=13. Output: 13."
+        },
+        {
+          "id": 3089,
+          "difficulty": "intermediate",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nint fun(int *x, int n);\nint main()\n{\n    int a[]={1,2,3,4,5,6,7};\n    printf(\"%d\\n\",fun(a,3));\n    return 0;\n}\nint fun(int *x, int n)\n{\n    if (n==0)\n        return x[0];\n    else return x[0]+fun(x+1,n-1);\n}\n```",
+          "options": [
+            "A) 6",
+            "B) 8",
+            "C) 10",
+            "D) 12"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "fun(a,3)=a[0]+fun(a+1,2)=1+(2+(3+fun(a+3,0)))=1+2+3+a[3]=1+2+3+4=10. Output: 10."
+        },
+        {
+          "id": 3090,
+          "difficulty": "advanced",
+          "question": "What will be the output of the program?\n\n```c\n#include <stdio.h>\nvoid fun(char *a, int n);\nint main()\n{\n    int n=12345;\n    char str[10]=\"\";\n    fun(str,n);\n    puts(str);\n    return 0;\n}\nvoid fun(char *a, int n)\n{\n    int i;\n    if ( (i=n/10) != 0)\n        fun(a+1, i);\n    *a=n%10+'0';\n}\n```",
+          "options": [
+            "A) 12345",
+            "B) 54321",
+            "C) 1234",
+            "D) 5432"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "The function advances the pointer before writing, placing the least significant digit first. Recursion depth=4 advances to str[4], writing '1'. On unwind: str[3]='2', str[2]='3', str[1]='4', str[0]='5'. puts prints 54321."
+        }
+      ]
+    }
+  }
+}

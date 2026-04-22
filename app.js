@@ -12,6 +12,7 @@ let userAnswers = {};
 let timeRemaining = 3600;
 let timerInterval = null;
 let isPaused = false;
+let isPracticeMode = false;
 let quizStartTime = null;
 let quizEndTime = null;
 let quizSettings = loadQuizSettings();
@@ -323,6 +324,7 @@ function startStudentQuiz(durationMins, questionCount) {
   document.getElementById('quiz-mode-badge').textContent = 'Student Quiz';
   document.getElementById('quiz-mode-badge').className = 'quiz-mode-badge';
   document.getElementById('timer').style.display = 'block';
+  isPracticeMode = false;
   startQuiz();
 }
 function startPracticeQuiz() {
@@ -356,7 +358,7 @@ function startPracticeQuiz() {
   document.getElementById('quiz-mode-badge').textContent = 'Practice Mode';
   document.getElementById('quiz-mode-badge').className = 'quiz-mode-badge quiz2';
   document.getElementById('timer').style.display = 'none';
-  
+  isPracticeMode = true;
   startQuiz();
 }
 function showPracticeSetup() {
@@ -474,6 +476,9 @@ function displayOptions(question) {
   
   const isMultipleChoice = question.correct.length > 1;
   const inputType = isMultipleChoice ? 'checkbox' : 'radio';
+
+  // In practice mode, check if this question was already answered
+  const alreadyAnswered = isPracticeMode && userAnswers[question.id] !== undefined;
   
   question.options.forEach((option, index) => {
     const optionLetter = String.fromCharCode(65 + index);
@@ -497,12 +502,23 @@ function displayOptions(question) {
       input.checked = true;
       optionDiv.classList.add('selected');
     }
+
+    // If already answered in practice mode, lock and colour options
+    if (alreadyAnswered) {
+      input.disabled = true;
+      optionDiv.classList.add('option--locked');
+      const isCorrect = question.correct.includes(optionLetter);
+      const wasSelected = userAnswer && userAnswer.includes(optionLetter);
+      if (isCorrect) {
+        optionDiv.classList.add('option--correct');
+      } else if (wasSelected) {
+        optionDiv.classList.add('option--wrong');
+      }
+    }
     
     // Handle selection changes
     input.addEventListener('change', () => {
-      handleAnswerChange(question.id, optionLetter, input.checked, isMultipleChoice);
-      
-      // Update visual state for this option
+      handleAnswerChange(question, optionLetter, input.checked, isMultipleChoice);
       if (input.checked) {
         optionDiv.classList.add('selected');
       } else {
@@ -510,21 +526,45 @@ function displayOptions(question) {
       }
     });
     
-    // CRITICAL FIX: Remove problematic click handler
-    // Only trigger input if clicking the empty space, not input/label
     optionDiv.addEventListener('click', (e) => {
       if (e.target === optionDiv) {
         input.click();
       }
     });
+
     console.log("Question ID:", question.id, "Correct answers:", question.correct, "Is multiple choice:", isMultipleChoice);
     optionDiv.appendChild(input);
     optionDiv.appendChild(label);
     container.appendChild(optionDiv);
   });
+
+  // If multiple-choice in practice mode and not yet answered, show a Check button
+  if (isPracticeMode && isMultipleChoice && !alreadyAnswered) {
+    const checkBtn = document.createElement('button');
+    checkBtn.className = 'btn btn--primary practice-check-btn';
+    checkBtn.id = 'practice-check-btn';
+    checkBtn.textContent = 'Check Answer';
+    checkBtn.style.marginTop = '0.75rem';
+    checkBtn.addEventListener('click', () => {
+      const selected = userAnswers[question.id];
+      if (!selected || selected.length === 0) {
+        checkBtn.classList.add('shake-hint');
+        setTimeout(() => checkBtn.classList.remove('shake-hint'), 500);
+        return;
+      }
+      showPracticeFeedback(question);
+    });
+    container.appendChild(checkBtn);
+  }
+
+  // Restore feedback banner if returning to an already-answered question
+  if (alreadyAnswered) {
+    renderPracticeFeedbackBanner(question, userAnswers[question.id]);
+  }
 }
 
-function handleAnswerChange(questionId, optionLetter, isChecked, isMultipleChoice) {
+function handleAnswerChange(question, optionLetter, isChecked, isMultipleChoice) {
+  const questionId = question.id;
   if (!userAnswers[questionId]) {
     userAnswers[questionId] = [];
   }
@@ -541,8 +581,12 @@ function handleAnswerChange(questionId, optionLetter, isChecked, isMultipleChoic
     userAnswers[questionId] = isChecked ? [optionLetter] : [];
   }
   
-  // Update all option styles to reflect current state
-  updateOptionStyles();
+  // In practice mode, single-choice triggers feedback immediately
+  if (isPracticeMode && !isMultipleChoice) {
+    showPracticeFeedback(question);
+  } else {
+    updateOptionStyles();
+  }
 }
 
 function updateOptionStyles() {
@@ -555,6 +599,81 @@ function updateOptionStyles() {
       option.classList.remove('selected');
     }
   });
+}
+
+// ── Practice Mode: instant answer reveal ──────────────────
+function showPracticeFeedback(question) {
+  const userAnswer = userAnswers[question.id] || [];
+
+  // Lock all options and colour them
+  document.querySelectorAll('.option').forEach(optionDiv => {
+    const input = optionDiv.querySelector('input');
+    if (!input) return;
+    input.disabled = true;
+    optionDiv.classList.add('option--locked');
+    optionDiv.classList.remove('selected');
+
+    const letter = input.value;
+    const isCorrect = question.correct.includes(letter);
+    const wasSelected = userAnswer.includes(letter);
+
+    if (isCorrect) {
+      optionDiv.classList.add('option--correct');
+    } else if (wasSelected) {
+      optionDiv.classList.add('option--wrong');
+    }
+  });
+
+  // Remove the Check Answer button if present
+  const checkBtn = document.getElementById('practice-check-btn');
+  if (checkBtn) checkBtn.remove();
+
+  // Render feedback banner
+  renderPracticeFeedbackBanner(question, userAnswer);
+}
+
+function renderPracticeFeedbackBanner(question, userAnswer) {
+  // Remove existing banner
+  const old = document.getElementById('practice-feedback-banner');
+  if (old) old.remove();
+
+  const isCorrect = arraysEqual([...userAnswer].sort(), [...question.correct].sort());
+
+  // Build correct answer text
+  const correctLabels = question.correct.map(letter => {
+    const idx = letter.charCodeAt(0) - 65;
+    const optionText = question.options[idx] || '';
+    return `${letter}) ${optionText}`;
+  }).join('  •  ');
+
+  const explanation = question.explanation ? question.explanation.trim() : '';
+
+  const banner = document.createElement('div');
+  banner.id = 'practice-feedback-banner';
+  banner.className = `practice-feedback ${isCorrect ? 'practice-feedback--correct' : 'practice-feedback--incorrect'}`;
+
+  if (isCorrect) {
+    banner.innerHTML = `
+      <span class="pf-icon">✅</span>
+      <span class="pf-text">
+        <strong>Correct!</strong>
+        ${explanation ? `<span class="pf-explanation">${explanation}</span>` : ''}
+      </span>`;
+  } else {
+    banner.innerHTML = `
+      <span class="pf-icon">❌</span>
+      <span class="pf-text">
+        <strong>Incorrect.</strong>
+        <span class="pf-answer">The correct answer is: <em>${correctLabels}</em></span>
+        ${explanation ? `<span class="pf-explanation">${explanation}</span>` : ''}
+      </span>`;
+  }
+
+  // Append inside the card body, after options-container
+  const optionsContainer = document.getElementById('options-container');
+  if (optionsContainer) {
+    optionsContainer.insertAdjacentElement('afterend', banner);
+  }
 }
 
 // Removed: runTestCases() and submitCodingAnswer() functions completely

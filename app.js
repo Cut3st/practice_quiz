@@ -701,7 +701,9 @@ function displayWeekBreakdown(weekStats) {
   const container = document.getElementById('week-scores');
   container.innerHTML = '';
   
-  Object.keys(weekStats).forEach(weekId => {
+  Object.keys(weekStats).sort(
+    (a, b) => parseInt(a.replace('week', ''), 10) - parseInt(b.replace('week', ''), 10)
+  ).forEach(weekId => {
     const stats = weekStats[weekId];
     const percentage = Math.round((stats.correct / stats.total) * 100);
     const weekNum = weekId.replace('week', '');
@@ -779,7 +781,9 @@ function generateRecommendations(weekStats, categoryStats, difficultyStats) {
   const recommendations = [];
   
   // Check week performance
-  Object.keys(weekStats).forEach(weekId => {
+  Object.keys(weekStats).sort(
+    (a, b) => parseInt(a.replace('week', ''), 10) - parseInt(b.replace('week', ''), 10)
+  ).forEach(weekId => {
     const stats = weekStats[weekId];
     const percentage = (stats.correct / stats.total) * 100;
     const weekNum = weekId.replace('week', '');
@@ -1176,7 +1180,9 @@ function renderWeekFilters() {
   
   container.innerHTML = '';
   
-  const weekIds = Object.keys(getActiveBank().weeks).sort();
+  const weekIds = Object.keys(getActiveBank().weeks).sort(
+    (a, b) => parseInt(a.replace('week', ''), 10) - parseInt(b.replace('week', ''), 10)
+  );
 
   // Update label to reflect actual week range
   const label = document.getElementById('weeks-filter-label');

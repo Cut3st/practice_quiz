@@ -509,18 +509,18 @@
         {
           "id": 22008,
           "difficulty": "basic",
-          "question": "Which of the following is NOT one of the four Data Link Layer services covered in the lecture?",
+          "question": "What is the main disadvantage of stop-and-wait flow control when the normalized propagation delay a is large?",
           "options": [
-            "A) Framing",
-            "B) Link access (MAC)",
-            "C) Reliable delivery",
-            "D) Flow control",
-            "E) Routing datagrams from the source host to the destination host across networks"
+            "A) The receiver's buffer overflows almost immediately",
+            "B) It cannot detect any transmission errors",
+            "C) It only works over wireless links",
+            "D) It requires a token to be passed around the network",
+            "E) The sender must wait a long time before it can send the next frame, so link utilization U = 1/(1+2a) is low"
           ],
           "correct": [
             "E"
           ],
-          "explanation": "DLL services: framing, link access, flow control, reliable delivery.<br>Routing from source to destination across networks is the network layer's job."
+          "explanation": "Two disadvantages: (1) a lost frame/ACK means a long wait until a timeout fires, and (2) with a large a, the sender idles waiting for the ACK, so U = 1/(1+2a) stays low. The fix for (2) is to use buffers at the sender/receiver, i.e. sliding window - that improves the numerator, but 1+2a in the denominator can't be improved."
         },
         {
           "id": 22009,
@@ -540,19 +540,19 @@
         },
         {
           "id": 22010,
-          "difficulty": "intermediate",
-          "question": "Which statement about framing is correct?",
+          "difficulty": "basic",
+          "question": "The ARQ Variants slide splits ARQ into three commonly implemented mechanisms. What are they?",
           "options": [
-            "A) Bit-oriented framing uses a flag to mark the frame, and is used by modern protocols such as HDLC, PPP and Ethernet",
-            "B) Byte-oriented asynchronous transmission cannot include a parity bit",
-            "C) Byte-oriented framing is used by all modern protocols such as Ethernet",
-            "D) Bit-oriented framing puts a start bit and stop bit around every character",
-            "E) Framing is performed at the network layer"
+            "A) Stop-and-Wait ARQ, Go-Back-N ARQ, Selective-Reject ARQ",
+            "B) Framing, Flow Control, Routing",
+            "C) Stop-and-Wait ARQ, CSMA/CD, ALOHA",
+            "D) Parity Check, CRC, Hamming Code",
+            "E) Go-Back-N ARQ, Selective-Reject ARQ, Token Ring"
           ],
           "correct": [
             "A"
           ],
-          "explanation": "Byte-oriented (character-oriented): fixed 8-bit units with start/stop bits and an optional parity bit, from the late 60s.<br>Bit-oriented: a flag frames the bits, with header/trailer, used by HDLC, PPP, Ethernet."
+          "explanation": "Just like flow control splits into Stop-and-Wait and Sliding Window (which itself splits into Go-Back-N and Selective-Reject), ARQ mirrors that same tree: Stop-and-Wait ARQ, and the two sliding-window ARQ variants Go-Back-N and Selective-Reject (also called Selective Repeat)."
         },
         {
           "id": 22011,
@@ -604,19 +604,19 @@
         },
         {
           "id": 22018,
-          "difficulty": "basic",
-          "question": "Which of the following is a Forward Error Correction (FEC) technique?",
+          "difficulty": "intermediate",
+          "question": "In Stop-and-Wait ARQ, the destination receives a damaged frame. According to the protocol, what can it do?",
           "options": [
-            "A) Go-Back-N ARQ",
-            "B) Stop-and-Wait ARQ",
-            "C) Hamming code",
-            "D) Timeout retransmission",
-            "E) Selective Reject ARQ"
+            "A) It must always send a NAK, discarding is never allowed",
+            "B) It must always discard it silently, NAK is never used",
+            "C) Either discard it and do nothing, or send a NAK - both are valid variations",
+            "D) It forwards the damaged frame up to the network layer anyway",
+            "E) It repairs the frame itself using Hamming code"
           ],
           "correct": [
             "C"
           ],
-          "explanation": "FEC sends extra redundant bits so the receiver can FIX errors itself (Hamming, Reed-Solomon).<br>ARQ schemes fix errors by asking for a retransmission instead."
+          "explanation": "The protocol explicitly allows two variations on a damaged frame: (1) discard it and rely on the sender's timeout to trigger a retransmit, or (2) send a NAK (negative acknowledgement) so the sender retransmits immediately without waiting for a timeout."
         },
         {
           "id": 22019,

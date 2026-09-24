@@ -186,6 +186,10 @@
         </div>
     </div>
 
+    <!-- Mobile-only menu button; revealed alongside the sidebar once unlocked -->
+    <button id="sidebar-toggle-btn" class="sidebar-toggle-btn hidden" aria-label="Open menu" aria-expanded="false" aria-controls="app-sidebar">☰</button>
+    <div id="sidebar-backdrop" class="sidebar-backdrop hidden"></div>
+
     <!-- ══════════════════════════════════════════════════
          ANIMATED SIDEBAR — shown after unlock
     ══════════════════════════════════════════════════ -->
@@ -193,6 +197,7 @@
       <div class="sidebar__brand">
         <span class="sidebar__brand-icon">📖</span>
         <span class="sidebar__brand-text">Danny's</span>
+        <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close menu">✕</button>
       </div>
 
       <ul class="sidebar__nav" role="list">
@@ -758,8 +763,12 @@
     }
     .sidebar.hidden { display: none; }
 
-    /* Hover expands the sidebar */
-    .sidebar:hover { width: 210px; }
+    /* Hover expands the sidebar - real pointer devices only. On touch, :hover has
+       no "leave" event, so a tap can leave the sidebar permanently stuck open;
+       touch devices get the slide-in drawer treatment below instead. */
+    @media (hover: hover) and (pointer: fine) {
+      .sidebar:hover { width: 210px; }
+    }
 
     /* Brand at top */
     .sidebar__brand {
@@ -782,7 +791,9 @@
       transition: opacity 0.15s ease 0s;
       white-space: nowrap;
     }
-    .sidebar:hover .sidebar__brand-text { opacity: 1; transition-delay: 0.08s; }
+    @media (hover: hover) and (pointer: fine) {
+      .sidebar:hover .sidebar__brand-text { opacity: 1; transition-delay: 0.08s; }
+    }
 
     /* Nav lists */
     .sidebar__nav {
@@ -831,6 +842,18 @@
       background: var(--color-primary);
       border-radius: 0 2px 2px 0;
     }
+    .sidebar-close-btn {
+      display: none;
+      margin-left: auto;
+      margin-right: 14px;
+      background: none;
+      border: none;
+      color: var(--color-text-secondary);
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px;
+    }
     .sidebar__icon { font-size: 1.25rem; flex-shrink: 0; }
     .sidebar__label {
       font-size: 0.875rem;
@@ -838,7 +861,9 @@
       transition: opacity 0.15s ease 0s;
       white-space: nowrap;
     }
-    .sidebar:hover .sidebar__label { opacity: 1; transition-delay: 0.1s; }
+    @media (hover: hover) and (pointer: fine) {
+      .sidebar:hover .sidebar__label { opacity: 1; transition-delay: 0.1s; }
+    }
 
     /* Main content shifts right with sidebar collapsed width */
     #main-content {
@@ -865,7 +890,9 @@
       transition: opacity 0.15s ease 0s, background 0.25s;
       pointer-events: none;
     }
-    .sidebar:hover .sidebar__theme-pill { opacity: 1; transition-delay: 0.1s; pointer-events: auto; }
+    @media (hover: hover) and (pointer: fine) {
+      .sidebar:hover .sidebar__theme-pill { opacity: 1; transition-delay: 0.1s; pointer-events: auto; }
+    }
     .sidebar__theme-thumb {
       position: absolute;
       top: 2px;
@@ -885,10 +912,52 @@
       background: #fff;
     }
 
-    /* Mobile: sidebar overlays, no push */
-    @media (max-width: 640px) {
+    /* Mobile: hamburger-triggered slide-in drawer instead of the hover rail,
+       since touch devices have no hover to collapse it back down. */
+    .sidebar-toggle-btn {
+      display: none;
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 700;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 590;
+    }
+    .sidebar-backdrop.sidebar-backdrop--visible { display: block; }
+
+    @media (max-width: 640px), (hover: none) and (pointer: coarse) {
       body.sidebar-visible #main-content { margin-left: 0; }
-      .sidebar { z-index: 600; }
+
+      .sidebar-toggle-btn:not(.hidden) { display: flex; }
+
+      .sidebar {
+        z-index: 600;
+        width: min(250px, 78vw);
+        transform: translateX(-100%);
+      }
+      .sidebar.sidebar--open { transform: translateX(0); }
+
+      /* No hover on touch, so labels are always shown once the drawer is open */
+      .sidebar__brand-text,
+      .sidebar__label,
+      .sidebar__theme-pill { opacity: 1; pointer-events: auto; }
+
+      .sidebar-close-btn { display: block; }
     }
 
     /* ── Inline code ─────────────────────────────────────── */
@@ -1040,7 +1109,7 @@
     <script>
     // ── Lockscreen ─────────────────────────────────────────
     // Change this to your preferred 6-digit code
-    const ACCESS_CODE = '345620';
+    const ACCESS_CODE = '670609';
 
     const SESSION_KEY = 'quiz_unlocked';
     let lockEntry = '';
@@ -1051,6 +1120,7 @@
         document.getElementById('lockscreen').classList.add('hidden');
         document.getElementById('mode-selection-screen').classList.remove('hidden');
         document.getElementById('app-sidebar').classList.remove('hidden');
+        document.getElementById('sidebar-toggle-btn').classList.remove('hidden');
         document.body.classList.add('sidebar-visible');
         return;
       }
@@ -1102,6 +1172,7 @@
           document.getElementById('mode-selection-screen').classList.remove('hidden');
           // Show sidebar
           document.getElementById('app-sidebar').classList.remove('hidden');
+          document.getElementById('sidebar-toggle-btn').classList.remove('hidden');
           document.body.classList.add('sidebar-visible');
         }, 400);
       } else {
@@ -1156,6 +1227,35 @@
     });
 
     document.addEventListener('DOMContentLoaded', lockInit);
+
+    // ── Mobile drawer (hamburger + backdrop) ────────────────
+    function openMobileSidebar() {
+      document.getElementById('app-sidebar').classList.add('sidebar--open');
+      document.getElementById('sidebar-backdrop').classList.add('sidebar-backdrop--visible');
+      document.getElementById('sidebar-toggle-btn').setAttribute('aria-expanded', 'true');
+    }
+    function closeMobileSidebar() {
+      document.getElementById('app-sidebar').classList.remove('sidebar--open');
+      document.getElementById('sidebar-backdrop').classList.remove('sidebar-backdrop--visible');
+      document.getElementById('sidebar-toggle-btn').setAttribute('aria-expanded', 'false');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('sidebar-toggle-btn');
+      const closeBtn  = document.getElementById('sidebar-close-btn');
+      const backdrop  = document.getElementById('sidebar-backdrop');
+      if (toggleBtn) toggleBtn.addEventListener('click', openMobileSidebar);
+      if (closeBtn)  closeBtn.addEventListener('click', closeMobileSidebar);
+      if (backdrop)  backdrop.addEventListener('click', closeMobileSidebar);
+
+      // Any tap inside the sidebar (pick a module, open admin, toggle theme) closes the drawer
+      const sidebarEl = document.getElementById('app-sidebar');
+      if (sidebarEl) {
+        sidebarEl.querySelectorAll('.sidebar__item').forEach(item => {
+          item.addEventListener('click', closeMobileSidebar);
+        });
+      }
+    });
     </script>
     <script src="app.js"></script>
 </body>

@@ -208,6 +208,10 @@
           <span class="sidebar__icon">⚙️</span>
           <span class="sidebar__label">SC1008 C Lang</span>
         </li>
+        <li class="sidebar__item" data-lang="sc2008" role="button" tabindex="0" title="SC2008 Computer Networks">
+          <span class="sidebar__icon">🌐</span>
+          <span class="sidebar__label">SC2008 Networks</span>
+        </li>
       </ul>
 
       <!-- Settings / Admin at the bottom -->
@@ -485,6 +489,15 @@
                             <h3>Study Recommendations</h3>
                             <div class="recommendation-list" id="recommendation-list"></div>
                         </div>
+
+                        <div class="ai-summary-block" id="ai-summary-block">
+                            <h3>AI Study Summary</h3>
+                            <p class="ai-summary-hint">Copy this into a Claude chat (or any AI chat) and ask it to teach you the topics you missed.</p>
+                            <textarea class="ai-summary-textarea" id="ai-summary-text" readonly rows="6"></textarea>
+                            <div class="ai-summary-actions">
+                                <button class="btn btn--secondary btn--sm" id="copy-summary-btn" onclick="copyAISummary('results')">📋 Copy Summary for AI</button>
+                            </div>
+                        </div>
                         
                         <div class="results-actions">
                             <button class="btn btn--primary" id="review-answers-btn">Review Answers</button>
@@ -687,6 +700,16 @@
                 <button class="filter-btn" onclick="filterHistoryReview('incorrect', this)">Incorrect Only</button>
                 <button class="filter-btn" onclick="filterHistoryReview('correct', this)">Correct Only</button>
             </div>
+
+            <div class="ai-summary-block" id="history-ai-summary-block">
+                <h3>AI Study Summary</h3>
+                <p class="ai-summary-hint">Copy this into a Claude chat (or any AI chat) and ask it to teach you the topics you missed.</p>
+                <textarea class="ai-summary-textarea" id="history-ai-summary-text" readonly rows="6"></textarea>
+                <div class="ai-summary-actions">
+                    <button class="btn btn--secondary btn--sm" id="history-copy-summary-btn" onclick="copyAISummary('history')">📋 Copy Summary for AI</button>
+                </div>
+            </div>
+
             <div id="history-review-container"></div>
         </div>
     </div><!-- /#history-review-overlay -->

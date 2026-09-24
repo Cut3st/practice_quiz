@@ -4,7 +4,8 @@
 let questionBank = {};
 let javaQuestionBank = {};      // Java question bank (loaded separately)
 let cQuestionBank = {};         // C language question bank (SC1008)
-let currentLanguage = 'python'; // 'python' | 'java' | 'c'
+let sc2008QuestionBank = {};    // Computer Networks question bank (SC2008)
+let currentLanguage = 'python'; // 'python' | 'java' | 'c' | 'sc2008'
 let currentMode = 'selection';
 let currentQuestions = [];
 let currentQuestionIndex = 0;
@@ -22,9 +23,26 @@ let analyticsData = JSON.parse(localStorage.getItem('quizAnalytics')) || {
   attempts: [],
   questionStats: {},
   categoryPerformance: {},
-  weekPerformance: {},
-  bestScore: 0
+  weekPerformance: {}
 };
+
+// Per-question analytics keys are namespaced "language:id" so that modules whose
+// question banks happen to reuse the same numeric IDs (e.g. Python/Java/C) don't
+// silently overwrite each other's attempt/correct counts.
+function qKey(lang, id) { return `${lang}:${id}`; }
+
+// "Best score" is derived from the attempt history (which already records which
+// module each attempt belongs to) rather than a single shared counter, so it's
+// always specific to the module currently on screen.
+function getBestScoreForLanguage(lang) {
+  const scores = analyticsData.attempts.filter(a => a.language === lang).map(a => a.percentage);
+  return scores.length ? Math.max(...scores) : 0;
+}
+
+function updateCompletionRateDisplay() {
+  const el = document.getElementById('completion-rate');
+  if (el) el.textContent = `${getBestScoreForLanguage(currentLanguage)}%`;
+}
 
 // ============================================================================
 // EXTERNAL DATA LOADING - MCQ ONLY
@@ -61,6 +79,18 @@ async function loadExternalData() {
     } catch (_) {
       cQuestionBank = { weeks: {} };
     }
+
+    // Load SC2008 Computer Networks MCQ bank (graceful fallback if file missing)
+    try {
+      const netResponse = await fetch('sc2008_questions.json');
+      if (netResponse.ok) {
+        sc2008QuestionBank = await netResponse.json();
+      } else {
+        sc2008QuestionBank = { weeks: {} };
+      }
+    } catch (_) {
+      sc2008QuestionBank = { weeks: {} };
+    }
     
     showLoadingState(false);
     initializeApp();
@@ -71,6 +101,7 @@ async function loadExternalData() {
     questionBank = { weeks: {} };
     javaQuestionBank = { weeks: {} };
     cQuestionBank = { weeks: {} };
+    sc2008QuestionBank = { weeks: {} };
   }
 }
 
@@ -131,6 +162,8 @@ function switchLanguage(lang) {
     if (title) title.textContent = "Danny's SC2002 Java Quiz";
   } else if (currentLanguage === 'c') {
     if (title) title.textContent = "Danny's SC1008 C Language Quiz";
+  } else if (currentLanguage === 'sc2008') {
+    if (title) title.textContent = "Danny's SC2008 Computer Networks Quiz";
   } else {
     if (title) title.textContent = "Danny's SC1003 Programming Quiz";
   }
@@ -146,6 +179,7 @@ function switchLanguage(lang) {
   renderDifficultyFilters();
   renderAdminQuestions();
   updateQuestionBankStats();
+  updateCompletionRateDisplay();
 }
 
 // ── Sidebar init ─────────────────────────────────────────
@@ -292,12 +326,15 @@ function setupEventListeners() {
 function openStudentConfigModal() {
   // Set smart defaults based on active language
   const isJava = currentLanguage === 'java';
-  document.getElementById('config-duration').value  = isJava ? 45 : quizSettings.duration;
-  document.getElementById('config-questions').value = isJava ? 22 : quizSettings.questionsPerQuiz;
+  const isNet  = currentLanguage === 'sc2008';
+  document.getElementById('config-duration').value  = isJava ? 45 : isNet ? 45 : quizSettings.duration;
+  document.getElementById('config-questions').value = isJava ? 22 : isNet ? 15 : quizSettings.questionsPerQuiz;
   document.getElementById('student-config-title').textContent =
-    isJava ? '☕ Java Student Quiz Setup' : '🎓 Python Student Quiz Setup';
+    isJava ? '☕ Java Student Quiz Setup' : isNet ? '🌐 SC2008 Networks Quiz Setup' : '🎓 Python Student Quiz Setup';
   document.getElementById('config-hint').textContent =
-    isJava ? 'Java exam: 45 min / 22 questions' : 'SC1003 exam: 60 min / 30 questions';
+    isJava ? 'Java exam: 45 min / 22 questions'
+    : isNet ? 'Finals Q1 had 15 MCQs. Adjust to match your midterm format.'
+    : 'SC1003 exam: 60 min / 30 questions';
   document.getElementById('student-config-modal').classList.remove('hidden');
 }
 
@@ -738,24 +775,204 @@ function submitQuiz() {
   saveQuizAttempt();
 }
 
+// ============================================================================
+// AI STUDY SUMMARY (copy-to-clipboard, for pasting into a Claude/AI chat)
+// ============================================================================
+function capitalizeLabel(s) {
+  return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+}
+
+function getModuleLabel(lang) {
+  if (lang === 'java') return 'SC2002 Java';
+  if (lang === 'c') return 'SC1008 C Language';
+  if (lang === 'sc2008') return 'SC2008 Computer Networks';
+  return 'SC1003 Python';
+}
+
+function stripHtml(html) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html || '';
+  return (tmp.textContent || tmp.innerText || '').replace(/\s+/g, ' ').trim();
+}
+
+function optionTextFor(question, letters) {
+  if (!letters || !letters.length) return '';
+  return letters.map(l => {
+    const idx = l.charCodeAt(0) - 65;
+    const opt = (question.options && question.options[idx]) || '';
+    return stripHtml(opt).replace(/^[A-E]\)\s*/, '');
+  }).join('; ');
+}
+
+// Recomputes week/category/difficulty stats and the list of missed questions
+// from a plain array of questions + a map of question.id -> chosen letters.
+// Used for History review, where results aren't recalculated on the fly.
+function computeStatsAndWrongList(questions, answersMap) {
+  const weekStats = {}, categoryStats = {}, difficultyStats = {}, wrongList = [];
+  let correctAnswers = 0;
+  questions.forEach(question => {
+    const userAnswer = (answersMap && answersMap[question.id]) || [];
+    const isCorrect = arraysEqual([...userAnswer].sort(), [...question.correct].sort());
+    if (isCorrect) correctAnswers++;
+    else wrongList.push({ question, userAnswer });
+
+    if (question.week) {
+      if (!weekStats[question.week]) weekStats[question.week] = { correct: 0, total: 0 };
+      weekStats[question.week].total++;
+      if (isCorrect) weekStats[question.week].correct++;
+    }
+    if (question.category) {
+      if (!categoryStats[question.category]) categoryStats[question.category] = { correct: 0, total: 0 };
+      categoryStats[question.category].total++;
+      if (isCorrect) categoryStats[question.category].correct++;
+    }
+    if (question.difficulty) {
+      if (!difficultyStats[question.difficulty]) difficultyStats[question.difficulty] = { correct: 0, total: 0 };
+      difficultyStats[question.difficulty].total++;
+      if (isCorrect) difficultyStats[question.difficulty].correct++;
+    }
+  });
+  return { weekStats, categoryStats, difficultyStats, correctAnswers, totalQuestions: questions.length, wrongList };
+}
+
+function buildStudySummaryText(data) {
+  const { moduleLabel, correctAnswers, totalQuestions, percentage, timeElapsed,
+          weekStats, categoryStats, difficultyStats, wrongList } = data;
+  const lines = [];
+
+  lines.push(`Quiz Summary - ${moduleLabel}`);
+  const timeStr = timeElapsed ? `${Math.floor(timeElapsed / 60)}:${(timeElapsed % 60).toString().padStart(2, '0')}` : null;
+  lines.push(`Score: ${correctAnswers}/${totalQuestions} (${percentage}%)` + (timeStr ? ` | Time: ${timeStr}` : ''));
+  lines.push('');
+
+  const weekIds = Object.keys(weekStats).sort(
+    (a, b) => parseInt(a.replace('week', ''), 10) - parseInt(b.replace('week', ''), 10)
+  );
+  if (weekIds.length) {
+    lines.push('By week:');
+    weekIds.forEach(w => {
+      const s = weekStats[w];
+      const pct = Math.round((s.correct / s.total) * 100);
+      lines.push(`- Week ${w.replace('week', '')}: ${s.correct}/${s.total} (${pct}%)${pct < 70 ? ' [weak]' : ''}`);
+    });
+    lines.push('');
+  }
+
+  const catIds = Object.keys(categoryStats);
+  if (catIds.length) {
+    lines.push('By category:');
+    catIds.forEach(c => {
+      const s = categoryStats[c];
+      const pct = Math.round((s.correct / s.total) * 100);
+      const label = capitalizeLabel(c.replace(/([A-Z])/g, ' $1').trim());
+      lines.push(`- ${label}: ${s.correct}/${s.total} (${pct}%)${pct < 70 ? ' [weak]' : ''}`);
+    });
+    lines.push('');
+  }
+
+  if (difficultyStats && Object.keys(difficultyStats).length) {
+    lines.push('By difficulty:');
+    Object.keys(difficultyStats).forEach(d => {
+      const s = difficultyStats[d];
+      const pct = Math.round((s.correct / s.total) * 100);
+      lines.push(`- ${d}: ${s.correct}/${s.total} (${pct}%)`);
+    });
+    lines.push('');
+  }
+
+  if (wrongList.length) {
+    lines.push(`Questions I got wrong (${wrongList.length}):`);
+    wrongList.forEach((item, i) => {
+      const q = item.question;
+      const weekNum = q.week ? q.week.replace('week', '') : '?';
+      const catLabel = capitalizeLabel((q.category || '').replace(/([A-Z])/g, ' $1').trim());
+      const qText = stripHtml(q.question);
+      const shortQ = qText.length > 220 ? qText.slice(0, 220) + '...' : qText;
+      const myLetters = (item.userAnswer && item.userAnswer.length) ? item.userAnswer.join(', ') : '(no answer)';
+      const myText = optionTextFor(q, item.userAnswer);
+      const correctLetters = q.correct.join(', ');
+      const correctText = optionTextFor(q, q.correct);
+
+      lines.push(`${i + 1}. [Week ${weekNum}${catLabel ? ' - ' + catLabel : ''}] ${shortQ}`);
+      lines.push(`   My answer: ${myLetters}${myText ? ' (' + myText + ')' : ''} | Correct: ${correctLetters} (${correctText})`);
+      if (q.explanation) {
+        const exp = stripHtml(q.explanation);
+        lines.push(`   Explanation on file: ${exp.length > 260 ? exp.slice(0, 260) + '...' : exp}`);
+      }
+      lines.push('');
+    });
+  } else {
+    lines.push('No wrong answers this attempt.');
+    lines.push('');
+  }
+
+  lines.push('---');
+  lines.push(`I'm studying ${moduleLabel}. Using the breakdown above, please explain the concepts behind the topics/questions I got wrong, ` +
+    `starting with my weakest week or category. Keep it simple with examples, then quiz me with a few fresh practice questions on those same ` +
+    `topics (not the exact ones above) to check my understanding.`);
+
+  return lines.join('\n');
+}
+
+function renderAISummary(scope, data) {
+  const text = buildStudySummaryText(data);
+  const id = scope === 'history' ? 'history-ai-summary-text' : 'ai-summary-text';
+  const el = document.getElementById(id);
+  if (el) el.value = text;
+  return text;
+}
+
+function fallbackCopyToClipboard(el) {
+  el.focus();
+  el.select();
+  try { document.execCommand('copy'); } catch (e) { /* ignore */ }
+}
+
+function copyAISummary(scope) {
+  const id = scope === 'history' ? 'history-ai-summary-text' : 'ai-summary-text';
+  const btnId = scope === 'history' ? 'history-copy-summary-btn' : 'copy-summary-btn';
+  const el = document.getElementById(id);
+  const btn = document.getElementById(btnId);
+  if (!el || !el.value) return;
+
+  const showFeedback = (label) => {
+    if (!btn) return;
+    if (!btn.dataset.originalText) btn.dataset.originalText = btn.textContent;
+    btn.textContent = label;
+    setTimeout(() => { btn.textContent = btn.dataset.originalText; }, 2000);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(el.value)
+      .then(() => showFeedback('Copied!'))
+      .catch(() => { fallbackCopyToClipboard(el); showFeedback('Copied!'); });
+  } else {
+    fallbackCopyToClipboard(el);
+    showFeedback('Copied!');
+  }
+}
+
 function calculateAndDisplayResults() {
   let correctAnswers = 0;
   const categoryStats = {};
   const difficultyStats = {};
   const weekStats = {};
+  const wrongList = [];
   
   currentQuestions.forEach(question => {
     const userAnswer = userAnswers[question.id] || [];
     const isCorrect = arraysEqual(userAnswer.sort(), question.correct.sort());
     
     if (isCorrect) correctAnswers++;
+    else wrongList.push({ question, userAnswer: [...userAnswer] });
     
-    // Track question stats
-    if (!analyticsData.questionStats[question.id]) {
-      analyticsData.questionStats[question.id] = { attempts: 0, correct: 0 };
+    // Track question stats (namespaced per module - see qKey)
+    const qk = qKey(currentLanguage, question.id);
+    if (!analyticsData.questionStats[qk]) {
+      analyticsData.questionStats[qk] = { attempts: 0, correct: 0 };
     }
-    analyticsData.questionStats[question.id].attempts++;
-    if (isCorrect) analyticsData.questionStats[question.id].correct++;
+    analyticsData.questionStats[qk].attempts++;
+    if (isCorrect) analyticsData.questionStats[qk].correct++;
     
     // Track by category
     if (question.category) {
@@ -809,11 +1026,11 @@ function calculateAndDisplayResults() {
   
   generateRecommendations(weekStats, categoryStats, difficultyStats);
   
-  // Update best score
-  if (percentage > analyticsData.bestScore) {
-    analyticsData.bestScore = percentage;
-    document.getElementById('completion-rate').textContent = `${percentage}%`;
-  }
+  renderAISummary('results', {
+    moduleLabel: getModuleLabel(currentLanguage),
+    correctAnswers, totalQuestions, percentage, timeElapsed,
+    weekStats, categoryStats, difficultyStats, wrongList
+  });
 }
 
 function displayWeekBreakdown(weekStats) {
@@ -969,6 +1186,7 @@ function saveQuizAttempt() {
   analyticsData.attempts.push(attempt);
   localStorage.setItem('quizAnalytics', JSON.stringify(analyticsData));
   updateAnalytics();
+  updateCompletionRateDisplay();
 
   // Save full snapshot for the History feature
   const historyEntry = {
@@ -1025,7 +1243,7 @@ function renderHistoryList() {
     const timeStr = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
     const pct = attempt.percentage;
     const scoreClass = pct >= 80 ? 'good' : pct >= 60 ? 'needs-work' : 'poor';
-    const langEmoji = (attempt.language === 'java') ? '☕' : '🐍';
+    const langEmoji = getLangEmoji(attempt.language);
     const modeLabel = attempt.mode === 'quiz' ? 'Student Quiz' : 'Practice';
     let timeTxt = '';
     if (attempt.timeElapsed) {
@@ -1067,7 +1285,7 @@ function reviewHistoryAttempt(id) {
   const container = document.getElementById('history-review-container');
 
   const date = new Date(attempt.date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
-  const langEmoji = attempt.language === 'java' ? '☕' : '🐍';
+  const langEmoji = getLangEmoji(attempt.language);
   titleEl.textContent = `${langEmoji} Attempt — ${date} · ${attempt.percentage}% (${attempt.correct}/${attempt.questionCount ?? attempt.questions.length})`;
 
   container.innerHTML = '';
@@ -1112,6 +1330,20 @@ function reviewHistoryAttempt(id) {
       <div class="explanation"><strong>Explanation:</strong> ${question.explanation}</div>
     `;
     container.appendChild(reviewDiv);
+  });
+
+  const histStats = computeStatsAndWrongList(attempt.questions, attempt.userAnswers);
+  const histTotal = attempt.questionCount ?? attempt.questions.length;
+  renderAISummary('history', {
+    moduleLabel: getModuleLabel(attempt.language),
+    correctAnswers: histStats.correctAnswers,
+    totalQuestions: histTotal,
+    percentage: Math.round((histStats.correctAnswers / histTotal) * 100),
+    timeElapsed: attempt.timeElapsed,
+    weekStats: histStats.weekStats,
+    categoryStats: histStats.categoryStats,
+    difficultyStats: histStats.difficultyStats,
+    wrongList: histStats.wrongList
   });
 
   overlay.classList.remove('hidden');
@@ -1340,12 +1572,7 @@ function renderCategoryFilters() {
   const container = document.getElementById('category-filters');
   container.innerHTML = '';
   
-  const categories = [
-    { id: "outputPrediction", name: "Output Prediction" },
-    { id: "syntaxError", name: "Syntax Error" },
-    { id: "theory", name: "Theory & Concepts" },
-    { id: "codeLogic", name: "Code Logic & Analysis" }
-  ];
+  const categories = getCategoryDefs();
   
   categories.forEach(category => {
     const filterDiv = document.createElement('div');
@@ -1637,6 +1864,9 @@ function saveQuestion() {
   };
   
   const targetCategory = categoryMap[category] || 'outputPrediction';
+  if (!getActiveBank().weeks[category][targetCategory]) {
+    getActiveBank().weeks[category][targetCategory] = [];
+  }
   getActiveBank().weeks[category][targetCategory].push(newQuestion);
   saveQuestionBank();
   renderAdminQuestions();
@@ -1668,7 +1898,7 @@ function renderWeekPerformance() {
     Object.values(getActiveBank().weeks[weekId]).forEach(category => {
       if (Array.isArray(category)) {
         category.forEach(question => {
-          const stats = analyticsData.questionStats[question.id];
+          const stats = analyticsData.questionStats[qKey(currentLanguage, question.id)];
           if (stats) {
             totalAttempts += stats.attempts;
             correctAttempts += stats.correct;
@@ -1695,7 +1925,7 @@ function renderCategoryPerformance() {
   const container = document.getElementById('category-performance');
   container.innerHTML = '';
   
-  const categories = ['outputPrediction', 'syntaxError', 'theory', 'codeLogic'];
+  const categories = getCategoryDefs().map(c => c.id);
   
   categories.forEach(categoryId => {
     let totalAttempts = 0;
@@ -1704,7 +1934,7 @@ function renderCategoryPerformance() {
     Object.values(getActiveBank().weeks).forEach(week => {
       if (week[categoryId]) {
         week[categoryId].forEach(question => {
-          const stats = analyticsData.questionStats[question.id];
+          const stats = analyticsData.questionStats[qKey(currentLanguage, question.id)];
           if (stats) {
             totalAttempts += stats.attempts;
             correctAttempts += stats.correct;
@@ -1732,9 +1962,12 @@ function renderMissedQuestions() {
   container.innerHTML = '';
   
   const missedQuestions = [];
+  const prefix = currentLanguage + ':';
   
-  Object.keys(analyticsData.questionStats).forEach(questionId => {
-    const stats = analyticsData.questionStats[questionId];
+  Object.keys(analyticsData.questionStats).forEach(key => {
+    if (!key.startsWith(prefix)) return; // belongs to a different module
+    const questionId = key.slice(prefix.length);
+    const stats = analyticsData.questionStats[key];
     if (stats.attempts > 0) {
       const missRate = ((stats.attempts - stats.correct) / stats.attempts) * 100;
       if (missRate > 50) {
@@ -1831,11 +2064,10 @@ function clearAnalytics() {
       attempts: [],
       questionStats: {},
       categoryPerformance: {},
-      weekPerformance: {},
-      bestScore: 0
+      weekPerformance: {}
     };
     localStorage.setItem('quizAnalytics', JSON.stringify(analyticsData));
-    document.getElementById('completion-rate').textContent = '0%';
+    updateCompletionRateDisplay();
     renderAnalytics();
     showSuccessMessage('Analytics data cleared successfully!');
   }
@@ -1882,9 +2114,33 @@ function shuffleArray(array) {
   return shuffled;
 }
 
+// Category list per module (SC2008 has no code, so it uses formula vs theory)
+function getCategoryDefs() {
+  if (currentLanguage === 'sc2008') {
+    return [
+      { id: "formulaApplication", name: "Formula Application" },
+      { id: "theory", name: "Theory & Concepts" }
+    ];
+  }
+  return [
+    { id: "outputPrediction", name: "Output Prediction" },
+    { id: "syntaxError", name: "Syntax Error" },
+    { id: "theory", name: "Theory & Concepts" },
+    { id: "codeLogic", name: "Code Logic & Analysis" }
+  ];
+}
+
+function getLangEmoji(lang) {
+  if (lang === 'java') return '☕';
+  if (lang === 'c') return '⚙️';
+  if (lang === 'sc2008') return '🌐';
+  return '🐍';
+}
+
 function getActiveBank() {
   if (currentLanguage === 'java') return javaQuestionBank;
   if (currentLanguage === 'c') return cQuestionBank;
+  if (currentLanguage === 'sc2008') return sc2008QuestionBank;
   return questionBank;
 }
 
@@ -1937,7 +2193,7 @@ function updateQuestionBankStats() {
 }
 
 function updateAnalytics() {
-  document.getElementById('completion-rate').textContent = `${analyticsData.bestScore}%`;
+  updateCompletionRateDisplay();
 }
 
 function showSuccessMessage(message) {

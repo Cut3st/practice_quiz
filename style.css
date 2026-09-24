@@ -1553,6 +1553,37 @@ select.form-control {
   border-left: 4px solid var(--color-warning);
 }
 
+.ai-summary-block {
+  margin-top: var(--space-20);
+  padding-top: var(--space-20);
+  border-top: 1px solid var(--color-border);
+}
+
+.ai-summary-hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.ai-summary-textarea {
+  width: 100%;
+  resize: vertical;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  padding: var(--space-12);
+  background: var(--color-bg-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  color: var(--color-text);
+}
+
+.ai-summary-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-8);
+}
+
 .results-actions {
   display: flex;
   gap: var(--space-16);

@@ -721,131 +721,67 @@
         },
         {
           "id": 23002,
-          "difficulty": "basic",
-          "question": "When MAC disassembles an incoming frame, what two things does it do?",
+          "difficulty": "intermediate",
+          "question": "Which of the following is a function MAC has that is NOT found in traditional Layer 2 Data Link Control?",
           "options": [
-            "A) Encoding and preamble removal",
-            "B) Address recognition and error detection",
-            "C) Routing and congestion control",
-            "D) Encryption and decryption",
-            "E) Flow control and error control"
+            "A) Detecting errors in a frame",
+            "B) Governing access to the transmission medium",
+            "C) Recognizing the destination address",
+            "D) Interfacing with higher layers",
+            "E) Assembling data into a frame"
           ],
           "correct": [
             "B"
           ],
-          "explanation": "Slide's MAC function list: assembly (frame + address + error-detection fields going out), disassembly (address recognition + error detection coming in), and governing access to the medium."
+          "explanation": "The slide calls this out specifically: governing access to the shared transmission medium is a MAC job with no equivalent in classic (pre-802) Layer 2 data link control, which only had framing, addressing and error detection."
         },
         {
           "id": 23003,
           "difficulty": "intermediate",
-          "question": "Which of the following is a function MAC has that is NOT found in traditional Layer 2 Data Link Control?",
+          "question": "Which of the following is a DISADVANTAGE of making MAC decisions centrally rather than in a distributed way?",
           "options": [
-            "A) Recognizing the destination address",
-            "B) Detecting errors in a frame",
-            "C) Assembling data into a frame",
-            "D) Interfacing with higher layers",
-            "E) Governing access to the transmission medium"
+            "A) It causes coordination problems between stations",
+            "B) It needs complex access logic at every station",
+            "C) It gives less control over access",
+            "D) It can only use asynchronous (dynamic) allocation",
+            "E) It creates a single point of failure and a potential bottleneck"
           ],
           "correct": [
             "E"
-          ],
-          "explanation": "The slide calls this out specifically: governing access to the shared transmission medium is a MAC job with no equivalent in classic (pre-802) Layer 2 data link control, which only had framing, addressing and error detection."
-        },
-        {
-          "id": 23004,
-          "difficulty": "intermediate",
-          "question": "Which of the following is a DISADVANTAGE of making MAC decisions centrally rather than in a distributed way?",
-          "options": [
-            "A) It gives less control over access",
-            "B) It causes coordination problems between stations",
-            "C) It can only use asynchronous (dynamic) allocation",
-            "D) It creates a single point of failure and a potential bottleneck",
-            "E) It needs complex access logic at every station"
-          ],
-          "correct": [
-            "D"
           ],
           "explanation": "Central MAC pros: greater control, simple station logic, avoids coordination problems.<br>Central MAC cons: single point of failure, potential bottleneck."
         },
         {
-          "id": 23005,
-          "difficulty": "intermediate",
-          "question": "Which of the following is an ADVANTAGE of making MAC decisions centrally rather than in a distributed way?",
-          "options": [
-            "A) It removes any potential bottleneck",
-            "B) It needs no controller at all",
-            "C) It only works for bursty traffic",
-            "D) It removes the single point of failure",
-            "E) It avoids problems of co-ordination between stations"
-          ],
-          "correct": [
-            "E"
-          ],
-          "explanation": "Central MAC pros: greater control, simple access logic at each station, avoids co-ordination problems.<br>The single point of failure and bottleneck are its cons, not pros."
-        },
-        {
-          "id": 23006,
+          "id": 23004,
           "difficulty": "basic",
           "question": "The MAC Decision Making Options are organized around two questions. What are they?",
           "options": [
-            "A) Where (central vs. distributed) and How (synchronous/static vs. asynchronous/dynamic)",
+            "A) When (early vs. late) and Why (cost vs. performance)",
             "B) Where (LAN vs. WAN) and How (wired vs. wireless)",
-            "C) Who (sender vs. receiver) and What (data vs. control)",
-            "D) How (static vs. dynamic) and Why (reliability vs. speed)",
-            "E) When (early vs. late) and Why (cost vs. performance)"
+            "C) How (static vs. dynamic) and Why (reliability vs. speed)",
+            "D) Where (central vs. distributed) and How (synchronous/static vs. asynchronous/dynamic)",
+            "E) Who (sender vs. receiver) and What (data vs. control)"
           ],
           "correct": [
-            "A"
+            "D"
           ],
           "explanation": "\"Where?\" splits into central vs. distributed control; \"How?\" splits into synchronous (static) vs. asynchronous (dynamic) allocation. Every other MAC design question in this section falls under one of these two."
         },
         {
-          "id": 23007,
+          "id": 23005,
           "difficulty": "basic",
           "question": "In MAC design, what does a synchronous (static) solution mean?",
           "options": [
-            "A) A specific capacity is dedicated to each connection",
-            "B) Stations contend and risk collisions",
-            "C) Capacity is given out in response to demand",
-            "D) Stations reserve the channel only when they have data",
-            "E) A token is passed around a ring"
-          ],
-          "correct": [
-            "A"
-          ],
-          "explanation": "Synchronous/static = fixed capacity per connection, decided ahead of time regardless of whether the station actually has data to send."
-        },
-        {
-          "id": 23008,
-          "difficulty": "basic",
-          "question": "In MAC design, what does an asynchronous (dynamic) solution mean?",
-          "options": [
-            "A) The medium is split permanently into fixed frequency bands",
-            "B) Only one station may ever use the medium",
-            "C) Capacity is given out in response to demand",
-            "D) A specific capacity is permanently dedicated to each connection",
-            "E) Every station gets an identical, unchanging time slot forever"
-          ],
-          "correct": [
-            "C"
-          ],
-          "explanation": "Asynchronous/dynamic is the counterpart to synchronous/static: instead of a fixed dedicated capacity, the channel is handed out as stations actually need it."
-        },
-        {
-          "id": 23009,
-          "difficulty": "intermediate",
-          "question": "Which statement correctly completes: \"For the same LLC sublayer, ...\"",
-          "options": [
-            "A) flow control becomes unnecessary",
-            "B) only one single MAC option can ever be used",
-            "C) the physical layer is bypassed entirely",
-            "D) no MAC layer is needed at all",
-            "E) several different MAC options may be available"
+            "A) Stations contend and risk collisions",
+            "B) A token is passed around a ring",
+            "C) Stations reserve the channel only when they have data",
+            "D) Capacity is given out in response to demand",
+            "E) A specific capacity is dedicated to each connection"
           ],
           "correct": [
             "E"
           ],
-          "explanation": "The MAC-functions slide states this directly: a given LLC can sit on top of different MAC choices (e.g. different access-control schemes), since LLC and MAC handle separate jobs."
+          "explanation": "Synchronous/static = fixed capacity per connection, decided ahead of time regardless of whether the station actually has data to send."
         }
       ]
     },

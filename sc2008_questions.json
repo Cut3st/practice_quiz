@@ -246,6 +246,284 @@
         }
       ]
     },
+    "week1add": {
+      "formulaApplication": [
+        {
+          "id": 91001,
+          "difficulty": "basic",
+          "question": "5 links are connected in series, each with reliability r = 0.99. What is the reliability of the whole path?",
+          "options": [
+            "A) 0.999",
+            "B) 0.951",
+            "C) 0.0000001",
+            "D) 0.05",
+            "E) 0.99"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Series: multiply the individual reliabilities.<br>r_total = 0.99⁵ ≈ 0.951."
+        },
+        {
+          "id": 91002,
+          "difficulty": "basic",
+          "question": "4 identical backup links run in parallel between two routers. Each has a break probability of 0.2. What is the probability that ALL 4 fail at once (the routers become disconnected)?",
+          "options": [
+            "A) 0.4096",
+            "B) 0.2",
+            "C) 0.00032",
+            "D) 0.0016",
+            "E) 0.8"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Parallel: multiply the break probabilities (disconnected only if every link is down).<br>b_total = 0.2⁴ = 0.0016."
+        },
+        {
+          "id": 91003,
+          "difficulty": "intermediate",
+          "question": "Nodes X, Y and Z form a chain X-Y-Z (2 links in series, r = 0.95 each). There is also a direct long-range X-Z link (r = 0.85), independent of the chain. What is the probability that X is connected to Z?<div class=\"q-diagram\" style=\"margin:14px 0;text-align:center;overflow-x:auto\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 130\" width=\"440\" style=\"max-width:100%;height:auto\" font-family=\"inherit\" font-size=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M70 65 Q210 15 350 65\"/><line x1=\"92\" y1=\"70\" x2=\"188\" y2=\"70\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"222\" y1=\"70\" x2=\"313\" y2=\"70\" stroke=\"currentColor\" stroke-width=\"1.6\"/><circle cx=\"55\" cy=\"70\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"55\" y=\"70\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">X</text><circle cx=\"205\" cy=\"70\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"205\" y=\"70\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">Y</text><circle cx=\"355\" cy=\"70\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"355\" y=\"70\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">Z</text><text x=\"210\" y=\"100\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"11\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">direct link</text></svg></div>",
+          "options": [
+            "A) 0.9025",
+            "B) 0.015",
+            "C) 0.8075",
+            "D) 0.9975",
+            "E) 0.985"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Chain X-Y-Z (series): r = 0.95×0.95 = 0.9025, so b_chain = 0.0975.<br>Direct link: b_direct = 0.15.<br>X is cut off from Z only if BOTH the chain and the direct link fail (parallel rule): b_total = 0.0975×0.15 ≈ 0.0146.<br>r_total = 1 − 0.0146 ≈ 0.985."
+        },
+        {
+          "id": 91004,
+          "difficulty": "intermediate",
+          "question": "Node A connects to node D via two independent 2-hop paths: A-B-D (each link r = 0.9) and A-C-D (each link r = 0.85). What is the probability A is connected to D?",
+          "options": [
+            "A) 0.053",
+            "B) 0.9639",
+            "C) 0.947",
+            "D) 0.7225",
+            "E) 0.81"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Path 1 (A-B-D, series): r = 0.9×0.9 = 0.81, b = 0.19<br>Path 2 (A-C-D, series): r = 0.85×0.85 = 0.7225, b = 0.2775<br>Connected unless BOTH paths fail (parallel): b_total = 0.19×0.2775 ≈ 0.0527<br>r_total = 1 − 0.0527 ≈ 0.947."
+        },
+        {
+          "id": 91005,
+          "difficulty": "advanced",
+          "question": "In the network shown, A and D are linked by A-B, A-C, B-D, C-D, and a fifth \"bridge\" link B-C. Every link has reliability r = 0.9, and all links fail independently. What is the probability A is connected to D?<div class=\"q-diagram\" style=\"margin:14px 0;text-align:center;overflow-x:auto\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 180\" width=\"400\" style=\"max-width:100%;height:auto\" font-family=\"inherit\" font-size=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><line x1=\"68.2\" y1=\"81.6\" x2=\"161.8\" y2=\"38.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"161.8\" y1=\"141.6\" x2=\"68.2\" y2=\"98.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"198.9\" y1=\"36.7\" x2=\"331.1\" y2=\"83.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"331.1\" y1=\"96.7\" x2=\"198.9\" y2=\"143.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"180\" y1=\"50\" x2=\"180\" y2=\"130\" stroke=\"currentColor\" stroke-width=\"1.6\"/><circle cx=\"50\" cy=\"90\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"50\" y=\"90\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">A</text><circle cx=\"180\" cy=\"30\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"180\" y=\"30\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">B</text><circle cx=\"180\" cy=\"150\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"180\" y=\"150\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">C</text><circle cx=\"350\" cy=\"90\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"350\" y=\"90\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">D</text><text x=\"210\" y=\"95\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"10\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">bridge</text></svg></div>",
+          "options": [
+            "A) 0.9639",
+            "B) 0.9801",
+            "C) 0.81",
+            "D) 0.978",
+            "E) 0.99"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Condition on the bridge link B-C:<br><b>If the bridge is UP</b> (prob 0.9): B and C merge into one node. A reaches it via A-B OR A-C (parallel: r = 1−0.1×0.1 = 0.99), and it reaches D via B-D OR C-D (also 0.99). r(connected | bridge up) = 0.99×0.99 = 0.9801.<br><b>If the bridge is DOWN</b> (prob 0.1): it's just the simple two-path case A-B-D parallel with A-C-D, each a series pair (r = 0.81): r(connected | bridge down) = 1−(1−0.81)² = 0.9639.<br>Total: 0.9×0.9801 + 0.1×0.9639 ≈ 0.978.<br>This \"condition on one link\" trick is the standard way to handle a bridge/cross-link that a simple series-parallel decomposition can't handle directly."
+        },
+        {
+          "id": 91006,
+          "difficulty": "basic",
+          "question": "A carrier-grade link needs 5 nines (99.999%) reliability. About how much downtime is allowed per WEEK (7 days)?",
+          "options": [
+            "A) About 31.5 seconds",
+            "B) About 6 minutes",
+            "C) About 0.6 seconds",
+            "D) About 6.0 seconds",
+            "E) About 60 seconds"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "b = 1 − 0.99999 = 10⁻⁵.<br>One week = 7×24×3600 = 604,800 s.<br>Downtime = 10⁻⁵ × 604,800 ≈ 6.0 s."
+        },
+        {
+          "id": 91007,
+          "difficulty": "intermediate",
+          "question": "Each of several identical parallel links has a break probability of 0.15. What is the minimum number of parallel links needed so that overall reliability exceeds 99.9%?",
+          "options": [
+            "A) 4",
+            "B) 3",
+            "C) 5",
+            "D) 2",
+            "E) None of the above"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Need bⁿ ≤ 0.001.<br>n = 3: 0.15³ = 0.003375 (too high)<br>n = 4: 0.15⁴ ≈ 0.000506 ≤ 0.001 ✓<br>So 4 links."
+        },
+        {
+          "id": 91008,
+          "difficulty": "intermediate",
+          "question": "3 independent parallel links connect A to B (r = 0.8 each). That combined link is then in series with 2 independent parallel links connecting B to C (r = 0.85 each). What is the reliability between A and C?",
+          "options": [
+            "A) 0.992",
+            "B) 0.978",
+            "C) 0.8",
+            "D) 0.9775",
+            "E) 0.970"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "A-B: 3 parallel links, b = 0.2³ = 0.008, so r_AB = 0.992.<br>B-C: 2 parallel links, b = 0.15² = 0.0225, so r_BC = 0.9775.<br>A to C is these two combined links in series: r_AC = 0.992 × 0.9775 ≈ 0.970."
+        },
+        {
+          "id": 91009,
+          "difficulty": "basic",
+          "question": "Two links are in series: the first has reliability 0.95, the second 0.9. What is the reliability of the path?",
+          "options": [
+            "A) 0.945",
+            "B) 0.855",
+            "C) 0.9975",
+            "D) 0.1",
+            "E) 0.05"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Series: r_total = 0.95 × 0.9 = 0.855."
+        },
+        {
+          "id": 91010,
+          "difficulty": "intermediate",
+          "question": "3 unreliable parallel links (r = 0.3 each) are then combined in series with one very reliable link (r = 0.99). What is the overall reliability?",
+          "options": [
+            "A) 0.973",
+            "B) 0.99",
+            "C) 0.650",
+            "D) 0.657",
+            "E) 0.027"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "3 parallel links, r = 0.3 each: b = 0.7³ = 0.343, so r_parallel = 0.657.<br>In series with the r = 0.99 link: r_total = 0.657 × 0.99 ≈ 0.650."
+        },
+        {
+          "id": 91011,
+          "difficulty": "advanced",
+          "question": "A path is made of 4 identical links in series. What minimum reliability must EACH link have so that the whole path's reliability is at least 99.9%?",
+          "options": [
+            "A) About 75% (b = 0.25 per link)",
+            "B) Exactly 99.9% per link",
+            "C) About 99.75% (b ≈ 2.5×10⁻³ per link)",
+            "D) About 99.9% (b = 10⁻³ per link)",
+            "E) About 99.975% (b ≈ 2.5×10⁻⁴ per link)"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Need r⁴ ≥ 0.999, so r ≥ 0.999^(1/4) ≈ 0.99975.<br>That means each individual link needs a break probability of only about 1 − 0.99975 = 2.5×10⁻⁴ — much stricter than the overall 10⁻³ target, because failures compound across 4 links."
+        },
+        {
+          "id": 91012,
+          "difficulty": "basic",
+          "question": "A link needs 6 nines of reliability. What single break probability does that correspond to?",
+          "options": [
+            "A) 10⁻⁴",
+            "B) 0.06",
+            "C) 6 × 10⁻²",
+            "D) 10⁻⁵",
+            "E) 10⁻⁶"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "\"n nines\" means r = 0.99...9 with n nines, so b = 1 − r = 10⁻ⁿ.<br>6 nines → b = 10⁻⁶."
+        }
+      ],
+      "theory": [
+        {
+          "id": 91013,
+          "difficulty": "basic",
+          "question": "What does \"Peering\" mean in the OSI layered model?",
+          "options": [
+            "A) Every layer can talk directly to every other layer",
+            "B) Only a layer's peer layer on the other host communicates with it (logically)",
+            "C) Only the physical layer can send data",
+            "D) It refers to peer-to-peer file sharing protocols",
+            "E) Peers must be on the same physical cable"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Peering: layer N on one host only \"talks\" to layer N on the other host (its peer), even though the data actually travels down through the local stack, across the link, and up the remote stack."
+        },
+        {
+          "id": 91014,
+          "difficulty": "basic",
+          "question": "What does \"Encapsulation\" mean in the OSI layered model?",
+          "options": [
+            "A) Each layer removes headers as data moves down the stack",
+            "B) Only the top layer adds a header",
+            "C) Data is compressed at every layer",
+            "D) Each layer adds its own header to the data as it moves down the stack",
+            "E) Encapsulation only happens at the physical layer"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "As data descends the stack for transmission, each layer wraps it with its own header (and sometimes trailer), building up the frame that finally goes out on the wire. The receiving stack strips these headers back off, layer by layer."
+        },
+        {
+          "id": 91015,
+          "difficulty": "intermediate",
+          "question": "In the TCP/IP 5-layer model, which layer sits directly below the Transport layer?",
+          "options": [
+            "A) Physical layer",
+            "B) Application layer",
+            "C) Network layer",
+            "D) Link layer",
+            "E) Session layer"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Top to bottom: Application, Transport, Network, Link, Physical.<br>So Network sits directly below Transport, and directly above Link."
+        },
+        {
+          "id": 91016,
+          "difficulty": "intermediate",
+          "question": "The lecture asks \"Is layering harmful?\" What is the main trade-off being pointed at?",
+          "options": [
+            "A) Layering is only a theoretical idea never used in real networks",
+            "B) Layering makes networks completely insecure",
+            "C) Layering removes the need for addressing",
+            "D) Layering doubles the physical cabling needed",
+            "E) A clean layered design isn't always the most efficient implementation"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Layering buys simplicity, flexibility and easy incremental change, but strict separation between layers can cost some performance/efficiency compared to a more tightly integrated, non-layered design."
+        },
+        {
+          "id": 91017,
+          "difficulty": "basic",
+          "question": "The series/parallel/path-based formulas for computing network reliability all rely on which assumption?",
+          "options": [
+            "A) Links never fail, only nodes do",
+            "B) Only one link can ever fail at a time",
+            "C) Reliability calculations only work for exactly 2 links",
+            "D) Each link fails independently of every other link",
+            "E) All links have the same reliability"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Every formula (r_series = product of r's, b_parallel = product of b's, and the path-based method for mixed networks) assumes link failures are independent events — that's what allows you to just multiply probabilities together."
+        }
+      ]
+    },
     "week2": {
       "formulaApplication": [
         {
@@ -697,6 +975,460 @@
             "D"
           ],
           "explanation": "No SREJ has arrived yet, so A just sends its next NEW frame. A already sent 6, 7, 0, so the next is 1: w = 1.<br>A received B's frame 1, so A wants B's frame 2: z = 2.<br>Traps: I(7,2) retransmits too early (A doesn't know 7 was lost yet), and 8 doesn't exist with 3 bits (0 to 7)."
+        }
+      ]
+    },
+    "week2add": {
+      "formulaApplication": [
+        {
+          "id": 92001,
+          "difficulty": "basic",
+          "question": "A link runs at 2 Mbps. How long does it take to transmit a 4000-bit frame?",
+          "options": [
+            "A) 0.5 ms",
+            "B) 1 ms",
+            "C) 4 ms",
+            "D) 8 ms",
+            "E) 2 ms"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Tframe = frame length / data rate = 4000 bits / 2×10⁶ bps = 2 ms."
+        },
+        {
+          "id": 92002,
+          "difficulty": "basic",
+          "question": "Two nodes are 300 km apart, and the signal travels at 2×10⁸ m/s. What is the one-way propagation delay?",
+          "options": [
+            "A) 1.5 ms",
+            "B) 150 μs",
+            "C) 3 ms",
+            "D) 0.67 ms",
+            "E) 15 ms"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Tprop = distance / speed = 300,000 m / 2×10⁸ m/s = 1.5 ms."
+        },
+        {
+          "id": 92003,
+          "difficulty": "basic",
+          "question": "A link has Tframe = 2 ms and Tprop = 6 ms. What is the normalized propagation delay a?",
+          "options": [
+            "A) 8",
+            "B) 3",
+            "C) 4",
+            "D) 12",
+            "E) 0.33"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "a = Tprop / Tframe = 6 / 2 = 3."
+        },
+        {
+          "id": 92004,
+          "difficulty": "intermediate",
+          "question": "A link uses stop-and-wait ARQ with frame error probability P = 0.1 and normalized propagation delay a = 2. What is the link utilization?",
+          "options": [
+            "A) 0.2",
+            "B) 0.9",
+            "C) 0.18",
+            "D) 0.45",
+            "E) 0.1"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "U = (1 − P) / (1 + 2a) = 0.9 / (1 + 4) = 0.9/5 = 0.18."
+        },
+        {
+          "id": 92005,
+          "difficulty": "intermediate",
+          "question": "A 1 Mbps link carries 2000-bit frames using stop-and-wait flow control (no errors). Signal speed is 2×10⁸ m/s. What is the maximum distance between the two nodes so that link utilization stays at least 25%?",
+          "options": [
+            "A) 1200 km",
+            "B) 150 km",
+            "C) 300 km",
+            "D) 900 km",
+            "E) 600 km"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Tframe = 2000/10⁶ = 2 ms. Target U = 1/(1+2a) = 0.25 → 1+2a = 4 → a = 1.5.<br>Tprop = a × Tframe = 1.5 × 2 ms = 3 ms.<br>Max distance = Tprop × speed = 3 ms × 2×10⁸ m/s = 600,000 m = 600 km."
+        },
+        {
+          "id": 92006,
+          "difficulty": "intermediate",
+          "question": "A sliding window protocol (no errors) achieves 75% utilization with window size N = 6. What is the normalized propagation delay a?",
+          "options": [
+            "A) 2.5",
+            "B) 3.5",
+            "C) 1.5",
+            "D) 3",
+            "E) 4.5"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "U = N/(1+2a) = 0.75 → 6/(1+2a) = 0.75 → 1+2a = 8 → a = 3.5."
+        },
+        {
+          "id": 92007,
+          "difficulty": "intermediate",
+          "question": "A 500 kbps link carries 1000-bit frames with a one-way propagation delay of 8 ms. It uses Selective-Reject ARQ with window size 4 and frame error probability 0.05. What is the link's throughput?",
+          "options": [
+            "A) 500 kbps",
+            "B) About 106 kbps",
+            "C) About 380 kbps",
+            "D) About 211 kbps",
+            "E) About 475 kbps"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Tframe = 1000/500k = 2 ms, a = 8/2 = 4, so 1+2a = 9.<br>N = 4 < 9, so U = N(1−P)/(1+2a) = 4×0.95/9 ≈ 0.4222.<br>Throughput = 0.4222 × 500 kbps ≈ 211 kbps."
+        },
+        {
+          "id": 92008,
+          "difficulty": "intermediate",
+          "question": "A Go-Back-N ARQ link has frame error probability P = 0.1 and normalized propagation delay a = 1.75. What is the minimum window size N that achieves at least half of the maximum possible utilization?",
+          "options": [
+            "A) 3",
+            "B) 2",
+            "C) 4",
+            "D) 5",
+            "E) None of the above"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Max possible U = 1−P = 0.9, so the target is half of that: 0.45.<br>1+2a = 4.5. Need N(1−P)/(1+2a) ≥ 0.45 → N×0.9/4.5 ≥ 0.45 → N ≥ 2.25.<br>Round up: N = 3."
+        },
+        {
+          "id": 92009,
+          "difficulty": "basic",
+          "question": "Using 6 sequence-number bits, what is the maximum window size for Go-Back-N ARQ?",
+          "options": [
+            "A) 65",
+            "B) 63",
+            "C) 32",
+            "D) 31",
+            "E) 64"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Go-Back-N rule: N ≤ 2^k − 1 = 2⁶ − 1 = 63."
+        },
+        {
+          "id": 92010,
+          "difficulty": "basic",
+          "question": "A link needs a Selective-Reject window of N = 64. What is the minimum number of sequence-number bits required?",
+          "options": [
+            "A) 6",
+            "B) 5",
+            "C) 64",
+            "D) 7",
+            "E) 8"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Selective-Reject rule: N ≤ 2^(k−1). Need 2^(k−1) ≥ 64, so k−1 ≥ 6, k = 7."
+        },
+        {
+          "id": 92011,
+          "difficulty": "basic",
+          "question": "A 10 Mbps link achieves 40% utilization. What is the actual throughput?",
+          "options": [
+            "A) 40 Mbps",
+            "B) 10 Mbps",
+            "C) 4 Mbps",
+            "D) 0.4 Mbps",
+            "E) 6 Mbps"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Throughput = U × R = 0.4 × 10 Mbps = 4 Mbps."
+        },
+        {
+          "id": 92012,
+          "difficulty": "intermediate",
+          "question": "A stop-and-wait link with a = 1 is measured to have a utilization of 0.3. What is the frame error probability P?",
+          "options": [
+            "A) 0.9",
+            "B) 0.3",
+            "C) 0.7",
+            "D) 0.1",
+            "E) 0.6"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "U = (1−P)/(1+2a) → 0.3 = (1−P)/3 → 1−P = 0.9 → P = 0.1."
+        },
+        {
+          "id": 92013,
+          "difficulty": "intermediate",
+          "question": "A 2 Mbps link carries 4000-bit frames between two nodes 400 km apart (signal speed 2×10⁸ m/s). It uses Go-Back-N ARQ with window size 10 and frame error probability 0.02. What is the throughput?",
+          "options": [
+            "A) About 1.96 Mbps",
+            "B) About 1 Mbps",
+            "C) About 1.5 Mbps",
+            "D) About 0.98 Mbps",
+            "E) 2 Mbps"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Tframe = 4000/2M = 2 ms. Tprop = 400,000/2×10⁸ = 2 ms. a = 1, so 1+2a = 3.<br>N = 10 ≥ 3, so the window is more than enough: U caps at 1−P = 0.98.<br>Throughput = 0.98 × 2 Mbps ≈ 1.96 Mbps."
+        },
+        {
+          "id": 92014,
+          "difficulty": "intermediate",
+          "question": "A Selective-Reject ARQ link has window size N = 3 and error probability P = 0.2. Measured utilization is 0.6. What is the normalized propagation delay a?",
+          "options": [
+            "A) 2",
+            "B) 3",
+            "C) 1.5",
+            "D) 1",
+            "E) 2.5"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "U = N(1−P)/(1+2a) → 0.6 = 3×0.8/(1+2a) = 2.4/(1+2a) → 1+2a = 2.4/0.6 = 4 → a = 1.5."
+        },
+        {
+          "id": 92015,
+          "difficulty": "basic",
+          "question": "A stop-and-wait link (no errors) has a normalized propagation delay a = 0.5. What is the link utilization?",
+          "options": [
+            "A) 1.5",
+            "B) 0.5",
+            "C) 0.75",
+            "D) 0.25",
+            "E) 0.67"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "U = 1/(1+2a) = 1/(1+1) = 1/2 = 0.5."
+        },
+        {
+          "id": 92016,
+          "difficulty": "basic",
+          "question": "With flow control only (no ARQ) and k = 6 sequence-number bits, what is the maximum window size?",
+          "options": [
+            "A) 63",
+            "B) 31",
+            "C) 64",
+            "D) 32",
+            "E) 128"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Flow-control-only rule: N ≤ 2^k = 2⁶ = 64."
+        },
+        {
+          "id": 92017,
+          "difficulty": "intermediate",
+          "question": "A Go-Back-N ARQ link needs a window size of at least 100. What is the minimum number of sequence-number bits?",
+          "options": [
+            "A) 8",
+            "B) 6",
+            "C) 7",
+            "D) 5",
+            "E) 100"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Need 2^k − 1 ≥ 100 → 2^k ≥ 101. 2⁶=64 (too small), 2⁷=128 ≥ 101 ✓. So k = 7."
+        },
+        {
+          "id": 92018,
+          "difficulty": "advanced",
+          "question": "A satellite link has a huge normalized propagation delay a = 125. It uses Selective-Reject ARQ with an 8-bit sequence number field (maximum allowed window) and negligible frame errors. What is the link utilization?",
+          "options": [
+            "A) 0",
+            "B) About 0.004",
+            "C) About 0.51",
+            "D) 1.0 (fully utilized)",
+            "E) About 0.008"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Max window for 8-bit SR: N ≤ 2^(8−1) = 128.<br>1+2a = 1+250 = 251. U = N(1−P)/(1+2a) ≈ 128/251 ≈ 0.51.<br>Even the largest window your sequence-number bits allow can't fully hide a huge satellite-scale 'a' — this is exactly why real satellite links often need extra tricks beyond just widening the window."
+        },
+        {
+          "id": 92019,
+          "difficulty": "basic",
+          "question": "A 64 kbps link carries 128-byte frames with a one-way propagation delay corresponding to a = 0.3125, using Selective-Reject ARQ with window 8 and error probability 0.1. What is the utilization?",
+          "options": [
+            "A) 0.9",
+            "B) 0.45",
+            "C) 1.0",
+            "D) 0.5",
+            "E) 0.8"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "1+2a = 1+0.625 = 1.625. Best possible U = 1−P = 0.9.<br>Check window: N(1−P)/(1+2a) = 8×0.9/1.625 ≈ 4.43, far more than 0.9, so the window isn't the bottleneck.<br>U = min(0.9, 4.43) = 0.9."
+        },
+        {
+          "id": 92020,
+          "difficulty": "intermediate",
+          "question": "A 1 Mbps link carries 12,000-bit frames using stop-and-wait flow control (no errors). What one-way propagation delay gives a link utilization of exactly 80%?",
+          "options": [
+            "A) 12 ms",
+            "B) 1.5 ms",
+            "C) 0.75 ms",
+            "D) 3 ms",
+            "E) 6 ms"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Tframe = 12000/10⁶ = 12 ms. U = 1/(1+2a) = 0.8 → 1+2a = 1.25 → a = 0.125.<br>Tprop = a × Tframe = 0.125 × 12 ms = 1.5 ms."
+        }
+      ],
+      "theory": [
+        {
+          "id": 92021,
+          "difficulty": "intermediate",
+          "question": "In sliding window flow control, how does the RECEIVER's window change?",
+          "options": [
+            "A) It only changes when a timeout occurs",
+            "B) It shrinks as ACKs are sent and expands as frames are received",
+            "C) It never changes size once set",
+            "D) It shrinks from the trailing edge as frames are received, and expands from the leading edge as ACKs are sent",
+            "E) It always mirrors the sender's window exactly frame for frame"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Symmetric to the sender's window: the receiver's window shrinks (trailing edge moves right) as frames come in, and expands (leading edge moves right) as it sends ACKs back."
+        },
+        {
+          "id": 92022,
+          "difficulty": "intermediate",
+          "question": "In Stop-and-Wait ARQ, the source sends a frame, but the ACK gets damaged in transit. What happens?",
+          "options": [
+            "A) The source immediately sends the next frame anyway",
+            "B) The destination automatically sends a fresh ACK",
+            "C) The destination re-sends the original frame back to the source",
+            "D) The link permanently fails",
+            "E) The source doesn't recognize the damaged ACK, times out, and retransmits the same frame; the destination gets two copies and discards one"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "A damaged ACK looks like no ACK at all to the source, so its timeout fires and it resends the frame. The destination then has two copies of the same frame and simply discards the duplicate."
+        },
+        {
+          "id": 92023,
+          "difficulty": "basic",
+          "question": "What is the purpose of the retransmission timer in ARQ schemes?",
+          "options": [
+            "A) To trigger a retransmission if an expected ACK never arrives (frame or ACK was lost)",
+            "B) To measure the round-trip time for statistics only",
+            "C) To decide which station may access the medium",
+            "D) To encrypt frames before sending",
+            "E) To slow down the sender so it never overwhelms the receiver"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Without a timer, a lost frame or a lost ACK would leave the sender waiting forever. The timeout guarantees the sender eventually gives up waiting and retransmits."
+        },
+        {
+          "id": 92024,
+          "difficulty": "intermediate",
+          "question": "In Go-Back-N ARQ, under what condition does the receiver accept a frame?",
+          "options": [
+            "A) Only if it arrives strictly in the expected sequence order",
+            "B) Any frame is accepted and reordered later",
+            "C) Only if it is error-free, regardless of sequence order",
+            "D) Only the very first frame of a session is checked for sequence",
+            "E) If it arrives within the receiver's open window, even out of order"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Go-Back-N's receiver is the \"cautious\" scheme: any out-of-sequence frame is discarded outright, even if it isn't damaged, and the sender must go back and resend from the missing frame onward."
+        },
+        {
+          "id": 92025,
+          "difficulty": "intermediate",
+          "question": "In Selective-Reject ARQ, under what condition does the receiver accept a frame?",
+          "options": [
+            "A) Only if it arrives strictly in sequence",
+            "B) Never — Selective-Reject only ever discards frames",
+            "C) Only if the window is completely full",
+            "D) If it falls within the receiver's currently open window, even if it arrives out of sequence",
+            "E) Only the first and last frames of a batch are accepted"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Unlike Go-Back-N, Selective-Reject buffers out-of-order frames that fall inside its open window, then reorders them once the missing frame(s) finally arrive — this is what lets it avoid re-sending frames that already arrived fine."
+        },
+        {
+          "id": 92026,
+          "difficulty": "advanced",
+          "question": "In the figure, F6 is lost and the receiver replies NAK6 only after F8 has already arrived. If the link uses Go-Back-N ARQ, which frames does the sender retransmit?<div class=\"q-diagram\" style=\"margin:14px 0;text-align:center;overflow-x:auto\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 220\" width=\"480\" style=\"max-width:100%;height:auto\" font-family=\"inherit\" font-size=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><text x=\"150\" y=\"16\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"15\" font-weight=\"bold\" fill=\"currentColor\" stroke=\"none\">Sender</text><text x=\"330\" y=\"16\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"15\" font-weight=\"bold\" fill=\"currentColor\" stroke=\"none\">Receiver</text><line x1=\"150\" y1=\"28\" x2=\"150\" y2=\"212\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"330\" y1=\"28\" x2=\"330\" y2=\"212\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"150\" y1=\"50\" x2=\"330\" y2=\"80\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polygon points=\"330.0,80.0 321.2,82.1 322.4,75.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"140\" y=\"50\" text-anchor=\"end\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">F5</text><line x1=\"150\" y1=\"80\" x2=\"261.6\" y2=\"98.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"255.60000000000002\" y1=\"92.6\" x2=\"267.6\" y2=\"104.6\" stroke=\"#e5484d\" stroke-width=\"2.4\"/><line x1=\"255.60000000000002\" y1=\"104.6\" x2=\"267.6\" y2=\"92.6\" stroke=\"#e5484d\" stroke-width=\"2.4\"/><text x=\"140\" y=\"80\" text-anchor=\"end\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">F6</text><line x1=\"150\" y1=\"112\" x2=\"330\" y2=\"142\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polygon points=\"330.0,142.0 321.2,144.1 322.4,137.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"140\" y=\"112\" text-anchor=\"end\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">F7</text><line x1=\"150\" y1=\"144\" x2=\"330\" y2=\"174\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polygon points=\"330.0,174.0 321.2,176.1 322.4,169.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"140\" y=\"144\" text-anchor=\"end\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">F8</text><line x1=\"330\" y1=\"174\" x2=\"150\" y2=\"204\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polygon points=\"150.0,204.0 157.6,199.2 158.8,206.1\" fill=\"currentColor\" stroke=\"none\"/><text x=\"340\" y=\"174\" text-anchor=\"start\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">NAK6</text></svg></div>",
+          "options": [
+            "A) F7 and F8 only",
+            "B) F6 only",
+            "C) Nothing — it waits for a timeout",
+            "D) F6, F7 and F8",
+            "E) F5, F6, F7 and F8"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Go-Back-N: on NAK n, the sender goes back and resends frame n and every frame sent after it, since the receiver discarded F7 and F8 (they arrived out of sequence while F6 was still missing)."
+        },
+        {
+          "id": 92027,
+          "difficulty": "advanced",
+          "question": "A and B use I(i, j) frames (i = own sequence number, j = next frame expected from the other side), Selective Reject, 3-bit sequence numbers. Based on the figure, what is I(x, y)?<div class=\"q-diagram\" style=\"margin:14px 0;text-align:center;overflow-x:auto\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 245\" width=\"480\" style=\"max-width:100%;height:auto\" font-family=\"inherit\" font-size=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><text x=\"150\" y=\"16\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"15\" font-weight=\"bold\" fill=\"currentColor\" stroke=\"none\">A</text><text x=\"330\" y=\"16\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"15\" font-weight=\"bold\" fill=\"currentColor\" stroke=\"none\">B</text><line x1=\"150\" y1=\"28\" x2=\"150\" y2=\"237\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"330\" y1=\"28\" x2=\"330\" y2=\"237\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"150\" y1=\"50\" x2=\"330\" y2=\"80\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polygon points=\"330.0,80.0 321.2,82.1 322.4,75.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"140\" y=\"50\" text-anchor=\"end\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">I(1,4)</text><line x1=\"150\" y1=\"80\" x2=\"261.6\" y2=\"98.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"255.60000000000002\" y1=\"92.6\" x2=\"267.6\" y2=\"104.6\" stroke=\"#e5484d\" stroke-width=\"2.4\"/><line x1=\"255.60000000000002\" y1=\"104.6\" x2=\"267.6\" y2=\"92.6\" stroke=\"#e5484d\" stroke-width=\"2.4\"/><text x=\"140\" y=\"80\" text-anchor=\"end\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">I(2,4)</text><line x1=\"150\" y1=\"112\" x2=\"330\" y2=\"142\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polygon points=\"330.0,142.0 321.2,144.1 322.4,137.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"140\" y=\"112\" text-anchor=\"end\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">I(3,4)</text><line x1=\"330\" y1=\"112\" x2=\"150\" y2=\"142\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polygon points=\"150.0,142.0 157.6,137.2 158.8,144.1\" fill=\"currentColor\" stroke=\"none\"/><text x=\"340\" y=\"112\" text-anchor=\"start\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">I(4,2)</text><line x1=\"330\" y1=\"158\" x2=\"150\" y2=\"188\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polygon points=\"150.0,188.0 157.6,183.2 158.8,190.1\" fill=\"currentColor\" stroke=\"none\"/><text x=\"340\" y=\"158\" text-anchor=\"start\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">SREJ(2)</text><line x1=\"150\" y1=\"196\" x2=\"330\" y2=\"226\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polygon points=\"330.0,226.0 321.2,228.1 322.4,221.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"140\" y=\"196\" text-anchor=\"end\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">I(x,y)</text></svg></div>",
+          "options": [
+            "A) I(4,5)",
+            "B) I(2,4)",
+            "C) I(2,5)",
+            "D) I(3,5)",
+            "E) None of the above"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "B sent SREJ(2), so A retransmits frame 2: x = 2.<br>A received B's frame I(4,2), so A now wants B's frame 5 next: y = 5."
+        },
+        {
+          "id": 92028,
+          "difficulty": "basic",
+          "question": "Which of the following correctly pairs each protocol with its maximum window size given k sequence-number bits?",
+          "options": [
+            "A) All three protocols share the same maximum window size, 2^k",
+            "B) Flow control (no errors): 2^k, Go-Back-N: 2^k − 1, Selective-Reject: 2^(k−1)",
+            "C) Selective-Reject always allows the largest window of the three",
+            "D) Flow control (no errors): 2^(k−1), Go-Back-N: 2^k, Selective-Reject: 2^k − 1",
+            "E) Flow control (no errors): 2^k − 1, Go-Back-N: 2^k, Selective-Reject: 2^(k−1)"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "From loosest to strictest: plain flow control has no ambiguity to avoid so N ≤ 2^k; Go-Back-N reserves one sequence number to detect a full wraparound so N ≤ 2^k − 1; Selective-Reject needs to tell old vs new frames apart while buffering out-of-order ones, so it's capped at half the space, N ≤ 2^(k−1)."
         }
       ]
     },
@@ -1239,6 +1971,444 @@
         }
       ]
     },
+    "week4add": {
+      "formulaApplication": [
+        {
+          "id": 94001,
+          "difficulty": "basic",
+          "question": "A CSMA/CD network runs at 20 Mbps with a worst-case one-way propagation delay of 20 μs. What is the minimum frame size?",
+          "options": [
+            "A) 200 bits",
+            "B) 800 bits",
+            "C) 1600 bits",
+            "D) 40 bits",
+            "E) 400 bits"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Lmin = 2τ × R = 2 × 20 μs × 20 Mbps = 800 bits."
+        },
+        {
+          "id": 94002,
+          "difficulty": "basic",
+          "question": "A 100 Mbps Ethernet LAN has a total one-way propagation delay of 3 μs. What is the minimum frame size?",
+          "options": [
+            "A) 1200 bits",
+            "B) 300 bits",
+            "C) 60 bits",
+            "D) 600 bits",
+            "E) 3000 bits"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Lmin = 2τ × R = 2 × 3 μs × 100 Mbps = 600 bits."
+        },
+        {
+          "id": 94003,
+          "difficulty": "intermediate",
+          "question": "A 10 Mbps CSMA/CD LAN connects two segments of 500 m each (propagation 2 μs per 100 m) through a single repeater that adds 5 μs of delay. What is the minimum frame size?",
+          "options": [
+            "A) 600 bits",
+            "B) 400 bits",
+            "C) 250 bits",
+            "D) 500 bits",
+            "E) 1000 bits"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "τ = 2 segments × 500 m × (2 μs/100 m) + 1 repeater × 5 μs = 20 μs + 5 μs = 25 μs.<br>Lmin = 2 × 25 μs × 10 Mbps = 500 bits."
+        },
+        {
+          "id": 94004,
+          "difficulty": "intermediate",
+          "question": "A CSMA/CD LAN requires a minimum frame size of 1000 bits and runs at 20 Mbps. What is the maximum one-way propagation delay this network can tolerate?",
+          "options": [
+            "A) 100 μs",
+            "B) 50 μs",
+            "C) 25 μs",
+            "D) 10 μs",
+            "E) 12.5 μs"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Lmin = 2τR → τ = Lmin/(2R) = 1000/(2×20×10⁶) = 25 μs."
+        },
+        {
+          "id": 94005,
+          "difficulty": "intermediate",
+          "question": "A CSMA/CD network has a minimum frame size of 512 bits and a worst-case one-way propagation delay of 12.8 μs. What is the maximum data rate this network can run at?",
+          "options": [
+            "A) 5 Mbps",
+            "B) 20 Mbps",
+            "C) 10 Mbps",
+            "D) 40 Mbps",
+            "E) 80 Mbps"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "R = Lmin / (2τ) = 512 / (2 × 12.8 μs) = 512 / 25.6 μs = 20 Mbps."
+        },
+        {
+          "id": 94006,
+          "difficulty": "intermediate",
+          "question": "Two stations are involved in a collision on an Ethernet segment. On their 4th collision (4th retry), what is the probability they collide again?",
+          "options": [
+            "A) 1/16",
+            "B) 1/4",
+            "C) 1/2",
+            "D) 1/32",
+            "E) 1/8"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "After the n-th collision, K is chosen from {0,...,2ⁿ−1}: for the 4th collision, that's 16 slots.<br>Two stations collide again only if they pick the SAME slot: 16 × (1/16)² = 1/16."
+        },
+        {
+          "id": 94007,
+          "difficulty": "intermediate",
+          "question": "5 stations on an Ethernet segment collide simultaneously. On their first retry (each picks slot 0 or 1), what is the probability that exactly one station succeeds?",
+          "options": [
+            "A) 1/32",
+            "B) 5/16",
+            "C) 1/2",
+            "D) 1/16",
+            "E) 5/32"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "P(exactly one succeeds) = n / 2ⁿ = 5 / 2⁵ = 5/32."
+        },
+        {
+          "id": 94008,
+          "difficulty": "intermediate",
+          "question": "6 stations collide simultaneously on an Ethernet segment. What is the probability that exactly one station succeeds on the first retry?",
+          "options": [
+            "A) 3/32",
+            "B) 1/32",
+            "C) 6/32",
+            "D) 6/64",
+            "E) 1/64"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "P(exactly one succeeds) = n / 2ⁿ = 6 / 2⁶ = 6/64 = 3/32."
+        },
+        {
+          "id": 94009,
+          "difficulty": "basic",
+          "question": "In a slotted ALOHA network, 5 stations each transmit with probability p = 0.2 in a given slot. What is the probability of a successful transmission in that slot?",
+          "options": [
+            "A) About 0.590",
+            "B) About 0.410",
+            "C) About 0.200",
+            "D) About 0.328",
+            "E) About 0.082"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "P(success) = N·p·(1−p)^(N−1) = 5 × 0.2 × 0.8⁴ ≈ 0.410."
+        },
+        {
+          "id": 94010,
+          "difficulty": "intermediate",
+          "question": "In slotted ALOHA, 3 stations each transmit with probability p = 0.4 per slot. What is the probability of a collision in a given slot?",
+          "options": [
+            "A) About 0.648",
+            "B) About 0.352",
+            "C) About 0.064",
+            "D) About 0.432",
+            "E) About 0.216"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "P(idle) = 0.6³ = 0.216. P(success) = 3×0.4×0.6² = 0.432.<br>P(collision) = 1 − 0.216 − 0.432 = 0.352."
+        },
+        {
+          "id": 94011,
+          "difficulty": "basic",
+          "question": "In pure ALOHA, 2 stations each transmit with probability p = 0.3 per frame-time. What is the probability of a successful transmission?",
+          "options": [
+            "A) About 0.360",
+            "B) About 0.600",
+            "C) About 0.090",
+            "D) About 0.294",
+            "E) About 0.490"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Pure ALOHA: P(success) = N·p·(1−p)^(2N−2) = 2 × 0.3 × 0.7² ≈ 0.294."
+        },
+        {
+          "id": 94012,
+          "difficulty": "intermediate",
+          "question": "A slotted ALOHA network has 8 stations that always have data ready. What value of p maximizes throughput, and what is that maximum throughput?",
+          "options": [
+            "A) p = 0.125, throughput ≈ 0.368",
+            "B) p = 1, throughput = 1",
+            "C) p = 0.5, throughput ≈ 0.156",
+            "D) p = 0.25, throughput ≈ 0.368",
+            "E) p = 0.125, throughput ≈ 0.393"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Optimal p = 1/N = 1/8 = 0.125.<br>Pr(S) = 8 × 0.125 × 0.875⁷ ≈ 0.393."
+        },
+        {
+          "id": 94013,
+          "difficulty": "intermediate",
+          "question": "At an offered load of G = 2 frames per frame-time (large number of nodes), what are the throughputs of slotted and pure ALOHA?",
+          "options": [
+            "A) Slotted ≈ 0.037, Pure ≈ 0.271",
+            "B) Slotted ≈ 0.368, Pure ≈ 0.184",
+            "C) Slotted ≈ 0.135, Pure ≈ 0.018",
+            "D) Slotted ≈ 0.271, Pure ≈ 0.271",
+            "E) Slotted ≈ 0.271, Pure ≈ 0.037"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Slotted: G·e^(−G) = 2×e⁻² ≈ 0.271.<br>Pure: G·e^(−2G) = 2×e⁻⁴ ≈ 0.037."
+        },
+        {
+          "id": 94014,
+          "difficulty": "intermediate",
+          "question": "A CSMA/CD LAN has 6 cable segments of 150 m each (propagation 1 μs per 100 m), joined by 5 repeaters each adding 2.5 μs of delay. The LAN runs at 50 Mbps. What is the minimum frame size?",
+          "options": [
+            "A) 4300 bits",
+            "B) 2400 bits",
+            "C) 2150 bits",
+            "D) 1075 bits",
+            "E) 1900 bits"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "τ = 6 × 150 m × (1 μs/100 m) + 5 × 2.5 μs = 9 μs + 12.5 μs = 21.5 μs.<br>Lmin = 2 × 21.5 μs × 50 Mbps = 2150 bits."
+        },
+        {
+          "id": 94015,
+          "difficulty": "advanced",
+          "question": "Two stations keep colliding under Binary Exponential Backoff. What is the probability that they are STILL colliding after their first two retries combined (i.e. they collide on both the 1st AND 2nd retry)?",
+          "options": [
+            "A) 1/4",
+            "B) 1/8",
+            "C) 1/16",
+            "D) 3/8",
+            "E) 1/2"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "1st retry: window = 2, P(collide again) = 1/2.<br>2nd retry: window = 4, P(collide again) = 1/4.<br>Both must happen: 1/2 × 1/4 = 1/8."
+        },
+        {
+          "id": 94016,
+          "difficulty": "intermediate",
+          "question": "In slotted ALOHA with 6 stations each transmitting with probability p = 0.15 per slot, what is the probability of a successful transmission?",
+          "options": [
+            "A) About 0.377",
+            "B) About 0.399",
+            "C) About 0.600",
+            "D) About 0.050",
+            "E) About 0.150"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "P(success) = N·p·(1−p)^(N−1) = 6 × 0.15 × 0.85⁵ ≈ 0.399."
+        },
+        {
+          "id": 94017,
+          "difficulty": "advanced",
+          "question": "A CSMA/CD network requires a minimum frame size of 200 bits and runs at 10 Mbps. Cable segments are 200 m each (propagation 1 μs per 100 m), and each repeater between segments adds 2 μs of delay. How many repeaters are used between the two farthest stations?",
+          "options": [
+            "A) 5",
+            "B) 4",
+            "C) 2",
+            "D) 1",
+            "E) 3"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "τ budget = Lmin/(2R) = 200/(2×10×10⁶) = 10 μs.<br>Each 200 m segment contributes 200×(1μs/100m) = 2 μs of propagation delay. With n repeaters there are (n+1) segments, so τ = (n+1)×2 μs (segments) + n×2 μs (repeaters) = (4n+2) μs.<br>Solve: 4n+2 = 10 → n = 2 repeaters."
+        },
+        {
+          "id": 94018,
+          "difficulty": "intermediate",
+          "question": "In pure ALOHA with a large number of nodes, what p maximizes throughput for N = 10 stations, and what is that maximum throughput?",
+          "options": [
+            "A) p = 0.05, throughput ≈ 0.184",
+            "B) p = 1, throughput = 1",
+            "C) p = 0.1, throughput ≈ 0.150",
+            "D) p = 0.1, throughput ≈ 0.368",
+            "E) p = 0.2, throughput ≈ 0.107"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Optimal p = 1/N = 0.1.<br>Pr(S) = 10 × 0.1 × 0.9¹⁸ ≈ 0.150 (pure ALOHA's exponent is 2N−2 = 18)."
+        },
+        {
+          "id": 94019,
+          "difficulty": "basic",
+          "question": "A 640 kbps trunk carries phone calls at 64 kbps each. How many simultaneous calls can it support?",
+          "options": [
+            "A) 100",
+            "B) 1",
+            "C) 10",
+            "D) 64",
+            "E) 640"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "640 kbps / 64 kbps per call = 10 calls."
+        },
+        {
+          "id": 94020,
+          "difficulty": "intermediate",
+          "question": "A 4 Mbps CSMA/CD LAN has segments joined so that the worst-case one-way propagation delay is 100 μs. What is the minimum frame size, and roughly how many bytes is that?",
+          "options": [
+            "A) 8000 bits (1000 bytes)",
+            "B) 1600 bits (200 bytes)",
+            "C) 800 bits (100 bytes)",
+            "D) 400 bits (50 bytes)",
+            "E) 80 bits (10 bytes)"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Lmin = 2τR = 2 × 100 μs × 4 Mbps = 800 bits = 100 bytes."
+        }
+      ],
+      "theory": [
+        {
+          "id": 94021,
+          "difficulty": "intermediate",
+          "question": "A CSMA station senses the medium is busy, then waits a RANDOM amount of time before sensing again (rather than continuously monitoring). Which CSMA variant is this?",
+          "options": [
+            "A) p-persistent CSMA",
+            "B) Non-persistent CSMA",
+            "C) 1-persistent CSMA",
+            "D) Slotted ALOHA",
+            "E) CSMA/CA"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Non-persistent ('deferential') CSMA backs off for a random time when it senses the medium busy, rather than waiting right at the edge of the transmission the way 1-persistent does."
+        },
+        {
+          "id": 94022,
+          "difficulty": "intermediate",
+          "question": "A CSMA station senses the medium is idle and, in each time slot, transmits with a fixed probability p (otherwise it waits for the next slot). Which CSMA variant is this?",
+          "options": [
+            "A) p-persistent CSMA",
+            "B) CSMA/CD",
+            "C) Non-persistent CSMA",
+            "D) Pure ALOHA",
+            "E) 1-persistent CSMA"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "p-persistent ('wise guy') CSMA: on finding the channel idle, transmit with probability p in each slot, and defer with probability 1−p, repeating slot by slot until it transmits."
+        },
+        {
+          "id": 94023,
+          "difficulty": "intermediate",
+          "question": "In the network shown, a router connects two switches, each with 3 PCs plugged directly into it. How many collision domains and broadcast domains are there?<div class=\"q-diagram\" style=\"margin:14px 0;text-align:center;overflow-x:auto\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 500 200\" width=\"500\" style=\"max-width:100%;height:auto\" font-family=\"inherit\" font-size=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><line x1=\"250\" y1=\"40\" x2=\"90\" y2=\"100\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"250\" y1=\"40\" x2=\"410\" y2=\"100\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"90\" y1=\"100\" x2=\"40\" y2=\"165\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"90\" y1=\"100\" x2=\"90\" y2=\"165\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"90\" y1=\"100\" x2=\"140\" y2=\"165\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"410\" y1=\"100\" x2=\"360\" y2=\"165\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"410\" y1=\"100\" x2=\"410\" y2=\"165\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"410\" y1=\"100\" x2=\"460\" y2=\"165\" stroke=\"currentColor\" stroke-width=\"1.6\"/><rect x=\"218.0\" y=\"25.0\" width=\"64\" height=\"30\" rx=\"4\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"250\" y=\"40\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">Router</text><rect x=\"58.0\" y=\"86.0\" width=\"64\" height=\"28\" rx=\"4\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"90\" y=\"100\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">Switch A</text><rect x=\"378.0\" y=\"86.0\" width=\"64\" height=\"28\" rx=\"4\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"410\" y=\"100\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">Switch B</text><rect x=\"21.0\" y=\"156.0\" width=\"38\" height=\"24\" rx=\"4\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"40\" y=\"168\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">PC</text><rect x=\"71.0\" y=\"156.0\" width=\"38\" height=\"24\" rx=\"4\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"90\" y=\"168\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">PC</text><rect x=\"121.0\" y=\"156.0\" width=\"38\" height=\"24\" rx=\"4\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"140\" y=\"168\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">PC</text><rect x=\"341.0\" y=\"156.0\" width=\"38\" height=\"24\" rx=\"4\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"360\" y=\"168\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">PC</text><rect x=\"391.0\" y=\"156.0\" width=\"38\" height=\"24\" rx=\"4\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"410\" y=\"168\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">PC</text><rect x=\"441.0\" y=\"156.0\" width=\"38\" height=\"24\" rx=\"4\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"460\" y=\"168\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">PC</text></svg></div>",
+          "options": [
+            "A) 2 collision domains, 8 broadcast domains",
+            "B) 2 collision domains, 2 broadcast domains",
+            "C) 8 collision domains, 1 broadcast domain",
+            "D) 6 collision domains, 1 broadcast domain",
+            "E) 8 collision domains, 2 broadcast domains"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Each switch port is its own collision domain: 3 PCs + the uplink to the router, on each of the 2 switches = 4 + 4 = 8 collision domains.<br>Only the router splits broadcast domains, and there's one on each side of it, so 2 broadcast domains."
+        },
+        {
+          "id": 94024,
+          "difficulty": "basic",
+          "question": "Which of the following Ethernet destination addresses is the BROADCAST address?",
+          "options": [
+            "A) 00:0C:29:4F:8E:11",
+            "B) 02:42:AC:11:00:02",
+            "C) 01:00:5E:00:00:01",
+            "D) FF:FF:FF:FF:FF:FF",
+            "E) 08:00:27:1A:2B:3C"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "All 48 bits set to 1 (FF in every byte) is the reserved broadcast address, delivered to every station on the LAN.<br>An odd second hex digit (like 01, or 0C is even, 42 is even, etc.) signals multicast; broadcast is the special all-ones case."
+        },
+        {
+          "id": 94025,
+          "difficulty": "intermediate",
+          "question": "In CSMA/CD, what is the purpose of the jam signal sent immediately after a collision is detected?",
+          "options": [
+            "A) To repair the corrupted frame automatically",
+            "B) To increase the transmission rate temporarily",
+            "C) To make sure every station on the segment notices the collision and stops transmitting",
+            "D) To encrypt the colliding frames",
+            "E) To identify which station caused the collision"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "A brief jam signal is sent right after a collision is detected, ensuring all transmitting stations definitely notice the collision (even ones that might have just barely missed sensing it) and abort, before everyone enters backoff."
+        },
+        {
+          "id": 94026,
+          "difficulty": "basic",
+          "question": "What is the purpose of Ethernet's minimum interframe gap (9.6 μs at 10 Mbps)?",
+          "options": [
+            "A) To give receivers time to reset and prepare for the next frame, and let the medium settle between frames",
+            "B) To act as the jam signal",
+            "C) To pad short frames up to the minimum size",
+            "D) To encode the destination address",
+            "E) To allow time for collision detection during transmission"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "The interframe gap is idle time deliberately left between consecutive frames so receiving stations have time to process the previous frame and the physical medium can settle before the next transmission begins."
+        },
+        {
+          "id": 94027,
+          "difficulty": "intermediate",
+          "question": "Why was CSMA/CD developed as an improvement over plain ALOHA?",
+          "options": [
+            "A) CSMA/CD removes the need for a minimum frame size",
+            "B) Sensing the channel before transmitting, and aborting immediately on collision, avoids wasting the whole frame time on doomed transmissions",
+            "C) CSMA/CD works only on wireless networks",
+            "D) CSMA/CD eliminates the need for any frame addressing",
+            "E) CSMA/CD guarantees zero collisions can ever occur"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Plain ALOHA transmits blindly with no regard for other traffic. CSMA adds \"listen before talking,\" and CSMA/CD adds \"listen WHILE talking\" so a collision is detected and transmission aborted early, rather than wasting the full frame time the way ALOHA does."
+        }
+      ]
+    },
     "week5": {
       "formulaApplication": [
         {
@@ -1418,6 +2588,204 @@
             "B"
           ],
           "explanation": "The MARP Utilization slide defines it exactly this way: useful transmission time over the whole window (reservation phase + transmission phase). The two u/((u−v)+v/Sr)-style formulas are just this ratio worked out for the two cases (reservation frame carries data or not)."
+        }
+      ]
+    },
+    "week5add": {
+      "formulaApplication": [
+        {
+          "id": 95001,
+          "difficulty": "basic",
+          "question": "In MARP, the data frame u = 500 bits, the reservation trial frame v = 5 bits (carrying no data of its own), and the reservation-phase utilization Sr = 0.5. What is the MARP utilization S?",
+          "options": [
+            "A) About 0.990",
+            "B) About 0.910",
+            "C) About 0.980",
+            "D) About 0.960",
+            "E) About 0.500"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "S = u / (u + v/Sr) = 500 / (500 + 5/0.5) = 500 / 510 ≈ 0.980."
+        },
+        {
+          "id": 95002,
+          "difficulty": "intermediate",
+          "question": "In MARP, the data frame u = 2000 bits, the reservation frame v = 50 bits (and it DOES carry some of the data), and the reservation-phase utilization Sr = 0.6. What is the MARP utilization S?",
+          "options": [
+            "A) About 0.995",
+            "B) About 0.950",
+            "C) About 0.600",
+            "D) About 0.984",
+            "E) About 0.976"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Reservation carries data, so S = u / ((u−v) + v/Sr) = 2000 / (1950 + 50/0.6) = 2000 / 2033.3 ≈ 0.984."
+        },
+        {
+          "id": 95003,
+          "difficulty": "intermediate",
+          "question": "A Wi-Fi network uses MARP at 5 Mbps. The data frame u = 800 bits, the reservation trial v = 20 bits carrying no data, and the reservation-phase MAC has utilization Sr = 0.4. What is the throughput?",
+          "options": [
+            "A) About 4.90 Mbps",
+            "B) 5 Mbps",
+            "C) About 4.71 Mbps",
+            "D) About 4.00 Mbps",
+            "E) About 3.20 Mbps"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "S = u / (u + v/Sr) = 800 / (800 + 50) = 800/850 ≈ 0.9412.<br>Throughput = 0.9412 × 5 Mbps ≈ 4.71 Mbps."
+        },
+        {
+          "id": 95004,
+          "difficulty": "advanced",
+          "question": "In MARP, u = 1000 bits and v = 25 bits (reservation carries no data). What reservation-phase utilization Sr is needed to achieve an overall MARP utilization of 90%?",
+          "options": [
+            "A) About 0.111",
+            "B) About 0.225",
+            "C) About 0.450",
+            "D) About 0.900",
+            "E) About 0.025"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "S = u/(u+v/Sr) = 0.9 → u+v/Sr = u/0.9 → v/Sr = u/0.9 − u = 1000/0.9 − 1000 ≈ 111.1<br>Sr = v / 111.1 = 25/111.1 ≈ 0.225."
+        },
+        {
+          "id": 95005,
+          "difficulty": "basic",
+          "question": "In MARP, the reservation-phase MAC protocol has utilization Sr = 0.2. What is the expected number of reservation trial frames needed per cycle?",
+          "options": [
+            "A) 5",
+            "B) 10",
+            "C) 1",
+            "D) 0.2",
+            "E) 2"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Number of trials X follows a geometric distribution: E[X] = 1/Sr = 1/0.2 = 5."
+        },
+        {
+          "id": 95006,
+          "difficulty": "basic",
+          "question": "In MARP, the data frame takes 5 ms and each reservation trial frame takes 0.5 ms. The reservation-phase utilization is Sr = 0.1. What is the average length of a full transmission window (reservation frame carries no data)?",
+          "options": [
+            "A) 0.5 ms",
+            "B) 5.5 ms",
+            "C) 10 ms",
+            "D) 50 ms",
+            "E) 5.05 ms"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Expected trials = 1/Sr = 10, so reservation phase takes 10 × 0.5 = 5 ms on average.<br>Window = u + v/Sr = 5 + 5 = 10 ms."
+        },
+        {
+          "id": 95007,
+          "difficulty": "advanced",
+          "question": "MARP's reservation phase uses pure ALOHA running at pure ALOHA's own best possible utilization. The data frame u = 1000 bits and the reservation trial v = 15 bits, carrying no data. What is the MARP utilization S?",
+          "options": [
+            "A) About 0.900",
+            "B) About 0.980",
+            "C) About 0.184",
+            "D) About 0.368",
+            "E) About 0.925"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Pure ALOHA's max utilization is Sr = 1/(2e) ≈ 0.184.<br>S = u/(u+v/Sr) = 1000/(1000 + 15/0.184) = 1000/(1000+81.5) ≈ 0.925."
+        },
+        {
+          "id": 95008,
+          "difficulty": "intermediate",
+          "question": "In MARP, u = 3000 bits and v = 100 bits, with the reservation frame carrying some of the data. The reservation-phase protocol has utilization Sr = 0.35. What is the MARP utilization S?",
+          "options": [
+            "A) About 0.979",
+            "B) About 0.942",
+            "C) About 0.966",
+            "D) About 0.350",
+            "E) About 0.900"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "S = u / ((u−v) + v/Sr) = 3000 / (2900 + 100/0.35) = 3000 / (2900+285.7) ≈ 0.942."
+        }
+      ],
+      "theory": [
+        {
+          "id": 95009,
+          "difficulty": "intermediate",
+          "question": "In the MARP flowchart, what happens right after the \"Transmit data frame\" box?",
+          "options": [
+            "A) The whole network shuts down",
+            "B) The station is permanently banned from transmitting again",
+            "C) Nothing — MARP only runs once ever",
+            "D) It jumps straight into a new data frame with no reservation phase",
+            "E) The cycle loops back to the Trial step, ready for the next transmission cycle"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "The flowchart's arrow from \"Transmit data frame\" loops back up to the Trial diamond, showing that MARP repeats this reservation-then-transmission cycle continuously, one data frame at a time."
+        },
+        {
+          "id": 95010,
+          "difficulty": "basic",
+          "question": "The number of reservation trials X needed before one succeeds in MARP follows what kind of probability distribution?",
+          "options": [
+            "A) Geometric distribution",
+            "B) Uniform distribution",
+            "C) Poisson distribution",
+            "D) Normal (Gaussian) distribution",
+            "E) Binomial distribution"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "X = 1 with probability Sr, X = k with probability Sr(1−Sr)^(k−1) — that's the geometric distribution, which is exactly why E[X] = 1/Sr."
+        },
+        {
+          "id": 95011,
+          "difficulty": "intermediate",
+          "question": "The MARP Example slide teaches a problem-solving method called the CRACK Framework. What do the 5 letters stand for?",
+          "options": [
+            "A) Check, Review, Apply, Calculate, Keep",
+            "B) Context, Rule, Answer, Compute, Know",
+            "C) Case, Reasoning, Answer, Check, Key",
+            "D) Context, fRamework, Apply, Calculation, checK",
+            "E) Collect, Review, Analyze, Compute, Keep"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "CRACK: state the Context (what's given), identify the fRamework (which formula applies), Apply the numbers, do the Calculation, then checK the result makes sense (e.g. a utilization must satisfy S ≤ 1)."
+        },
+        {
+          "id": 95012,
+          "difficulty": "basic",
+          "question": "When you calculate a MARP utilization S as a sanity check, what should always be true of the result?",
+          "options": [
+            "A) S must equal Sr exactly",
+            "B) S must be negative",
+            "C) S must be an integer",
+            "D) S ≥ 1",
+            "E) S ≤ 1"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "S is a utilization (useful time divided by total window time), so it can never exceed 1 (100%). If your calculated S comes out above 1, that's a sure sign of an arithmetic slip."
         }
       ]
     },
@@ -1648,6 +3016,268 @@
             "E"
           ],
           "explanation": "Dedicated resources per connection don't scale, and bursty data leaves reserved circuits idle much of the time.<br>So packet switching was invented in the 1960s for data."
+        }
+      ]
+    },
+    "week6add": {
+      "formulaApplication": [
+        {
+          "id": 96001,
+          "difficulty": "basic",
+          "question": "A circuit-switched connection needs to send a 5000-bit message over a 200 kbps dedicated circuit. Ignoring setup and propagation delay, what is the transmission delay?",
+          "options": [
+            "A) 2.5 ms",
+            "B) 50 ms",
+            "C) 40 ms",
+            "D) 10 ms",
+            "E) 25 ms"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Circuit switching: delay = message size / data rate = 5000/200,000 = 25 ms (hops don't matter once the circuit is up)."
+        },
+        {
+          "id": 96002,
+          "difficulty": "basic",
+          "question": "A 5 Gbps trunk carries phone calls at 32 kbps each. About how many simultaneous calls can it support?",
+          "options": [
+            "A) 62,500",
+            "B) 1,562,500",
+            "C) 15,625",
+            "D) 312,500",
+            "E) 156,250"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "5×10⁹ / 32×10³ = 156,250 calls."
+        },
+        {
+          "id": 96003,
+          "difficulty": "intermediate",
+          "question": "A message is split into 6 equal packets of 500 bits each and sent over a path with 4 hops (3 intermediate nodes) at 100 kbps. Ignoring propagation, processing and queuing delay, what is the total transmission delay?",
+          "options": [
+            "A) 45 ms",
+            "B) 20 ms",
+            "C) 50 ms",
+            "D) 24 ms",
+            "E) 30 ms"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Delay = (m+h−1) × (packet size/R) = (6+4−1) × 500/100,000 = 9 × 0.005 s = 45 ms."
+        },
+        {
+          "id": 96004,
+          "difficulty": "intermediate",
+          "question": "A message is split into 5 equal packets of 800 bits each and sent over 3 hops. What minimum data rate gives a total transmission delay of 28 ms?",
+          "options": [
+            "A) 200 kbps",
+            "B) 280 kbps",
+            "C) 160 kbps",
+            "D) 100 kbps",
+            "E) 142.9 kbps"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Delay = (m+h−1) × packet/R → 0.028 = (5+3−1) × 800/R = 7×800/R = 5600/R<br>R = 5600/0.028 = 200,000 bps = 200 kbps."
+        },
+        {
+          "id": 96005,
+          "difficulty": "intermediate",
+          "question": "A 3000-byte message is split into 6 packets, each with a 25-byte header, and sent over 4 hops at 500 kbps. Ignoring propagation and processing delay, what is the total transmission delay?",
+          "options": [
+            "A) 60 ms",
+            "B) 75.6 ms",
+            "C) 48 ms",
+            "D) 84 ms",
+            "E) 67.2 ms"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "packet size = (3000/6 + 25) bytes × 8 = 525 × 8 = 4200 bits.<br>Delay = (6+4−1) × 4200/500,000 = 9 × 0.0084 s = 75.6 ms."
+        },
+        {
+          "id": 96006,
+          "difficulty": "advanced",
+          "question": "A source sends 4 packets of sizes 1000, 3000, 2000 and 1000 bits to a destination through 1 intermediate router (2 hops). Every link runs at 1000 bits/ms. What is the total delay, tracing hop by hop?<div class=\"q-diagram\" style=\"margin:14px 0;text-align:center;overflow-x:auto\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 70\" width=\"460\" style=\"max-width:100%;height:auto\" font-family=\"inherit\" font-size=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><line x1=\"60.0\" y1=\"35\" x2=\"210.0\" y2=\"35\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"250.0\" y1=\"35\" x2=\"400.0\" y2=\"35\" stroke=\"currentColor\" stroke-width=\"1.6\"/><circle cx=\"40.0\" cy=\"35\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"40.0\" y=\"35\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">S</text><circle cx=\"230.0\" cy=\"35\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"230.0\" y=\"35\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">I</text><circle cx=\"420.0\" cy=\"35\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"420.0\" y=\"35\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">D</text></svg></div>",
+          "options": [
+            "A) 9 ms",
+            "B) 7 ms",
+            "C) 14 ms",
+            "D) 10 ms",
+            "E) 12 ms"
+          ],
+          "correct": [
+            "D"
+          ],
+          "explanation": "Transmission times: P1=1ms, P2=3ms, P3=2ms, P4=1ms.<br>Hop 1: P1[0-1], P2[1-4], P3[4-6], P4[6-7]<br>Hop 2: P1[1-2], P2[4-7], P3[7-9], P4[9-10]<br>The last packet (P4) finishes hop 2 at t = 10 ms."
+        },
+        {
+          "id": 96007,
+          "difficulty": "advanced",
+          "question": "A source sends 3 packets of sizes 3000, 1000 and 2000 bits through 2 intermediate routers (3 hops). Every link runs at 1000 bits/ms. What is the total delay?<div class=\"q-diagram\" style=\"margin:14px 0;text-align:center;overflow-x:auto\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 70\" width=\"460\" style=\"max-width:100%;height:auto\" font-family=\"inherit\" font-size=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><line x1=\"60.0\" y1=\"35\" x2=\"146.66666666666669\" y2=\"35\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"186.66666666666669\" y1=\"35\" x2=\"273.33333333333337\" y2=\"35\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"313.33333333333337\" y1=\"35\" x2=\"400.0\" y2=\"35\" stroke=\"currentColor\" stroke-width=\"1.6\"/><circle cx=\"40.0\" cy=\"35\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"40.0\" y=\"35\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">S</text><circle cx=\"166.66666666666669\" cy=\"35\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"166.66666666666669\" y=\"35\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">I1</text><circle cx=\"293.33333333333337\" cy=\"35\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"293.33333333333337\" y=\"35\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">I2</text><circle cx=\"420.0\" cy=\"35\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"420.0\" y=\"35\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">D</text></svg></div>",
+          "options": [
+            "A) 12 ms",
+            "B) 18 ms",
+            "C) 9 ms",
+            "D) 10 ms",
+            "E) 15 ms"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Transmission times: P1=3ms, P2=1ms, P3=2ms.<br>Hop 1: P1[0-3], P2[3-4], P3[4-6]<br>Hop 2: P1[3-6], P2[6-7], P3[7-9]<br>Hop 3: P1[6-9], P2[9-10], P3[10-12]<br>P3 finishes hop 3 at t = 12 ms."
+        },
+        {
+          "id": 96008,
+          "difficulty": "basic",
+          "question": "A circuit-switched link sends an 8000-bit message at 400 kbps. What is the transmission delay?",
+          "options": [
+            "A) 32 ms",
+            "B) 5 ms",
+            "C) 40 ms",
+            "D) 12.5 ms",
+            "E) 20 ms"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Delay = message size / data rate = 8000/400,000 = 20 ms."
+        },
+        {
+          "id": 96009,
+          "difficulty": "basic",
+          "question": "A 640 kbps trunk carries voice calls at 64 kbps each. How many simultaneous calls can it support?",
+          "options": [
+            "A) 64",
+            "B) 100",
+            "C) 640",
+            "D) 1",
+            "E) 10"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "640,000 / 64,000 = 10 calls."
+        },
+        {
+          "id": 96010,
+          "difficulty": "intermediate",
+          "question": "A message is split into 10 equal packets of 200 bits each and sent over 2 hops at 50 kbps. What is the total transmission delay?",
+          "options": [
+            "A) 50 ms",
+            "B) 44 ms",
+            "C) 20 ms",
+            "D) 40 ms",
+            "E) 80 ms"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Delay = (m+h−1) × packet/R = (10+2−1) × 200/50,000 = 11 × 0.004 s = 44 ms."
+        },
+        {
+          "id": 96011,
+          "difficulty": "advanced",
+          "question": "A source sends 5 packets of sizes 500, 1500, 1000, 2000 and 500 bits through 1 intermediate router (2 hops), every link at 500 bits/ms. What is the total delay, tracing hop by hop?",
+          "options": [
+            "A) 18 ms",
+            "B) 20 ms",
+            "C) 15 ms",
+            "D) 11 ms",
+            "E) 13 ms"
+          ],
+          "correct": [
+            "C"
+          ],
+          "explanation": "Transmission times (ms): P1=1, P2=3, P3=2, P4=4, P5=1.<br>Hop 1: P1[0-1], P2[1-4], P3[4-6], P4[6-10], P5[10-11]<br>Hop 2: P1[1-2], P2[4-7], P3[7-9], P4[10-14], P5[14-15]<br>P5 finishes hop 2 at t = 15 ms — note P4's large size (4ms) delays P5's start on hop 2 even though P5 itself is quick."
+        }
+      ],
+      "theory": [
+        {
+          "id": 96012,
+          "difficulty": "intermediate",
+          "question": "Which of the following is a key difference between circuit switching and datagram packet switching?",
+          "options": [
+            "A) Datagram switching dedicates resources to each connection; circuit switching does not",
+            "B) Circuit switching requires a connection setup phase before any data flows; datagram switching does not",
+            "C) Circuit switching adds a header to every unit of data; datagram switching does not",
+            "D) Datagram switching requires a connection setup phase; circuit switching does not",
+            "E) Both require exactly the same setup procedure"
+          ],
+          "correct": [
+            "B"
+          ],
+          "explanation": "Circuit switching's 3 phases are establish → transfer → disconnect; a dedicated path must be set up first. Datagram packet switching has no such setup — each packet is just sent and finds its own way, with per-packet addressing overhead instead."
+        },
+        {
+          "id": 96013,
+          "difficulty": "intermediate",
+          "question": "What is a key disadvantage of virtual-circuit packet switching compared with datagram packet switching?",
+          "options": [
+            "A) It cannot use a Virtual Circuit Identifier",
+            "B) Packets always arrive out of order",
+            "C) Every packet must carry the full destination address",
+            "D) It requires no addressing at all",
+            "E) If a node or link along the established path fails, every packet on that virtual circuit is disrupted"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "Because all packets follow the SAME pre-established path, a failure anywhere on that path breaks the whole virtual circuit. Datagram switching has no fixed path, so later packets can simply be routed around the failure."
+        },
+        {
+          "id": 96014,
+          "difficulty": "basic",
+          "question": "Which switching paradigm does the modern Internet primarily use?",
+          "options": [
+            "A) Datagram packet switching",
+            "B) None — the Internet uses dedicated physical wires per connection",
+            "C) Circuit switching",
+            "D) Pure circuit switching with reserved bandwidth",
+            "E) Virtual-circuit packet switching only"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "IP, the Internet's core protocol, is a datagram (connectionless) packet-switching protocol: each packet is routed independently with no pre-established path or reserved resources."
+        },
+        {
+          "id": 96015,
+          "difficulty": "intermediate",
+          "question": "Once a circuit-switched connection is established, what happens to its dedicated resources if the caller stops sending data for a while?",
+          "options": [
+            "A) Other users can freely borrow the idle capacity without any renegotiation",
+            "B) The data rate automatically increases to compensate",
+            "C) The connection is automatically terminated after any pause",
+            "D) The resources are automatically freed up for other users during the idle period",
+            "E) The resources stay reserved and idle until the connection is explicitly disconnected"
+          ],
+          "correct": [
+            "E"
+          ],
+          "explanation": "This is exactly why circuit switching is inefficient for bursty traffic: the dedicated path is held for the whole connection regardless of whether data is actually flowing, until the disconnect phase releases it."
+        },
+        {
+          "id": 96016,
+          "difficulty": "basic",
+          "question": "In the figure, packets P1, P2 and P3 all travel from S to D but take three different routes through the network. Which switching paradigm does this illustrate?<div class=\"q-diagram\" style=\"margin:14px 0;text-align:center;overflow-x:auto\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 150\" width=\"460\" style=\"max-width:100%;height:auto\" font-family=\"inherit\" font-size=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M60 40 Q230 15 400 100\"/><path d=\"M60 75 Q230 130 400 100\"/><path d=\"M60 110 Q230 75 400 100\"/><circle cx=\"50\" cy=\"75\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"50\" y=\"75\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">S</text><circle cx=\"410\" cy=\"100\" r=\"20\" style=\"fill:var(--color-surface,#fff)\"/><text x=\"410\" y=\"100\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"13\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">D</text><text x=\"230\" y=\"8\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"11\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">P1</text><text x=\"230\" y=\"140\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"11\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">P2</text><text x=\"150\" y=\"90\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"11\" font-weight=\"normal\" fill=\"currentColor\" stroke=\"none\">P3</text></svg></div>",
+          "options": [
+            "A) Datagram packet switching",
+            "B) Circuit switching",
+            "C) Virtual-circuit packet switching",
+            "D) None of these paradigms allow this",
+            "E) All three paradigms look identical to this"
+          ],
+          "correct": [
+            "A"
+          ],
+          "explanation": "Each packet is routed independently and may take a different path to the same destination — the defining feature of datagram switching. Circuit switching and virtual circuits both commit every unit of data to one fixed, pre-established path."
         }
       ]
     }
